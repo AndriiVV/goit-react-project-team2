@@ -75,3 +75,14 @@ img{
 .btn:focus {
   transform: scale(1.03);
 }
+
+@media screen and (min-width: 768px) {
+    .contentWrap{
+        padding: 60px 40px 90px;
+        margin: 0 auto;
+        width: 477px;
+    }
+    .btnWrap{
+        display: none;
+    }
+}
