@@ -13,8 +13,9 @@ const SignUpPage = () => {
         <form className={s.form}>
           <GoogleSingIn/>
           <label>
-            <span className={s.label}>Ім’я<span className={s.errorMarker}>*</span></span> 
+            <span className={`${s.label} ${s.firstLabel}`}>Ім’я<span className={s.requiredField}>*</span></span> 
             <input
+                className={s.input}
                 name="name"
                 // value={value}
                 type="text"
@@ -24,8 +25,9 @@ const SignUpPage = () => {
           </label>
 
           <label>
-            <span className={s.label}>Електронна адреса<span className={s.errorMarker}>*</span></span>            
+            <span className={s.label}>Електронна адреса<span className={s.requiredField}>*</span></span>            
             <input
+                className={s.input}
                 name="email"
                 // value={value}
                 type="email"
@@ -35,8 +37,9 @@ const SignUpPage = () => {
           </label>
 
           <label >
-            <span className={s.label}>Пароль<span className={s.errorMarker}>*</span></span>
+            <span className={s.label}>Пароль<span className={s.requiredField}>*</span></span>
             <input
+                className={s.input}
                 name="password1"
                 // value={value}
                 type="password"
@@ -45,10 +48,10 @@ const SignUpPage = () => {
               />
           </label>
 
-          <label className={s.label}>
-            Підтвердити пароль<span className={s.nameLabel}></span> 
-              <span className={s.errorMarker}>*</span>
+            <label>
+            <span className={s.label}>Підтвердити пароль<span className={s.requiredField}>*</span></span>
             <input
+                className={s.input}
                 name="password2"
                 // value={value}
                 type="password"
@@ -59,7 +62,7 @@ const SignUpPage = () => {
           {/* disabled={isBtnDisabled} */}
           <button type="submit" className={`${s.registerBtn} ${s.authBtn}`}>Зареєструватися</button>
           {/* button переписать на компонент react-router-dom <NavLink className={s.navLink}></NavLink> */}
-          <p>Вже з нами?<button className={s.navLink}>Увійти</button></p>        
+          <p className={s.logInMessage}>Вже з нами?<button className={s.navLink}>Увійти</button></p>        
         </form>
       </div>
     </Container>
