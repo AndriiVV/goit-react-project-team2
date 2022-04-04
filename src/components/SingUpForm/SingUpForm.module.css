@@ -1,0 +1,88 @@
+.formWrap{
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height:  648px;
+    padding: 90px 25px 20px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-image: linear-gradient(
+      rgba(9, 30, 63, 0.8),
+      rgba(9, 30, 63, 0.8)
+    ),
+    url(../../images/registr-pic-mobile.jpg);
+  
+}
+
+.label.firstLabel{
+  margin-top: 20px;
+}
+
+.label{
+  display: block;
+  font-family: 'Montserrat';
+  color:  #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-top: 10px ;
+}
+
+.requiredField{
+  display: inline-block;
+  margin-left: 5px;
+  color:#F25137;
+}
+
+.input{
+  width: 270px;
+  height: 42px;
+  padding: 0 13px;
+  box-sizing: border-box;
+}
+
+.input::placeholder{
+  color:#A6ABB9;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 38px;
+  
+}
+
+.singUpBtn{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 16px;
+  color:#FFFFFF;
+  line-height: 38px;
+  width: 270px;
+  height: 60px;
+  background-color: #FF6B08;
+  border: none;
+  margin-top: 35px;
+  cursor: pointer;
+}
+.singUpBtn:hover,
+.singUpBtn:focus {
+  transform: scale(1.03);
+}
+
+.logInMessage{
+  color: #898F9F;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+.navLink{
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: #FF6B08;
+}
