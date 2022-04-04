@@ -13,7 +13,6 @@
       rgba(9, 30, 63, 0.8)
     ),
     url(../../images/registr-pic-mobile.jpg);
-  
 }
 
 .label.firstLabel{
@@ -41,6 +40,8 @@
   height: 42px;
   padding: 0 13px;
   box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
 }
 
 .input::placeholder{
@@ -65,6 +66,7 @@
   margin-top: 35px;
   cursor: pointer;
 }
+
 .singUpBtn:hover,
 .singUpBtn:focus {
   transform: scale(1.03);
@@ -85,4 +87,39 @@
   border: none;
   text-decoration: underline;
   color: #FF6B08;
+}
+
+@media screen and (min-width: 768px) {
+  .formWrap{
+    width: 768px;
+    height: 790px;
+    padding: 120px auto 60px;
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+    ),
+    url(../../images/registr-pic-tablet.jpg);
+  }
+  .form{
+    background: #FFFFFF;
+    width: 400px;
+    height: 610px;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  .input{
+    width: 320px;
+    height: 42px;
+    background: #F5F7FA;
+    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+    border: none;
+  }
+  .label{
+    color:  #898F9F;
+  }
+  .singUpBtn{
+    width: 320px;
+    height: 60px;
+  }
 }

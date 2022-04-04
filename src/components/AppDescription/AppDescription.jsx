@@ -27,4 +27,4 @@ const AppDescription = () => {
   )
 }
 
-export default AppDescription
+export default AppDescription;
