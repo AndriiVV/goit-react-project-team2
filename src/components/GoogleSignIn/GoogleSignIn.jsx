@@ -1,5 +1,5 @@
 import googleIcon from '../../images/google-icon.png';
-import s from './GoogleSingIn.module.css';
+import s from './GoogleSignIn.module.css';
 
 const GoogleSingIn = () => {
   return (
