@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, registerUser } from './authOperations';
+import { loginUser, logoutUser, registerUser } from './authOperations';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
@@ -17,6 +17,7 @@ const initialState = {
   accessToken: getFromLS('accessToken'),
   refreshToken: getFromLS('refreshToken'),
   isLoading: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -26,17 +27,17 @@ const authSlice = createSlice({
     setAccessToken(state, { payload }) {
       state.accessToken = payload;
     },
-    logOut(state) {
-      state.user = {
-        name: '',
-        email: '',
-        sid: null,
-      };
-      state.accessToken = null;
-      state.refreshToken = null;
-      localStorage.setItem('accessToken', JSON.stringify(null));
-      localStorage.setItem('refreshToken', JSON.stringify(null));
-    },
+    // logOut(state) {
+    //   state.user = {
+    //     name: '',
+    //     email: '',
+    //     sid: null,
+    //   };
+    //   state.accessToken = null;
+    //   state.refreshToken = null;
+    //   localStorage.setItem('accessToken', JSON.stringify(null));
+    //   localStorage.setItem('refreshToken', JSON.stringify(null));
+    // },
   },
   extraReducers: {
     [registerUser.pending]: state => {
@@ -73,6 +74,27 @@ const authSlice = createSlice({
       state.isLoading = false;
       // state.error = payload;
     },
+    [logoutUser.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [logoutUser.fulfilled]: (state) => {
+
+      state.user = {
+        name: '',
+        email: '',
+        sid: null,
+      };
+      state.accessToken = null;
+      state.refreshToken = null;
+      localStorage.setItem('accessToken', JSON.stringify(null));
+      localStorage.setItem('refreshToken', JSON.stringify(null));
+      state.isLoading = false;
+      state.error = null;
+    },
+    [logoutUser.rejected]: (state, { payload }) => {
+      state.error = payload;
+    }
   },
 });
 
