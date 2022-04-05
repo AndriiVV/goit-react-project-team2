@@ -1,0 +1,52 @@
+.button {
+  background-color: rgba(28, 28, 28, 0);
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 38px;
+  padding: 0;
+  font-family: "Montserrat";
+  font-weight: 300;
+  font-size: 14px;
+  &:after {
+    content: "";
+    width: 40px;
+    background-color: #000;
+    height: 1px;
+    display: block;
+  }
+  &:hover:after {
+    background-color: #f25137;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:hover {
+    color: #f25137;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.training {
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    fill: #f5f7fa;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.home {
+  cursor: pointer;
+  border-right: 1px solid #e0e5eb;
+  &:hover,
+  &:focus {
+    fill: #f5f7fa;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
