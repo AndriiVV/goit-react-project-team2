@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PublicRoute from "./PublicRoute/PublicRoute";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import RegisterPage from "../components/RegisterPage/RegisterPage";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import LibraryPage from "../pages/LibraryPage/LibraryPage";
 import TrainingPage from "../pages/TrainingPage/TrainingPage";
 
