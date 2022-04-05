@@ -3,7 +3,7 @@
     align-items: center;
     width: 320px;
     height:  648px;
-    padding: 90px 25px 20px;
+    padding: 70px 25px 20px;
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: center;
@@ -13,10 +13,6 @@
       rgba(9, 30, 63, 0.8)
     ),
     url(../../images/registr-pic-mobile.jpg);
-}
-
-.label.firstLabel{
-  margin-top: 20px;
 }
 
 .label{
@@ -63,7 +59,7 @@
   height: 60px;
   background-color: #FF6B08;
   border: none;
-  margin-top: 35px;
+  margin-top: 30px;
   cursor: pointer;
 }
 
@@ -79,7 +75,6 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 38px;
-  cursor: pointer;
 }
 
 .navLink{
@@ -87,6 +82,7 @@
   border: none;
   text-decoration: underline;
   color: #FF6B08;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -103,9 +99,9 @@
   .form{
     background: #FFFFFF;
     width: 400px;
-    height: 610px;
+    min-height: 610px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 36px 40px;
     box-sizing: border-box;
   }
   .input{
