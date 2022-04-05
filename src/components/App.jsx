@@ -1,17 +1,29 @@
+import { Suspense } from "react";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import PublicRoute from "./PublicRoute/PublicRoute";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import LibraryPage from "../pages/LibraryPage/LibraryPage";
+import TrainingPage from "../pages/TrainingPage/TrainingPage";
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
+    <div>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <PrivateRoute path={"/library"}>
+          <LibraryPage />
+        </PrivateRoute>
+        <PrivateRoute path={"/training"}>
+          <TrainingPage />
+        </PrivateRoute>
+        <PublicRoute path={"/login"}>
+          <LoginPage />
+        </PublicRoute>
+        <PublicRoute path={"/register"}>
+          <RegisterPage />
+        </PublicRoute>
+      </Suspense>      
     </div>
   );
 };
