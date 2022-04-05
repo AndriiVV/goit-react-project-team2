@@ -1,6 +1,6 @@
-import GoogleSingIn from 'components/GoogleSingIn/GoogleSingIn';
+import GoogleSingIn from '../GoogleSignIn/GoogleSignIn';
 import  ErrorMessage  from '../common/ErrorMsg/ErrorMsg';
-import s from './SingUpForm.module.css'
+import s from '../SignUpForm/SignUpForm.module.css'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
