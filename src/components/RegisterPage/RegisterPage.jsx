@@ -1,7 +1,7 @@
 import AppDescription from 'components/AppDescription/AppDescription';
 import Container from 'components/common/Container';
 import SingUpForm from 'components/SingUpForm/SingUpForm';
-import s from './SignUpPage.module.css'
+import s from './RegisterPage.module.css'
 
 const SignUpPage = () => {
   return (
