@@ -1,5 +1,5 @@
-import GoogleSingIn from 'components/GoogleSingIn/GoogleSingIn';
-import s from './SingUpForm.module.css'
+import GoogleSingIn from 'components/GoogleSignIn/GoogleSignIn';
+import s from './SignUpForm.module.css'
 
 const SingUpForm = () => {
       // const isBtnDisabled =
