@@ -1,0 +1,33 @@
+.btn{
+    width: 150px;
+    height: 40px;  
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 8px 20px 10px ;
+ 
+    background: #F5F7FA;
+    color: #707375;
+    border: none;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: calc(38px/16px);
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.03);
+}
+
+.googleLogo {
+    width:18px;
+    height: 18px;
+    margin-right: 15px;
+}
+@media screen and (min-width: 768px) {
+    .btn{
+        box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
+    }
+}

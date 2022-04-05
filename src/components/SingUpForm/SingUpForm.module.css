@@ -1,0 +1,138 @@
+.formWrap{
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height:  648px;
+    padding: 90px 25px 20px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-image: linear-gradient(
+      rgba(9, 30, 63, 0.8),
+      rgba(9, 30, 63, 0.8)
+    ),
+    url(../../images/registr-pic-mobile.jpg);
+}
+
+.label.firstLabel{
+  margin-top: 20px;
+}
+
+.label{
+  display: block;
+  font-family: 'Montserrat';
+  color:  #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 38px;
+  margin-top: 10px ;
+}
+
+.requiredField{
+  display: inline-block;
+  margin-left: 5px;
+  color:#F25137;
+}
+
+.input{
+  width: 270px;
+  height: 42px;
+  padding: 0 13px;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+}
+
+.input::placeholder{
+  color:#A6ABB9;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 38px;
+  
+}
+
+.singUpBtn{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 16px;
+  color:#FFFFFF;
+  line-height: 38px;
+  width: 270px;
+  height: 60px;
+  background-color: #FF6B08;
+  border: none;
+  margin-top: 35px;
+  cursor: pointer;
+}
+
+.singUpBtn:hover,
+.singUpBtn:focus {
+  transform: scale(1.03);
+}
+
+.logInMessage{
+  color: #898F9F;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+.navLink{
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: #FF6B08;
+}
+
+@media screen and (min-width: 768px) {
+  .formWrap{
+    width: 768px;
+    height: 790px;
+    padding: 120px auto 60px;
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+    ),
+    url(../../images/registr-pic-tablet.jpg);
+  }
+  .form{
+    background: #FFFFFF;
+    width: 400px;
+    height: 610px;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  .input{
+    width: 320px;
+    height: 42px;
+    background: #F5F7FA;
+    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+    border: none;
+  }
+  .label{
+    color:  #898F9F;
+  }
+  .singUpBtn{
+    width: 320px;
+    height: 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .formWrap{
+    width: 565px;
+    height: 850px;
+    padding: 120px auto 60px;
+    background-image: linear-gradient(
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+    ),
+    url(../../images/registr-pic-desctop.jpg);
+  }
+}
