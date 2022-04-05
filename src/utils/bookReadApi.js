@@ -22,3 +22,11 @@ export const loginUserApi = userData => {
     finishedReading: data.userData.finishedReading,
   }));
 };
+
+export const logOutApi = accessToken => {
+  return axios.post('/auth/logout', accessToken).then((res) => {
+    return res.data
+  }).catch((err) => {
+     throw err
+  });
+};
