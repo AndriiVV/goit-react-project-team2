@@ -5,9 +5,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { NavLink } from "react-router-dom";
-
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/auth/authOperations';
 
 const SingInForm = () => {
+
+  const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({      
     email: Yup.string().email('Email is wrong').required('Email is required'),
@@ -30,6 +33,7 @@ const SingInForm = () => {
 
     const onSubmit = (data) => {
       console.log('🍒 data', data);
+      dispatch(loginUser( data));
       reset();
     }
   
