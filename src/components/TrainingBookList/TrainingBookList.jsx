@@ -62,7 +62,9 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
           ))}
         </tbody>
       </table>
-      <button className={s.trainingBtn}>Почати тренування</button>
+      <button type="button" className={s.trainingBtn}>
+        Почати тренування
+      </button>
     </div>
   );
 };

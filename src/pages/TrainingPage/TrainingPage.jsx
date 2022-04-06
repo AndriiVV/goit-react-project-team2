@@ -37,7 +37,9 @@ const TrainingPage = () => {
             <datalist id="books">
               <option value="book" />
             </datalist>
-            <button className={s.trainingBtn}>Додати</button>
+            <button type="button" className={s.trainingBtn}>
+              Додати
+            </button>
           </div>
           <TrainingBookList />
         </div>
