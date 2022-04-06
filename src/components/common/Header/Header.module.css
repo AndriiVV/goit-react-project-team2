@@ -1,0 +1,35 @@
+.header{
+    outline:1px solid green;
+    position: absolute;
+    background: #FFFFFF;
+    z-index: 100;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    height: 60px; 
+    width: 320px;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1); 
+}
+
+.logo{
+    width: 28px;
+    height: 27px;
+    margin-right: 75px;
+}
+
+@media screen and (min-width: 768px) {
+    .header{
+        width: 768px;
+    }
+    .logo{
+        margin-right: 300px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .header{
+        width: 1280px;
+    }
+    .logo{
+        margin-right: 180px;
+    }
+}
