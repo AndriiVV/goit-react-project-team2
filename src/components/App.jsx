@@ -5,11 +5,6 @@ import MainNav from '../pages/MainNav';
 import { Route } from 'react-router-dom';
 import Container from './common/Container';
 import { Switch } from 'react-router-dom';
-import LoginPage from '../pages/LoginPage/LoginPage';
-import RegisterPage from '../pages/RegisterPage/RegisterPage';
-import LibraryPage from '../pages/LibraryPage/LibraryPage';
-import TrainingPage from '../pages/TrainingPage/TrainingPage';
-
 
 const LibraryPage = lazy(() =>
   import(
