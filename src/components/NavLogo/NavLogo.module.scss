@@ -1,0 +1,6 @@
+.logo {
+  cursor: pointer;
+  @media screen and(max-width: 767px) {
+    margin-right: 60px;
+  }
+}

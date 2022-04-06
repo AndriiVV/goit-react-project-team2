@@ -70,7 +70,8 @@ export const addBookReviewApi = (reviewData, _id) => {
     feedback: data.feedback,
     _id: data._id,
   }));
-}
+
+};
 
 export const logOutApi = accessToken => {
   return axios
@@ -81,4 +82,5 @@ export const logOutApi = accessToken => {
     .catch((err) => {
      throw err
   })
+
 };

@@ -1,0 +1,87 @@
+.button {
+  background-color: rgba(28, 28, 28, 0);
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 38px;
+  padding: 0;
+  font-family: "Montserrat";
+  font-weight: 300;
+  font-size: 14px;
+  &:after {
+    content: "";
+    width: 40px;
+    background-color: #000;
+    height: 1px;
+    display: block;
+  }
+  &:hover:after {
+    background-color: #f25137;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:hover {
+    color: #f25137;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.firstUser {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-left: 255px;
+    margin-right: 260px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 407px;
+    margin-left: 511px;
+  }
+}
+
+.training {
+  cursor: pointer;
+  margin-right: 7px;
+
+  &:hover,
+  &:focus {
+    fill: #f5f7fa;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 14px;
+  }
+}
+
+.activeTraining {
+  color: #f5f7fa;
+}
+
+.home {
+  cursor: pointer;
+  border-right: 1px solid #e0e5eb;
+  margin-right: 13px;
+  &:hover,
+  &:focus {
+    fill: #f5f7fa;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 19px;
+  }
+}
+
+.activeHome {
+  color: #f5f7fa;
+}
+
+.user {
+  cursor: pointer;
+  margin-right: 14px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
