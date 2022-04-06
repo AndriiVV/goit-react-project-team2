@@ -27,10 +27,22 @@
   }
 }
 
+.firstUser {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-left: 255px;
+    margin-right: 260px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 407px;
+    margin-left: 511px;
+  }
+}
+
 .training {
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
+  margin-right: 7px;
 
   &:hover,
   &:focus {
@@ -38,15 +50,30 @@
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+  @media screen and (min-width: 1280px) {
+    margin-right: 14px;
+  }
 }
 
 .home {
   cursor: pointer;
   border-right: 1px solid #e0e5eb;
+  margin-right: 13px;
   &:hover,
   &:focus {
     fill: #f5f7fa;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 19px;
+  }
+}
+
+.user {
+  cursor: pointer;
+  margin-right: 14px;
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 }

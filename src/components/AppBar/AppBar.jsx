@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getIsAuth } from 'redux/auth/authSelectors';
 import NavLogo from '../NavLogo/NavLogo';
 import UserMenu from '../UserMenu/UserMenu';
@@ -10,7 +10,9 @@ const AppBar = () => {
   return (
     <header className={s.header}>
       <nav className={s.headerNav}>
-        <NavLogo />
+        <Link to="/">
+          <NavLogo />
+        </Link>
         {/* <NavLink className="">{isLoggedIn && <UserMenu />}</NavLink> */}
         <UserMenu />
       </nav>
