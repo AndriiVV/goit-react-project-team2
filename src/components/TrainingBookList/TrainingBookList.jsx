@@ -21,7 +21,7 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
   return (
     <div>
       <table className={s.booksListTable}>
-        <thead className={s.booksListHead}>
+        <thead style={{ borderBottom: '1px solid #E0E5EB' }}>
           <tr className={s.booksList}>
             <th className={s.bookTitle}>Назва книги</th>
             <th className={s.bookAuthor}>Автор</th>
@@ -34,26 +34,26 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
         <tbody>
           {/* {books.map(({ id, name, author, year, page }) => ( */}
           <tr key={id}>
-            <td>
-              <Training width="22" height="17" />
+            <td className={s.flexCenter}>
+              <Training width="33" height="33" />
               {books.name}
             </td>
             <td>{books.author}</td>
             <td>{books.year}</td>
             <td>{books.page}</td>
-            <td className={s.iconDelete}>
+            <td className={`${s.iconDelete} ${s.book}`}>
               <Delete width="14" height="18" />
             </td>
           </tr>
           <tr key={id}>
-            <td>
-              <Training width="22" height="17" />
+            <td className={s.flexCenter}>
+              <Training width="33" height="33" />
               {books.name}
             </td>
             <td>{books.author}</td>
             <td>{books.year}</td>
             <td>{books.page}</td>
-            <td className={s.iconDelete}>
+            <td className={`${s.iconDelete} ${s.book}`}>
               <Delete width="14" height="18" />
             </td>
           </tr>
