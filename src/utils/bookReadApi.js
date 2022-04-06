@@ -93,6 +93,13 @@ export const deleteTrainingBookApi = id => {
     .catch((err) => err)
 }
 
+export const startTrainingApi = id => {
+  return axios
+    .post('/planning')
+    .then(({ data }) => data)
+    .catch((err) => err)
+}
+
 export const logOutApi = accessToken => {
   return axios
     .post('/auth/logout', accessToken)

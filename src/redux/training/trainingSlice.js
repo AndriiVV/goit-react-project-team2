@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addBookToTraining, getTrainingList, deleteTrainingBook } from './trainingOperatons';
+import { addBookToTraining, getTrainingList, deleteTrainingBook, startTraining } from './trainingOperatons';
 
 const initialState = [{
     "name": "Test",
@@ -47,6 +47,12 @@ const trainingReducer = createSlice({
             state.author = null;
             state.year = null;
             state.page = null;
+        },
+        [startTraining.fulfilled](state, action) {
+            state.name = action.payload.name;
+            state.author = action.payload.author;
+            state.year = action.payload.year;
+            state.page = action.payload.page;
         },
     },
 });

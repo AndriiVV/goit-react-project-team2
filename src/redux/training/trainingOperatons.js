@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addBookToTrainingApi, getTrainingListApi, deleteTrainingBookApi } from '../../utils/bookReadApi';
+import { addBookToTrainingApi, getTrainingListApi, deleteTrainingBookApi, startTrainingApi } from '../../utils/bookReadApi';
 
 export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
     try {
@@ -22,6 +22,15 @@ export const getTrainingList = createAsyncThunk('training/get/:id', async (id, t
 export const deleteTrainingBook = createAsyncThunk('training/delete/:id', async (id, thunkApi) => {
     try {
         await deleteTrainingBookApi(id);
+        return id;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+    }
+});
+
+export const startTraining = createAsyncThunk('training/planning', async (id, thunkApi) => {
+    try {
+        await startTrainingApi(id);
         return id;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
