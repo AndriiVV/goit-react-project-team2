@@ -50,7 +50,7 @@ const TrainingBookList = ({ books }) => {
               <td className={`${s.iconDelete} ${s.book}`}>
                 <button
                   type="button"
-                  onClick={deleteTrainingBook(name)}
+                  onClick={() => deleteTrainingBook(name)}
                   className={s.deleteBtn}
                 >
                   <Delete width="14" height="18" />
