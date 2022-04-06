@@ -3,6 +3,7 @@ import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Home } from '../../images/home-icon.svg';
 import s from './UserMenu.module.scss';
 import { NavLink } from 'react-router-dom';
+import LogOut from 'components/LogOut/LogOut';
 
 const UserMenu = () => {
   return (
@@ -16,9 +17,10 @@ const UserMenu = () => {
         <Home className={s.home} width="32" height="20" />
       </NavLink>
       <User className={s.user} width="33" height="38" />
-      <button className={s.button} type="button">
+      {/* <button className={s.button} type="button">
         Вихід
-      </button>
+      </button> */}
+      <LogOut />
     </>
   );
 };
