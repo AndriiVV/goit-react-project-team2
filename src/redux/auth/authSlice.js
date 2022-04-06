@@ -10,9 +10,9 @@ const getFromLS = key => {
 
 const initialState = {
   user: {
-    // name: '',
+    name: '',
     email: '',
-    // sid: null,
+    sid: null,
   },
   // accessToken: getFromLS('accessToken'),
   // refreshToken: getFromLS('refreshToken'),
@@ -26,15 +26,19 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerUser.pending, state => {
+        state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, {payload}) => { 
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
         state.user.email = payload.email;
+        state.user.id = payload.id;
       })
-      .addCase(registerUser.rejected, (state, {payload}) => {
+      .addCase(registerUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
         state.error = payload;
-        state.isLoggedIn = false;
-      })
+        // state.isLoggedIn = false;
+      });
   },
 });
 // const authSlice = createSlice({
