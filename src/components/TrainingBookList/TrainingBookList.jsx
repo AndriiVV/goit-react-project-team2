@@ -2,15 +2,7 @@ import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
 
-// { filter, books, addBookToTraining }
-
 const TrainingBookList = ({ id, name, author, year, page }) => {
-  //   const findBook = () => {
-  //     return books.filter(book =>
-  //       book.name.toLowerCase().includes(filter?.toLowerCase())
-  //     );
-  //   };
-
   const books = [
     {
       name: 'Lord of the rings',
