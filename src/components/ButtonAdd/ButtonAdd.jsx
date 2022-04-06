@@ -1,22 +1,10 @@
-import { useDispatch } from "react-redux";
 
-const ButtonAdd = () => {
-const dispatch = useDispatch()
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const newBook = {
-      title: "",
-      author: "",
-      year: "",
-      pages: "",
-    }
-  }
+const ButtonAdd = ({handleSubmit}) => {
 
   return (
     <button
       type="submit"
-      onClick={null}
+      onClick={handleSubmit}
     >
       Додати
     </button>
