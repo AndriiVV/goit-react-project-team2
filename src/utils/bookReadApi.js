@@ -70,6 +70,7 @@ export const addBookReviewApi = (reviewData, _id) => {
     feedback: data.feedback,
     _id: data._id,
   }));
+
 };
 
 export const addBookToTrainingApi = addBook => {
@@ -103,10 +104,13 @@ export const startTrainingApi = id => {
 export const logOutApi = accessToken => {
   return axios
     .post('/auth/logout', accessToken)
-    .then(res => {
-      return res.data;
-    })
-    .catch(err => {
-      throw err;
-    });
+    .then((res) => {
+    return res.data
+  })
+    .catch((err) => {
+     throw err
+  })
 };
+
+
+
