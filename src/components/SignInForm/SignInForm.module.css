@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     width: 320px;
-    height:  648px;
+    height: 460px;
     padding: 70px 25px 20px;
     box-sizing: border-box;
     background-repeat: no-repeat;
@@ -12,7 +12,7 @@
       rgba(9, 30, 63, 0.8),
       rgba(9, 30, 63, 0.8)
     ),
-    url(../../images/registr-pic-mobile.jpg);
+    url(../../images/login-pic-mobile.jpg);
 }
 
 .label{
@@ -49,7 +49,7 @@
   
 }
 
-.signUpBtn{
+.signInBtn{
   font-family: 'Montserrat';
   font-weight: 600;
   font-size: 16px;
@@ -63,8 +63,8 @@
   cursor: pointer;
 }
 
-.signUpBtn:hover,
-.signUpBtn:focus {
+.signInBtn:hover,
+.signInBtn:focus {
   transform: scale(1.03);
 }
 
@@ -78,25 +78,27 @@
 }
 
 .navLink{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
   color: #FF6B08;
 }
-
 
 @media screen and (min-width: 768px) {
   .formWrap{
     width: 768px;
-    height: 790px;
+    height: 620px;
     padding: 120px auto 60px;
     background-image: linear-gradient(
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
     ),
-    url(../../images/registr-pic-tablet.jpg);
+    url(../../images/login-pic-tablet.jpg);
   }
   .form{
     background: #FFFFFF;
     width: 400px;
-    min-height: 610px;
+    min-height: 420px;
     margin: 0 auto;
     padding: 36px 40px;
     box-sizing: border-box;
@@ -111,7 +113,7 @@
   .label{
     color:  #898F9F;
   }
-  .signUpBtn{
+  .signInBtn{
     width: 320px;
     height: 60px;
   }
@@ -126,6 +128,6 @@
         rgba(9, 30, 63, 0.8),
         rgba(9, 30, 63, 0.8)
     ),
-    url(../../images/registr-pic-desctop.jpg);
+    url(../../images/login-pic-desctop.jpg);
   }
 }

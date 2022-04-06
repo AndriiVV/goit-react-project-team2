@@ -33,7 +33,8 @@ export const App = () => {
           <Route>
             <MainNav />
           </Route>
-          {/* <PrivateRoute path={'/library'}> */}
+          <PrivateRoute path={'/library'}>
+
           <LibraryPage />
           {/* </PrivateRoute>
           <PrivateRoute path={'/training'}> */}
@@ -44,9 +45,10 @@ export const App = () => {
           {/* </PublicRoute>
           <PublicRoute path={'/register'}> */}
           <RegisterPage />
-          {/* </PublicRoute> */}
+          </PublicRoute>
         </Suspense>
       </Switch>
     </Container>
+
   );
 };

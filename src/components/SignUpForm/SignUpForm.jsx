@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { registerUser } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const SingUpForm = () => {
 
@@ -98,9 +99,10 @@ const SingUpForm = () => {
           </label>
           {errors.confirmPassword?.message && <ErrorMessage message={errors?.confirmPassword.message} />}
 
-          <button type="submit" className={s.singUpBtn}>Зареєструватися</button>
-          {/* button переписать на компонент react-router-dom <NavLink className={s.navLink}></NavLink> */}
-          <p className={s.logInMessage}>Вже з нами?<button className={s.navLink}>Увійти</button></p>        
+          <button type="submit" className={s.signUpBtn}>Зареєструватися</button>
+         
+          <p className={s.logInMessage}>Вже з нами? <NavLink className={s.navLink} exact to="/login">
+          Увійти</NavLink></p>        
         </form>
       </div>
   )
