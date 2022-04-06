@@ -1,0 +1,54 @@
+.booksList {
+    color: #898F9F;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+}
+
+.booksListTable {
+    border-bottom: 1px solid #E0E5EB;
+    border-top: 1px solid #E0E5EB;
+}
+
+/* .booksListHead {
+    border-bottom: 1px solid #E0E5EB;
+} */
+
+.bookTitle {
+    width: 361px;
+    text-align: start;
+}
+
+
+.bookAuthor {
+    width: 230px;
+    text-align: start;
+}
+
+.bookYear {
+    width: 96px;
+    text-align: start;
+}
+
+.bookPage {
+    width: 140px;
+    text-align: start;
+}
+
+.iconDelete {
+    text-align: end;
+    padding-right: 25px;
+}
+
+.trainingBtn {
+    display: block;
+    height: 40px;
+    width: 200px;
+    background-color: #FF6B08;
+    color: #ffffff;
+    border: none;
+    margin: 40px auto;
+
+}
