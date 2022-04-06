@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { addBookToTrainingApi } from '../../utils/bookReadApi';
 
-export const addBookToTraining = createAsyncThunk('training/post/:id', async (credentials, thunkApi) => {
+export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
     try {
-        const { data } = await axios.post('/training/id');
-        data.set(data.id);
-        return data;
+        const book = addBookToTrainingApi(id);
+        return book;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }

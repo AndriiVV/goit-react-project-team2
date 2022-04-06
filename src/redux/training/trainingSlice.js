@@ -1,12 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addBookToTraining, getTrainingList, deleteTrainingBook } from './trainingOperatons';
 
-const initialState = {
-    name: null,
-    author: null,
-    year: null,
-    page: null,
-};
+const initialState = [{
+    "name": "Test",
+    "email": "user@example.com",
+    "goingToRead": [
+        {
+            "title": "The Book of Five Rings",
+            "author": "Miyamoto Musashi",
+            "publishYear": 1643,
+            "totalPages": 110,
+            "pagesFinished": 110,
+            "_id": "507f1f77bcf86cd799439013",
+            "__v": 0
+        }
+    ],
+    "currentlyReading": [],
+    "finishedReading": []
+}]
+
+// const initialState = {
+//     name: null,
+//     author: null,
+//     year: null,
+//     page: null,
+// };
 
 const trainingReducer = createSlice({
     name: 'training',
