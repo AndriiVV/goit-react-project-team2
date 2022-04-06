@@ -55,6 +55,10 @@
   }
 }
 
+.activeTraining {
+  color: #f5f7fa;
+}
+
 .home {
   cursor: pointer;
   border-right: 1px solid #e0e5eb;
@@ -68,6 +72,10 @@
   @media screen and (min-width: 768px) {
     margin-right: 19px;
   }
+}
+
+.activeHome {
+  color: #f5f7fa;
 }
 
 .user {
