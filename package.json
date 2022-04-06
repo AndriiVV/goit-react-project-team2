@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://andriivv.github.io/goit-react-project-team2/",
   "dependencies": {
+    "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -17,6 +18,7 @@
     "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+    "react-hook-form": "^7.29.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^5.3.0",
     "react-scripts": "5.0.0",

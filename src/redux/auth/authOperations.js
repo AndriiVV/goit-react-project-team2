@@ -2,16 +2,30 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   registerUserApi,
   loginUserApi,
+  logOutApi,
 } from '../../utils/bookReadApi';
 
+// export const registerUser = createAsyncThunk(
+//   'auth/register',
+//   async (userData, thunkApi) => {
+//     try {
+//       const {data} = await registerUserApi(userData);
+//       return data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error);
+//     }
+//   }
+// );
 export const registerUser = createAsyncThunk(
-  'auth/register',
-  async (userData, thunkApi) => {
+  "auth/register",
+  async (credentials, { rejectWithValue}) => {
     try {
-      const data = await registerUserApi(userData);
+      const { data } = await registerUserApi ("/auth/register", credentials);
+      console.log('всё оk');//credentials - учётные данные
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      console.log('oшибка');
+      return rejectWithValue(error);
     }
   }
 );
@@ -28,3 +42,13 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+
+export const logoutUser = createAsyncThunk(
+  'auth/logout', async (token, thunkApi) => {
+    try {
+      logOutApi(token)
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message)
+    }
+  }
+)

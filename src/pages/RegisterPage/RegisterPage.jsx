@@ -1,18 +1,17 @@
-import { NavLink } from "react-router-dom";
+import AppDescription from '../../components/AppDescription/AppDescription';
+import Container from 'components/common/Container';
+import SingUpForm from '../../components/SignUpForm/SignUpForm';
+import s from './RegisterPage.module.css'
 
-
-const RegisterPage = () => { 
+const SignUpPage = () => {
   return (
-    <>
-      <NavLink exact to="/register">
-        <h2>Register Page</h2>
-        <h3>Register Form</h3>
-      </NavLink>
-      <NavLink exact to="/login">
-        Login
-      </NavLink>
-    </>
+    <Container>
+      <div className={s.wrap}>
+        <SingUpForm/>
+        <AppDescription/>
+      </div>
+    </Container>
   )
 }
 
-export default RegisterPage;
+export default SignUpPage;

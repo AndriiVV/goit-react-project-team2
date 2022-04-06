@@ -1,0 +1,64 @@
+.trainingPage {
+    background-color: #F6F7FB;
+    padding-right: 39px;
+    padding-left: 39px;
+    padding-top: 50px;
+    display: flex;
+    padding-bottom: 36px;
+}
+
+.trainingContainer {
+    width: 886px;
+    margin-right: 41px;
+}
+
+.trainingGoal {
+width: 275px;
+background-color: #ffffff;
+}
+
+.trainingTitle {
+    display: block;
+    padding-top: 11px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    height: 60px;
+    color: #ffffff;
+    background: #B1B5C2;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+}
+
+.trainingChooseBook {
+display: flex;
+}
+
+.trainingInput {
+    width: 669px;
+    height: 42px;
+    margin-bottom: 25px;
+    border: none;
+    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+    padding-left: 13px;
+}
+
+.trainingInput::placeholder {
+    color: #A6ABB9;
+}
+
+.trainingBtn {
+    width: 171px;
+    height: 42px;
+    margin-left: 46px;
+    background: #F6F7FB;
+    color: #000000;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.7;
+    border: 1px solid #242A37;
+}
