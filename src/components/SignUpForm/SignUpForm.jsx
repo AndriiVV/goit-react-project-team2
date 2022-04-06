@@ -4,9 +4,13 @@ import s from '../SignUpForm/SignUpForm.module.css'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { registerUser } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const SingUpForm = () => {
-  
+
+  const dispatch = useDispatch();
+
   const validationSchema = Yup.object().shape({
     name: Yup.string()
         .required('Name is required')
@@ -35,10 +39,13 @@ const SingUpForm = () => {
     console.log('🍒 errors', errors);
 
     const onSubmit = (data) => {
+      const newData = {name: data.name, email: data.email, password: data.password};
       console.log('🍒 data', data);
-      //передадим дату в state
+      console.log('🍒 newData', newData);
+
+      // dispatch(registerUser( newData));
       reset();
-  }
+    }
   
   return (
     // <Header/>

@@ -2,12 +2,15 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
-export const registerUserApi = userData => {
-  return axios.post('/auth/register', userData).then(({ data }) => ({
-    email: data.email,
-    id: data.id,
-  }));
-};
+// export const registerUserApi = userData => {
+//   return axios.post('/auth/register', userData).then(({ data }) => ({
+//     email: data.email,
+//     id: data.id,
+//   }));
+// };
+export const registerUserApi = userData =>
+  axios.post('/auth/register', userData);
+
 
 export const loginUserApi = userData => {
   return axios.post('/auth/login', userData).then(({ data }) => ({
