@@ -1,46 +1,62 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Container from 'components/common/Container';
-// import { useState } from 'react';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
+import { addBookToTraining } from '../../redux/training/trainingOperatons';
+import { getBooks } from '../../redux/training/trainingSelectors';
 
 const TrainingPage = () => {
-  // const books = useState();
+  const dispatch = useDispatch();
 
-  // const books = [
-  //   {
-  //     name: 'Lord of the rings',
-  //     author: 'Tolkien',
-  //     year: 2006,
-  //     page: 200,
-  //   },
-  // ];
+  const books = useSelector(getBooks);
 
-  // const addBookToTraining = book => {};
+  const [book, setBook] = useState('');
 
-  // const getTrainingList = books => {};
+  const isThereThisBook = name => {
+    return books?.some(book => book.name.toLowerCase() === name.toLowerCase());
+  };
 
-  // const deleteTrainingBook = book => {};
+  const handleInputChange = e => {
+    const { value } = e.currentTarget;
+    if (book) {
+      setBook(value);
+    }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    if (isThereThisBook(book)) {
+      alert(`${book} already exist`);
+      return;
+    }
+
+    dispatch(addBookToTraining({ book }));
+    setBook('');
+  };
 
   return (
     <Container>
       <div className={s.trainingPage}>
         <div className={s.trainingContainer}>
           <h2 className={s.trainingTitle}>Моє тренування</h2>
-          <div className={s.trainingChooseBook}>
+          <form className={s.trainingChooseBook} onSubmit={onSubmit}>
             <input
               type="text"
               name="book"
               list="books"
               placeholder="Обрати книги з бібліотеки"
               className={s.trainingInput}
+              onChange={handleInputChange}
             />
             <datalist id="books">
               <option value="book" />
             </datalist>
-            <button type="button" className={s.trainingBtn}>
+            <button type="submit" className={s.trainingBtn}>
               Додати
             </button>
-          </div>
+          </form>
           <TrainingBookList />
         </div>
         <div className={s.trainingGoal}>
@@ -52,3 +68,18 @@ const TrainingPage = () => {
 };
 
 export default TrainingPage;
+
+// const books = [
+//   {
+//     name: 'Lord of the rings',
+//     author: 'Tolkien',
+//     year: 2006,
+//     page: 200,
+//   },
+// ];
+
+// const addBookToTraining = book => {};
+
+// const getTrainingList = books => {};
+
+// const deleteTrainingBook = book => {};
