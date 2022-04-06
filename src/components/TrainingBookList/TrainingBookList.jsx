@@ -1,17 +1,9 @@
 import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
+import { deleteTrainingBook } from '../../redux/training/trainingOperatons';
 
-const TrainingBookList = ({ id, name, author, year, page }) => {
-  const books = [
-    {
-      name: 'Lord of the rings',
-      author: 'Tolkien',
-      year: 2006,
-      page: 200,
-    },
-  ];
-
+const TrainingBookList = ({ books }) => {
   return (
     <div>
       <table className={s.booksListTable}>
@@ -46,8 +38,8 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
         </thead>
 
         <tbody>
-          {books.map(({ id, name, author, year, page }) => (
-            <tr key={id}>
+          {books.map(({ name, author, year, page }) => (
+            <tr key={name}>
               <td className={s.flexCenter}>
                 <Training width="33" height="33" />
                 {name}
@@ -56,7 +48,13 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
               <td>{year}</td>
               <td>{page}</td>
               <td className={`${s.iconDelete} ${s.book}`}>
-                <Delete width="14" height="18" />
+                <button
+                  type="button"
+                  onClick={() => deleteTrainingBook(name)}
+                  className={s.deleteBtn}
+                >
+                  <Delete width="14" height="18" />
+                </button>
               </td>
             </tr>
           ))}

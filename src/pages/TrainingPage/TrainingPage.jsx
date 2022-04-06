@@ -9,7 +9,22 @@ import { getBooks } from '../../redux/training/trainingSelectors';
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
-  const books = useSelector(getBooks);
+  // const books = useSelector(getBooks);
+
+  const books = [
+    {
+      name: 'Lord of the rings',
+      author: 'Tolkien',
+      year: 2006,
+      page: 200,
+    },
+    {
+      name: 'Harry Potter',
+      author: 'Roaling',
+      year: 2008,
+      page: 300,
+    },
+  ];
 
   const [book, setBook] = useState('');
 
@@ -26,13 +41,16 @@ const TrainingPage = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-
+    const { value } = e.currentTarget;
     if (isThereThisBook(book)) {
       alert(`${book} already exist`);
       return;
+    } else {
+      setBook({ ...book, value });
     }
 
     dispatch(addBookToTraining({ book }));
+
     setBook('');
   };
 
@@ -51,13 +69,17 @@ const TrainingPage = () => {
               onChange={handleInputChange}
             />
             <datalist id="books">
-              <option value="book" />
+              <option value={books.map(book => book.name)} />
             </datalist>
-            <button type="submit" className={s.trainingBtn}>
+            <button
+              type="submit"
+              className={s.trainingBtn}
+              onClick={addBookToTraining}
+            >
               Додати
             </button>
           </form>
-          <TrainingBookList />
+          <TrainingBookList books={books} />
         </div>
         <div className={s.trainingGoal}>
           <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
@@ -68,18 +90,3 @@ const TrainingPage = () => {
 };
 
 export default TrainingPage;
-
-// const books = [
-//   {
-//     name: 'Lord of the rings',
-//     author: 'Tolkien',
-//     year: 2006,
-//     page: 200,
-//   },
-// ];
-
-// const addBookToTraining = book => {};
-
-// const getTrainingList = books => {};
-
-// const deleteTrainingBook = book => {};

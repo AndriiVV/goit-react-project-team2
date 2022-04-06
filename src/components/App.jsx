@@ -48,6 +48,5 @@ export const App = () => {
         </Suspense>
       </Switch>
     </Container>
-
   );
 };
