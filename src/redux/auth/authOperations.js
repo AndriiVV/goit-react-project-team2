@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   registerUserApi,
   loginUserApi,
+  logOutApi,
 } from '../../utils/bookReadApi';
 
 // export const registerUser = createAsyncThunk(
@@ -41,3 +42,13 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+
+export const logoutUser = createAsyncThunk(
+  'auth/logout', async (token, thunkApi) => {
+    try {
+      logOutApi(token)
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message)
+    }
+  }
+)
