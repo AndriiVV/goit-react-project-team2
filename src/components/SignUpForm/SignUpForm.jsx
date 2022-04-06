@@ -44,7 +44,7 @@ const SingUpForm = () => {
       console.log('🍒 data', data);
       console.log('🍒 newData', newData);
 
-      // dispatch(registerUser( newData));
+      dispatch(registerUser( newData));
       reset();
     }
   

@@ -1,33 +1,48 @@
 import s from './TrainingBookList.module.css';
+import { ReactComponent as Training } from '../../images/training-icon.svg';
+import { ReactComponent as Delete } from '../../images/delete.svg';
 
-// { filter, books, addBookToTraining }
-
-const TrainingBookList = () => {
-  //   const findBook = () => {
-  //     return books.filter(book =>
-  //       book.name.toLowerCase().includes(filter?.toLowerCase())
-  //     );
-  //   };
+const TrainingBookList = ({ id, name, author, year, page }) => {
+  const books = [
+    {
+      name: 'Lord of the rings',
+      author: 'Tolkien',
+      year: 2006,
+      page: 200,
+    },
+  ];
 
   return (
-    <div className={s.booksSection}>
-      <h2 className={s.booksTitle}>Список книг</h2>
-      <ul className={s.booksList}>
-        {/* {findBook().map(book => (
-          <li className={s.booksItem} key={book.id}>
-            <p className={s.bookName}>
-              {book.name}: {book.name}
-            </p>
-            <button
-              type="button"
-              className={s.addBtn}
-              onClick={() => addBookToTraining(book.id)}
-            >
-              Додати
-            </button>
-          </li>
-        ))} */}
-      </ul>
+    <div>
+      <table className={s.booksListTable}>
+        <thead style={{ borderBottom: '1px solid #E0E5EB' }}>
+          <tr className={s.booksList}>
+            <th className={s.bookTitle}>Назва книги</th>
+            <th className={s.bookAuthor}>Автор</th>
+            <th className={s.bookYear}>Рік</th>
+            <th className={s.bookPage}>Стор.</th>
+            <th className={s.bookPage}></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {books.map(({ id, name, author, year, page }) => (
+            <tr key={id}>
+              <td className={s.flexCenter}>
+                <Training width="33" height="33" />
+                {name}
+              </td>
+              <td>{author}</td>
+              <td>{year}</td>
+              <td>{page}</td>
+              <td className={`${s.iconDelete} ${s.book}`}>
+                <Delete width="14" height="18" />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button className={s.trainingBtn}>Почати тренування</button>
     </div>
   );
 };

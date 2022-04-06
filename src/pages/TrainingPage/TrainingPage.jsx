@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
@@ -6,12 +5,6 @@ import s from './TrainingPage.module.css';
 const TrainingPage = () => {
   return (
     <Container>
-      <NavLink exact to="/training">
-        Link to training
-      </NavLink>
-      <NavLink exact to="/library">
-        Link to library
-      </NavLink>
       <div className={s.trainingPage}>
         <div className={s.trainingContainer}>
           <h2 className={s.trainingTitle}>Моє тренування</h2>

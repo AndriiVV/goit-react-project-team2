@@ -2,15 +2,12 @@
 
 // axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
-// // export const registerUserApi = userData => {
-// //   return axios.post('/auth/register', userData).then(({ data }) => ({
-// //     email: data.email,
-// //     id: data.id,
-// //   }));
-// // };
-// export const registerUserApi = userData =>
-//   axios.post('/auth/register', userData);
-
+export const registerUserApi = userData => {
+  return axios.post('/auth/register', userData).then(({ data }) => ({
+    email: data.email,
+    id: data.id,
+  }));
+};
 
 // export const loginUserApi = userData => {
 //   return axios.post('/auth/login', userData).then(({ data }) => ({
@@ -54,30 +51,35 @@
 //   }));
 // };
 
-// export const addBookReviewApi = (reviewData, _id) => {
-//   // reviewData is an object:
-//   // {
-//   //  "rating",
-//   //  "feedback",
-//   // }
-//   //
-//   // _id - this is "book's id"
-//   axios.defaults.params = { bookId: _id };
-//   return axios.post('/book/review', reviewData).then(({ data }) => ({
-//     title: data.title,
-//     author: data.author,
-//     publishYear: data.publishYear,
-//     totalPages: data.totalPages,
-//     pagesFinished: data.pagesFinished,
-//     rating: data.rating,
-//     feedback: data.feedback,
-//     _id: data._id,
-//   }));
+export const addBookReviewApi = (reviewData, _id) => {
+  // reviewData is an object:
+  // {
+  //  "rating",
+  //  "feedback",
+  // }
+  //
+  // _id - this is "book's id"
+  axios.defaults.params = { bookId: _id };
+  return axios.post('/book/review', reviewData).then(({ data }) => ({
+    title: data.title,
+    author: data.author,
+    publishYear: data.publishYear,
+    totalPages: data.totalPages,
+    pagesFinished: data.pagesFinished,
+    rating: data.rating,
+    feedback: data.feedback,
+    _id: data._id,
+  }));
+};
 
-// export const logOutApi = accessToken => {
-//   return axios.post('/auth/logout', accessToken).then((res) => {
-//     return res.data
-//   }).catch((err) => {
-//      throw err
-//   });
-// };
+export const logOutApi = accessToken => {
+  return axios
+    .post('/auth/logout', accessToken)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      throw err;
+    });
+};
+
