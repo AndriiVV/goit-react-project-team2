@@ -34,17 +34,16 @@ export const App = () => {
             <MainNav />
           </Route>
           <PrivateRoute path={'/library'}>
-
-          <LibraryPage />
-          {/* </PrivateRoute>
-          <PrivateRoute path={'/training'}> */}
-          <TrainingPage />
-          {/* </PrivateRoute>
-          <PublicRoute path={'/login'}> */}
-          <LoginPage />
-          {/* </PublicRoute>
-          <PublicRoute path={'/register'}> */}
-          <RegisterPage />
+            <LibraryPage />
+          </PrivateRoute>
+          <PrivateRoute path={'/training'}>
+            <TrainingPage />
+          </PrivateRoute>
+          <PublicRoute path={'/login'}>
+            <LoginPage />
+          </PublicRoute>
+          <PublicRoute path={'/register'}>
+            <RegisterPage />
           </PublicRoute>
         </Suspense>
       </Switch>
