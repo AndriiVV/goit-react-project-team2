@@ -1,0 +1,65 @@
+.contentWrap{
+    font-family: 'Montserrat';
+    width: 229px;
+    margin: 0 auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+.doubleQuotationMark{
+    display: block;
+    font-family: 'Abril Fatface';
+    text-align: center;
+    font-weight: 400;
+    font-size: 59px;
+    color:#FF6B08;
+}
+
+.quote{
+    margin: -30px 0 20px;
+    color:#242A37;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.border{
+    height: 1px;
+    width: 100px;
+    margin: 0 auto;
+    background: #898F9F;
+}
+
+.author{
+    margin-top: 10px;
+    color: #898F9F;
+    text-align: center; 
+    font-size: 14px;   
+}
+
+@media screen and (min-width: 768px){
+    .contentWrap{
+        width: 526px;
+        padding: 62px 0;
+    }
+    .doubleQuotationMark{
+        font-size: 69px;  
+    }
+    .quote{
+        font-size: 24px;
+        line-height: 38px;
+    }
+    .border{
+        width: 150px;
+    }
+    .author{
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 1280px){
+    .contentWrap{
+        width: 440px;
+        padding: 266px 0;
+    }
+}

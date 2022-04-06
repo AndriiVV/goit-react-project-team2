@@ -1,17 +1,17 @@
-import { NavLink } from "react-router-dom";
-
+import Container from "components/common/Container";
+import Quotation from "components/Quotation/Quotation";
+import SingInForm from "components/SignInForm/SignInForm";
+import s from './LogInPage.module.css'
 
 const LoginPage = () => { 
+
   return (
-    <>
-      <NavLink exact to="/login">
-        <h2>Login Page</h2>
-        <h3>Login Form</h3>
-      </NavLink>
-      <NavLink exact to="/register">
-        Register
-      </NavLink>
-    </>
+    <Container>
+      <div className={s.wrap}>
+        <SingInForm/>
+        <Quotation/>
+      </div>
+    </Container>
   )
 }
 
