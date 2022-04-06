@@ -3,10 +3,6 @@ import TrainingBookList from '../../components/TrainingBookList/TrainingBookList
 import s from './TrainingPage.module.css';
 
 const TrainingPage = () => {
-  // const addBookToTraining = books => {
-  //   console.log(books);
-  // };
-
   return (
     <Container>
       <div className={s.trainingPage}>
