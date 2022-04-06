@@ -15,13 +15,33 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
   return (
     <div>
       <table className={s.booksListTable}>
-        <thead style={{ borderBottom: '1px solid #E0E5EB' }}>
+        <thead>
           <tr className={s.booksList}>
-            <th className={s.bookTitle}>Назва книги</th>
-            <th className={s.bookAuthor}>Автор</th>
-            <th className={s.bookYear}>Рік</th>
-            <th className={s.bookPage}>Стор.</th>
-            <th className={s.bookPage}></th>
+            <th
+              style={{ borderBottom: '1px solid #E0E5EB' }}
+              className={s.bookTitle}
+            >
+              Назва книги
+            </th>
+            <th
+              style={{ borderBottom: '1px solid #E0E5EB' }}
+              className={s.bookAuthor}
+            >
+              Автор
+            </th>
+            <th
+              style={{ borderBottom: '1px solid #E0E5EB' }}
+              className={s.bookYear}
+            >
+              Рік
+            </th>
+            <th
+              style={{ borderBottom: '1px solid #E0E5EB' }}
+              className={s.bookPage}
+            >
+              Стор.
+            </th>
+            <th style={{ borderBottom: '1px solid #E0E5EB' }}></th>
           </tr>
         </thead>
 
@@ -42,7 +62,9 @@ const TrainingBookList = ({ id, name, author, year, page }) => {
           ))}
         </tbody>
       </table>
-      <button className={s.trainingBtn}>Почати тренування</button>
+      <button type="button" className={s.trainingBtn}>
+        Почати тренування
+      </button>
     </div>
   );
 };

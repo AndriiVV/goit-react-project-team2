@@ -1,8 +1,26 @@
 import Container from 'components/common/Container';
+// import { useState } from 'react';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
 
 const TrainingPage = () => {
+  // const books = useState();
+
+  // const books = [
+  //   {
+  //     name: 'Lord of the rings',
+  //     author: 'Tolkien',
+  //     year: 2006,
+  //     page: 200,
+  //   },
+  // ];
+
+  // const addBookToTraining = book => {};
+
+  // const getTrainingList = books => {};
+
+  // const deleteTrainingBook = book => {};
+
   return (
     <Container>
       <div className={s.trainingPage}>
@@ -19,7 +37,9 @@ const TrainingPage = () => {
             <datalist id="books">
               <option value="book" />
             </datalist>
-            <button className={s.trainingBtn}>Додати</button>
+            <button type="button" className={s.trainingBtn}>
+              Додати
+            </button>
           </div>
           <TrainingBookList />
         </div>

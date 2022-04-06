@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { addBookToTrainingApi, getTrainingListApi, deleteTrainingBookApi, startTrainingApi } from '../../utils/bookReadApi';
 
-export const addBookToTraining = createAsyncThunk('training/post/:id', async (credentials, thunkApi) => {
+export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
     try {
-        const { data } = await axios.post('/training/id');
-        data.set(data.id);
-        return data;
+        const book = addBookToTrainingApi(id);
+        return book;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }
@@ -13,8 +12,7 @@ export const addBookToTraining = createAsyncThunk('training/post/:id', async (cr
 
 export const getTrainingList = createAsyncThunk('training/get/:id', async (id, thunkApi) => {
     try {
-        const trainingBooks = await axios.post('/training/id');
-        // data.set(data.id);
+        const trainingBooks = getTrainingListApi(id);
         return trainingBooks;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -23,20 +21,18 @@ export const getTrainingList = createAsyncThunk('training/get/:id', async (id, t
 
 export const deleteTrainingBook = createAsyncThunk('training/delete/:id', async (id, thunkApi) => {
     try {
-        await axios.post('/training/id');
-        // data.set(data.id);
+        await deleteTrainingBookApi(id);
         return id;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }
 });
 
-// export const deleteTrainingBook = createAsyncThunk('training/delete/:id', async (id, thunkApi) => {
-//     try {
-//         await axios.post('/training/id');
-//         // data.set(data.id);
-//         return id;
-//     } catch (error) {
-//         return thunkApi.rejectWithValue(error.message);
-//     }
-// });
+export const startTraining = createAsyncThunk('training/planning', async (id, thunkApi) => {
+    try {
+        await startTrainingApi(id);
+        return id;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+    }
+});
