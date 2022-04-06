@@ -14,13 +14,19 @@
 
 /* .booksListHead {
     border-bottom: 1px solid #E0E5EB;
-} */
+}  */
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
 
 .bookTitle {
     width: 361px;
     text-align: start;
 }
-
 
 .bookAuthor {
     width: 230px;
