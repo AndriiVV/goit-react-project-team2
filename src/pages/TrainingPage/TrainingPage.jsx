@@ -6,20 +6,20 @@ import s from './TrainingPage.module.css';
 const TrainingPage = () => {
   // const books = useState();
 
-  const books = [
-    {
-      name: 'Lord of the rings',
-      author: 'Tolkien',
-      year: 2006,
-      page: 200,
-    },
-  ];
+  // const books = [
+  //   {
+  //     name: 'Lord of the rings',
+  //     author: 'Tolkien',
+  //     year: 2006,
+  //     page: 200,
+  //   },
+  // ];
 
-  const addBookToTraining = book => {};
+  // const addBookToTraining = book => {};
 
-  const getTrainingList = books => {};
+  // const getTrainingList = books => {};
 
-  const deleteTrainingBook = book => {};
+  // const deleteTrainingBook = book => {};
 
   return (
     <Container>
