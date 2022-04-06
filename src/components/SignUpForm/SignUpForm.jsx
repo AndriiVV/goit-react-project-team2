@@ -36,14 +36,14 @@ const SingUpForm = () => {
       reset,
     } = useForm(formOptions);
     const {errors} = formState;
-    console.log('🍒 errors', errors);
+    // console.log('🍒 errors', errors);
 
     const onSubmit = (data) => {
       const newData = {name: data.name, email: data.email, password: data.password};
       console.log('🍒 data', data);
       console.log('🍒 newData', newData);
 
-      // dispatch(registerUser( newData));
+      dispatch(registerUser( newData));
       reset();
     }
   

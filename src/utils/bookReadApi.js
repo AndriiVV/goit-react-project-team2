@@ -8,8 +8,6 @@ export const registerUserApi = userData => {
     id: data.id,
   }));
 };
-// export const registerUserApi = userData =>
-//   axios.post('/auth/register', userData);
 
 export const loginUserApi = userData => {
   return axios.post('/auth/login', userData).then(({ data }) => ({
