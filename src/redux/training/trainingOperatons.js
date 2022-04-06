@@ -30,3 +30,13 @@ export const deleteTrainingBook = createAsyncThunk('training/delete/:id', async 
         return thunkApi.rejectWithValue(error.message);
     }
 });
+
+// export const deleteTrainingBook = createAsyncThunk('training/delete/:id', async (id, thunkApi) => {
+//     try {
+//         await axios.post('/training/id');
+//         // data.set(data.id);
+//         return id;
+//     } catch (error) {
+//         return thunkApi.rejectWithValue(error.message);
+//     }
+// });
