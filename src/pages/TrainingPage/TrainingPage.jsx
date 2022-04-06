@@ -69,7 +69,9 @@ const TrainingPage = () => {
               onChange={handleInputChange}
             />
             <datalist id="books">
-              <option value={books.map(book => book.name)} />
+              {books.map(book => (
+                <option value={book.name} />
+              ))}
             </datalist>
             <button
               type="submit"
