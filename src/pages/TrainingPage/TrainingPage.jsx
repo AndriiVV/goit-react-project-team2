@@ -7,7 +7,6 @@ import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
 import LineChart from 'components/LineChart/LineChart';
 
-
 const TrainingPage = () => {
   const books = useSelector(getBooks);
 
@@ -55,41 +54,44 @@ const TrainingPage = () => {
   };
 
   return (
-    // <Container>
-    <>
+    <Container>
       <div className={s.trainingPage}>
-        <div className={s.trainingContainer}>
-          <h2 className={s.trainingTitle}>Моє тренування</h2>
-          <form className={s.trainingChooseBook} onSubmit={onSubmit}>
-            <input
-              type="text"
-              name="book"
-              list="books"
-              placeholder="Обрати книги з бібліотеки"
-              className={s.trainingInput}
-              // onChange={handleInputChange}
-            />
-            <datalist id="books">
-              {books.map(book => (
-                <option value={book.title} key={book._id} />
-              ))}
-            </datalist>
-            <button
-              type="submit"
-              className={s.trainingBtn}
-              // onClick={addBookToTraining(book)}
-            >
-              Додати
-            </button>
-          </form>
-          <TrainingBookList newBooks={newBooks} />
+        <div className={s.trainingPageFlex}>
+          <div className={s.trainingContainer}>
+            <h2 className={s.trainingTitle}>Моє тренування</h2>
+            <form className={s.trainingChooseBook} onSubmit={onSubmit}>
+              <input
+                type="text"
+                name="book"
+                list="books"
+                placeholder="Обрати книги з бібліотеки"
+                className={s.trainingInput}
+                // onChange={handleInputChange}
+              />
+              <datalist id="books">
+                {books.map(book => (
+                  <option value={book.title} key={book._id} />
+                ))}
+              </datalist>
+              <button
+                type="submit"
+                className={s.trainingBtn}
+                // onClick={addBookToTraining(book)}
+              >
+                Додати
+              </button>
+            </form>
+            <TrainingBookList newBooks={newBooks} />
+          </div>
+          <div className={s.trainingGoal}>
+            <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+          </div>
         </div>
-        <div className={s.trainingGoal}>
-          <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+        <div className={s.lineChart}>
+          <LineChart />
         </div>
       </div>
-      <LineChart />
-    </>
+    </Container>
   );
 };
 
