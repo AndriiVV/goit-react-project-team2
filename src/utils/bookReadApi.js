@@ -1,40 +1,59 @@
 import axios from 'axios';
+import { registry } from 'chart.js';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 export const registerUserApi = userData => {
-  return axios.post('/auth/register', userData).then(({ data }) => ({
+  return axios.post('/auth/register', userData).then(({
+    data
+  }) => ({
     email: data.email,
     id: data.id,
   }));
 };
 
 export const loginUserApi = userData => {
-  return axios.post('/auth/login', userData).then(({ data }) => ({
-    accessToken: data.accessToken,
-    refreshToken: data.refreshToken,
-    sid: data.sid,
-    name: data.userData.name,
-    email: data.userData.email,
-    id: data.userData.id,
-    goingToRead: data.userData.goingToRead,
-    currentlyReading: data.userData.currentlyReading,
-    finishedReading: data.userData.finishedReading,
-  }));
+  return axios.post('/auth/login', userData).then(({
+    data
+  }) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`
+
+    return {
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken,
+      sid: data.sid,
+      name: data.userData.name,
+      email: data.userData.email,
+      id: data.userData.id,
+      goingToRead: data.userData.goingToRead,
+      currentlyReading: data.userData.currentlyReading,
+      finishedReading: data.userData.finishedReading,
+    }
+  });
 };
 
 export const refreshTokenApi = (sid, refreshToken) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
+
   // Documentation recommend POST method, but it looks like that GET is also an option
-  return axios.post('/auth/refresh', { sid }).then(({ data }) => ({
-    accessToken: data.newAccessToken,
-    refreshToken: data.newRefreshToken,
-    sid: data.newSid,
-  }));
+  return axios.post('/auth/refresh', {
+    sid
+  }).then(({
+    data
+  }) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${data.newAccessToken}`
+    return {
+      accessToken: data.newAccessToken,
+      refreshToken: data.newRefreshToken,
+      sid: data.newSid,
+    }
+
+  });
 };
 
-export const addNewBookApi = ({formBook, token}) => {
-  return axios.post('/book', {token, formBook }).then(({ data }) => ({
+export const addNewBookApi = ({
+  formBook
+}) => {
+  return axios.post('/book', formBook).then(({data}) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
@@ -52,8 +71,12 @@ export const addBookReviewApi = (reviewData, _id) => {
   // }
   //
   // _id - this is "book's id"
-  axios.defaults.params = { bookId: _id };
-  return axios.post('/book/review', reviewData).then(({ data }) => ({
+  axios.defaults.params = {
+    bookId: _id
+  };
+  return axios.post('/book/review', reviewData).then(({
+    data
+  }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
@@ -68,28 +91,39 @@ export const addBookReviewApi = (reviewData, _id) => {
 export const addBookToTrainingApi = addBook => {
   return axios
     .post('/user/books', addBook)
-    .then(({ data }) => ({ ...addBook, id: data.id }))
+    .then(({
+      data
+    }) => ({
+      ...addBook,
+      id: data.id
+    }))
     .catch(err => err);
 };
 
 export const getTrainingListApi = () => {
   return axios
     .get('/user/books')
-    .then(({ data }) => data)
+    .then(({
+      data
+    }) => data)
     .catch(err => err);
 };
 
 export const deleteTrainingBookApi = id => {
   return axios
     .delete(`/user/books/${id}`)
-    .then(({ data }) => data.id)
+    .then(({
+      data
+    }) => data.id)
     .catch(err => err);
 };
 
 export const startTrainingApi = id => {
   return axios
     .post('/planning')
-    .then(({ data }) => data)
+    .then(({
+      data
+    }) => data)
     .catch(err => err);
 };
 
