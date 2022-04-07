@@ -1,0 +1,47 @@
+.calendar{
+    // box-sizing: border-box;
+    display: block;
+    box-sizing: unset;
+//     align-items: center;
+//     justify-content: center;
+
+//     // background: #A6ABB9;
+//     left: 13px;
+//     // right: 0%;
+//     top: 12px;
+//     // bottom: 0%;
+// padding-left: 13px;
+// padding-top: 12px;
+}
+.triangle{
+    
+// position: static;
+// display: block;
+width: 13px;
+height: 7px;
+left: 224px;
+top: 17px;
+
+/* deep blue */
+
+// background: #242A37;
+// transform: rotate(180deg);
+}
+.text{
+    // display: block;
+    // position: static;
+// width: 94px;
+// height: 38px;
+left: 47px;
+top: 2px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 38px;
+/* identical to box height, or 271% */
+
+
+color: #A6ABB9;
+}
