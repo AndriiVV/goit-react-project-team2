@@ -1,7 +1,10 @@
+import Container from 'components/common/Container/Container';
 import FormAddBook from 'components/FormAddBook/FormAddBook';
-import LibraryModal from '../../components/LibraryModal/LibraryModal';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import LibraryModal from 'components/LibraryModal/LibraryModal';
+// import Library from 'components/Library/Library';
+import GoingToRead from '../../components/GointToRead/GoingToRead';
+import s from './LibraryPage.module.css';
+
 
 const LibraryPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -10,17 +13,19 @@ const LibraryPage = () => {
   };
 
   return (
-    <>
-      <NavLink exact to="/library">
-        <h2>Library Page</h2>
+
+    <Container>
+      <div className={s.libraryPage}>
         <FormAddBook />
-        <h3>List of books</h3>
-      </NavLink>
-      <NavLink exact to="/training">
-        Training
-      </NavLink>
-      {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
-    </>
+        {/* <LibraryModal /> */}
+        <GoingToRead />
+        {/* <Library /> */}
+        <button type="button" className={s.libraryBtn}>
+          Далі
+        </button>
+          {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
+      </div>
+    </Container>
   );
 };
 
