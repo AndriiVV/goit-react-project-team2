@@ -3,8 +3,11 @@
     padding-right: 39px;
     padding-left: 39px;
     padding-top: 50px;
-    display: flex;
     padding-bottom: 36px;
+}
+
+.trainingPageFlex {
+    display: flex;
 }
 
 .trainingContainer {
@@ -61,4 +64,8 @@ display: flex;
     font-size: 14px;
     line-height: 2.7;
     border: 1px solid #242A37;
+}
+
+.lineChart {
+    height: 450px;
 }
