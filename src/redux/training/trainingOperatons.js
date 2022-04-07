@@ -46,4 +46,4 @@ export const addBook = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error)
     }
-)
+  });
