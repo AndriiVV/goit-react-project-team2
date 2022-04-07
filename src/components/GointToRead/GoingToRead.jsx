@@ -1,21 +1,10 @@
 import s from '../Library/Library.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
+import { useSelector } from 'react-redux';
+import { getBooks } from '../../redux/auth/authSelectors';
 
 const GoingToRead = () => {
-  const books = [
-    {
-      name: 'Психбольница в руках пациентов...',
-      author: 'Купер Алан',
-      year: '2009',
-      page: '183',
-    },
-    {
-      name: 'Психбольница в руках пациентов...',
-      author: 'Купер Алан',
-      year: '2009',
-      page: '183',
-    },
-  ];
+  const books = useSelector(getBooks);
 
   return (
     <table className={s.table}>
@@ -29,14 +18,14 @@ const GoingToRead = () => {
         </tr>
       </thead>
       <tbody>
-        {books.map(({ id, name, author, year, page }) => (
-          <tr key={id} className={s.bookItem}>
+        {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+          <tr key={_id} className={s.bookItem}>
             <td className={s.itemTitle}>
-              <Training className={s.orange} /> {name}
+              <Training className={s.orange} /> {title}
             </td>
             <td>{author}</td>
-            <td>{year}</td>
-            <td>{page}</td>
+            <td>{publishYear}</td>
+            <td>{pagesTotal}</td>
           </tr>
         ))}
       </tbody>
