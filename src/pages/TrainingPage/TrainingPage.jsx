@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
-import { addBookToTraining } from '../../redux/training/trainingOperatons';
+// import { addBookToTraining } from '../../redux/training/trainingOperatons';
 import { getBooks } from '../../redux/training/trainingSelectors';
 
 const TrainingPage = () => {
@@ -49,7 +49,7 @@ const TrainingPage = () => {
       setBook({ ...book, value });
     }
 
-    dispatch(addBookToTraining({ book }));
+    // dispatch(addBookToTraining({ book }));
 
     setBook('');
   };
@@ -76,7 +76,7 @@ const TrainingPage = () => {
             <button
               type="submit"
               className={s.trainingBtn}
-              onClick={addBookToTraining}
+              // onClick={addBookToTraining}
             >
               Додати
             </button>
