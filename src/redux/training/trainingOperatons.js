@@ -30,9 +30,9 @@ import { startTrainingApi, addNewBookApi } from '../../utils/bookReadApi';
 
 export const startTraining = createAsyncThunk(
   'training/planning',
-  async (id, thunkApi) => {
+  async (_id, thunkApi) => {
     try {
-      await startTrainingApi(id);
+      const id = startTrainingApi(_id);
       return id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
