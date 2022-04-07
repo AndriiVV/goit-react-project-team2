@@ -1,30 +1,33 @@
-// .overlay {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: rgba(0, 0, 0, 0.25);
-// }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
 
 .modal {
   // max-width: calc(100vw - 400px);
   // max-height: calc(100vh - 5px);
   // position: absolute;
-  // top: 70%;
-  // left: 50%;
-  margin: 0 auto;
+  // top: 20%;
+  // left: 30%;
+  // margin: 0 auto;
   width: 270px;
   min-height: 425px;
   padding-left: 15px;
   padding-top: 31px;
   padding-right: 15px;
   padding-bottom: 36px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   @media screen and(min-width: 768px) {
     width: 570px;
     min-height: 270px;
