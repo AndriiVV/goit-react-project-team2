@@ -4,8 +4,11 @@ import { ReactComponent as Home } from '../../images/home-icon.svg';
 import s from './UserMenu.module.scss';
 import { NavLink } from 'react-router-dom';
 import LogOut from 'components/LogOut/LogOut';
+import { useSelector } from 'react-redux';
 
 const UserMenu = () => {
+  const userName = useSelector(state => state.auth.user);
+  console.log(userName);
   return (
     <>
       {/* знизу потрібно ім'я юзера для брейкпоінта 768 и 1280 */}
