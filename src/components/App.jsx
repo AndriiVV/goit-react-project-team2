@@ -22,7 +22,9 @@ const RegisterPage = lazy(() =>
   )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LoginPage' /* webpackChunkName: "login-page" */)
+
+  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+
 );
 
 export const App = () => {
@@ -48,6 +50,5 @@ export const App = () => {
         </Suspense>
       </Switch>
     </Container>
-
   );
 };

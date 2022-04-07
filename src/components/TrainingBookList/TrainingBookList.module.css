@@ -48,6 +48,11 @@
     padding-right: 25px;
 }
 
+.deleteBtn {
+    border: none;
+    background-color: #F6F7FB;
+}
+
 .trainingBtn {
     display: block;
     height: 40px;
