@@ -1,0 +1,17 @@
+.libraryPage {
+    background-color: #F6F7FB;
+    padding-right: 39px;
+    padding-left: 39px;
+    padding-top: 50px;
+    padding-bottom: 36px;
+}
+
+.libraryBtn {
+    display: block;
+    height: 40px;
+    width: 200px;
+    background-color: #FF6B08;
+    color: #ffffff;
+    border: none;
+    margin: 40px auto;
+}

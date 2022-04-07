@@ -9,22 +9,22 @@ import { getBooks } from '../../redux/training/trainingSelectors';
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
-  const books = useSelector(getBooks);
+  // const books = useSelector(getBooks);
 
-  // const books = [
-  //   {
-  //     name: 'Lord of the rings',
-  //     author: 'Tolkien',
-  //     year: 2006,
-  //     page: 200,
-  //   },
-  //   {
-  //     name: 'Harry Potter',
-  //     author: 'Roaling',
-  //     year: 2008,
-  //     page: 300,
-  //   },
-  // ];
+  const books = [
+    {
+      name: 'Lord of the rings',
+      author: 'Tolkien',
+      year: 2006,
+      page: 200,
+    },
+    {
+      name: 'Harry Potter',
+      author: 'Roaling',
+      year: 2008,
+      page: 300,
+    },
+  ];
 
   const [book, setBook] = useState('');
 
@@ -49,7 +49,7 @@ const TrainingPage = () => {
       setBook({ ...book, value });
     }
 
-    dispatch(addBookToTraining({ book }));
+    // dispatch(addBookToTraining({ book }));
 
     setBook('');
   };
@@ -76,7 +76,7 @@ const TrainingPage = () => {
             <button
               type="submit"
               className={s.trainingBtn}
-              onClick={addBookToTraining}
+              // onClick={addBookToTraining}
             >
               Додати
             </button>
