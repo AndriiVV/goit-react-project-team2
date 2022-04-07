@@ -1,22 +1,28 @@
-import { ReactComponent as User } from '../../images/user-icon.svg';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Home } from '../../images/home-icon.svg';
 import s from './UserMenu.module.scss';
 import { NavLink } from 'react-router-dom';
 import LogOut from 'components/LogOut/LogOut';
+import { useSelector } from 'react-redux';
 
 const UserMenu = () => {
+  const userName = useSelector(state => state.auth.user.name);
+  const symbol = userName.slice(0, 1).toUpperCase();
   return (
     <>
-      {/* знизу потрібно ім'я юзера для брейкпоінта 768 и 1280 */}
-      <User className={s.firstUser} width="33" height="38" />
+      <div className={s.symbolWrap}>
+        <span className={s.symbol}>{symbol}</span>
+      </div>
+      <div className={s.nameWrap}>{userName}</div>
       <NavLink to="/training" activeClassName={s.activeTraining}>
         <Training className={s.training} width="33" height="33" />
       </NavLink>
       <NavLink to="/library" activeClassName={s.activeHome}>
         <Home className={s.home} width="32" height="20" />
       </NavLink>
-      <User className={s.user} width="33" height="38" />
+      <div className={s.secSymbolWrap}>
+        <span className={s.secSymbol}>{symbol}</span>
+      </div>
       <LogOut />
     </>
   );
