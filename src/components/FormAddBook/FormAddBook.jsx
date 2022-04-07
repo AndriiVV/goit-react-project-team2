@@ -1,5 +1,5 @@
 import ButtonAdd from "components/ButtonAdd/ButtonAdd";
-import useState from 'react-dom';
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { addBook } from "redux/training/trainingOperatons";
 import { getToken } from "redux/auth/authSelectors";
