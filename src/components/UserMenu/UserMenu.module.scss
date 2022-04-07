@@ -27,6 +27,16 @@
   }
 }
 
+.mainWrap {
+  display: flex;
+  align-items: center;
+}
+
+.secWrap {
+  display: flex;
+  align-items: center;
+}
+
 .symbolWrap {
   display: flex;
   justify-content: center;
@@ -72,19 +82,13 @@
 }
 
 .nameWrap {
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
   font-family: "Montserrat";
   font-weight: 300;
   font-size: 14px;
   line-height: 2.7;
   color: #242a37;
-  @media screen and(min-width: 768px) {
-    margin-right: 151px;
-  }
-  @media screen and(min-width: 1280px) {
-    margin-right: 407px;
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 }
 
