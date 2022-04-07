@@ -12,8 +12,10 @@ const TrainingPage = () => {
   const [newBooks, setNewBooks] = useState([]);
   const [newBook, setNewBook] = useState('');
 
-  const isThereThisBook = name => {
-    return books?.some(book => book.name.toLowerCase() === name.toLowerCase());
+  const isThereThisBook = ({ books, newBook }) => {
+    return books?.some(
+      book => book.title.toLowerCase() === newBook.title.toLowerCase()
+    );
   };
 
   // const handleInputChange = e => {
@@ -30,6 +32,13 @@ const TrainingPage = () => {
   //   return newBooks.setNewBooks(newBookadded);
   // };
 
+  const addBookToTraining = newBook => {
+    if (newBook) {
+      setNewBooks(newBook);
+    }
+    return newBooks;
+  };
+
   const onSubmit = e => {
     e.preventDefault();
     const { value } = e.currentTarget;
@@ -40,7 +49,7 @@ const TrainingPage = () => {
       return;
     }
     setNewBook({ ...newBook, value });
-    setNewBooks(newBook);
+    addBookToTraining();
   };
 
   return (
@@ -59,7 +68,7 @@ const TrainingPage = () => {
             />
             <datalist id="books">
               {books.map(book => (
-                <option value={book.title} />
+                <option value={book.title} key={book._id} />
               ))}
             </datalist>
             <button
