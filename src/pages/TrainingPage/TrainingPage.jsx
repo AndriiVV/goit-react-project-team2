@@ -1,58 +1,57 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
-import { addBookToTraining } from '../../redux/training/trainingOperatons';
-import { getBooks } from '../../redux/training/trainingSelectors';
+// import { addBookToTraining } from '../../redux/training/trainingOperatons';
+import { getBooks } from '../../redux/auth/authSelectors';
 import LineChart from 'components/LineChart/LineChart';
 
+
 const TrainingPage = () => {
-  const dispatch = useDispatch();
+  const books = useSelector(getBooks);
 
-  // const books = useSelector(getBooks);
+  const [newBooks, setNewBooks] = useState([]);
+  const [newBook, setNewBook] = useState('');
 
-  const books = [
-    {
-      name: 'Lord of the rings',
-      author: 'Tolkien',
-      year: 2006,
-      page: 200,
-    },
-    {
-      name: 'Harry Potter',
-      author: 'Roaling',
-      year: 2008,
-      page: 300,
-    },
-  ];
-
-  const [book, setBook] = useState('');
-
-  const isThereThisBook = name => {
-    return books?.some(book => book.name.toLowerCase() === name.toLowerCase());
+  const isThereThisBook = ({ books, newBook }) => {
+    return books?.some(
+      book => book.title.toLowerCase() === newBook.title.toLowerCase()
+    );
   };
 
-  const handleInputChange = e => {
-    const { value } = e.currentTarget;
-    if (book) {
-      setBook(value);
+  // const handleInputChange = e => {
+  //   const { value } = e.currentTarget;
+  //   if (newBook) {
+  //     setNewBook(value);
+  //   }
+
+  //   setNewBook('');
+  // };
+
+  // const addBookToTraining = newBook => {
+  //   const newBookadded = setNewBook({ ...newBook, value });
+  //   return newBooks.setNewBooks(newBookadded);
+  // };
+
+  const addBookToTraining = newBook => {
+    if (newBook) {
+      setNewBooks(newBook);
     }
+    return newBooks;
   };
 
   const onSubmit = e => {
     e.preventDefault();
     const { value } = e.currentTarget;
-    if (isThereThisBook(book)) {
-      alert(`${book} already exist`);
+    // dispatch(addBookToTraining({ newBook }));
+
+    if (isThereThisBook(newBook)) {
+      alert(`${newBook} already exist`);
       return;
-    } else {
-      setBook({ ...book, value });
     }
-
-    // dispatch(addBookToTraining({ book }));
-
-    setBook('');
+    setNewBook({ ...newBook, value });
+    addBookToTraining();
   };
 
   return (
@@ -68,22 +67,22 @@ const TrainingPage = () => {
               list="books"
               placeholder="Обрати книги з бібліотеки"
               className={s.trainingInput}
-              onChange={handleInputChange}
+              // onChange={handleInputChange}
             />
             <datalist id="books">
               {books.map(book => (
-                <option value={book.name} />
+                <option value={book.title} key={book._id} />
               ))}
             </datalist>
             <button
               type="submit"
               className={s.trainingBtn}
-              // onClick={addBookToTraining}
+              // onClick={addBookToTraining(book)}
             >
               Додати
             </button>
           </form>
-          <TrainingBookList books={books} />
+          <TrainingBookList newBooks={newBooks} />
         </div>
         <div className={s.trainingGoal}>
           <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
