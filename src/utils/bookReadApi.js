@@ -33,15 +33,8 @@ export const refreshTokenApi = (sid, refreshToken) => {
   }));
 };
 
-export const addNewBookApi = bookData => {
-  // bookData is an object:
-  // {
-  //  title,
-  //  author,
-  //  publishYear,
-  //  totalPages,
-  // }
-  return axios.post('/book', bookData).then(({ data }) => ({
+export const addNewBookApi = ({formBook, token}) => {
+  return axios.post('/book', {token, formBook }).then(({ data }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
@@ -72,26 +65,26 @@ export const addBookReviewApi = (reviewData, _id) => {
   }));
 };
 
-export const addBookToTrainingApi = addBook => {
-  return axios
-    .post('/user/books', addBook)
-    .then(({ data }) => ({ ...addBook, id: data.id }))
-    .catch(err => err);
-};
+// export const addBookToTrainingApi = addBook => {
+//   return axios
+//     .post('/user/books', addBook)
+//     .then(({ data }) => ({ ...addBook, id: data.id }))
+//     .catch(err => err);
+// };
 
-export const getTrainingListApi = () => {
-  return axios
-    .get('/user/books')
-    .then(({ data }) => data)
-    .catch(err => err);
-};
+// export const getTrainingListApi = () => {
+//   return axios
+//     .get('/user/books')
+//     .then(({ data }) => data)
+//     .catch(err => err);
+// };
 
-export const deleteTrainingBookApi = id => {
-  return axios
-    .delete(`/user/books/${id}`)
-    .then(({ data }) => data.id)
-    .catch(err => err);
-};
+// export const deleteTrainingBookApi = id => {
+//   return axios
+//     .delete(`/user/books/${id}`)
+//     .then(({ data }) => data.id)
+//     .catch(err => err);
+// };
 
 export const startTrainingApi = id => {
   return axios

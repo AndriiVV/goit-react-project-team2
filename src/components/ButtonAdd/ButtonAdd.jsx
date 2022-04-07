@@ -1,5 +1,5 @@
 
-const ButtonAdd = ({handleSubmit}) => {
+const ButtonAdd = ({ handleSubmit}) => {
 
   return (
     <button

@@ -1,0 +1,75 @@
+.table {
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: #898F9F;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    margin-bottom: 30px;
+}
+.tableCaption {
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 2;
+color: #242A37;
+text-align: left;
+}
+.tableHeader {
+    text-align: left;
+}
+.titleDone {
+    width: 361px;
+}
+.authorDone {
+    width: 230px;
+}
+.year {
+    width: 96px;
+}
+.page {
+width: 149px;
+}
+.rating {
+    width: 115px;
+}
+.resume {
+    width: 265px;
+}
+.title {
+    width: 626px;
+}
+.author {
+    width: 356px;
+}
+.resumeBtn {
+    display: block;
+    margin: 0 auto;
+    width: 130px;
+    height: 40px;
+    background: #6D7A8D;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+}
+.bookItem {
+    height: 62px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+    margin-bottom: 10px;
+    color: #242A37;
+}
+.itemTitle {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 27px;
+}
+

@@ -1,11 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, logoutUser, registerUser } from './authOperations';
+import {
+  createSlice
+} from '@reduxjs/toolkit';
+import {
+  loginUser,
+  logoutUser,
+  registerUser
+} from './authOperations';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
-  return typeof valueFromLS === 'string'
-    ? valueFromLS
-    : JSON.parse(valueFromLS);
+  return typeof valueFromLS === 'string' ?
+    valueFromLS :
+    JSON.parse(valueFromLS);
 };
 
 const initialState = {
@@ -29,19 +35,10 @@ const authSlice = createSlice({
   initialState,
 
   reducers: {
-    setAccessToken(state, { payload }) {
+    setAccessToken(state, {
+      payload
+    }) {
       state.accessToken = payload;
-    },
-    logOut(state) {
-      state.user = {
-        name: '',
-        email: '',
-        sid: null,
-      };
-      state.accessToken = null;
-      state.refreshToken = null;
-      localStorage.setItem('accessToken', JSON.stringify(null));
-      localStorage.setItem('refreshToken', JSON.stringify(null));
     },
   },
 
@@ -51,21 +48,29 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, { payload }) => {
+      .addCase(registerUser.fulfilled, (state, {
+        payload
+      }) => {
         state.isLoading = false;
         state.user.email = payload.email;
         state.user.id = payload.id;
       })
-      .addCase(registerUser.rejected, (state, { payload }) => {
+      .addCase(registerUser.rejected, (state, {
+        payload
+      }) => {
         state.isLoading = false;
         state.error = payload;
         // state.isLoggedIn = false;
       })
-      .addCase(loginUser.pending, (state, { payload }) => {
+      .addCase(loginUser.pending, (state, {
+        payload
+      }) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, { payload }) => {
+      .addCase(loginUser.fulfilled, (state, {
+        payload
+      }) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         localStorage.setItem('accessToken', payload.accessToken);
@@ -81,11 +86,44 @@ const authSlice = createSlice({
         state.refreshToken = payload.refreshToken;
         state.sid = payload.sid;
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
+      .addCase(loginUser.rejected, (state, {
+        payload
+      }) => {
         state.isLoading = false;
         state.error = payload;
         state.isLoggedIn = false;
-      });
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.user = {
+          name: '',
+          email: '',
+          id: '',
+        };
+        state.sid = null;
+        state.accessToken = null;
+        state.refreshToken = null;
+        localStorage.setItem('accessToken', JSON.stringify(null));
+        localStorage.setItem('refreshToken', JSON.stringify(null));
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user = {
+          name: '',
+          email: '',
+          id: "",
+        };
+        state.sid = null;
+        state.accessToken = null;
+        state.refreshToken = null;
+localStorage.clear();
+      })
+      .addCase(logoutUser.rejected, (state, {payload}) => {
+        state.isLoading = false;
+        state.error = payload;
+    })
   },
 });
 //   extraReducers: {
@@ -126,5 +164,8 @@ const authSlice = createSlice({
 //   },
 // });
 
-export const { setToken, logOut } = authSlice.actions;
+export const {
+  setToken,
+  logOut
+} = authSlice.actions;
 export default authSlice.reducer;
