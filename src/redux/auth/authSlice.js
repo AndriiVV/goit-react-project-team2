@@ -19,6 +19,9 @@ const initialState = {
     name: '',
     email: '',
     id: null,
+    goingToRead: [],
+    currentlyReading: [],
+    finishedReading: [],
   },
   accessToken: getFromLS('accessToken'),
   refreshToken: getFromLS('refreshToken'),
@@ -76,6 +79,9 @@ const authSlice = createSlice({
         state.user.name = payload.name;
         state.user.email = payload.email;
         state.user.id = payload.id;
+        state.user.goingToRead = payload.goingToRead;
+        state.user.currentlyReading = payload.currentlyReading;
+        state.user.finishedReading = payload.finishedReading;
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
         state.sid = payload.sid;
