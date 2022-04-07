@@ -1,17 +1,16 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {
-  createSlice
-} from '@reduxjs/toolkit';
-import {
+  getUserData,
   loginUser,
   logoutUser,
-  registerUser
+  registerUser,
 } from './authOperations';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
-  return typeof valueFromLS === 'string' ?
-    valueFromLS :
-    JSON.parse(valueFromLS);
+  return typeof valueFromLS === 'string'
+    ? valueFromLS
+    : JSON.parse(valueFromLS);
 };
 
 const initialState = {
@@ -25,7 +24,7 @@ const initialState = {
   },
   accessToken: getFromLS('accessToken'),
   refreshToken: getFromLS('refreshToken'),
-  sid: null,
+  sid: getFromLS('sid'),
   isLoading: false,
   error: null,
 };
@@ -35,9 +34,7 @@ const authSlice = createSlice({
   initialState,
 
   reducers: {
-    setAccessToken(state, {
-      payload
-    }) {
+    setAccessToken(state, { payload }) {
       state.accessToken = payload;
     },
   },
@@ -48,29 +45,21 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, {
-        payload
-      }) => {
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user.email = payload.email;
         state.user.id = payload.id;
       })
-      .addCase(registerUser.rejected, (state, {
-        payload
-      }) => {
+      .addCase(registerUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
         // state.isLoggedIn = false;
       })
-      .addCase(loginUser.pending, (state, {
-        payload
-      }) => {
+      .addCase(loginUser.pending, (state, { payload }) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, {
-        payload
-      }) => {
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         localStorage.setItem('accessToken', payload.accessToken);
@@ -86,14 +75,12 @@ const authSlice = createSlice({
         state.refreshToken = payload.refreshToken;
         state.sid = payload.sid;
       })
-      .addCase(loginUser.rejected, (state, {
-        payload
-      }) => {
+      .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
         state.isLoggedIn = false;
       })
-      .addCase(logoutUser.pending, (state) => {
+      .addCase(logoutUser.pending, state => {
         state.isLoading = true;
         state.error = null;
         state.user = {
@@ -107,23 +94,38 @@ const authSlice = createSlice({
         localStorage.setItem('accessToken', JSON.stringify(null));
         localStorage.setItem('refreshToken', JSON.stringify(null));
       })
-      .addCase(logoutUser.fulfilled, (state) => {
+      .addCase(logoutUser.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
         state.user = {
           name: '',
           email: '',
-          id: "",
+          id: '',
         };
         state.sid = null;
         state.accessToken = null;
         state.refreshToken = null;
-localStorage.clear();
+        localStorage.clear();
       })
-      .addCase(logoutUser.rejected, (state, {payload}) => {
+      .addCase(logoutUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-    })
+      })
+      .addCase(getUserData.pending, (state, { payload }) => {
+        state.error = null;
+      })
+      .addCase(getUserData.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.user.goingToRead = payload.goingToRead;
+        state.user.currentlyReading = payload.currentlyReading;
+        state.user.finishedReading = payload.finishedReading;
+      })
+      .addCase(getUserData.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      });
   },
 });
 //   extraReducers: {
@@ -164,8 +166,5 @@ localStorage.clear();
 //   },
 // });
 
-export const {
-  setToken,
-  logOut
-} = authSlice.actions;
+export const { setToken, logOut } = authSlice.actions;
 export default authSlice.reducer;

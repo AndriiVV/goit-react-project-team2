@@ -3,6 +3,7 @@ import {
   registerUserApi,
   loginUserApi,
   logOutApi,
+  getUserDataApi,
 } from '../../utils/bookReadApi';
 
 // export const registerUser = createAsyncThunk(
@@ -20,12 +21,12 @@ export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
-      console.log('registerUser is running. Data is: ', credentials);
+      // console.log('registerUser is running. Data is: ', credentials);
       const data = await registerUserApi(credentials);
-      console.log('registerUser completed'); //credentials - учётные данные
+      // console.log('registerUser completed'); //credentials - учётные данные
       return data;
     } catch (error) {
-      console.log('registerUser error');
+      // console.log('registerUser error');
       return thunkApi.rejectWithValue(error);
     }
   }
@@ -54,5 +55,14 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-
-
+export const getUserData = createAsyncThunk(
+  'auth/getData',
+  async (accessToken, thunkApi) => {
+    try {
+      const data = await getUserDataApi(accessToken);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
