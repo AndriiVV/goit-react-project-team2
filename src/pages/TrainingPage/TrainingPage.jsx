@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
-// import { addBookToTraining } from '../../redux/training/trainingOperatons';
 import { getBooks } from '../../redux/auth/authSelectors';
 import LineChart from 'components/LineChart/LineChart';
 
