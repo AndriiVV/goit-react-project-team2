@@ -2,17 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import { startTraining } from './trainingOperatons';
 
 const initialState = [{
-    "name": "Test",
-    "email": "user@example.com",
+    "name": null,
+    "email": null,
     "goingToRead": [
         {
-            "title": "The Book of Five Rings",
-            "author": "Miyamoto Musashi",
-            "publishYear": 1643,
-            "totalPages": 110,
-            "pagesFinished": 110,
-            "_id": "507f1f77bcf86cd799439013",
-            "__v": 0
+            "title": null,
+            "author": null,
+            "publishYear": null,
+            "totalPages": null,
+            "pagesFinished": null,
+            "_id": null,
+            "__v": null
         }
     ],
     "currentlyReading": [],
