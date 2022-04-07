@@ -1,10 +1,9 @@
 import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
-// import { deleteTrainingBook } from '../../redux/training/trainingOperatons';
+import { startTraining } from '../../redux/training/trainingOperatons';
 
 const TrainingBookList = ({ newBooks }) => {
-  console.log(newBooks);
   return (
     <div>
       <table className={s.booksListTable}>
@@ -61,7 +60,7 @@ const TrainingBookList = ({ newBooks }) => {
           ))}
         </tbody>
       </table>
-      <button type="button" className={s.trainingBtn}>
+      <button type="button" className={s.trainingBtn} onClick={startTraining()}>
         Почати тренування
       </button>
     </div>

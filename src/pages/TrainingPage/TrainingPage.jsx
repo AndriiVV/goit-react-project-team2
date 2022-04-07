@@ -5,7 +5,6 @@ import DatePicker from '../../components/Datepicker/Datepicker';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
-// import { addBookToTraining } from '../../redux/training/trainingOperatons';
 import { getBooks } from '../../redux/auth/authSelectors';
 import LineChart from 'components/LineChart/LineChart';
 
@@ -79,6 +78,7 @@ const TrainingPage = () => {
     <Container>
       <div className={s.trainingPage}>
 
+
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
@@ -88,6 +88,7 @@ const TrainingPage = () => {
             <MyTimer expiryTimestamp={timeend} />
             
             
+
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
                 type="text"
@@ -115,7 +116,6 @@ const TrainingPage = () => {
           <div className={s.trainingGoal}>
             <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
           </div>
-
         </div>
         <div className={s.lineChart}>
           <LineChart />
