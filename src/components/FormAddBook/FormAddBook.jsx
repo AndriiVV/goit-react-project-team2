@@ -1,4 +1,4 @@
-import { useDispatch} from 'react-redux';  
+import { useDispatch, useSelector } from 'react-redux';  
 import { useForm } from 'react-hook-form';
 import s from './FormAddBook.module.css'
 import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
@@ -11,7 +11,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       required: 'Year is required',
       minLength: {
         value: 2,
-        message: 'Title should have more than 1 letter',
+        message: '* more than 1 letter',
       },
     };
 
@@ -19,7 +19,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       required: 'Author is required',
       minLength: {
         value: 2,
-        message: 'Author should have more than 1 letter',
+        message: '* more than 1 letter',
       },
     };
 
@@ -27,7 +27,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       required: 'Title is required',
       pattern: {
         value: /^[1-9][0-9]{3}$/,
-        message: 'Field should have 4 nums',
+        message: '* 4 nums',
       },
     };
 
@@ -35,7 +35,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       required: 'Total pages is required',
       pattern: {
         value: /^[0-9]+$/,
-        message: 'Field should be a num',
+        message: '* number',
       },
     };
 
@@ -53,59 +53,71 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       console.log('🍒 book', book);
 
       //TODO: обработать добавление книги
-      
+
       reset();
     }
 
     return (
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}
-      >
-        <label className={s.label}>Назва книги
-          <input
-          className={s.input}
-          type="text"
-          name="title"
-          placeholder="..."
-          {...register('title', titleValidation)}
-          />
-        </label>
-        {errors.title && <ErrorMsg message={errors.title.message} />}
+      <>
+        <button type="button" className={s.arrowBtn}> 	&#10229; </button>
 
-        <label className={s.label}>Автор книги
-          <input
-            type="text"
-            name="author"
-            placeholder="..."
-            {...register('author', authorValidation)}
-          />
-        </label>
-        {errors.author && <ErrorMsg message={errors.author.message} />} 
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.firstBox}>
+            <label className={s.label}>Назва книги
+              <input
+              className={`${s.input} ${s.title}`}
+              type="text"
+              name="title"
+              placeholder="..."
+              {...register('title', titleValidation)}
+              />
+            </label>
+            {errors.title && <ErrorMsg message={errors.title.message} />}
+          </div>
 
-        <label className={s.label}>Рік випуску
-          <input
-            className={s.input}
-            type="text"
-            name="publishYear"
-            placeholder="..."
-            {...register('publishYear',yearValidation)}
-          />
-        </label>
-        {errors.publishYear && <ErrorMsg message={errors.publishYear.message} />}
+          <div className={s.wrap}>
+            <div>
+              <label className={s.label}>Автор книги
+                <input className={`${s.input} ${s.author}`}
+                  type="text"
+                  name="author"
+                  placeholder="..."
+                  {...register('author', authorValidation)}
+                />
+              </label>
+              {errors.author && <ErrorMsg message={errors.author.message} />} 
+            </div>
 
-        <label className={s.label}>Кількість сторінок
-          <input
-            className={s.input}
-            type="text"
-            name="pagesTotal"
-            placeholder="..."
-            {...register('pagesTotal', totalPagesValidation)}
-          />
-        </label>
-        {errors.pagesTotal && <ErrorMsg message={errors.pagesTotal.message} />} 
+            <div>
+              <label className={s.label}>Рік випуску
+                <input
+                  className={`${s.input} ${s.publishYear}`}
+                  type="text"
+                  name="publishYear"
+                  placeholder="..."
+                  {...register('publishYear',yearValidation)}
+                />
+              </label>
+              {errors.publishYear && <ErrorMsg message={errors.publishYear.message} />}
+            </div>
 
-        <button className={s.addBtn} type="submit">Додати</button>
-        
-      </form>
+            <div>
+              <label className={s.label}>Кількість сторінок
+                <input
+                  className={`${s.input} ${s.pagesTotal}`}
+                  type="text"
+                  name="pagesTotal"
+                  placeholder="..."
+                  {...register('pagesTotal', totalPagesValidation)}
+                />
+              </label>
+              {errors.pagesTotal && <ErrorMsg message={errors.pagesTotal.message} />}
+            </div> 
+          </div>
+
+          <button className={s.addBtn} type="submit">Додати</button>
+        </form>
+      </>
     )
   }
   
