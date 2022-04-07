@@ -65,26 +65,26 @@ export const addBookReviewApi = (reviewData, _id) => {
   }));
 };
 
-export const addBookToTrainingApi = addBook => {
-  return axios
-    .post('/user/books', addBook)
-    .then(({ data }) => ({ ...addBook, id: data.id }))
-    .catch(err => err);
-};
+// export const addBookToTrainingApi = addBook => {
+//   return axios
+//     .post('/user/books', addBook)
+//     .then(({ data }) => ({ ...addBook, id: data.id }))
+//     .catch(err => err);
+// };
 
-export const getTrainingListApi = () => {
-  return axios
-    .get('/user/books')
-    .then(({ data }) => data)
-    .catch(err => err);
-};
+// export const getTrainingListApi = () => {
+//   return axios
+//     .get('/user/books')
+//     .then(({ data }) => data)
+//     .catch(err => err);
+// };
 
-export const deleteTrainingBookApi = id => {
-  return axios
-    .delete(`/user/books/${id}`)
-    .then(({ data }) => data.id)
-    .catch(err => err);
-};
+// export const deleteTrainingBookApi = id => {
+//   return axios
+//     .delete(`/user/books/${id}`)
+//     .then(({ data }) => data.id)
+//     .catch(err => err);
+// };
 
 export const startTrainingApi = id => {
   return axios
