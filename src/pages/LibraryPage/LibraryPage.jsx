@@ -5,8 +5,15 @@ import FormAddBook from 'components/FormAddBook/FormAddBook';
 import GoingToRead from '../../components/GointToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 
+
 const LibraryPage = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const switchModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   return (
+
     <Container>
       <div className={s.libraryPage}>
         <FormAddBook />
@@ -16,6 +23,7 @@ const LibraryPage = () => {
         <button type="button" className={s.libraryBtn}>
           Далі
         </button>
+          {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
       </div>
     </Container>
   );

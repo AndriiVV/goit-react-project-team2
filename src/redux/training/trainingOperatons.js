@@ -28,23 +28,27 @@ import { startTrainingApi, addNewBookApi } from '../../utils/bookReadApi';
 //     }
 // });
 
-export const startTraining = createAsyncThunk('training/planning', async (id, thunkApi) => {
+export const startTraining = createAsyncThunk(
+  'training/planning',
+  async (id, thunkApi) => {
     try {
-        await startTrainingApi(id);
-        return id;
+      await startTrainingApi(id);
+      return id;
     } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
-});
+  }
+);
 
 export const addBook = createAsyncThunk(
   'book/add',
   async ({ formBook, token }, thunkApi) => {
     try {
-      const addedBook = addNewBookApi({ formBook, token })
+
+      const addedBook = addNewBookApi({ formBook, token });
       return addedBook;
     } catch (error) {
-      return thunkApi.rejectWithValue(error)
+      return thunkApi.rejectWithValue(error.message);
     }
-  }
-)
+  });
+

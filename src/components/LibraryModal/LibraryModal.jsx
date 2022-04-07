@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ReactComponent as LibraryIcon } from '../../images/library-modal-icon.svg';
 import { ReactComponent as FlagIcon } from '../../images/flag-modal-icon.svg';
@@ -8,21 +8,15 @@ import s from './LibraryModal.module.scss';
 const modalRoot = document.querySelector('#modal-root');
 
 const LibraryModal = ({ onClose }) => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const switchModal = () => {
-    setIsOpenModal(!isOpenModal);
-  };
-
   const onKeyDown = event => {
     if (event.code === 'Escape') {
-      switchModal();
+      onClose();
     }
   };
 
   const onBackdropClick = event => {
     if (event.currentTarget === event.target) {
-      switchModal();
+      onClose();
     }
   };
 
@@ -65,7 +59,7 @@ const LibraryModal = ({ onClose }) => {
             </div>
           </li>
         </ul>
-        <button type="button" className={s.btnModal} onClick={switchModal}>
+        <button type="button" className={s.btnModal} onClick={() => onClose()}>
           Ok
         </button>
       </div>
@@ -75,12 +69,3 @@ const LibraryModal = ({ onClose }) => {
 };
 
 export default LibraryModal;
-
-// const switchModal = (largeImageURL) => {
-//     setIsOpenModal(!isOpenModal);
-//     setLargeImageURL(largeImageURL);
-//   };
-
-// {isOpenModal && (
-//         <Modal onClose={switchModal}>
-//         </Modal>

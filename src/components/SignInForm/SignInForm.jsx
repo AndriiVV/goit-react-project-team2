@@ -7,8 +7,11 @@ import * as Yup from 'yup';
 import { NavLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/authOperations';
+import Header from 'components/common/Header/Header';
+import { useTranslation } from 'react-i18next';
 
 const SingInForm = () => {
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -38,13 +41,14 @@ const SingInForm = () => {
     }
   
   return (
-    // <Header/>
-    <div className={s.formWrap}>
+    <>
+      <Header/>
+      <div className={s.formWrap}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <GoogleSingIn/>
 
           <label>
-            <span className={s.label}>Електронна адреса<span className={s.requiredField}>*</span></span>            
+            <span className={s.label}>{t('signInForm.emailLabel')}<span className={s.requiredField}>*</span></span>            
             <input
                 className={s.input}
                 type="email"
@@ -55,7 +59,7 @@ const SingInForm = () => {
           {errors.email && <ErrorMessage message={errors.email.message} />}
 
           <label >
-            <span className={s.label}>Пароль<span className={s.requiredField}>*</span></span>
+            <span className={s.label}>{t('signInForm.passwordLabel')}<span className={s.requiredField}>*</span></span>
             <input
                 className={s.input}
                 type="password"
@@ -65,13 +69,14 @@ const SingInForm = () => {
           </label>
           {errors.password && <ErrorMessage message={errors.password.message} />}
 
-          <button type="submit" className={s.signInBtn}>Увійти</button>
+          <button type="submit" className={s.signInBtn}>{t('signInForm.button')}</button>
       
           <NavLink className={s.navLink} exact to="/register">
-          Реєстрація
+          {t('signInForm.link')}
           </NavLink>    
         </form>
       </div>
+    </>
   )
 }
 
