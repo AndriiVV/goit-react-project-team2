@@ -7,62 +7,71 @@ import { getToken } from "redux/auth/authSelectors";
 const FormAddBook = () => {
   const token = useSelector(getToken)
 
-  const [formBook, setFormBook] = useState(
-    {
+  const [formBook, setFormBook] = useState({
       title: "",
       author: "",
-      year: "",
-      pages: "",
-    }
-  )
+      publishYear: "",
+      pagesTotal: ""
+    })
 
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("name: ", name, "value: ", value);
     setFormBook((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newBook = {
+    dispatch(addBook({ formBook, token }))
+    setFormBook({
       title: "",
       author: "",
-      year: "",
-      pages: "",
-    }
-    dispatch(addBook({ newBook, token }))
+      publishYear: "",
+      pagesTotal: ""
+    })
   }
 
 
   return (
-    <form>
-      <lable>Назва книги
+    <form >
+      <label>Назва книги
         <input
         name="title"
         value={formBook.title}
         type="text"
-        onClick={handleChange}
-      /></lable>
-      <input
-        name="author"
-        value={formBook.author}
-        type="text"
-        onClick={handleChange}
-      />
-      <input
-        name="year"
-        value={formBook.year}
-        type="text"
-        onClick={handleChange}
-      />
-      <input
-        name="pages"
-        value={formBook.pages}
-        type="text"
-        onClick={handleChange}
-      />
-      <ButtonAdd handleSubmit={handleSubmit} />
+          onChange={handleChange}
+        placeholder="..."
+      /></label>
+      <label>Автор книги
+        <input
+          name="author"
+          value={formBook.author}
+          type="text"
+          onChange={handleChange}
+          placeholder="..."
+        />
+      </label>
+      <label>Рік випуску
+        <input
+          name="publishYear"
+          value={formBook.year}
+          type="text"
+          onChange={handleChange}
+          placeholder="..."
+        />
+      </label>
+      <label>Кількість сторінок
+        <input
+          name="pagesTotal"
+          value={formBook.pages}
+          type="text"
+          onChange={handleChange}
+          placeholder="..."
+        />
+      </label>
+      <ButtonAdd handleSubmit={handleSubmit}/>
     </form>
   );
 }

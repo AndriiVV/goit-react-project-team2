@@ -33,15 +33,8 @@ export const refreshTokenApi = (sid, refreshToken) => {
   }));
 };
 
-export const addNewBookApi = bookData => {
-  // bookData is an object:
-  // {
-  //  title,
-  //  author,
-  //  publishYear,
-  //  totalPages,
-  // }
-  return axios.post('/book', bookData).then(({ data }) => ({
+export const addNewBookApi = ({formBook, token}) => {
+  return axios.post('/book', {token, formBook }).then(({ data }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
