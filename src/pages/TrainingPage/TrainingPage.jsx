@@ -5,6 +5,7 @@ import TrainingBookList from '../../components/TrainingBookList/TrainingBookList
 import s from './TrainingPage.module.css';
 import { addBookToTraining } from '../../redux/training/trainingOperatons';
 import { getBooks } from '../../redux/training/trainingSelectors';
+import LineChart from 'components/LineChart/LineChart';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,8 @@ const TrainingPage = () => {
   };
 
   return (
-    <Container>
+    // <Container>
+    <>
       <div className={s.trainingPage}>
         <div className={s.trainingContainer}>
           <h2 className={s.trainingTitle}>Моє тренування</h2>
@@ -87,7 +89,8 @@ const TrainingPage = () => {
           <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
         </div>
       </div>
-    </Container>
+      <LineChart />
+    </>
   );
 };
 
