@@ -1,0 +1,8 @@
+{
+    "signInForm":{
+       "emailLabel" : "Email Address",
+       "passwordLabel" : "Password",
+       "button" : "Log In",
+        "link" : "Registration"
+    }
+}

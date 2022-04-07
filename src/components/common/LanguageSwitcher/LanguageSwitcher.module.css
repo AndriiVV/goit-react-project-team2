@@ -1,0 +1,30 @@
+.switcher {
+  display: flex;
+}
+
+.btnWrapper {
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  padding: 0;
+  margin: 0;
+  transition: all 300ms;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: none;
+  border: transparent;
+  cursor: pointer;
+}
+
+.button {
+  composes: active;
+}
+
+.button:hover {
+  transform: scale(1.3);
+}

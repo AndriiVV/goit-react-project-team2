@@ -7,9 +7,12 @@ import * as Yup from 'yup';
 import { registerUser } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import Header from 'components/common/Header/Header';
+import { useTranslation } from 'react-i18next';
 
 const SingUpForm = () => {
-
+  const { t } = useTranslation();
+  
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
@@ -49,62 +52,64 @@ const SingUpForm = () => {
     }
   
   return (
-    // <Header/>
-    <div className={s.formWrap}>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <GoogleSingIn/>
-
-          <label>
-            <span className={`${s.label} ${s.firstLabel}`}>Ім’я<span className={s.requiredField}>*</span></span> 
-            <input
-                className={s.input}
-                name="name"
-                type="text"
-                placeholder="..."
-                {...register('name')}
-              />
-          </label>
-          {errors.name && <ErrorMessage message={errors.name.message} />}
-
-          <label>
-            <span className={s.label}>Електронна адреса<span className={s.requiredField}>*</span></span>            
-            <input
-                className={s.input}
-                type="email"
-                placeholder="your@email.com"
-                {...register('email')}
-              />
-          </label>
-          {errors.email && <ErrorMessage message={errors.email.message} />}
-
-          <label >
-            <span className={s.label}>Пароль<span className={s.requiredField}>*</span></span>
-            <input
-                className={s.input}
-                type="password"
-                placeholder="..."
-                {...register('password')}
-              />
-          </label>
-          {errors.password && <ErrorMessage message={errors.password.message} />}
+    <>
+      <Header/>
+      <div className={s.formWrap}>
+          <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+            <GoogleSingIn/>
 
             <label>
-            <span className={s.label}>Підтвердити пароль<span className={s.requiredField}>*</span></span>
-            <input
-                className={s.input}
-                type="password"
-                placeholder="..."
-                {...register('confirmPassword')}
-              />
-          </label>
-          {errors.confirmPassword?.message && <ErrorMessage message={errors?.confirmPassword.message} />}
+              <span className={`${s.label} ${s.firstLabel}`}>Ім’я<span className={s.requiredField}>*</span></span> 
+              <input
+                  className={s.input}
+                  name="name"
+                  type="text"
+                  placeholder="..."
+                  {...register('name')}
+                />
+            </label>
+            {errors.name && <ErrorMessage message={errors.name.message} />}
 
-          <button type="submit" className={s.signUpBtn}>Зареєструватися</button>
-         
-          <p className={s.logInMessage}>Вже з нами? <NavLink className={s.navLink} exact to="/login">
-          Увійти</NavLink></p>        
-        </form>
-      </div>
+            <label>
+              <span className={s.label}>Електронна адреса<span className={s.requiredField}>*</span></span>            
+              <input
+                  className={s.input}
+                  type="email"
+                  placeholder="your@email.com"
+                  {...register('email')}
+                />
+            </label>
+            {errors.email && <ErrorMessage message={errors.email.message} />}
+
+            <label >
+              <span className={s.label}>Пароль<span className={s.requiredField}>*</span></span>
+              <input
+                  className={s.input}
+                  type="password"
+                  placeholder="..."
+                  {...register('password')}
+                />
+            </label>
+            {errors.password && <ErrorMessage message={errors.password.message} />}
+
+              <label>
+              <span className={s.label}>Підтвердити пароль<span className={s.requiredField}>*</span></span>
+              <input
+                  className={s.input}
+                  type="password"
+                  placeholder="..."
+                  {...register('confirmPassword')}
+                />
+            </label>
+            {errors.confirmPassword?.message && <ErrorMessage message={errors?.confirmPassword.message} />}
+
+            <button type="submit" className={s.signUpBtn}>Зареєструватися</button>
+          
+            <p className={s.logInMessage}>Вже з нами? <NavLink className={s.navLink} exact to="/login">
+            Увійти</NavLink></p>        
+          </form>
+        </div>
+      </>
   )
 }
 
