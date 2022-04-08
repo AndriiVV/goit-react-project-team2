@@ -143,3 +143,17 @@ export const getUserDataApi = accessToken => {
     };
   });
 };
+
+export const getTrainingDataApi = () => {
+  axios.get("/planning")
+    .then(({ data }) => {
+      return {
+        books: data.planning.books,
+        startDate: data.planning.startDate,
+        endDate: data.planning.endDate,
+        duration: data.planning.duration,
+        pagesPerDay: data.planning.pagesPerDay,
+        stats: data.planning.stats,
+    }
+  })
+}

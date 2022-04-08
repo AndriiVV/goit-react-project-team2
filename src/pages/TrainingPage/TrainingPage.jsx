@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Allimer from '../../components/Alltimer/Alltimer';
 import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
 import Container from 'components/common/Container';
@@ -9,11 +9,13 @@ import { getBooks } from '../../redux/auth/authSelectors';
 import { getIsTraining } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
 import { useEffect } from 'react';
+import { getTraningData } from 'redux/training/trainingOperatons';
 
 const TrainingPage = () => {
   const books = useSelector(getBooks);
   const isTraining = useSelector(getIsTraining);
 
+  const dispatch = useDispatch()
   const [newBooks, setNewBooks] = useState(
     () => JSON.parse(localStorage.getItem('newBooks')) || []
   );
@@ -22,6 +24,10 @@ const TrainingPage = () => {
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
+
+  useEffect(() => {
+    dispatch(getTraningData())
+  }, [])
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
@@ -49,11 +55,6 @@ const TrainingPage = () => {
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
-
-          
-            
-
-
             {!isTraining && (
               <div className={s.timerFlex}>
               <ALLdatePicker />
@@ -64,7 +65,6 @@ const TrainingPage = () => {
               <Allimer />
               </div>
             )}
-
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
                 type="text"
