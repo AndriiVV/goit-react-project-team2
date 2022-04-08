@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import MainNav from '../pages/MainNav';
@@ -6,6 +6,9 @@ import { Route } from 'react-router-dom';
 import Container from './common/Container';
 import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsAuth, getToken } from 'redux/auth/authSelectors';
+import { getUserData } from 'redux/auth/authOperations';
 
 const LibraryPage = lazy(() =>
   import(
