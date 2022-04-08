@@ -9,8 +9,11 @@ import { getBooks } from '../../redux/auth/authSelectors';
 import { getIsTraining } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
 import { useEffect } from 'react';
+import { startTraining } from '../../redux/training/trainingOperatons';
+import { useDispatch } from 'react-redux';
 
 const TrainingPage = () => {
+  const dispatch = useDispatch();
   const books = useSelector(getBooks);
   const isTraining = useSelector(getIsTraining);
 
@@ -84,13 +87,28 @@ const TrainingPage = () => {
               </button>
             </form>
             <TrainingBookList newBooks={newBooks} />
+            <button
+              type="button"
+              className={s.startTrainingBtn}
+              onClick={() =>
+                dispatch(
+                  startTraining({
+                    startDate: '2022-04-08',
+                    endDate: '2022-04-12',
+                    books: newBooks.map(({ _id }) => _id),
+                  })
+                )
+              }
+            >
+              Почати тренування
+            </button>
           </div>
           <div className={s.trainingGoal}>
             <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
             <div className={s.boxFlex}>
               <div className={s.centredBox}>
                 <div className={s.goalBox}>
-                  <span className={s.value}>0</span>
+                  <span className={s.value}>{newBooks.length}</span>
                 </div>
                 <span className={s.textBox}> Кількість книжок</span>
               </div>

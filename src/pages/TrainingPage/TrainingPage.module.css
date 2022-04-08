@@ -113,6 +113,19 @@ display: flex;
     border: 1px solid #242A37;
 }
 
+
+
+.startTrainingBtn {
+    display: block;
+    height: 40px;
+    width: 200px;
+    background-color: #FF6B08;
+    color: #ffffff;
+    border: none;
+    margin: 40px auto;
+
+}
+
 .lineChart {
     height: 450px;
 }
