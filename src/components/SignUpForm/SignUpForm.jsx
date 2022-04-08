@@ -11,7 +11,7 @@ import Header from 'components/common/Header/Header';
 import { useTranslation } from 'react-i18next';
 
 const SingUpForm = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   
   const dispatch = useDispatch();
 
@@ -44,8 +44,8 @@ const SingUpForm = () => {
 
     const onSubmit = (data) => {
       const newData = {name: data.name, email: data.email, password: data.password};
-      console.log('🍒 data', data);
-      console.log('🍒 newData', newData);
+      // console.log('🍒 data', data);
+      // console.log('🍒 newData', newData);
 
       dispatch(registerUser( newData));
       reset();
