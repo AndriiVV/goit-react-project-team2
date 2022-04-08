@@ -17,11 +17,11 @@ const LibraryPage = () => {
       <div className={s.libraryPage}>
         <FormAddBook />
         {/* <LibraryModal /> */}
-        <GoingToRead />
+        {/* <GoingToRead /> */}
         {/* <Library /> */}
-        <button type="button" className={s.libraryBtn}>
+        {/* <button type="button" className={s.libraryBtn}>
           Далі
-        </button>
+        </button> */}
         {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
       </div>
     </Container>
