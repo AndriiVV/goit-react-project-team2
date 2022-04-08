@@ -7,12 +7,53 @@ import TrainingBookList from '../../components/TrainingBookList/TrainingBookList
 import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
 import LineChart from 'components/LineChart/LineChart';
+import { useEffect } from 'react';
 
 const TrainingPage = () => {
   const books = useSelector(getBooks);
 
   const [newBooks, setNewBooks] = useState([]);
   const [chooseBook, setСhooseBook] = useState({});
+
+  const KEY = 'newBooks';
+
+  const getFromLocalStorage = key => {
+    try {
+      const rawData = localStorage.getItem(key);
+      const booksData = JSON.parse(rawData);
+      // JSON.parse(localStorage.geItem('trainingBooks'));
+
+      if (rawData === null || !Array.isArray(booksData)) {
+        return [];
+      }
+      return booksData;
+    } catch (error) {
+      console.log('Error state is: ', error.message);
+    }
+  };
+
+  const saveToLocalStorage = (key, value) => {
+    try {
+      const booksData = JSON.stringify(value);
+      localStorage.setItem(key, booksData);
+    } catch (error) {
+      console.log('Error state is: ', error.message);
+    }
+  };
+
+  const [data, setData] = useState(() => {
+    return { newBooks: getFromLocalStorage(KEY) };
+  });
+
+  useEffect(() => {
+    saveToLocalStorage(KEY, data.newBooks);
+  }, [data]);
+
+  // useEffect(() => {
+  //   const newBooksData = JSON.parse(localStorage.geItem('trainingBooks'));
+
+  //   return newBooksData;
+  // }, [newBooks]);
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
@@ -58,10 +99,14 @@ const TrainingPage = () => {
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
-            <DatePicker placeholder="Початок" setDate={setStartDate} />
-            <DatePicker placeholder="Завершення" setDate={setEndDate} />
-            <MyTimer expiryTimestamp={time} />
-            <MyTimer expiryTimestamp={timeend} />
+            <div className={s.timerFlex}>
+              <DatePicker placeholder="Початок" setDate={setStartDate} />
+              <DatePicker placeholder="Завершення" setDate={setEndDate} />
+            </div>
+            <div className={s.timerFlex}>
+              <MyTimer expiryTimestamp={time} />
+              <MyTimer expiryTimestamp={timeend} />
+            </div>
 
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
