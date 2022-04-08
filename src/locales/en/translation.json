@@ -2,7 +2,7 @@
     "signInForm":{
        "emailLabel" : "Email Address",
        "passwordLabel" : "Password",
-       "button" : "Log In",
+       "button" : "Login",
         "link" : "Registration"
     },
     "signUpForm":{

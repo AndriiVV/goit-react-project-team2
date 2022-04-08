@@ -8,7 +8,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
     const dispatch = useDispatch();
 
     const titleValidation = {
-      required: 'Year is required',
+      required: 'Title is required',
       minLength: {
         value: 2,
         message: '* more than 1 letter',
@@ -24,7 +24,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
     };
 
     const yearValidation = {
-      required: 'Title is required',
+      required: 'Year is required',
       pattern: {
         value: /^[1-9][0-9]{3}$/,
         message: '* 4 nums',
@@ -34,8 +34,8 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
     const totalPagesValidation = {
       required: 'Total pages is required',
       pattern: {
-        value: /^[0-9]+$/,
-        message: '* number',
+        value: /^(([1-4][0-9]{0,3})|([1-9][0-9]{0,2})|(5000))$/,
+        message: '* number - max is 5000',
       },
     };
 

@@ -40,7 +40,7 @@ const SingInForm = () => {
   
   return (
     <>
-      {/* <Header/> */}
+      <Header/>
       <div className={s.formWrap}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <GoogleSingIn/>
