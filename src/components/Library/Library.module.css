@@ -5,7 +5,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
-    margin-bottom: 30px;
 }
 .tableCaption {
 font-style: normal;
@@ -73,7 +72,7 @@ width: 149px;
     padding-left: 27px;
 }
 
-.orange {
-     color: #FF6B08;
+.marginBook {
+     margin-right: 18px;
 }
 

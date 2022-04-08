@@ -21,7 +21,7 @@ const GoingToRead = () => {
         {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
           <tr key={_id} className={s.bookItem}>
             <td className={s.itemTitle}>
-              <Training className={s.orange} /> {title}
+              <Training className={s.marginBook} /> {title}
             </td>
             <td>{author}</td>
             <td>{publishYear}</td>

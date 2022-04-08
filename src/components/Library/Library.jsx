@@ -1,26 +1,12 @@
 import s from './Library.module.css';
-import { ReactComponent as Training } from '../../images/training-icon.svg';
+import { ReactComponent as Book } from '../../images/book-icon.svg';
+import { ReactComponent as BookOrange } from '../../images/book-icon-orange.svg';
 import { ReactComponent as Star } from '../../images/star-icon.svg';
 import GoingToRead from '../GointToRead/GoingToRead';
 import { useSelector } from 'react-redux';
 import { getBooks } from '../../redux/auth/authSelectors';
 
 const Library = () => {
-  // const books = [
-  //   {
-  //     name: 'Психбольница в руках пациентов...',
-  //     author: 'Купер Алан',
-  //     year: '2009',
-  //     page: '183',
-  //   },
-  //   {
-  //     name: 'Психбольница в руках пациентов...',
-  //     author: 'Купер Алан',
-  //     year: '2009',
-  //     page: '183',
-  //   },
-  // ];
-
   const books = useSelector(getBooks);
 
   return (
@@ -41,7 +27,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <Training /> {title}
+                <Book className={s.marginBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>
@@ -74,7 +60,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <Training className={s.orange} /> {title}
+                <BookOrange className={s.marginBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>

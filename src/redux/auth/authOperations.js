@@ -4,6 +4,7 @@ import {
   loginUserApi,
   logOutApi,
   getUserDataApi,
+  addNewBookApi,
 } from '../../utils/bookReadApi';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -84,3 +85,17 @@ export const getUserData = createAsyncThunk(
     }
   }
 );
+
+export const addBook = createAsyncThunk(
+  'book/add',
+  async (book, thunkApi) => {
+    try {
+      
+      const addedBook = await addNewBookApi(book);
+      return addedBook;
+
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  });
+

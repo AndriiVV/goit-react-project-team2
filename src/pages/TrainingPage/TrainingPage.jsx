@@ -1,93 +1,65 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import MyTimer from '../../components/Timer/Timer';
-import DatePicker from '../../components/Datepicker/Datepicker';
+import Allimer from '../../components/Alltimer/Alltimer';
+import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
+import { getIsTraining } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
+import { useEffect } from 'react';
 
 const TrainingPage = () => {
   const books = useSelector(getBooks);
+  const isTraining = useSelector(getIsTraining);
 
-  const [newBooks, setNewBooks] = useState([]);
-  const [newBook, setNewBook] = useState('');
+  const [newBooks, setNewBooks] = useState(
+    () => JSON.parse(localStorage.getItem('newBooks')) || []
+  );
+  const [chooseBook, setСhooseBook] = useState({});
 
-  const isThereThisBook = ({ books, newBook }) => {
-    return books?.some(
-      book => book.title.toLowerCase() === newBook.title.toLowerCase()
-    );
+  useEffect(() => {
+    localStorage.setItem('newBooks', JSON.stringify(newBooks));
+  }, [newBooks]);
+
+  const handleInputChange = e => {
+    const { value } = e.currentTarget;
+    const findBook = books.find(book => book.title === value);
+    setСhooseBook(findBook);
   };
 
-  // const handleInputChange = e => {
-  //   const { value } = e.currentTarget;
-  //   if (newBook) {
-  //     setNewBook(value);
-  //   }
-
-  //   setNewBook('');
-  // };
-
-  // const addBookToTraining = newBook => {
-  //   const newBookadded = setNewBook({ ...newBook, value });
-  //   return newBooks.setNewBooks(newBookadded);
-  // };
-
-  const addBookToTraining = newBook => {
-    if (newBook) {
-      setNewBooks(newBook);
-    }
-    return newBooks;
+  const addBookToTraining = () => {
+    if (chooseBook) {
+      setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
+    } else alert('Книга вже додана у список');
   };
+
+  // додати фільтр
 
   const onSubmit = e => {
     e.preventDefault();
     const { value } = e.currentTarget;
-    // dispatch(addBookToTraining({ newBook }));
-
-    if (isThereThisBook(newBook)) {
-      alert(`${newBook} already exist`);
-      return;
-    }
-    setNewBook({ ...newBook, value });
-    addBookToTraining();
+    setСhooseBook(value);
   };
-  // {/* Code below belong to --TIMER-- Move it Move to statistics page */}
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 700); // 10 minutes timer
 
-  let timeend = new Date();
-  timeend = new Date(timeend.getFullYear() + 1, 0, 1);
-
-  //-------------------------------
-  //////////////datepickerfooUSetosendtoapi
-  const [trainingData, setTrainingData] = useState({
-    startDate: '',
-    endDate: '',
-    books: [],
-  });
-  const setStartDate = startDate => {
-    setTrainingData(prev => ({ ...prev, startDate }));
-  };
-  const setEndDate = endDate => {
-    setTrainingData(prev => ({ ...prev, endDate }));
-  };
-  //////////////////endofdatepickerfoo
   return (
     <Container>
       <div className={s.trainingPage}>
-
-
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
-            <DatePicker placeholder="Початок" setDate={setStartDate} />
-          <DatePicker placeholder="Завершення" setDate={setEndDate} />
-          <MyTimer expiryTimestamp={time} />
-            <MyTimer expiryTimestamp={timeend} />
-            
-            
+
+            {!isTraining && (
+              <div className={s.timerFlex}>
+                <ALLdatePicker />
+              </div>
+            )}
+            {isTraining && (
+              <div className={s.timerFlex}>
+                <Allimer />
+              </div>
+            )}
 
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
@@ -96,7 +68,7 @@ const TrainingPage = () => {
                 list="books"
                 placeholder="Обрати книги з бібліотеки"
                 className={s.trainingInput}
-                // onChange={handleInputChange}
+                onChange={handleInputChange}
               />
               <datalist id="books">
                 {books.map(book => (
@@ -106,7 +78,7 @@ const TrainingPage = () => {
               <button
                 type="submit"
                 className={s.trainingBtn}
-                // onClick={addBookToTraining(book)}
+                onClick={() => addBookToTraining()}
               >
                 Додати
               </button>
@@ -115,6 +87,20 @@ const TrainingPage = () => {
           </div>
           <div className={s.trainingGoal}>
             <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+            <div className={s.boxFlex}>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>0</span>
+                </div>
+                <span className={s.textBox}> Кількість книжок</span>
+              </div>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>0</span>
+                </div>
+                <span className={s.textBox}>Кількість днів</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className={s.lineChart}>
