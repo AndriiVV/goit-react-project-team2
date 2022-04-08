@@ -18,7 +18,50 @@
 
 .trainingGoal {
 width: 275px;
+height: 320px;
 background-color: #ffffff;
+}
+
+.goalBox {
+    height: 100px;
+    width: 100px;
+    background: #F5F7FA;
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+    margin-bottom: 14px;
+    padding-top: 31px;
+
+}
+
+.boxFlex {
+    display: flex;
+    padding: 55px 27px;
+}
+
+.centredBox {
+    text-align: center;
+}
+
+.goalBox:last-child {
+margin-left: 20px;
+}
+
+.textBox {
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+text-align: center;
+color: #898F9F;
+}
+
+.value {
+    color: #091E3F;
+    font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 45px;
+line-height: 0.84;
 }
 
 .trainingTitle {
