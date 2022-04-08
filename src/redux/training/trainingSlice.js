@@ -1,23 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { startTraining } from './trainingOperatons';
 
-const initialState = [{
-    "name": null,
-    "email": null,
-    "goingToRead": [
+const initialState = {
+    startDate: null,
+    endDate: null,
+    books: [
         {
-            "title": null,
-            "author": null,
-            "publishYear": null,
-            "totalPages": null,
-            "pagesFinished": null,
-            "_id": null,
-            "__v": null
+            title: null,
+            author: null,
+            publishYear: null,
+            totalPages: null,
+            pagesFinished: null,
+            rating: null,
+            feedback: null,
+            _id: null,
+            __v: null
         }
     ],
-    "currentlyReading": [],
-    "finishedReading": []
-}]
+    duration: null,
+    pagesPerDay: null,
+    stats: {
+        date: null,
+        pagesCount: null
+    },
+    _id: null
+}
 
 const trainingReducer = createSlice({
     name: 'training',
@@ -41,10 +48,14 @@ const trainingReducer = createSlice({
         //     state.year = null;
         //     state.page = null;
         // },
-        [startTraining.fulfilled](state, action) {
-            state.startDate = action.payload.startDate;
-            state.endDate = action.payload.endDate;
-            state.books = action.payload.year.books;
+        [startTraining.fulfilled](state, { payload }) {
+            state.startDate = payload.startDate;
+            state.endDate = payload.endDate;
+            state.books = payload.books;
+            state.duration = payload.duration;
+            state.pagesPerDay = payload.pagesPerDay;
+            state.stats = payload.stats;
+            state._id = payload._id
         },
     },
 });
