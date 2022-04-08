@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addBook,
   getUserData,
   loginUser,
   logoutUser,
@@ -125,7 +126,14 @@ const authSlice = createSlice({
       .addCase(getUserData.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      });
+      })
+    .addCase(addBook.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(addBook.fulfilled, (state, { payload }) => {
+      state.user.goingToRead = [...state.user.goingToRead, payload]
+    })
   },
 });
 //   extraReducers: {
