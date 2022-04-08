@@ -50,20 +50,18 @@ const TrainingPage = () => {
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
 
-            <ALLdatePicker />
-            <Allimer />
+          
+            
 
 
             {!isTraining && (
               <div className={s.timerFlex}>
-                <DatePicker placeholder="Початок" setDate={setStartDate} />
-                <DatePicker placeholder="Завершення" setDate={setEndDate} />
+              <ALLdatePicker />
               </div>
             )}
             {isTraining && (
               <div className={s.timerFlex}>
-                <MyTimer expiryTimestamp={time} />
-                <MyTimer expiryTimestamp={timeend} />
+              <Allimer />
               </div>
             )}
 
