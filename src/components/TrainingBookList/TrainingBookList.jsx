@@ -2,8 +2,11 @@ import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
 import { startTraining } from '../../redux/training/trainingOperatons';
+import { useDispatch } from 'react-redux';
 
 const TrainingBookList = ({ newBooks }) => {
+  console.log(newBooks);
+  const dispatch = useDispatch();
   return (
     <div>
       <table className={s.booksListTable}>
@@ -63,7 +66,15 @@ const TrainingBookList = ({ newBooks }) => {
       <button
         type="button"
         className={s.trainingBtn}
-        onClick={() => startTraining()}
+        onClick={() =>
+          dispatch(
+            startTraining({
+              startDate: '2022-04-08',
+              endDate: '2022-04-12',
+              books: newBooks.map(({ _id }) => _id),
+            })
+          )
+        }
       >
         Почати тренування
       </button>

@@ -4,19 +4,7 @@ import { startTraining } from './trainingOperatons';
 const initialState = {
     startDate: null,
     endDate: null,
-    books: [
-        {
-            title: null,
-            author: null,
-            publishYear: null,
-            totalPages: null,
-            pagesFinished: null,
-            rating: null,
-            feedback: null,
-            _id: null,
-            __v: null
-        }
-    ],
+    books: [],
     duration: null,
     pagesPerDay: null,
     stats: {
