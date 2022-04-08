@@ -40,7 +40,7 @@ img{
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 20px;
-    line-height: 38px; 
+    line-height: 38px;
 }
 
 .btnWrap{
@@ -62,7 +62,7 @@ img{
 .singInBtn{
     border-radius: none;
     background: inherit;
-    
+
 }
 
 .singUpBtn{
@@ -83,9 +83,6 @@ img{
         width: 477px;
     }
     .btnWrap{
-        display: none;
-    }
-    .switcher{
         display: none;
     }
 }

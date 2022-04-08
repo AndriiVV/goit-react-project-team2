@@ -1,3 +1,5 @@
+import LanguageSwitcher from 'components/common/LanguageSwitcher/LanguageSwitcher';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getIsAuth } from '../../redux/auth/authSelectors';
@@ -11,9 +13,14 @@ const AppBar = () => {
   return (
     <header className={s.header}>
       <nav className={s.headerNav}>
-        <NavLink to={isLoggedIn ? '/library' : '/login'}>
-          <NavLogo />
-        </NavLink>
+        <div className={s.secWrap}>
+          <NavLink to={isLoggedIn ? '/library' : '/login'}>
+            <NavLogo />
+          </NavLink>
+          <Suspense fallback="loading">
+            <LanguageSwitcher className={s.lang} />
+          </Suspense>
+        </div>
         {isLoggedIn && <UserMenu />}
       </nav>
     </header>

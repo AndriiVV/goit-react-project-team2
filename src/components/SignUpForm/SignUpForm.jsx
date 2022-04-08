@@ -1,13 +1,12 @@
 import GoogleSingIn from '../GoogleSignIn/GoogleSignIn';
-import  ErrorMessage  from '../common/ErrorMsg/ErrorMsg';
-import s from '../SignUpForm/SignUpForm.module.css'
+import ErrorMessage from '../common/ErrorMsg/ErrorMsg';
+import s from '../SignUpForm/SignUpForm.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { registerUser } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Header from 'components/common/Header/Header';
 import { useTranslation } from 'react-i18next';
 
 const SingUpForm = () => {
@@ -50,7 +49,6 @@ const SingUpForm = () => {
   
   return (
     <>
-      <Header/>
       <div className={s.formWrap}>
           <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <GoogleSingIn/>
