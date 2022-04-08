@@ -2,6 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import { startTraining } from './trainingOperatons';
 
 const initialState = {
+  book: {
+    _id: "625002e476089806882e3c4b",
+    title: "фыва",
+    author: "афыва",
+    publishYear: 2441,
+    pagesTotal: 123,
+    pagesFinished: 100,
+    __v: 0
+  },
     startDate: null,
     endDate: null,
     books: [],
