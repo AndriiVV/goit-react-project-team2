@@ -1,13 +1,11 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import MainNav from '../pages/MainNav';
 import { Route } from 'react-router-dom';
 import Container from './common/Container';
 import { Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIsAuth, getToken } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/auth/authOperations';
+import { ToastContainer } from 'react-toastify';
 
 const LibraryPage = lazy(() =>
   import(
@@ -25,7 +23,7 @@ const RegisterPage = lazy(() =>
   )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
@@ -59,6 +57,7 @@ export const App = () => {
           </PublicRoute>
         </Suspense>
       </Switch>
+      <ToastContainer autoClose={2000} />
     </Container>
   );
 };

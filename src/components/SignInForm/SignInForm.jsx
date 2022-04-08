@@ -14,26 +14,29 @@ const SingInForm = () => {
 
   const dispatch = useDispatch();
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Email is wrong').required('Email is required'),
+  const validationSchema = Yup.object().shape({      
+    email: Yup.string().email(t('validation.wrongEmail')).required(t('validation.requiredEmail')),
 
     password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-  });
+        .required(t('validation.requiredPassword'))
+        .min(6, t('validation.passwordLenght')),      
+});
 
   const formOptions = { resolver: yupResolver(validationSchema) };
-  const { register, handleSubmit, formState, reset } = useForm(formOptions);
+    const {
+      register,
+      handleSubmit,
+      formState,
+      reset,
+    } = useForm(formOptions);
+    
+    const {errors} = formState;
 
-  const { errors } = formState;
-  // console.log('🍒 errors', errors);
-
-  const onSubmit = data => {
-    console.log('🍒 data', data);
-    dispatch(loginUser(data));
-    reset();
-  };
-
+    const onSubmit = (data) => {
+      dispatch(loginUser( data));
+      reset();
+    }
+  
   return (
     <>
       <div className={s.formWrap}>

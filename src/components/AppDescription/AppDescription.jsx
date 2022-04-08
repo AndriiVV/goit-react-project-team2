@@ -2,6 +2,7 @@ import s from './AppDescription.module.css';
 import arrowIcon from '../../images/arrow.svg';
 
 const AppDescription = () => {
+  
   return (
     <>
       <div className={s.contentWrap}>

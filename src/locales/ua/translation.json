@@ -1,0 +1,39 @@
+{
+    "signInForm":{
+       "emailLabel" : "Електронна адреса",
+       "passwordLabel" : "Пароль",
+       "button" : "Увійти",
+        "link" : "Реєстрація"
+    },
+    "signUpForm":{
+        "name" : "Ім’я",
+        "confirmPasswordLabel" : "Підтвердити пароль",
+        "button" : "Зареєструватися",
+        "link" : "Увійти",
+        "question":"Вже з нами? "
+    },
+    "validation":{
+        "requiredEmail" : "email - обов'язкове поле",
+        "requiredPassword" : "пароль - обов'язкове поле",
+        "wrongEmail" : "Невірна пошта",
+        "passwordLenght" : "Пароль має містити не менше 6 символів",
+
+        "requiredName" : "Ім'я - обов'язкове поле",
+        "nameMinLenght" : "Поле має містити більше 1 літери",
+        "nameMaxLenght" : "Поле має містити менше 15 літер",
+        
+        "confirmPassword" : "Потрібно підтвердити пароль",
+        "matchPassword" : "Паролі повинні збігатися"
+    },
+    "backMsgLogUp":{
+        "success" : "Реєстрація виконана успішно !",
+        "error" : "Користувач с таким email уже існує"
+    },
+    "backMsgLogIn":{
+        "error" : "Неправильний email або пароль"
+    },
+    "quotation": {
+        "quote" : "Книги - це кораблі думки, які мандрують по хвилях часу та дбайливо несуть свій дорогоцінний вантаж від покоління до покоління.",
+        "author" : "Бекон Ф."
+    }
+}
