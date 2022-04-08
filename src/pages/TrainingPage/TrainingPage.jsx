@@ -32,7 +32,7 @@ const TrainingPage = () => {
   }, [newBooks]);
 
   useEffect(() => {
-    console.log(trainingList);
+    // console.log(trainingList);
     dispatch(getTraningData())
   }, [])
 

@@ -17,7 +17,7 @@ const Alldatepicker = ({ setTrainingList, trainingList}) => {
     setTrainingList(prev => ({ ...prev, endDate }));
   };
   //////////////////endofdatepickerfoo
-  console.log(trainingList.startDate);
+  // console.log(trainingList.startDate);
   return (
     <>
       <div className={s.container}>
