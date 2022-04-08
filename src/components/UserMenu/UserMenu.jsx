@@ -18,11 +18,16 @@ const UserMenu = () => {
       </div>
       <div className={s.secWrap}>
         <NavLink to="/training" activeClassName={s.activeTraining}>
-          <Training className={s.training} width="33" height="33" />
+          <div className={s.trainingWrap}>
+            <Training className={s.training} />
+          </div>
         </NavLink>
         <NavLink to="/library" activeClassName={s.activeHome}>
-          <Home className={s.home} width="32" height="20" />
+          <div className={s.homeWrap}>
+            <Home className={s.home} />
+          </div>
         </NavLink>
+        <span className={s.lineRight}></span>
         <div className={s.secSymbolWrap}>
           <span className={s.secSymbol}>{symbol}</span>
         </div>

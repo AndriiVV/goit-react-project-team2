@@ -1,0 +1,109 @@
+.form{
+    height: 588px;
+    margin: 0 auto;
+}
+
+.arrowBtn{
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #FF6B08;
+    font-weight: 900;
+}
+
+.label{
+    display: block;
+    font-family: 'Montserrat';
+    color:  #c8c8c8;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 38px;
+    margin-top: 10px ;
+}
+
+.input{
+    width: 270px;
+    height: 42px;
+    padding: 0 13px;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #A6ABB9;
+    background-color: #F6F7FB;
+}
+
+.input:focus-within {
+    background: #fff;
+}
+
+.addBtn{
+    display: block;
+    background: transparent;
+    border: 1px solid #242A37;
+    width: 171px;
+    height: 42px;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+@media screen and (min-width: 768px) {
+    .arrowBtn{
+        display: none;
+    }
+
+    .firstBox{
+        margin-bottom: 15px;
+    }
+
+    .title{
+        width: 100%;
+    }
+
+    .wrap{
+        display: flex;
+        margin: 0; 
+    }
+
+    .author{
+        display: inline-block;
+        width: 250px;
+        margin-right: 27px;
+    }
+    .publishYear{
+        width: 145px;
+        margin-right: 27px;
+    }
+
+    .pagesTotal{
+        width: 145px;
+    }
+
+    .label{
+        margin: 0;
+    }
+ 
+    
+}
+
+@media screen and (min-width: 1280px) {
+    .form{
+        display: flex;
+    }
+
+    .title{
+        width: 346px;
+    }
+
+    .author{
+        width: 250px;
+    }
+
+    .input {
+        margin: 0 15px 0 0;
+        display: block;
+    }
+
+    .addBtn{
+        margin-top: 37px;
+    }
+}

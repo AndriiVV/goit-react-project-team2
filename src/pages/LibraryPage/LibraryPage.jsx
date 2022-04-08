@@ -21,8 +21,9 @@ const LibraryPage = () => {
         <Library />
         <button type="button" className={s.libraryBtn}>
           Далі
-        </button>
+        </button> */}
         {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
+        {/* <LibraryModal onClose={switchModal}></LibraryModal> */}
       </div>
     </Container>
   );

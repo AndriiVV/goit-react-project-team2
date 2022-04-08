@@ -1,12 +1,21 @@
 .libraryPage {
     background-color: #F6F7FB;
-    padding-right: 39px;
-    padding-left: 39px;
-    padding-top: 50px;
-    padding-bottom: 36px;
+    padding: 10px 25px 0;
+    box-sizing: border-box;
+}
+@media screen and (min-width: 768px) {
+    .libraryPage {
+        padding: 20px 87px 0; 
+    }
 }
 
-.libraryBtn {
+@media screen and (min-width: 1280px) {
+    .libraryPage {
+        padding: 30px 25px 0; 
+    }
+}
+
+/* .libraryBtn {
     display: block;
     height: 40px;
     width: 200px;
@@ -14,4 +23,4 @@
     color: #ffffff;
     border: none;
     margin: 40px auto;
-}
+} */
