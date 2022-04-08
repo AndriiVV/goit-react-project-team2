@@ -125,8 +125,25 @@ const TrainingPage = () => {
             </div>
           </div>
         </div>
-        <div className={s.lineChart}>
-          <LineChart />
+        <div className={s.statisticsFlex}>
+          <LineChart className={s.lineChart} />
+          <div className={s.resultsBox}>
+            <h2 className={s.resultsTitle}>Результати</h2>
+            <div className={s.statisticsFlex}>
+              <label htmlFor="" className={s.textResults}>
+                Дата
+                <input type="date" className={s.input} />
+              </label>
+              <label htmlFor="" className={s.textResults}>
+                Кількість сторінок
+                <input type="text" className={s.input} />
+              </label>
+            </div>
+            <button type="button" className={s.resultBtn}>
+              Додати результат
+            </button>
+            <h2 className={s.resultsTitle}>Статистика</h2>
+          </div>
         </div>
       </div>
     </Container>
