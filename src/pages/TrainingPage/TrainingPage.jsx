@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import MyTimer from '../../components/Timer/Timer';
-import DatePicker from '../../components/Datepicker/Datepicker';
+import Allimer from '../../components/Alltimer/Alltimer';
+import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
 import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
@@ -31,37 +31,15 @@ const TrainingPage = () => {
     const { value } = e.currentTarget;
     setСhooseBook(value);
   };
-  // {/* Code below belong to --TIMER-- Move it Move to statistics page */}
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 700); // 10 minutes timer
 
-  let timeend = new Date();
-  timeend = new Date(timeend.getFullYear() + 1, 0, 1);
-
-  //-------------------------------
-  //////////////datepickerfooUSetosendtoapi
-  const [trainingData, setTrainingData] = useState({
-    startDate: '',
-    endDate: '',
-    books: [],
-  });
-  const setStartDate = startDate => {
-    setTrainingData(prev => ({ ...prev, startDate }));
-  };
-  const setEndDate = endDate => {
-    setTrainingData(prev => ({ ...prev, endDate }));
-  };
-  //////////////////endofdatepickerfoo
   return (
     <Container>
       <div className={s.trainingPage}>
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
-            <DatePicker placeholder="Початок" setDate={setStartDate} />
-            <DatePicker placeholder="Завершення" setDate={setEndDate} />
-            <MyTimer expiryTimestamp={time} />
-            <MyTimer expiryTimestamp={timeend} />
+            <ALLdatePicker />
+            <Allimer />
 
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input

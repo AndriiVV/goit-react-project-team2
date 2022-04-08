@@ -25,7 +25,7 @@ const RegisterPage = lazy(() =>
   )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage.jsx' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
@@ -37,7 +37,7 @@ export const App = () => {
 
   useEffect(() => {
     isAuth && dispatch(getUserData(token));
-   }, [dispatch]);
+   }, [dispatch, isAuth, token]);
 
   return (
     <Container>
