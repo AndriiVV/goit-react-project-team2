@@ -64,6 +64,42 @@ font-size: 45px;
 line-height: 0.84;
 }
 
+.statisticsFlex {
+    display: flex;
+}
+
+.resultsBox {
+    width: 275px;
+    background-color: #ffffff;
+    margin-left: 41px;
+}
+
+.input {
+    width: 114px;
+    height: 42px;
+}
+
+.resultsTitle {
+text-transform: uppercase;
+text-align: center;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 3.17;
+}
+
+.textResults {
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 17px;
+color: #898F9F;
+
+margin-left: 16px;
+}
+
 .trainingTitle {
     display: block;
     padding-top: 11px;
@@ -113,8 +149,6 @@ display: flex;
     border: 1px solid #242A37;
 }
 
-
-
 .startTrainingBtn {
     display: block;
     height: 40px;
@@ -126,6 +160,16 @@ display: flex;
 
 }
 
+.resultBtn {
+    display: block;
+    height: 40px;
+    width: 240px;
+    background-color: #FF6B08;
+    color: #ffffff;
+    border: none;
+    margin: 20px auto 25px auto;
+}
+
 .lineChart {
-    height: 450px;
+    height: 340px;
 }
