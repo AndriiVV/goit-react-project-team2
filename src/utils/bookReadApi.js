@@ -98,10 +98,20 @@ export const addBookReviewApi = (reviewData, _id) => {
 //     .catch(err => err);
 // };
 
-export const startTrainingApi = id => {
+export const startTrainingApi = trainingData => {
   return axios
-    .post('/planning')
-    .then(({ data }) => data)
+    .post('/planning', trainingData)
+    .then(({ data }) => {
+      return {
+        startDate: data.startDate,
+        endDate: data.endDate,
+        books: data.books,
+        duration: data.duration,
+        pagesPerDay: data.pagesPerDay,
+        stats: data.stats,
+        _id: data._id
+      }
+    })
     .catch(err => err);
 };
 

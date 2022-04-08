@@ -42,10 +42,9 @@ const trainingReducer = createSlice({
         //     state.page = null;
         // },
         [startTraining.fulfilled](state, action) {
-            state.name = action.payload.name;
-            state.author = action.payload.author;
-            state.year = action.payload.year;
-            state.page = action.payload.page;
+            state.startDate = action.payload.startDate;
+            state.endDate = action.payload.endDate;
+            state.books = action.payload.year.books;
         },
     },
 });

@@ -7,21 +7,6 @@ import { useSelector } from 'react-redux';
 import { getBooks } from '../../redux/auth/authSelectors';
 
 const Library = () => {
-  // const books = [
-  //   {
-  //     name: 'Психбольница в руках пациентов...',
-  //     author: 'Купер Алан',
-  //     year: '2009',
-  //     page: '183',
-  //   },
-  //   {
-  //     name: 'Психбольница в руках пациентов...',
-  //     author: 'Купер Алан',
-  //     year: '2009',
-  //     page: '183',
-  //   },
-  // ];
-
   const books = useSelector(getBooks);
 
   return (
@@ -42,7 +27,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <Book className={s.colorBook} /> {title}
+                <Book className={s.marginBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>
@@ -75,7 +60,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <BookOrange className={s.colorBook} /> {title}
+                <BookOrange className={s.marginBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>

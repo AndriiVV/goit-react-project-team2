@@ -25,11 +25,10 @@ const RegisterPage = lazy(() =>
   )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
-
   const isAuth = useSelector(getIsAuth);
   const token = useSelector(getToken);
 
@@ -37,7 +36,7 @@ export const App = () => {
 
   useEffect(() => {
     isAuth && dispatch(getUserData(token));
-   }, [dispatch]);
+  }, [dispatch]);
 
   return (
     <Container>
