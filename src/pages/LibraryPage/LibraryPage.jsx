@@ -23,6 +23,7 @@ const LibraryPage = () => {
           Далі
         </button> */}
         {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
+        {/* <LibraryModal onClose={switchModal}></LibraryModal> */}
       </div>
     </Container>
   );

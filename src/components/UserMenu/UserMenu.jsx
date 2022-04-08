@@ -23,6 +23,7 @@ const UserMenu = () => {
         <NavLink to="/library" activeClassName={s.activeHome}>
           <Home className={s.home} width="32" height="20" />
         </NavLink>
+        <span className={s.lineRight}></span>
         <div className={s.secSymbolWrap}>
           <span className={s.secSymbol}>{symbol}</span>
         </div>
