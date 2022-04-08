@@ -4,19 +4,15 @@ import { registry } from 'chart.js';
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 export const registerUserApi = userData => {
-  return axios.post('/auth/register', userData).then(({
-    data
-  }) => ({
+  return axios.post('/auth/register', userData).then(({ data }) => ({
     email: data.email,
     id: data.id,
   }));
 };
 
 export const loginUserApi = userData => {
-  return axios.post('/auth/login', userData).then(({
-    data
-  }) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`
+  return axios.post('/auth/login', userData).then(({ data }) => {
+    axios.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`;
 
     return {
       accessToken: data.accessToken,
@@ -28,32 +24,27 @@ export const loginUserApi = userData => {
       goingToRead: data.userData.goingToRead,
       currentlyReading: data.userData.currentlyReading,
       finishedReading: data.userData.finishedReading,
-    }
+    };
   });
 };
 
 export const refreshTokenApi = (sid, refreshToken) => {
-
-  // Documentation recommend POST method, but it looks like that GET is also an option
-  return axios.post('/auth/refresh', {
-    sid
-  }).then(({
-    data
-  }) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${data.newAccessToken}`
-    return {
-      accessToken: data.newAccessToken,
-      refreshToken: data.newRefreshToken,
-      sid: data.newSid,
-    }
-
-  });
+  return axios
+    .post('/auth/refresh', {
+      sid,
+    })
+    .then(({ data }) => {
+      axios.defaults.headers.common.Authorization = `Bearer ${data.newAccessToken}`;
+      return {
+        accessToken: data.newAccessToken,
+        refreshToken: data.newRefreshToken,
+        sid: data.newSid,
+      };
+    });
 };
 
-export const addNewBookApi = ({
-  formBook
-}) => {
-  return axios.post('/book', formBook).then(({data}) => ({
+export const addNewBookApi = ({ formBook }) => {
+  return axios.post('/book', formBook).then(({ data }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
@@ -72,11 +63,9 @@ export const addBookReviewApi = (reviewData, _id) => {
   //
   // _id - this is "book's id"
   axios.defaults.params = {
-    bookId: _id
+    bookId: _id,
   };
-  return axios.post('/book/review', reviewData).then(({
-    data
-  }) => ({
+  return axios.post('/book/review', reviewData).then(({ data }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,
@@ -87,7 +76,6 @@ export const addBookReviewApi = (reviewData, _id) => {
     _id: data._id,
   }));
 };
-
 
 // export const addBookToTrainingApi = addBook => {
 //   return axios
@@ -113,9 +101,7 @@ export const addBookReviewApi = (reviewData, _id) => {
 export const startTrainingApi = id => {
   return axios
     .post('/planning')
-    .then(({
-      data
-    }) => data)
+    .then(({ data }) => data)
     .catch(err => err);
 };
 
@@ -128,4 +114,19 @@ export const logOutApi = accessToken => {
     .catch(err => {
       throw err;
     });
+};
+
+export const getUserDataApi = accessToken => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+  return axios.get('/user/books').then(({ data }) => {
+    // console.log('/user/books ', data);
+    return {
+      name: data.name,
+      email: data.email,
+      goingToRead: data.goingToRead,
+      currentlyReading: data.currentlyReading,
+      finishedReading: data.finishedReading,
+    };
+  });
 };
