@@ -43,8 +43,8 @@ export const refreshTokenApi = (sid, refreshToken) => {
     });
 };
 
-export const addNewBookApi = ({ formBook }) => {
-  return axios.post('/book', formBook).then(({ data }) => ({
+export const addNewBookApi = (book ) => {
+  return axios.post('/book', book).then(({ data }) => ({
     title: data.title,
     author: data.author,
     publishYear: data.publishYear,

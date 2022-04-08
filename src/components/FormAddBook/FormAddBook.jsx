@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';  
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import s from './FormAddBook.module.css'
 import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
+import { addBook } from 'redux/training/trainingOperatons';
 
   const FormAddBook = () => {
 
@@ -51,7 +52,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 
     const onSubmit = (book) => {
       console.log('🍒 book', book);
-
+    dispatch(addBook(book))
       //TODO: обработать добавление книги
 
       reset();
@@ -69,7 +70,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
               type="text"
               name="title"
               placeholder="..."
-              {...register('title', titleValidation)}
+              {...register("title", titleValidation)}
               />
             </label>
             {errors.title && <ErrorMsg message={errors.title.message} />}
@@ -85,7 +86,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
                   {...register('author', authorValidation)}
                 />
               </label>
-              {errors.author && <ErrorMsg message={errors.author.message} />} 
+              {errors.author && <ErrorMsg message={errors.author.message} />}
             </div>
 
             <div>
@@ -112,7 +113,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
                 />
               </label>
               {errors.pagesTotal && <ErrorMsg message={errors.pagesTotal.message} />}
-            </div> 
+            </div>
           </div>
 
           <button className={s.addBtn} type="submit">Додати</button>
@@ -120,9 +121,9 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
       </>
     )
   }
-  
-  export default FormAddBook; 
-  
+
+  export default FormAddBook;
+
 // import ButtonAdd from "components/ButtonAdd/ButtonAdd";
 // import { useState } from 'react';
 // import { useDispatch, useSelector } from "react-redux";
@@ -130,9 +131,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 // import { getToken } from "redux/auth/authSelectors";
 
 // const FormAddBook = () => {
-//   const token = useSelector(getToken)
-
-//   const [formBook, setFormBook] = useState({
+//   const [book, setFormBook] = useState({
 //       title: "",
 //       author: "",
 //       publishYear: "",
@@ -149,7 +148,8 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault()
-//     dispatch(addBook({ formBook, token }))
+//     console.log(book);
+//     dispatch(addBook(book))
 //     setFormBook({
 //       title: "",
 //       author: "",
@@ -164,7 +164,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 //       <label>Назва книги
 //         <input
 //         name="title"
-//         value={formBook.title}
+//         value={book.title}
 //         type="text"
 //           onChange={handleChange}
 //         placeholder="..."
@@ -173,7 +173,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 //         <input
 //           type="text"
 //           name="author"
-//           value={formBook.author}
+//           value={book.author}
 //           onChange={handleChange}
 //           placeholder="..."
 //         />
@@ -182,7 +182,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 //         <input
 //           type="text"
 //           name="publishYear"
-//           value={formBook.year}
+//           value={book.year}
 //           onChange={handleChange}
 //           placeholder="..."
 //         />
@@ -191,7 +191,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 //         <input
 //           type="text"
 //           name="pagesTotal"
-//           value={formBook.pages}
+//           value={book.pages}
 //           onChange={handleChange}
 //           placeholder="..."
 //         />

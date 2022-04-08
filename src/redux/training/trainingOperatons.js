@@ -42,10 +42,10 @@ export const startTraining = createAsyncThunk(
 
 export const addBook = createAsyncThunk(
   'book/add',
-  async ({ formBook, token }, thunkApi) => {
+  async (book, thunkApi) => {
     try {
 
-      const addedBook = addNewBookApi({ formBook, token });
+      const addedBook = addNewBookApi(book);
       return addedBook;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
