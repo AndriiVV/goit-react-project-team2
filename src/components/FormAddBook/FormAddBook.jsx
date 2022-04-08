@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import s from './FormAddBook.module.css'
 import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
-import { addBook } from 'redux/training/trainingOperatons';
+import { addBook } from 'redux/auth/authOperations';
 
   const FormAddBook = () => {
 
@@ -52,8 +52,7 @@ import { addBook } from 'redux/training/trainingOperatons';
 
     const onSubmit = (book) => {
       console.log('🍒 book', book);
-    dispatch(addBook(book))
-      //TODO: обработать добавление книги
+      dispatch(addBook(book))
 
       reset();
     }
