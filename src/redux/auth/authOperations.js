@@ -5,6 +5,8 @@ import {
   logOutApi,
   getUserDataApi,
 } from '../../utils/bookReadApi';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // export const registerUser = createAsyncThunk(
 //   'auth/register',
@@ -23,10 +25,21 @@ export const registerUser = createAsyncThunk(
     try {
       // console.log('registerUser is running. Data is: ', credentials);
       const data = await registerUserApi(credentials);
+      toast.success('Реєстрація виконана успішно!', {
+        theme: 'colored',
+        closeOnClick: true,
+        pauseOnHover: true,
+        autoClose: 3000,
+      });
       // console.log('registerUser completed'); //credentials - учётные данные
       return data;
     } catch (error) {
-      // console.log('registerUser error');
+      toast.error('Користувач с таким Email уже існує', {
+        theme: 'colored',
+        closeOnClick: true,
+        pauseOnHover: true,
+        autoClose: 3000,
+      });
       return thunkApi.rejectWithValue(error);
     }
   }
@@ -39,6 +52,11 @@ export const loginUser = createAsyncThunk(
       const data = await loginUserApi(userData);
       return data;
     } catch (error) {
+      toast.error('Неправильний Email або пароль', {
+        theme: 'colored',
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
       return thunkApi.rejectWithValue(error.message);
     }
   }

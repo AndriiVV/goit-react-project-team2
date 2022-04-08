@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { NavLink } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { loginUser } from 'redux/auth/authOperations';
 import Header from 'components/common/Header/Header';
 import { useTranslation } from 'react-i18next';
@@ -16,11 +16,11 @@ const SingInForm = () => {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({      
-    email: Yup.string().email('Email is wrong').required('Email is required'),
+    email: Yup.string().email(t('validation.wrongEmail')).required(t('validation.requiredEmail')),
 
     password: Yup.string()
-        .required('Password is required')
-        .min(6, 'Password must be at least 6 characters'),      
+        .required(t('validation.requiredPassword'))
+        .min(6, t('validation.passwordLenght')),      
 });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -32,17 +32,15 @@ const SingInForm = () => {
     } = useForm(formOptions);
     
     const {errors} = formState;
-    // console.log('🍒 errors', errors);
 
     const onSubmit = (data) => {
-      console.log('🍒 data', data);
       dispatch(loginUser( data));
       reset();
     }
   
   return (
     <>
-      <Header/>
+      {/* <Header/> */}
       <div className={s.formWrap}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <GoogleSingIn/>

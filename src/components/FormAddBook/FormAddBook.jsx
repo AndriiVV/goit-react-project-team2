@@ -47,7 +47,7 @@ import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
     } = useForm();
 
     const {errors} = formState;
-    console.log('🍒 errors', errors);
+    // console.log('🍒 errors', errors);
 
     const onSubmit = (book) => {
       console.log('🍒 book', book);

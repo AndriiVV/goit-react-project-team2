@@ -1,8 +1,0 @@
-{
-    "signInForm":{
-       "emailLabel" : "Електронна адреса",
-       "passwordLabel" : "Пароль",
-       "button" : "Увійти",
-        "link" : "Реєстрація"
-    }
-}

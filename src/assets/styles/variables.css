@@ -1,0 +1,19 @@
+:root {
+  --accent-color: #FF6B08;
+  --black: #000000;
+  --white: #FFFFFF;
+  --bg-color: #FFFFFF;
+  --bg-input-form: #F5F7FA;
+  --bg-light-gray-color: #F6F7FB;
+  --bg-and-lines-gray-color: #B1B5C2;
+  --bg-button-resume-color: #6D7A8D;
+  --light-gray-text-and-form-label-color: #898F9F;
+  --form-label-stars-and-hover-color: #F25137;
+  --form-input-text-color-and-dots-and-stars-and-icons: #A6ABB9;
+  --dark-text-color-deep-blue: #242A37;
+  --dark-blue-elements-color: #091E3F;
+  --google-text-color: #707375;
+  --lines-light-gray-color: #E0E5EB;
+  --button-hover-bg-hot-orange-color: #D15807;
+}
+/*# sourceMappingURL=variables.css.map */

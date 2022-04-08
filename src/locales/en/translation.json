@@ -1,0 +1,35 @@
+{
+    "signInForm":{
+       "emailLabel" : "Email Address",
+       "passwordLabel" : "Password",
+       "button" : "Log In",
+        "link" : "Registration"
+    },
+    "signUpForm":{
+        "name" : "Name",
+        "confirmPasswordLabel" : "Confirm password",
+        "button" : "Register",
+        "link" : "Login",
+        "question":"Already with us? "
+    },
+    "validation":{
+        "requiredEmail" : "Email is required",
+        "requiredPassword" : "Password is required",
+        "wrongEmail" : "Email is wrong",
+        "passwordLenght" : "Password must be at least 6 characters",
+
+        "requiredName" : "Name is required",
+        "nameMinLenght" : "Field should have more than 1 letter",
+        "nameMaxLenght" : "Field should have less than 15 letter",
+
+        "confirmPassword" : "Confirm password is required",
+        "matchPassword" : "Passwords must match"
+    },
+    "backMsgLogUp":{
+        "success" : "Registration was successful !",
+        "error" : "A user with this email already exists"
+    },
+    "backMsgLogIn":{
+        "error" : "Incorrect email or password"
+    }
+}
