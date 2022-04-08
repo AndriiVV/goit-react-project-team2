@@ -3,7 +3,7 @@ import ResumeContent from 'components/ResumeContent/ResumeContent';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 // import { useLockBodyScroll } from 'react-use';
-import styles from './Modal.module.css';
+import styles from './Modal.module.scss';
 
 const modalRootRef = document.querySelector('#modal-root');
 
