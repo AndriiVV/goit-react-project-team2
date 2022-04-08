@@ -70,9 +70,6 @@ const TrainingPage = () => {
                 list="books"
                 placeholder="Обрати книги з бібліотеки"
                 className={s.trainingInput}
-                // onClick={() => {
-                //   console.log('book.title');
-                // }}
                 onChange={handleInputChange}
               />
               <datalist id="books">

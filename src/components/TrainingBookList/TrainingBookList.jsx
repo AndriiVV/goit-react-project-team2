@@ -60,7 +60,11 @@ const TrainingBookList = ({ newBooks }) => {
           ))}
         </tbody>
       </table>
-      <button type="button" className={s.trainingBtn} onClick={startTraining()}>
+      <button
+        type="button"
+        className={s.trainingBtn}
+        onClick={() => startTraining()}
+      >
         Почати тренування
       </button>
     </div>
