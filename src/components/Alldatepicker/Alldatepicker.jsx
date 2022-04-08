@@ -19,14 +19,15 @@ const [trainingData, setTrainingData] = useState({
     setTrainingData(prev => ({ ...prev, endDate }));
   };
   //////////////////endofdatepickerfoo
+console.log(trainingData.startDate);
   return (
     <>
        <div className={s.container}>
         <span className={s.item_container}>
-        <DatePicker placeholder="Початок" setDate={setStartDate} />
+          <DatePicker placeholder="Початок" setDate={setStartDate} isDate={(!!trainingData.startDate)} />
         </span>
         <span className={s.item_container}>
-        <DatePicker placeholder="Завершення" setDate={setEndDate} />
+        <DatePicker placeholder="Завершення" setDate={setEndDate} isDate={(!!trainingData.endDate)}/>
         </span>
       </div>
     </>
