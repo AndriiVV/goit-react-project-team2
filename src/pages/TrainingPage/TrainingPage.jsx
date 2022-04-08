@@ -10,22 +10,29 @@ import { getIsTraining } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
 import { useEffect } from 'react';
 import { getTraningData } from 'redux/training/trainingOperatons';
+import { startTraining } from '../../redux/training/trainingOperatons';
 
 const TrainingPage = () => {
+  const dispatch = useDispatch();
   const books = useSelector(getBooks);
   const isTraining = useSelector(getIsTraining);
 
-  const dispatch = useDispatch()
   const [newBooks, setNewBooks] = useState(
     () => JSON.parse(localStorage.getItem('newBooks')) || []
   );
   const [chooseBook, setСhooseBook] = useState({});
+  const [trainingList, setTrainingList] = useState({
+    startDate: '',
+    endDate: '',
+    books: newBooks.map(({ _id }) => _id),
+  })
 
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
 
   useEffect(() => {
+    console.log(trainingList);
     dispatch(getTraningData())
   }, [])
 
@@ -57,12 +64,12 @@ const TrainingPage = () => {
             <h2 className={s.trainingTitle}>Моє тренування</h2>
             {!isTraining && (
               <div className={s.timerFlex}>
-              <ALLdatePicker />
+                <ALLdatePicker setTrainingList={setTrainingList} trainingList={trainingList} />
               </div>
             )}
             {isTraining && (
               <div className={s.timerFlex}>
-              <Allimer />
+                <Allimer />
               </div>
             )}
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
@@ -88,9 +95,34 @@ const TrainingPage = () => {
               </button>
             </form>
             <TrainingBookList newBooks={newBooks} />
+            <button
+              type="button"
+              className={s.startTrainingBtn}
+              onClick={() =>
+                dispatch(
+                  startTraining(trainingList)
+                )
+              }
+            >
+              Почати тренування
+            </button>
           </div>
           <div className={s.trainingGoal}>
             <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+            <div className={s.boxFlex}>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>{newBooks.length}</span>
+                </div>
+                <span className={s.textBox}> Кількість книжок</span>
+              </div>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>0</span>
+                </div>
+                <span className={s.textBox}>Кількість днів</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className={s.lineChart}>

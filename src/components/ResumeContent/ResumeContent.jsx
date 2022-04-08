@@ -2,7 +2,7 @@ import s from "./ResumeContent.module.scss";
 
 const ResumeContent = () => {
     return (
-        <div>
+        <div className={ s.resumeContent }>
             <h3 className={s.titleResume}>Обрати рейтинг книги</h3>
             <div className={s.divRadioButtonResume}>
                 <input type="radio" id="rb_1" className={s.radioButtonResume} />

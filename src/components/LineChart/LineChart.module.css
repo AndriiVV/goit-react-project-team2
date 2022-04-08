@@ -1,0 +1,19 @@
+.chartWrap {
+  width: 270px;
+  height: 290px;
+}
+
+@media screen and (min-width: 768px) {
+  .chartWrap {
+    width: 678px;
+    height: 340px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .chartWrap {
+    width: 886px;
+    height: 340px;
+  }
+}
+/*# sourceMappingURL=LineChart.module.css.map */
