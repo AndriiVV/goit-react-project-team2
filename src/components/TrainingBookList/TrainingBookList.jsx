@@ -44,7 +44,7 @@ const TrainingBookList = ({ newBooks }) => {
           {newBooks.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id}>
               <td className={s.flexCenter}>
-                <Training width="33" height="33" />
+                <Training className={s.marginBook} width="22" height="17" />
                 {title}
               </td>
               <td>{author}</td>

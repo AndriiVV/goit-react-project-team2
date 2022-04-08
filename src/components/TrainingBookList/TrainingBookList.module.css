@@ -23,6 +23,10 @@
     padding-bottom: 10px;
     }
 
+.marginBook {
+   margin-right: 18px;
+   }
+
 .bookTitle {
     width: 361px;
     text-align: start;

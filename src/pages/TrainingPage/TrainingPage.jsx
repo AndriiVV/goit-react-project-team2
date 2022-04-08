@@ -50,18 +50,14 @@ const TrainingPage = () => {
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
 
-          
-            
-
-
             {!isTraining && (
               <div className={s.timerFlex}>
-              <ALLdatePicker />
+                <ALLdatePicker />
               </div>
             )}
             {isTraining && (
               <div className={s.timerFlex}>
-              <Allimer />
+                <Allimer />
               </div>
             )}
 
@@ -91,6 +87,20 @@ const TrainingPage = () => {
           </div>
           <div className={s.trainingGoal}>
             <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+            <div className={s.boxFlex}>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>0</span>
+                </div>
+                <span className={s.textBox}> Кількість книжок</span>
+              </div>
+              <div className={s.centredBox}>
+                <div className={s.goalBox}>
+                  <span className={s.value}>0</span>
+                </div>
+                <span className={s.textBox}>Кількість днів</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className={s.lineChart}>

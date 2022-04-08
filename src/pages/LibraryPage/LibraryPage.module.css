@@ -11,7 +11,7 @@
 
 @media screen and (min-width: 1280px) {
     .libraryPage {
-        padding: 30px 25px 0; 
+        padding: 30px 25px 30px 25px; 
     }
 }
 
@@ -22,5 +22,5 @@
     background-color: #FF6B08;
     color: #ffffff;
     border: none;
-    margin: 40px auto;
+    margin: 40px auto 0;
 }
