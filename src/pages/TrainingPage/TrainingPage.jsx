@@ -6,13 +6,22 @@ import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
+import { getIsTraining } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
+import { useEffect } from 'react';
 
 const TrainingPage = () => {
   const books = useSelector(getBooks);
+  const isTraining = useSelector(getIsTraining);
 
-  const [newBooks, setNewBooks] = useState([]);
+  const [newBooks, setNewBooks] = useState(
+    () => JSON.parse(localStorage.getItem('newBooks')) || []
+  );
   const [chooseBook, setСhooseBook] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem('newBooks', JSON.stringify(newBooks));
+  }, [newBooks]);
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
@@ -25,6 +34,8 @@ const TrainingPage = () => {
       setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
     } else alert('Книга вже додана у список');
   };
+
+  // додати фільтр
 
   const onSubmit = e => {
     e.preventDefault();
@@ -58,11 +69,18 @@ const TrainingPage = () => {
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
-            <DatePicker placeholder="Початок" setDate={setStartDate} />
-            <DatePicker placeholder="Завершення" setDate={setEndDate} />
-            <MyTimer expiryTimestamp={time} />
-            <MyTimer expiryTimestamp={timeend} />
-
+            {!isTraining && (
+              <div className={s.timerFlex}>
+                <DatePicker placeholder="Початок" setDate={setStartDate} />
+                <DatePicker placeholder="Завершення" setDate={setEndDate} />
+              </div>
+            )}
+            {isTraining && (
+              <div className={s.timerFlex}>
+                <MyTimer expiryTimestamp={time} />
+                <MyTimer expiryTimestamp={timeend} />
+              </div>
+            )}
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
                 type="text"
@@ -70,9 +88,6 @@ const TrainingPage = () => {
                 list="books"
                 placeholder="Обрати книги з бібліотеки"
                 className={s.trainingInput}
-                // onClick={() => {
-                //   console.log('book.title');
-                // }}
                 onChange={handleInputChange}
               />
               <datalist id="books">

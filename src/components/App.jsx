@@ -29,7 +29,6 @@ const LoginPage = lazy(() =>
 );
 
 export const App = () => {
-
   const isAuth = useSelector(getIsAuth);
   const token = useSelector(getToken);
 
@@ -37,7 +36,7 @@ export const App = () => {
 
   useEffect(() => {
     isAuth && dispatch(getUserData(token));
-   }, [dispatch]);
+  }, [dispatch]);
 
   return (
     <Container>
