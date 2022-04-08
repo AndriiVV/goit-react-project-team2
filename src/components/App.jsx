@@ -25,7 +25,7 @@ const RegisterPage = lazy(() =>
   )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {

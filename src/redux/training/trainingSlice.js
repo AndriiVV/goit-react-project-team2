@@ -46,7 +46,8 @@ const trainingReducer = createSlice({
             state.author = action.payload.author;
             state.year = action.payload.year;
             state.page = action.payload.page;
-        },
+      },
+
     },
 });
 

@@ -43,15 +43,18 @@ export const refreshTokenApi = (sid, refreshToken) => {
     });
 };
 
-export const addNewBookApi = ({ formBook }) => {
-  return axios.post('/book', formBook).then(({ data }) => ({
-    title: data.title,
-    author: data.author,
-    publishYear: data.publishYear,
-    totalPages: data.totalPages,
-    pagesFinished: data.pagesFinished, // or 0 as initial value for a new book in the library
-    _id: data._id,
-  }));
+export const addNewBookApi = (book) => {
+  return axios.post('/book', book).then(({ data }) => {
+    console.log(data.newBook);
+    return {
+      title: data.newBook.title,
+        author: data.newBook.author,
+        publishYear: data.newBook.publishYear,
+        totalPages: data.newBook.totalPages,
+        pagesFinished: data.newBook.pagesFinished, // or 0 as initial value for a new book in the library
+        _id: data.newBook._id,
+    }
+  });
 };
 
 export const addBookReviewApi = (reviewData, _id) => {
