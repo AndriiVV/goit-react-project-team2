@@ -1,7 +1,7 @@
 import Container from 'components/common/Container/Container';
 import FormAddBook from 'components/FormAddBook/FormAddBook';
 import LibraryModal from 'components/LibraryModal/LibraryModal';
-// import Library from 'components/Library/Library';
+import Library from 'components/Library/Library';
 import GoingToRead from '../../components/GointToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 import { useState } from 'react';
@@ -17,12 +17,13 @@ const LibraryPage = () => {
       <div className={s.libraryPage}>
         <FormAddBook />
         {/* <LibraryModal /> */}
-        {/* <GoingToRead /> */}
-        {/* <Library /> */}
-        {/* <button type="button" className={s.libraryBtn}>
+        <GoingToRead />
+        <Library />
+        <button type="button" className={s.libraryBtn}>
           Далі
         </button> */}
         {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
+        {/* <LibraryModal onClose={switchModal}></LibraryModal> */}
       </div>
     </Container>
   );
