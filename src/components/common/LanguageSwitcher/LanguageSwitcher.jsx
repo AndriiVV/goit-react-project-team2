@@ -5,7 +5,7 @@ import ukFlagIcon from 'images/english.png';
 
 const languages = {
   en: { icon: ukFlagIcon, nativeName: 'English' },
-  uk: { icon: ukrFlagIcon, nativeName: 'Українська' },
+  ua: { icon: ukrFlagIcon, nativeName: 'Українська' },
 };
 
 const LanguageSwitcher = () => {
