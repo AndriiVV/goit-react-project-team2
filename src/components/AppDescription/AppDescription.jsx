@@ -3,6 +3,7 @@ import arrowIcon from '../../images/arrow.svg';
 import Header from 'components/common/Header/Header';
 
 const AppDescription = () => {
+  
   return (
     <>
       <div className={s.switcher}>
