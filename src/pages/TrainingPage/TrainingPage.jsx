@@ -12,46 +12,24 @@ const TrainingPage = () => {
   const books = useSelector(getBooks);
 
   const [newBooks, setNewBooks] = useState([]);
-  const [newBook, setNewBook] = useState('');
+  const [chooseBook, setСhooseBook] = useState({});
 
-  const isThereThisBook = ({ books, newBook }) => {
-    return books?.some(
-      book => book.title.toLowerCase() === newBook.title.toLowerCase()
-    );
+  const handleInputChange = e => {
+    const { value } = e.currentTarget;
+    const findBook = books.find(book => book.title === value);
+    setСhooseBook(findBook);
   };
 
-  // const handleInputChange = e => {
-  //   const { value } = e.currentTarget;
-  //   if (newBook) {
-  //     setNewBook(value);
-  //   }
-
-  //   setNewBook('');
-  // };
-
-  // const addBookToTraining = newBook => {
-  //   const newBookadded = setNewBook({ ...newBook, value });
-  //   return newBooks.setNewBooks(newBookadded);
-  // };
-
-  const addBookToTraining = newBook => {
-    if (newBook) {
-      setNewBooks(newBook);
-    }
-    return newBooks;
+  const addBookToTraining = () => {
+    if (chooseBook) {
+      setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
+    } else alert('Книга вже додана у список');
   };
 
   const onSubmit = e => {
     e.preventDefault();
     const { value } = e.currentTarget;
-    // dispatch(addBookToTraining({ newBook }));
-
-    if (isThereThisBook(newBook)) {
-      alert(`${newBook} already exist`);
-      return;
-    }
-    setNewBook({ ...newBook, value });
-    addBookToTraining();
+    setСhooseBook(value);
   };
   // {/* Code below belong to --TIMER-- Move it Move to statistics page */}
   const time = new Date();
@@ -77,17 +55,13 @@ const TrainingPage = () => {
   return (
     <Container>
       <div className={s.trainingPage}>
-
-
         <div className={s.trainingPageFlex}>
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
             <DatePicker placeholder="Початок" setDate={setStartDate} />
-          <DatePicker placeholder="Завершення" setDate={setEndDate} />
-          <MyTimer expiryTimestamp={time} />
+            <DatePicker placeholder="Завершення" setDate={setEndDate} />
+            <MyTimer expiryTimestamp={time} />
             <MyTimer expiryTimestamp={timeend} />
-            
-            
 
             <form className={s.trainingChooseBook} onSubmit={onSubmit}>
               <input
@@ -96,7 +70,10 @@ const TrainingPage = () => {
                 list="books"
                 placeholder="Обрати книги з бібліотеки"
                 className={s.trainingInput}
-                // onChange={handleInputChange}
+                // onClick={() => {
+                //   console.log('book.title');
+                // }}
+                onChange={handleInputChange}
               />
               <datalist id="books">
                 {books.map(book => (
@@ -106,7 +83,7 @@ const TrainingPage = () => {
               <button
                 type="submit"
                 className={s.trainingBtn}
-                // onClick={addBookToTraining(book)}
+                onClick={() => addBookToTraining()}
               >
                 Додати
               </button>

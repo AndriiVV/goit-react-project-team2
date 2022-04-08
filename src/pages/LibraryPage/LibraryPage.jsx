@@ -1,7 +1,7 @@
 import Container from 'components/common/Container/Container';
 import FormAddBook from 'components/FormAddBook/FormAddBook';
 import LibraryModal from 'components/LibraryModal/LibraryModal';
-// import Library from 'components/Library/Library';
+import Library from 'components/Library/Library';
 import GoingToRead from '../../components/GointToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 import { useState } from 'react';
@@ -18,7 +18,7 @@ const LibraryPage = () => {
         <FormAddBook />
         {/* <LibraryModal /> */}
         <GoingToRead />
-        {/* <Library /> */}
+        <Library />
         <button type="button" className={s.libraryBtn}>
           Далі
         </button>

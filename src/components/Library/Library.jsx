@@ -1,5 +1,6 @@
 import s from './Library.module.css';
-import { ReactComponent as Training } from '../../images/training-icon.svg';
+import { ReactComponent as Book } from '../../images/book-icon.svg';
+import { ReactComponent as BookOrange } from '../../images/book-icon-orange.svg';
 import { ReactComponent as Star } from '../../images/star-icon.svg';
 import GoingToRead from '../GointToRead/GoingToRead';
 import { useSelector } from 'react-redux';
@@ -41,7 +42,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <Training /> {title}
+                <Book className={s.colorBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>
@@ -74,7 +75,7 @@ const Library = () => {
           {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
-                <Training className={s.orange} /> {title}
+                <BookOrange className={s.colorBook} /> {title}
               </td>
               <td>{author}</td>
               <td>{publishYear}</td>
