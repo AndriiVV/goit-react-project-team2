@@ -56,14 +56,3 @@
     border: none;
     background-color: #F6F7FB;
 }
-
-.trainingBtn {
-    display: block;
-    height: 40px;
-    width: 200px;
-    background-color: #FF6B08;
-    color: #ffffff;
-    border: none;
-    margin: 40px auto;
-
-}
