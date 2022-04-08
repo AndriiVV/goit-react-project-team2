@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { startTrainingApi, addNewBookApi } from '../../utils/bookReadApi';
+import { startTrainingApi } from '../../utils/bookReadApi';
 
 // export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
 //     try {
@@ -30,25 +30,12 @@ import { startTrainingApi, addNewBookApi } from '../../utils/bookReadApi';
 
 export const startTraining = createAsyncThunk(
   'training/planning',
-  async (_id, thunkApi) => {
+  async (books, thunkApi) => {
     try {
-      const id = startTrainingApi(_id);
-      return id;
+      const trainingData = startTrainingApi(books);
+      return trainingData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
-
-export const addBook = createAsyncThunk(
-  'book/add',
-  async ({ formBook, token }, thunkApi) => {
-    try {
-
-      const addedBook = addNewBookApi({ formBook, token });
-      return addedBook;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  });
-

@@ -35,6 +35,10 @@ background-color: #ffffff;
     line-height: 1.9;
 }
 
+.timerFlex {
+display: flex
+}
+
 .trainingChooseBook {
 display: flex;
 }
