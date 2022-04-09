@@ -1,6 +1,7 @@
-// import MotivationContent from 'components/MotivationContent/MotivationContent';
-import ResumeContent from 'components/ResumeContent/ResumeContent';
+import MotivationContent from 'components/MotivationContent/MotivationContent';
+// import ResumeContent from 'components/ResumeContent/ResumeContent';
 // import ExitModalContent from 'components/ExitModalContent/ExitModalContent';
+
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 // import { useLockBodyScroll } from 'react-use';
@@ -48,9 +49,9 @@ const Modal = ({ onClose, children }) => {
         <div className={styles.content}>
 
           {children}
-          <ResumeContent/>
+          {/* <ResumeContent/> */}
           {/* <ExitModalContent/> */}
-          {/* <MotivationContent/> */}
+          <MotivationContent/>
         </div>
       </div>
     </div>,
