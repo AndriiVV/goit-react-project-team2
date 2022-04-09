@@ -1,4 +1,5 @@
 .container {
+  cursor: pointer;
   -webkit-box-sizing: unset;
           box-sizing: unset;
   display: -webkit-box;
