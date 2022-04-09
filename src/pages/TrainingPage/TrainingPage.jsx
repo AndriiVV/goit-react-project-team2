@@ -32,7 +32,7 @@ const TrainingPage = () => {
   }, [newBooks]);
 
   useEffect(() => {
-    console.log(trainingList);
+    // console.log(trainingList);
     dispatch(getTraningData())
   }, [])
 
@@ -55,7 +55,11 @@ const TrainingPage = () => {
     const { value } = e.currentTarget;
     setСhooseBook(value);
   };
-
+  function daysLeft() {return Math.floor(
+    (( Date.parse(trainingList.endDate)-Date.parse(trainingList.startDate)) /
+      (1000 * 60 * 60 * 24)) %
+      30
+  ); }
   return (
     <Container>
       <div className={s.trainingPage}>
@@ -64,7 +68,10 @@ const TrainingPage = () => {
             <h2 className={s.trainingTitle}>Моє тренування</h2>
             {!isTraining && (
               <div className={s.timerFlex}>
-                <ALLdatePicker setTrainingList={setTrainingList} trainingList={trainingList} />
+                <ALLdatePicker
+                  setTrainingList={setTrainingList}
+                  trainingList={trainingList}
+                />
               </div>
             )}
             {isTraining && (
@@ -98,11 +105,7 @@ const TrainingPage = () => {
             <button
               type="button"
               className={s.startTrainingBtn}
-              onClick={() =>
-                dispatch(
-                  startTraining(trainingList)
-                )
-              }
+              onClick={() => dispatch(startTraining(trainingList))}
             >
               Почати тренування
             </button>
@@ -118,15 +121,34 @@ const TrainingPage = () => {
               </div>
               <div className={s.centredBox}>
                 <div className={s.goalBox}>
-                  <span className={s.value}>0</span>
+                  <span className={s.value}>
+                    {daysLeft()}
+                  </span>
                 </div>
                 <span className={s.textBox}>Кількість днів</span>
               </div>
             </div>
           </div>
         </div>
-        <div className={s.lineChart}>
-          <LineChart />
+        <div className={s.statisticsFlex}>
+          <LineChart className={s.lineChart} />
+          <div className={s.resultsBox}>
+            <h2 className={s.resultsTitle}>Результати</h2>
+            <div className={s.statisticsFlex}>
+              <label htmlFor="" className={s.textResults}>
+                Дата
+                <input type="date" className={s.input} />
+              </label>
+              <label htmlFor="" className={s.textResults}>
+                Кількість сторінок
+                <input type="text" className={s.input} />
+              </label>
+            </div>
+            <button type="button" className={s.resultBtn}>
+              Додати результат
+            </button>
+            <h2 className={s.resultsTitle}>Статистика</h2>
+          </div>
         </div>
       </div>
     </Container>
