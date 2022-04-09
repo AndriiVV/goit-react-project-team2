@@ -2,6 +2,7 @@
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from '../Datepicker/Datepicker';
 import s from './Alldatepicker.module.scss';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const Alldatepicker = ({ setTrainingList, trainingList}) => {
   //////////////datepickerfooUSetosendtoapi
@@ -17,7 +18,10 @@ const Alldatepicker = ({ setTrainingList, trainingList}) => {
     setTrainingList(prev => ({ ...prev, endDate }));
   };
   //////////////////endofdatepickerfoo
-  // console.log(trainingList.startDate);
+  // console.log(Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate));
+  Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate) > 0 &&
+    Notify.warning('Дата початку більше дати завершення!!!');
+  
   return (
     <>
       <div className={s.container}>
