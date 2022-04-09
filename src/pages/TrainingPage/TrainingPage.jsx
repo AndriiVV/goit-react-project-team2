@@ -25,41 +25,42 @@ const TrainingPage = () => {
     startDate: '',
     endDate: '',
     books: newBooks.map(({ _id }) => _id),
-  })
+  });
+
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
 
   useEffect(() => {
-    // console.log(trainingList);
-    dispatch(getTraningData())
-  }, [])
+    dispatch(getTraningData());
+  }, []);
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
     const findBook = books.find(book => book.title === value);
     setСhooseBook(findBook);
+    setInputValue(value);
   };
-
-  const addBookToTraining = () => {
-    if (chooseBook) {
-      setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
-    } else alert('Книга вже додана у список');
-  };
-
-  // додати фільтр
 
   const onSubmit = e => {
     e.preventDefault();
-    const { value } = e.currentTarget;
-    setСhooseBook(value);
+    if (newBooks.includes(chooseBook)) {
+      alert('Книга вже додана у список');
+    } else {
+      setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
+    }
+    setInputValue('');
   };
-  function daysLeft() {return Math.floor(
-    (( Date.parse(trainingList.endDate)-Date.parse(trainingList.startDate)) /
-      (1000 * 60 * 60 * 24)) %
-      30
-  ); }
+
+  function daysLeft() {
+    return Math.floor(
+      ((Date.parse(trainingList.endDate) - Date.parse(trainingList.startDate)) /
+        (1000 * 60 * 60 * 24)) %
+        30
+    );
+  }
   return (
     <Container>
       <div className={s.trainingPage}>
@@ -87,6 +88,7 @@ const TrainingPage = () => {
                 placeholder="Обрати книги з бібліотеки"
                 className={s.trainingInput}
                 onChange={handleInputChange}
+                value={inputValue}
               />
               <datalist id="books">
                 {books.map(book => (
@@ -96,7 +98,7 @@ const TrainingPage = () => {
               <button
                 type="submit"
                 className={s.trainingBtn}
-                onClick={() => addBookToTraining()}
+                // onClick={() => addBookToTraining()}
               >
                 Додати
               </button>
@@ -121,9 +123,7 @@ const TrainingPage = () => {
               </div>
               <div className={s.centredBox}>
                 <div className={s.goalBox}>
-                  <span className={s.value}>
-                    {daysLeft()}
-                  </span>
+                  <span className={s.value}>{daysLeft()}</span>
                 </div>
                 <span className={s.textBox}>Кількість днів</span>
               </div>
