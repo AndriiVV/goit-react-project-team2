@@ -1,7 +1,7 @@
 .trainingPage {
     background-color: #F6F7FB;
     padding-right: 25px;
-    padding-left: 30px;
+    padding-left: 25px;
     padding-top: 25px;
     padding-bottom: 40px;
 }
@@ -54,6 +54,16 @@
 
 @media screen and (min-width: 768px) {
     .mobileModalTraining {
+        display:flow-root;
+    }
+}
+
+.startTimer {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .startTimer {
         display:flow-root;
     }
 }

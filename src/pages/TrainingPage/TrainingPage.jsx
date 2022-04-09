@@ -66,6 +66,7 @@ const TrainingPage = () => {
   return (
     <Container>
       <div className={s.trainingPage}>
+        {isTraining && <Allimer />}
         <div className={s.trainingPageFlex}>
           <StartGoal
             daysLeft={daysLeft}
@@ -74,14 +75,17 @@ const TrainingPage = () => {
           />
           <div className={s.trainingContainer}>
             <div className={s.mobileModalTraining}>
-              <h2 className={s.trainingTitle}>Моє тренування</h2>
-              {!isTraining && (
-                <ALLdatePicker
-                  setTrainingList={setTrainingList}
-                  trainingList={trainingList}
-                />
-              )}
-              {isTraining && <Allimer />}
+              <div className={s.startTimer}>
+                {!isTraining && (
+                  <>
+                    <h2 className={s.trainingTitle}>Моє тренування</h2>
+                    <ALLdatePicker
+                      setTrainingList={setTrainingList}
+                      trainingList={trainingList}
+                    />
+                  </>
+                )}
+              </div>
 
               <TrainigForm
                 books={books}

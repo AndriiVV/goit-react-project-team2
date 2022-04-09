@@ -5,19 +5,33 @@
     background: #FFFFFF;
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
     border: none;
-    width: 290px;
+    width: 270px;
     height: 60px;
     font-size: 25px;
     font-weight: 700;
   
+  margin-bottom: 14px;
     margin-top: 10px ;
   }
   .cont{display: flex;
     justify-content: space-between;
     padding-left: 45px;
     padding-right: 45px;
-    padding-bottom: 4px;
-    padding-top: 1px;}
+    padding-top: 6px;
+  }
+
+    @media screen and (min-width: 768px) {
+      .label {
+    width: 290px;
+    height: 60px;
+      }
+  }
+  
+  // @media screen and (min-width: 1280px) {
+  //     .label {
+  
+  //     }
+  // }
  
   .item{    
     display: flex;
