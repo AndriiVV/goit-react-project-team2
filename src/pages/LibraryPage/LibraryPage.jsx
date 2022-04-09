@@ -27,8 +27,8 @@ const LibraryPage = () => {
     <Container>
       <div className={s.libraryPage}>
         <FormAddBook />
-        <GoingToRead />
-        <GoToReadMobile/>
+        {/* <GoingToRead /> */}
+        {/* <GoToReadMobile/> */}
         <NavLink to="/training">
           <button type="button" className={s.libraryBtn}>
             {t('GoToRead.button')}
