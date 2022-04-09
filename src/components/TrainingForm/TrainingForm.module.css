@@ -1,0 +1,45 @@
+@media screen and (min-width: 768px) {
+    .trainingForm {
+        display: flex;
+        }
+}
+
+.trainingInput {
+width: 270px;
+height: 42px;
+margin-bottom: 35px;
+border: none;
+box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+}
+
+@media screen and (min-width: 768px) {
+    .trainingInput {
+    width: 482px;
+    margin-bottom: 40px;
+        }
+}
+
+@media screen and (min-width: 1280px) {
+    .trainingInput {
+    width: 669px;
+    margin-bottom: 25px;
+        }
+}
+    
+.trainingInput::placeholder {
+    color: #A6ABB9;
+}
+
+.addBtn {
+    width: 171px;
+    height: 42px;
+    margin-left: 46px;
+    background: #F6F7FB;
+    color: #000000;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.7;
+    border: 1px solid #242A37;
+}
