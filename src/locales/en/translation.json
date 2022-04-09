@@ -1,6 +1,6 @@
 {
     "headerLogOut" : {
-        "logOut" : "Logout"
+        "logOut" : "Goout"
     },
     "signInForm":{
        "emailLabel" : "Email Address",
