@@ -1,42 +1,43 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useForm } from 'react-hook-form';
 import s from './FormAddBook.module.css'
 import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
 import { addBook } from 'redux/auth/authOperations';
+import { useTranslation } from 'react-i18next';
 
   const FormAddBook = () => {
-
+    const { t } = useTranslation();
     const dispatch = useDispatch();
 
     const titleValidation = {
-      required: 'Title is required',
+      required: t('validation.required'),
       minLength: {
         value: 2,
-        message: '* more than 1 letter',
+        message: t('validation.length'),
       },
     };
 
     const authorValidation = {
-      required: 'Author is required',
+      required: t('validation.required'),
       minLength: {
         value: 2,
-        message: '* more than 1 letter',
+        message: t('validation.length'),
       },
     };
 
     const yearValidation = {
-      required: 'Year is required',
+      required: t('validation.required'),
       pattern: {
-        value: /^[1-9][0-9]{3}$/,
-        message: '* 4 nums',
+        value: /^(17[0-9]\d|18\d\d|19\d\d|20[0-2]1|2000|2022)$/,
+        message: t('validation.year'),
       },
     };
 
     const totalPagesValidation = {
-      required: 'Total pages is required',
+      required: t('validation.required'),
       pattern: {
         value: /^(([1-4][0-9]{0,3})|([1-9][0-9]{0,2})|(5000))$/,
-        message: '* number - max is 5000',
+        message: t('validation.pages'),
       },
     };
 
@@ -48,10 +49,9 @@ import { addBook } from 'redux/auth/authOperations';
     } = useForm();
 
     const {errors} = formState;
-    // console.log('🍒 errors', errors);
-
+  
     const onSubmit = (book) => {
-      console.log('🍒 book', book);
+   
       dispatch(addBook(book))
 
       reset();
@@ -63,7 +63,7 @@ import { addBook } from 'redux/auth/authOperations';
 
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.firstBox}>
-            <label className={s.label}>Назва книги
+            <label className={s.label}>{t('addingBookForm.title')}
               <input
               className={`${s.input} ${s.title}`}
               type="text"
@@ -77,7 +77,7 @@ import { addBook } from 'redux/auth/authOperations';
 
           <div className={s.wrap}>
             <div>
-              <label className={s.label}>Автор книги
+              <label className={s.label}>{t('addingBookForm.author')}
                 <input className={`${s.input} ${s.author}`}
                   type="text"
                   name="author"
@@ -89,7 +89,7 @@ import { addBook } from 'redux/auth/authOperations';
             </div>
 
             <div>
-              <label className={s.label}>Рік випуску
+              <label className={s.label}>{t('addingBookForm.year')}
                 <input
                   className={`${s.input} ${s.publishYear}`}
                   type="text"
@@ -102,7 +102,7 @@ import { addBook } from 'redux/auth/authOperations';
             </div>
 
             <div>
-              <label className={s.label}>Кількість сторінок
+              <label className={s.label}>{t('addingBookForm.pages')}
                 <input
                   className={`${s.input} ${s.pagesTotal}`}
                   type="text"
@@ -115,89 +115,10 @@ import { addBook } from 'redux/auth/authOperations';
             </div>
           </div>
 
-          <button className={s.addBtn} type="submit">Додати</button>
+          <button className={s.addBtn} type="submit">{t('addingBookForm.button')}</button>
         </form>
       </>
     )
   }
 
   export default FormAddBook;
-
-// import ButtonAdd from "components/ButtonAdd/ButtonAdd";
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from "react-redux";
-// import { addBook } from "redux/training/trainingOperatons";
-// import { getToken } from "redux/auth/authSelectors";
-
-// const FormAddBook = () => {
-//   const [book, setFormBook] = useState({
-//       title: "",
-//       author: "",
-//       publishYear: "",
-//       pagesTotal: ""
-//     })
-
-//   const dispatch = useDispatch()
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     console.log("name: ", name, "value: ", value);
-//     setFormBook((prev) => ({ ...prev, [name]: value }))
-//   }
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault()
-//     console.log(book);
-//     dispatch(addBook(book))
-//     setFormBook({
-//       title: "",
-//       author: "",
-//       publishYear: "",
-//       pagesTotal: ""
-//     })
-//   }
-
-
-//   return (
-//     <form >
-//       <label>Назва книги
-//         <input
-//         name="title"
-//         value={book.title}
-//         type="text"
-//           onChange={handleChange}
-//         placeholder="..."
-//       /></label>
-//       <label>Автор книги
-//         <input
-//           type="text"
-//           name="author"
-//           value={book.author}
-//           onChange={handleChange}
-//           placeholder="..."
-//         />
-//       </label>
-//       <label>Рік випуску
-//         <input
-//           type="text"
-//           name="publishYear"
-//           value={book.year}
-//           onChange={handleChange}
-//           placeholder="..."
-//         />
-//       </label>
-//       <label>Кількість сторінок
-//         <input
-//           type="text"
-//           name="pagesTotal"
-//           value={book.pages}
-//           onChange={handleChange}
-//           placeholder="..."
-//         />
-//       </label>
-//       <ButtonAdd handleSubmit={handleSubmit}/>
-//     </form>
-//   );
-// }
-
-// export default FormAddBook;

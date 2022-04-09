@@ -6,20 +6,10 @@ import {
   getUserDataApi,
   addNewBookApi,
 } from '../../utils/bookReadApi';
+import { getTraningData } from '../training/trainingOperatons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// export const registerUser = createAsyncThunk(
-//   'auth/register',
-//   async (userData, thunkApi) => {
-//     try {
-//       const {data} = await registerUserApi(userData);
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error);
-//     }
-//   }
-// );
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
@@ -51,6 +41,15 @@ export const loginUser = createAsyncThunk(
   async (userData, thunkApi) => {
     try {
       const data = await loginUserApi(userData);
+      toast.success('Логiнiзація виконана успішно!', {
+        theme: 'colored',
+        closeOnClick: true,
+        pauseOnHover: true,
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        thunkApi.dispatch(getTraningData());
+      }, 0);
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {
@@ -86,16 +85,11 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const addBook = createAsyncThunk(
-  'book/add',
-  async (book, thunkApi) => {
-    try {
-      
-      const addedBook = await addNewBookApi(book);
-      return addedBook;
-
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  });
-
+export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
+  try {
+    const addedBook = await addNewBookApi(book);
+    return addedBook;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});

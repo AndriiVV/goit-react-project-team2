@@ -33,7 +33,7 @@ const SingInForm = () => {
     const {errors} = formState;
 
     const onSubmit = (data) => {
-      dispatch(loginUser( data));
+      dispatch(loginUser(data));
       reset();
     }
   
