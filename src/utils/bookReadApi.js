@@ -144,8 +144,9 @@ export const getUserDataApi = accessToken => {
   });
 };
 
-export const getTrainingDataApi = () => {
-  axios.get('/planning').then(({ data }) => {
+export const getTrainingDataApi = accessToken => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  return axios.get('/planning').then(({ data }) => {
     return {
       books: data.planning.books,
       startDate: data.planning.startDate,

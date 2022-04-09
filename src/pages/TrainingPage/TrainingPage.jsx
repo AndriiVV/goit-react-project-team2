@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Container from 'components/common/Container';
 import Allimer from '../../components/Alltimer/Alltimer';
 import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
-import Container from 'components/common/Container';
+import TrainigForm from '../../components/TrainingForm/TrainingForm';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
+import StartGoal from '../../components/MyGoal/StartGoal';
+// import ResultGoal from '../../components/MyGoal/ResultGoal';
+import LineChart from 'components/LineChart/LineChart';
+import Statistics from '../../components/Statistics/Statistics';
 import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
 import { getIsTraining, getIsTrainingGo } from '../../redux/training/trainingSelectors';
-import LineChart from 'components/LineChart/LineChart';
 // import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
-import TrainigForm from '../../components/TrainingForm/TrainingForm';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import Statistics from 'components/Statistics/Statistics';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -69,18 +71,12 @@ const TrainingPage = () => {
           <div className={s.trainingContainer}>
             <h2 className={s.trainingTitle}>Моє тренування</h2>
             {!isTraining && (
-              <div className={s.timerFlex}>
-                <ALLdatePicker
-                  setTrainingList={setTrainingList}
-                  trainingList={trainingList}
-                />
-              </div>
+              <ALLdatePicker
+                setTrainingList={setTrainingList}
+                trainingList={trainingList}
+              />
             )}
-            {isTraining && (
-              <div className={s.timerFlex}>
-                <Allimer />
-              </div>
-            )}
+            {isTraining && <Allimer />}
 
             <TrainigForm
               books={books}
@@ -102,30 +98,17 @@ const TrainingPage = () => {
               Почати тренування
             </button>
           </div>
-          <div className={s.trainingGoal}>
-            <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
-            <div className={s.boxFlex}>
-              <div className={s.centredBox}>
-                <div className={s.goalBox}>
-                  <span className={s.value}>{newBooks.length}</span>
-                </div>
-                <span className={s.textBox}> Кількість книжок</span>
-              </div>
-              <div className={s.centredBox}>
-                <div className={s.goalBox}>
-                  <span className={s.value}>
-                    {isNaN(daysLeft()) ? 0 : daysLeft()}
-                  </span>
-                </div>
-                <span className={s.textBox}>Кількість днів</span>
-              </div>
-            </div>
-          </div>
+          <StartGoal
+            daysLeft={daysLeft}
+            newBooks={newBooks}
+            className={s.startGoal}
+          />
+          {/* <ResultGoal /> */}
         </div>
 
         <div className={s.statisticsFlex}>
-          <Statistics/>
-          <LineChart className={s.lineChart} />
+          <LineChart />
+          <Statistics />
         </div>
       </div>
     </Container>

@@ -1,4 +1,4 @@
-import s from '../Library/Library.module.css';
+import s from './GoinToRead.module.css'
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { useSelector } from 'react-redux';
 import { getBooks } from '../../redux/auth/authSelectors';
@@ -17,7 +17,7 @@ const GoingToRead = () => {
           <th className={s.page}>Стор.</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className={s.wrapPage}>
         {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
           <tr key={_id} className={s.bookItem}>
             <td className={s.itemTitle}>

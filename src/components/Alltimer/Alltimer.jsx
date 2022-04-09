@@ -12,18 +12,16 @@ function Alltimer({ expiryTimestamp }) {
 
   //-------------------------------
   return (
-    <>
-      <div className={s.container}>
-        <span className={s.item_container}>
-          <span className={s.item_text}>До закінчення року залишилось</span>
-          <MyTimer className={s.item} expiryTimestamp={timeend} />
-        </span>
-        <span className={s.item_container}>
-          <span className={s.item_text}>До досягнення мети залишилось</span>
-          <MyTimer className={s.item} expiryTimestamp={time} />
-        </span>
-      </div>
-    </>
+    <div className={s.container}>
+      <span className={s.item_container}>
+        <span className={s.item_text}>До закінчення року залишилось</span>
+        <MyTimer className={s.item} expiryTimestamp={timeend} />
+      </span>
+      <span className={s.item_container}>
+        <span className={s.item_text}>До досягнення мети залишилось</span>
+        <MyTimer className={s.item} expiryTimestamp={time} />
+      </span>
+    </div>
   );
 }
 export default Alltimer;

@@ -1,8 +1,8 @@
 .header {
   background-color: #fff;
   height: 60px;
-  -webkit-box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-          box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   padding-left: 25px;
   padding-top: 16px;
   padding-bottom: 17px;
@@ -19,5 +19,20 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.secWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.lang:hover,
+:focus {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 /*# sourceMappingURL=AppBar.module.css.map */

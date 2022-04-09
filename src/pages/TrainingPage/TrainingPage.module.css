@@ -1,103 +1,57 @@
 .trainingPage {
     background-color: #F6F7FB;
-    padding-right: 39px;
-    padding-left: 39px;
-    padding-top: 50px;
-    padding-bottom: 36px;
+    padding-right: 25px;
+    padding-left: 30px;
+    padding-top: 25px;
+    padding-bottom: 40px;
 }
 
-.trainingPageFlex {
-    display: flex;
-    
+@media screen and (min-width: 768px) {
+    .trainingPage {
+        padding-right: 45px;
+        padding-left: 45px;
+        padding-top: 30px;
+        padding-bottom: 56px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .trainingPage {
+        padding-right: 39px;
+        padding-left: 39px;
+        padding-top: 50px;
+        padding-bottom: 36px;
+    }
+}
+
+    /* .trainingPageFlex {
+        outline: 1px solid red;
+        display: flex;
+        flex-direction: row-reverse
+    } */
+
+@media screen and (min-width: 1280px) {
+    .trainingPageFlex {
+        /* flex-direction: row; */
+        display: flex;
+    }
 }
 
 .trainingContainer {
-    width: 886px;
-    margin-right: 41px;
+    width: 270px;
 }
 
-.trainingGoal {
-width: 275px;
-height: 320px;
-background-color: #ffffff;
+@media screen and (min-width: 768px) {
+    .trainingContainer {
+        width: 678px;
+    }
 }
 
-.goalBox {
-    height: 100px;
-    width: 100px;
-    background: #F5F7FA;
-    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-    margin-bottom: 14px;
-    padding-top: 31px;
-
-}
-
-.boxFlex {
-    display: flex;
-    padding: 55px 27px;
-}
-
-.centredBox {
-    text-align: center;
-}
-
-.goalBox:last-child {
-margin-left: 20px;
-}
-
-.textBox {
-    font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-text-align: center;
-color: #898F9F;
-}
-
-.value {
-    color: #091E3F;
-    font-family: 'Open Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 45px;
-line-height: 0.84;
-}
-
-.statisticsFlex {
-    display: flex;
-}
-
-.resultsBox {
-    width: 275px;
-    background-color: #ffffff;
-    margin-left: 41px;
-}
-
-.input {
-    width: 114px;
-    height: 42px;
-}
-
-.resultsTitle {
-text-transform: uppercase;
-text-align: center;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 3.17;
-}
-
-.textResults {
-    font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 17px;
-color: #898F9F;
-
-margin-left: 16px;
+@media screen and (min-width: 1280px) {
+    .trainingContainer {
+        width: 886px;
+        margin-right: 41px;
+    }
 }
 
 .trainingTitle {
@@ -114,62 +68,34 @@ margin-left: 16px;
     line-height: 1.9;
 }
 
-.timerFlex {
-display: flex
-}
-
-.trainingChooseBook {
-display: flex;
-}
-
-.trainingInput {
-    width: 669px;
-    height: 42px;
-    margin-bottom: 25px;
-    border: none;
-    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
-    padding-left: 13px;
-}
-
-.trainingInput::placeholder {
-    color: #A6ABB9;
-}
-
-.trainingBtn {
-    width: 171px;
-    height: 42px;
-    margin-left: 46px;
-    background: #F6F7FB;
-    color: #000000;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.7;
-    border: 1px solid #242A37;
-}
-
 .startTrainingBtn {
     display: block;
-    height: 40px;
-    width: 200px;
+    height: 42px;
+    width: 171px;
     background-color: #FF6B08;
     color: #ffffff;
     border: none;
     margin: 40px auto;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
 
 }
 
-.resultBtn {
-    display: block;
-    height: 40px;
-    width: 240px;
-    background-color: #FF6B08;
-    color: #ffffff;
-    border: none;
-    margin: 20px auto 25px auto;
+@media screen and (min-width: 768px) {
+    .startTrainingBtn {
+        height: 40px;
+        width: 200px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 2.38;
+    }
 }
 
-.lineChart {
-    height: 340px;
+@media screen and (min-width: 1280px) {
+    .statisticsFlex {
+        display: flex;
+    }
 }
