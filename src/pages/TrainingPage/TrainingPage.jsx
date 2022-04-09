@@ -32,6 +32,8 @@ const TrainingPage = () => {
   const addNewBook = chooseBook => {
     if (inputValue === '') {
       Notify.warning('Оберіть книгу');
+    } else if (!inputValue === '') {
+      return;
     }
 
     if (newBooks.includes(chooseBook)) {

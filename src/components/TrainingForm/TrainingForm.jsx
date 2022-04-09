@@ -9,9 +9,6 @@ const TrainigForm = ({
   addNewBook,
 }) => {
   const [chooseBook, setСhooseBook] = useState({});
-  //   const [newBooks, setNewBooks] = useState(
-  //     () => JSON.parse(localStorage.getItem('newBooks')) || []
-  //   );
 
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
