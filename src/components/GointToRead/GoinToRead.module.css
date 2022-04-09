@@ -1,0 +1,78 @@
+.table {
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: #898F9F;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    margin-top: 30px;
+    border-spacing: 0;
+    border-collapse: collapse;   
+}
+
+.tableCaption {
+font-style: normal;
+font-weight: 600;
+font-size: 19px;
+line-height: 2;
+color: #242A37;
+text-align: left;
+}
+
+.tableHeader {
+    text-align: left;
+}
+
+.title {
+    width: 626px;
+}
+
+.author {
+    width: 356px;
+}
+
+.year {
+    width: 96px;
+}
+
+.page {
+    width: 149px;  
+}
+
+
+
+.wrapPage{
+    background: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.bookItem {
+    border: none;
+    border-bottom: 15px solid #f6f7fb;
+    height: 62px;
+    color: #242A37;   
+}
+
+.itemTitle {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 27px;
+}
+
+.marginBook {
+     margin-right: 18px;
+}
+
+@media screen and (min-width: 1280px) {
+    .page {
+        width: 119px;  
+        
+    }
+    .year {
+        width: 126px;
+    }
+
+}
