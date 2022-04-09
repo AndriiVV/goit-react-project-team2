@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk(
         autoClose: 3000,
       });
       setTimeout(() => {
-        thunkApi.dispatch(getTraningData());
+        thunkApi.dispatch(getTraningData(data.accessToken));
       }, 0);
       return data;
     } catch (error) {
