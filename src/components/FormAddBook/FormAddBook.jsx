@@ -9,7 +9,7 @@ import { addBook } from 'redux/auth/authOperations';
     const dispatch = useDispatch();
 
     const titleValidation = {
-      required: 'Title is required',
+      required: 'required',
       minLength: {
         value: 2,
         message: '* more than 1 letter',
@@ -17,7 +17,7 @@ import { addBook } from 'redux/auth/authOperations';
     };
 
     const authorValidation = {
-      required: 'Author is required',
+      required: 'required',
       minLength: {
         value: 2,
         message: '* more than 1 letter',
@@ -25,18 +25,18 @@ import { addBook } from 'redux/auth/authOperations';
     };
 
     const yearValidation = {
-      required: 'Year is required',
+      required: 'required',
       pattern: {
-        value: /^[1-9][0-9]{3}$/,
-        message: '* 4 nums',
+        value: /^(17[0-9]\d|18\d\d|19\d\d|20[0-2]1|2000|2022)$/,
+        message: '* max year - current',
       },
     };
 
     const totalPagesValidation = {
-      required: 'Total pages is required',
+      required: 'required',
       pattern: {
         value: /^(([1-4][0-9]{0,3})|([1-9][0-9]{0,2})|(5000))$/,
-        message: '* number - max is 5000',
+        message: '* max number - 5000',
       },
     };
 
