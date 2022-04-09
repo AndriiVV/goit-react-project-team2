@@ -11,6 +11,7 @@ import LineChart from 'components/LineChart/LineChart';
 import { useEffect } from 'react';
 import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -47,10 +48,13 @@ const TrainingPage = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (newBooks.includes(chooseBook)) {
-      alert('Книга вже додана у список');
+      Notify.warning('Книга вже додана у список');
+    } else if (inputValue === '') {
+      Notify.warning('Оберіть книгу');
     } else {
       setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
     }
+
     setInputValue('');
   };
 
