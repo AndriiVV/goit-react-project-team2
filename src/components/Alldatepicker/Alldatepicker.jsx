@@ -24,11 +24,14 @@ const Alldatepicker = ({ setTrainingList, trainingList }) => {
 
   return (
     <div className={s.timerFlex}>
-      <DatePicker
-        placeholder="Початок"
-        setDate={setStartDate}
-        isDate={!!trainingList.startDate}
-      />
+      <div>
+        <DatePicker
+          placeholder="Початок"
+          setDate={setStartDate}
+          isDate={!!trainingList.startDate}
+          className={s.timerInput}
+        />
+      </div>
       <div className={s.timerInput}>
         <DatePicker
           placeholder="Завершення"
