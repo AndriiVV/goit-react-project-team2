@@ -24,13 +24,6 @@ const TrainigForm = ({
   const onSubmit = e => {
     e.preventDefault();
     addNewBook(chooseBook);
-    // if (newBooks.includes(chooseBook)) {
-    //   Notify.warning('Книга вже додана у список');
-    // } else {
-    //   setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
-    // }
-    // dispatch(startTraining(trainingList));
-
     setInputValue('');
   };
 
@@ -51,11 +44,7 @@ const TrainigForm = ({
             <option value={book.title} key={book._id} />
           ))}
         </datalist>
-        <button
-          type="submit"
-          className={s.trainingBtn}
-          // onClick={() => addBookToTraining()}
-        >
+        <button type="submit" className={s.trainingBtn}>
           Додати
         </button>
       </form>
