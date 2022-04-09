@@ -122,7 +122,7 @@ const TrainingPage = () => {
               <div className={s.centredBox}>
                 <div className={s.goalBox}>
                   <span className={s.value}>
-                    {daysLeft()}
+                    {isNaN(daysLeft()) ? 0 : daysLeft()}
                   </span>
                 </div>
                 <span className={s.textBox}>Кількість днів</span>
