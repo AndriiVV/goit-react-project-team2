@@ -1,64 +1,163 @@
 
 .trainingGoal {
     width: 270px;
-    height: 340px;
+    height: 318px;
     background-color: #ffffff;
-    }
+    margin-bottom: 30px;}
 
 @media screen and (min-width: 768px) {
     .trainingGoal {
         width: 678px;
-        height: 306px;
+        height: 105px;
+        display: flex;
+        margin-right: 0;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .trainingGoal {
+        display:flow-root;
         width: 275px;
         height: 340px;
     }
 }
+
+.goalTitle {
+    padding-top: 11px;
+    height: 60px;
+    color: #ffffff;
+    background: #B1B5C2;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+}
+
+@media screen and (min-width: 768px) {
+    .goalTitle {
+        margin-top: 23px;
+        margin-left: 45px;
+        padding: 11px 27px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .goalTitle {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+.boxFlex {
+    display: flex;
+    padding: 55px 25px;
+}
+
+@media screen and (min-width: 768px) {
+    .boxFlex {
+        display: flex;
+        padding: 20px 0;
+        margin-left: 78px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .boxFlex {
+        display: flex;
+        padding: 55px 27px;
+        margin-left: 0;
+    }
+}
+
+.centredContant {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .centredContant:last-child {
+        margin-left: 35px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .centredContant:last-child {
+        margin-left: 0;
+    }
+}
         
-        .goalBox {
-            height: 100px;
-            width: 100px;
-            background: #F5F7FA;
-            box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-            margin-bottom: 14px;
-            padding-top: 31px;
-        
+.goalBox {
+    height: 100px;
+    width: 100px;
+    background: #F5F7FA;
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+    margin-bottom: 14px;
+    padding-top: 31px;
+
+}
+
+@media screen and (min-width: 768px) {
+    .goalBox {
+        height: 60px;
+        width: 100px;
+        margin-bottom: 4px;
+        padding-top: 11px;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    .goalBox {
+        height: 100px;
+        width: 100px;
+        margin-bottom: 14px;
+        padding-top: 31px;
+    }
+} 
+
+.value {
+    color: #091E3F;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 0.84;
+}
+
+@media screen and (min-width: 768px) {
+    .value {
+        font-size: 40px;
+        line-height: 0.95;
         }
-        
-        .boxFlex {
-            display: flex;
-            padding: 55px 27px;
-        }
-        
-        .centredBox {
-            text-align: center;
-        }
-        
-        .goalBox:last-child {
-        margin-left: 20px;
-        }
-        
-        .textBox {
-            font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
-        color: #898F9F;
-        }
-        
-        .value {
-            color: #091E3F;
-            font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 700;
+}
+
+@media screen and (min-width: 1280px) {
+    .value {
         font-size: 45px;
         line-height: 0.84;
         }
+} 
         
-        
+.textBox {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    color: #898F9F;
+}
+
+@media screen and (min-width: 768px) {
+    .textBox {
+        font-size: 11px;
+        line-height: 1.18;
+        }
+}
+
+@media screen and (min-width: 1280px) {
+    .textBox {
+        font-size: 14px;
+        line-height: 1.21;
+        }
+} 

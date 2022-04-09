@@ -24,16 +24,10 @@
     }
 }
 
-    /* .trainingPageFlex {
-        outline: 1px solid red;
-        display: flex;
-        flex-direction: row-reverse
-    } */
-
 @media screen and (min-width: 1280px) {
     .trainingPageFlex {
-        /* flex-direction: row; */
         display: flex;
+        flex-direction: row-reverse
     }
 }
 
@@ -51,6 +45,16 @@
     .trainingContainer {
         width: 886px;
         margin-right: 41px;
+    }
+}
+
+.mobileModalTraining {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .mobileModalTraining {
+        display:flow-root;
     }
 }
 
