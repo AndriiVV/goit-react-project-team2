@@ -49,8 +49,8 @@ export const getTraningData = createAsyncThunk(
   'training/data',
   async (_, thunkApi) => {
     try {
-      const traningData = getTrainingDataApi()
-      return traningData
+      const traningData = getTrainingDataApi();
+      return traningData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
