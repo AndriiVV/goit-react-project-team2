@@ -107,7 +107,10 @@ const TrainingPage = () => {
             <button
               type="button"
               className={s.startTrainingBtn}
-              onClick={() => dispatch(startTraining(trainingList))}
+              onClick={() => {
+                console.log(trainingList);
+                dispatch(startTraining(trainingList));
+              }}
             >
               Почати тренування
             </button>
