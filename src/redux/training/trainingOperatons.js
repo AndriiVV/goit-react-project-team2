@@ -1,10 +1,5 @@
-import {
-  createAsyncThunk
-} from '@reduxjs/toolkit';
-import {
-  getTrainingDataApi,
-  startTrainingApi
-} from '../../utils/bookReadApi';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getTrainingDataApi, startTrainingApi } from '../../utils/bookReadApi';
 
 // export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
 //     try {
@@ -47,14 +42,12 @@ export const startTraining = createAsyncThunk(
 
 export const getTraningData = createAsyncThunk(
   'training/data',
-  async (_, thunkApi) => {
+  async (accessToken, thunkApi) => {
     try {
-      const traningData = getTrainingDataApi()
-      return traningData
+      const traningData = getTrainingDataApi(accessToken);
+      return traningData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
-)
-
-
+);

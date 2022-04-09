@@ -28,32 +28,32 @@ export const loginUserApi = userData => {
   });
 };
 
-export const refreshTokenApi = (sid, refreshToken) => {
-  return axios
-    .post('/auth/refresh', {
-      sid,
-    })
-    .then(({ data }) => {
-      axios.defaults.headers.common.Authorization = `Bearer ${data.newAccessToken}`;
-      return {
-        accessToken: data.newAccessToken,
-        refreshToken: data.newRefreshToken,
-        sid: data.newSid,
-      };
-    });
-};
+// export const refreshTokenApi = (sid, refreshToken) => {
+//   return axios
+//     .post('/auth/refresh', {
+//       sid,
+//     })
+//     .then(({ data }) => {
+//       axios.defaults.headers.common.Authorization = `Bearer ${data.newAccessToken}`;
+//       return {
+//         accessToken: data.newAccessToken,
+//         refreshToken: data.newRefreshToken,
+//         sid: data.newSid,
+//       };
+//     });
+// };
 
-export const addNewBookApi = (book) => {
+export const addNewBookApi = book => {
   return axios.post('/book', book).then(({ data }) => {
     console.log(data.newBook);
     return {
       title: data.newBook.title,
-        author: data.newBook.author,
-        publishYear: data.newBook.publishYear,
-        totalPages: data.newBook.totalPages,
-        pagesFinished: data.newBook.pagesFinished, // or 0 as initial value for a new book in the library
-        _id: data.newBook._id,
-    }
+      author: data.newBook.author,
+      publishYear: data.newBook.publishYear,
+      totalPages: data.newBook.totalPages,
+      pagesFinished: data.newBook.pagesFinished, // or 0 as initial value for a new book in the library
+      _id: data.newBook._id,
+    };
   });
 };
 
@@ -112,8 +112,8 @@ export const startTrainingApi = trainingData => {
         duration: data.duration,
         pagesPerDay: data.pagesPerDay,
         stats: data.stats,
-        _id: data._id
-      }
+        _id: data._id,
+      };
     })
     .catch(err => err);
 };
@@ -144,16 +144,16 @@ export const getUserDataApi = accessToken => {
   });
 };
 
-export const getTrainingDataApi = () => {
-  axios.get("/planning")
-    .then(({ data }) => {
-      return {
-        books: data.planning.books,
-        startDate: data.planning.startDate,
-        endDate: data.planning.endDate,
-        duration: data.planning.duration,
-        pagesPerDay: data.planning.pagesPerDay,
-        stats: data.planning.stats,
-    }
-  })
-}
+export const getTrainingDataApi = accessToken => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  return axios.get('/planning').then(({ data }) => {
+    return {
+      books: data.planning.books,
+      startDate: data.planning.startDate,
+      endDate: data.planning.endDate,
+      duration: data.planning.duration,
+      pagesPerDay: data.planning.pagesPerDay,
+      stats: data.planning.stats,
+    };
+  });
+};
