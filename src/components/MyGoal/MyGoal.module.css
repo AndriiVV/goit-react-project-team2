@@ -1,9 +1,23 @@
 
+.trainingGoal {
+    width: 270px;
+    height: 340px;
+    background-color: #ffffff;
+    }
+
+@media screen and (min-width: 768px) {
+    .trainingGoal {
+        width: 678px;
+        height: 306px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
     .trainingGoal {
         width: 275px;
-        height: 320px;
-        background-color: #ffffff;
-        }
+        height: 340px;
+    }
+}
         
         .goalBox {
             height: 100px;

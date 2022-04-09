@@ -1,10 +1,28 @@
-.container{
-    display: flex;
-    margin: 25px auto;
-    justify-content: space-evenly;
+.timerFlex{
+    margin: 20px auto;
+    justify-content: center;
     align-items: center;
 }
 
-.item_container {
-    margin-right: 45px;
+@media screen and (min-width: 768px) {
+    .timerFlex {
+        margin: 30px auto 25px auto;
+    display: flex;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .timerFlex {
+        margin: 25px auto;
+    }
+}
+
+.timerInput:last-child {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .timerInput:last-child {
+        margin-top: 0;
+    }
 }

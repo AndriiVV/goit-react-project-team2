@@ -17,27 +17,27 @@ const DatepickerComponent = ({ setDate, placeholder, isDate }) => {
     );
   });
   function addZero(timeFrame) {
-    return (
-      timeFrame >= 10 ? timeFrame : '0' + timeFrame
-    );
+    return timeFrame >= 10 ? timeFrame : '0' + timeFrame;
   }
   function formatDate(date) {
     return (
-      addZero(date.getFullYear()) + '-' + addZero((date.getMonth() + 1)) + '-' + addZero(date.getDate())
+      addZero(date.getFullYear()) +
+      '-' +
+      addZero(date.getMonth() + 1) +
+      '-' +
+      addZero(date.getDate())
     );
   }
   return (
-    <>
-      <DatePicker
-        selected={startDate}
-        onChange={date => {
-          setStartDate(date);
-          setDate(formatDate(date));
-          console.log('date', formatDate(date));
-        }}
-        customInput={<ExampleCustomInput />}
-      />
-    </>
+    <DatePicker
+      selected={startDate}
+      onChange={date => {
+        setStartDate(date);
+        setDate(formatDate(date));
+        console.log('date', formatDate(date));
+      }}
+      customInput={<ExampleCustomInput />}
+    />
   );
 };
 export default DatepickerComponent;

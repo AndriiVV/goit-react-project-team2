@@ -4,7 +4,7 @@ import DatePicker from '../Datepicker/Datepicker';
 import s from './Alldatepicker.module.scss';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const Alldatepicker = ({ setTrainingList, trainingList}) => {
+const Alldatepicker = ({ setTrainingList, trainingList }) => {
   //////////////datepickerfooUSetosendtoapi
   // const [trainingData, setTrainingData] = useState({
   //   startDate: '',
@@ -21,20 +21,22 @@ const Alldatepicker = ({ setTrainingList, trainingList}) => {
   // console.log(Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate));
   Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate) > 0 &&
     Notify.warning('Дата початку більше дати завершення!!!');
-  
+
   return (
-    <>
-      <div className={s.container}>
-        <span className={s.item_container}>
-
-          <DatePicker placeholder="Початок" setDate={setStartDate} isDate={(!!trainingList.startDate)} />
-        </span>
-        <span className={s.item_container}>
-          <DatePicker placeholder="Завершення" setDate={setEndDate} isDate={(!!trainingList.endDate)}/>
-
-        </span>
+    <div className={s.timerFlex}>
+      <DatePicker
+        placeholder="Початок"
+        setDate={setStartDate}
+        isDate={!!trainingList.startDate}
+      />
+      <div className={s.timerInput}>
+        <DatePicker
+          placeholder="Завершення"
+          setDate={setEndDate}
+          isDate={!!trainingList.endDate}
+        />
       </div>
-    </>
+    </div>
   );
 };
 export default Alldatepicker;
