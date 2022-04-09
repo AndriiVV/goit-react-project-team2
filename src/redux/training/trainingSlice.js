@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { startTraining } from './trainingOperatons';
+import { getTraningData, startTraining } from './trainingOperatons';
 
 const initialState = {
   book: {
@@ -20,7 +20,8 @@ const initialState = {
         date: null,
         pagesCount: null
     },
-    _id: null
+  _id: null,
+    error: null,
 }
 
 const trainingReducer = createSlice({
@@ -53,7 +54,15 @@ const trainingReducer = createSlice({
             state.pagesPerDay = payload.pagesPerDay;
             state.stats = payload.stats;
             state._id = payload._id
-        },
+      },
+      [getTraningData.pending](state) {
+        state.error = null;
+      },
+      [getTraningData.fulfilled](state, {
+        payload
+      }) {
+        console.log(payload);
+      }
     },
 });
 
