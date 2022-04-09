@@ -23,7 +23,12 @@
         "nameMaxLenght" : "Field should have less than 15 letter",
 
         "confirmPassword" : "Confirm password is required",
-        "matchPassword" : "Passwords must match"
+        "matchPassword" : "Passwords must match",
+
+        "required" : "required",
+        "length" : "* more than 1 letter",
+        "year" : "* max year - current",
+        "pages" : "* max number - 5000"
     },
     "backMsgLogUp":{
         "success" : "Registration was successful !",
@@ -50,6 +55,12 @@
         "interlocutor" : "Become an interesting interlocutor",
 
         "signUp" : "Registr" 
+    },
+    "addingBookForm" : {
+        "title" : "Book title",    
+        "author" : "Author of the book",    
+        "year" : "Publish year",    
+        "pages" : "Total pages",    
+        "button" : "Add Book"       
     }
-    
 }
