@@ -51,6 +51,12 @@ export const loginUser = createAsyncThunk(
   async (userData, thunkApi) => {
     try {
       const data = await loginUserApi(userData);
+      toast.success('Логiнiзація виконана успішно!', {
+        theme: 'colored',
+        closeOnClick: true,
+        pauseOnHover: true,
+        autoClose: 3000,
+      });
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {

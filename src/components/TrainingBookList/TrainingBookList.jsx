@@ -37,26 +37,28 @@ const TrainingBookList = ({ newBooks }) => {
         </thead>
 
         <tbody>
-          {newBooks.map(({ _id, title, author, publishYear, pagesTotal }) => (
-            <tr key={_id}>
-              <td className={s.flexCenter}>
-                <Training className={s.marginBook} width="22" height="17" />
-                {title}
-              </td>
-              <td>{author}</td>
-              <td>{publishYear}</td>
-              <td>{pagesTotal}</td>
-              <td className={`${s.iconDelete} ${s.book}`}>
-                <button
-                  type="button"
-                  // onClick={() => deleteTrainingBook(name)}
-                  className={s.deleteBtn}
-                >
-                  <Delete width="14" height="18" />
-                </button>
-              </td>
-            </tr>
-          ))}
+          {newBooks.map(
+            ({ _id, title, author, publishYear, pagesTotal }, index) => (
+              <tr key={_id + index}>
+                <td className={s.flexCenter}>
+                  <Training className={s.marginBook} width="22" height="17" />
+                  {title}
+                </td>
+                <td>{author}</td>
+                <td>{publishYear}</td>
+                <td>{pagesTotal}</td>
+                <td className={`${s.iconDelete} ${s.book}`}>
+                  <button
+                    type="button"
+                    // onClick={() => deleteTrainingBook(name)}
+                    className={s.deleteBtn}
+                  >
+                    <Delete width="14" height="18" />
+                  </button>
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
     </div>
