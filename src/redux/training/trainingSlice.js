@@ -21,7 +21,8 @@ const initialState = {
         pagesCount: null
     },
   _id: null,
-    error: null,
+  error: null,
+    isTrainingGo: false,
 }
 
 const trainingReducer = createSlice({
@@ -61,6 +62,7 @@ const trainingReducer = createSlice({
       [getTraningData.fulfilled](state, {
         payload
       }) {
+        state.isTrainingGo = true;
         console.log(payload);
       }
     },

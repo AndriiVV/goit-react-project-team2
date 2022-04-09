@@ -6,17 +6,19 @@ import Container from 'components/common/Container';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
-import { getIsTraining } from '../../redux/training/trainingSelectors';
+import { getIsTraining, getIsTrainingGo } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
 import { useEffect } from 'react';
 import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Statistics from 'components/Statistics/Statistics';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
   const books = useSelector(getBooks);
   const isTraining = useSelector(getIsTraining);
+  const isTrainingGo = useSelector(getIsTrainingGo)
 
   const [newBooks, setNewBooks] = useState(
     () => JSON.parse(localStorage.getItem('newBooks')) || []
@@ -41,7 +43,10 @@ const TrainingPage = () => {
   const handleInputChange = e => {
     const { value } = e.currentTarget;
     const findBook = books.find(book => book.title === value);
+    console.log("findBook", findBook);
+    console.log(books);
     setСhooseBook(findBook);
+    console.log(chooseBook);
     setInputValue(value);
   };
 
@@ -52,6 +57,7 @@ const TrainingPage = () => {
     } else if (inputValue === '') {
       Notify.warning('Оберіть книгу');
     } else {
+      console.log("newBooks", newBooks);
       setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
     }
 
@@ -112,7 +118,7 @@ const TrainingPage = () => {
               type="button"
               className={s.startTrainingBtn}
               onClick={() => {
-                console.log(trainingList);
+                console.log("trainingList", trainingList);
                 dispatch(startTraining(trainingList));
               }}
             >
@@ -137,10 +143,13 @@ const TrainingPage = () => {
             </div>
           </div>
         </div>
+
         <div className={s.statisticsFlex}>
+          <Statistics/>
           <LineChart className={s.lineChart} />
-          
+
         </div>
+
       </div>
     </Container>
   );
