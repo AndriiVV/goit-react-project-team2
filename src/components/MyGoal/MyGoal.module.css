@@ -1,64 +1,98 @@
-
 .trainingGoal {
     width: 270px;
-    height: 340px;
-    background-color: #ffffff;
-    }
+    height: 318px;
+    background: #B1B5C2;
+
+}
+
+.trainingTitle {
+    display: block;
+    padding-top: 11px;
+    margin-top: 0;
+    height: 60px;
+    color: #ffffff;
+    background: #B1B5C2;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+}
+
+.boxFlex {
+    display: flex;
+    padding: 55px 27px;
+    background: #ffffff;
+    height: 258px;
+
+}
 
 @media screen and (min-width: 768px) {
     .trainingGoal {
         width: 678px;
         height: 306px;
     }
+
+    .boxFlex {
+        display: flex;
+        padding: 55px 27px;
+        background: #ffffff;
+        height: 258px;
+        /* tablet */
+
+    }
 }
 
 @media screen and (min-width: 1280px) {
     .trainingGoal {
         width: 275px;
-        height: 340px;
+        height: 318px;
+    }
+
+    .boxFlex {
+        display: flex;
+        padding: 55px 27px;
+        background: #ffffff;
+        height: 258px;
+
     }
 }
-        
-        .goalBox {
-            height: 100px;
-            width: 100px;
-            background: #F5F7FA;
-            box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-            margin-bottom: 14px;
-            padding-top: 31px;
-        
-        }
-        
-        .boxFlex {
-            display: flex;
-            padding: 55px 27px;
-        }
-        
-        .centredBox {
-            text-align: center;
-        }
-        
-        .goalBox:last-child {
-        margin-left: 20px;
-        }
-        
-        .textBox {
-            font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
-        color: #898F9F;
-        }
-        
-        .value {
-            color: #091E3F;
-            font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 45px;
-        line-height: 0.84;
-        }
-        
-        
+
+.goalBox {
+    height: 100px;
+    width: 100px;
+    background: #F5F7FA;
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+    margin-bottom: 14px;
+    padding-top: 31px;
+
+}
+
+
+
+.centredBox {
+    text-align: center;
+}
+
+.goalBox:last-child {
+    margin-left: 20px;
+}
+
+.textBox {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #898F9F;
+}
+
+.value {
+    color: #091E3F;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 0.84;
+}

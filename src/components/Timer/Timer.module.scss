@@ -5,7 +5,7 @@
     background: #FFFFFF;
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
     border: none;
-    width: 290px;
+    width: 270px;
     height: 60px;
     font-size: 25px;
     font-weight: 700;
@@ -17,7 +17,7 @@
     padding-left: 45px;
     padding-right: 45px;
     padding-bottom: 4px;
-    padding-top: 1px;}
+    padding-top: 3px;}
  
   .item{    
     display: flex;
@@ -45,3 +45,21 @@ margin: 0;
 
 
   }
+
+@media screen and (min-width: 768px) {
+    .label {
+          width: 290px;
+    height: 60px;
+    // color:  #f6ee0a;
+  }
+    
+}
+
+@media screen and (min-width: 1280px) {
+    .label {
+        width: 290px;
+    height: 60px;
+//  color:  #0163ff;
+    }
+}
+  
