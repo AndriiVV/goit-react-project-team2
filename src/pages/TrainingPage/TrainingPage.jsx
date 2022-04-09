@@ -8,9 +8,9 @@ import s from './TrainingPage.module.css';
 import { getBooks } from '../../redux/auth/authSelectors';
 import { getIsTraining, getIsTrainingGo } from '../../redux/training/trainingSelectors';
 import LineChart from 'components/LineChart/LineChart';
-import { useEffect } from 'react';
-import { getTraningData } from 'redux/training/trainingOperatons';
+// import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
+import TrainigForm from '../../components/TrainingForm/TrainingForm';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Statistics from 'components/Statistics/Statistics';
 
@@ -20,48 +20,39 @@ const TrainingPage = () => {
   const isTraining = useSelector(getIsTraining);
   const isTrainingGo = useSelector(getIsTrainingGo)
 
+  const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
     () => JSON.parse(localStorage.getItem('newBooks')) || []
   );
-  const [chooseBook, setСhooseBook] = useState({});
+
   const [trainingList, setTrainingList] = useState({
     startDate: '',
     endDate: '',
     books: newBooks.map(({ _id }) => _id),
   });
 
-  const [inputValue, setInputValue] = useState('');
+  const addNewBook = chooseBook => {
+    if (inputValue === '') {
+      Notify.warning('Оберіть книгу');
+    } else if (!inputValue === '') {
+      return;
+    }
 
-  useEffect(() => {
-    localStorage.setItem('newBooks', JSON.stringify(newBooks));
-  }, [newBooks]);
-
-  useEffect(() => {
-    dispatch(getTraningData());
-  }, []);
-
-  const handleInputChange = e => {
-    const { value } = e.currentTarget;
-    const findBook = books.find(book => book.title === value);
-    console.log("findBook", findBook);
-    console.log(books);
-    setСhooseBook(findBook);
-    console.log(chooseBook);
-    setInputValue(value);
-  };
-
-  const onSubmit = e => {
-    e.preventDefault();
     if (newBooks.includes(chooseBook)) {
       Notify.warning('Книга вже додана у список');
     } else if (inputValue === '') {
-      Notify.warning('Оберіть книгу');
-    } else {
-      console.log("newBooks", newBooks);
-      setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
-    }
+      return;
+    } else setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
 
-    setInputValue('');
+    setTrainingList(prevTrainingList => ({
+      ...prevTrainingList,
+      books: [...prevTrainingList.books, chooseBook._id],
+    }));
+  };
+
+  const onSubmit = e => {
+    dispatch(startTraining(trainingList));
+    // dispatch(getTraningData());
   };
 
   function daysLeft() {
@@ -90,36 +81,22 @@ const TrainingPage = () => {
                 <Allimer />
               </div>
             )}
-            <form className={s.trainingChooseBook} onSubmit={onSubmit}>
-              <input
-                type="text"
-                name="book"
-                list="books"
-                placeholder="Обрати книги з бібліотеки"
-                className={s.trainingInput}
-                onChange={handleInputChange}
-                value={inputValue}
-              />
-              <datalist id="books">
-                {books.map(book => (
-                  <option value={book.title} key={book._id} />
-                ))}
-              </datalist>
-              <button
-                type="submit"
-                className={s.trainingBtn}
-                // onClick={() => addBookToTraining()}
-              >
-                Додати
-              </button>
-            </form>
+
+            <TrainigForm
+              books={books}
+              newBooks={newBooks}
+              setNewBooks={setNewBooks}
+              addNewBook={addNewBook}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+            />
+
             <TrainingBookList newBooks={newBooks} />
             <button
               type="button"
               className={s.startTrainingBtn}
               onClick={() => {
-                console.log("trainingList", trainingList);
-                dispatch(startTraining(trainingList));
+                onSubmit();
               }}
             >
               Почати тренування
@@ -136,11 +113,9 @@ const TrainingPage = () => {
               </div>
               <div className={s.centredBox}>
                 <div className={s.goalBox}>
-
                   <span className={s.value}>
                     {isNaN(daysLeft()) ? 0 : daysLeft()}
                   </span>
-
                 </div>
                 <span className={s.textBox}>Кількість днів</span>
               </div>
@@ -151,9 +126,7 @@ const TrainingPage = () => {
         <div className={s.statisticsFlex}>
           <Statistics/>
           <LineChart className={s.lineChart} />
-
         </div>
-
       </div>
     </Container>
   );

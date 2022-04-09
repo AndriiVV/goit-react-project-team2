@@ -8,11 +8,12 @@
   font-family: "Montserrat";
   font-weight: 300;
   font-size: 14px;
+  border-bottom: solid 1px black;
 }
 
 .button:after {
   content: "";
-  width: 40px;
+  width: 42px;
   background-color: #000;
   height: 1px;
   display: block;
