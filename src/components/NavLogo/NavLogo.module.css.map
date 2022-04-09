@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,MAAM,EAAE,OAAO;CAIhB;;AAHC,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EAFrC,AAAA,KAAK,CAAC;IAGF,YAAY,EAAE,IAAI;GAErB",
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,MAAM,EAAE,OAAO;EACf,YAAY,EAAE,GAAG;CAClB",
     "sources": [
         "NavLogo.module.scss"
     ],

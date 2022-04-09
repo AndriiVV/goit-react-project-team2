@@ -1,0 +1,46 @@
+.resultsBox {
+    width: 275px;
+    background-color: #ffffff;
+    margin-left: 41px;
+}
+
+.resultsTitle {
+text-transform: uppercase;
+text-align: center;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 3.17;
+}
+
+.statisticsFlex {
+display: flex;
+}
+
+.textResults {
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 17px;
+color: #898F9F;
+
+margin-left: 16px;
+}
+
+
+.statisticsInput {
+    width: 114px;
+    height: 42px;
+}
+ 
+.resultBtn {
+    display: block;
+    height: 40px;
+    width: 240px;
+    background-color: #FF6B08;
+    color: #ffffff;
+    border: none;
+    margin: 20px auto 25px auto;
+}

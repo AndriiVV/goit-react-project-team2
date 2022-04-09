@@ -1,0 +1,110 @@
+.resumeContent {
+  width: 270px;
+  padding: 17px 30px 35px;
+}
+
+@media screen and (min-width: 768px) {
+  .resumeContent {
+    width: 570px;
+  }
+}
+
+.titleResume {
+  display: block;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 38px;
+  color: var(--dark-text-color-deep-blue);
+  color: #242A37;
+}
+
+.divRadioButtonResume {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.radioButtonResume {
+  display: none;
+}
+
+.radioButtonResume + label {
+  background: url("../../images/star.svg") no-repeat scroll 0 0;
+  cursor: pointer;
+  padding-left: 17px;
+  margin-right: 4px;
+}
+
+.radioButtonResume:checked + label {
+  background: url("../../images/star-active.svg") no-repeat scroll 0 0;
+}
+
+.textarea {
+  resize: none;
+  border: none;
+  border: 1px solid #A6ABB9;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 38px;
+  color: #242A37;
+  width: 100%;
+  height: 174px;
+}
+
+.modalButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 25px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .modalButtons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.exitButton, .saveButton {
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  line-height: 38px;
+  width: 98px;
+  height: 40px;
+}
+
+.exitButton {
+  background-color: var(--white);
+  border: 1px solid #242A37;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.exitButton:hover {
+  border: 1px solid #F25137;
+}
+
+@media screen and (min-width: 768px) {
+  .exitButton {
+    margin-right: 30px;
+  }
+}
+
+.saveButton {
+  color: #fff;
+  background-color: #FF6B08;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.saveButton:hover {
+  background: #D15807;
+}
+/*# sourceMappingURL=ResumeContent.module.css.map */

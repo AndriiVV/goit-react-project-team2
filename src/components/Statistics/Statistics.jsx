@@ -1,4 +1,4 @@
-import s from '../../pages/TrainingPage/TrainingPage.module.css';
+import s from './Statistics.module.css';
 
 const Statistics = () => {
   return (
@@ -7,11 +7,11 @@ const Statistics = () => {
       <div className={s.statisticsFlex}>
         <label htmlFor="" className={s.textResults}>
           Дата
-          <input type="date" className={s.input} />
+          <input type="date" className={s.statisticsInput} />
         </label>
         <label htmlFor="" className={s.textResults}>
           Кількість сторінок
-          <input type="text" className={s.input} />
+          <input type="text" className={s.statisticsInput} />
         </label>
       </div>
       <button type="button" className={s.resultBtn}>
@@ -19,9 +19,7 @@ const Statistics = () => {
       </button>
       <h2 className={s.resultsTitle}>Статистика</h2>
     </div>
-   );
-}
+  );
+};
 
 export default Statistics;
-
-
