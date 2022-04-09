@@ -97,7 +97,11 @@ const TrainingPage = () => {
               Почати тренування
             </button>
           </div>
-          <StartGoal daysLeft={daysLeft} newBooks={newBooks} />
+          <StartGoal
+            daysLeft={daysLeft}
+            newBooks={newBooks}
+            className={s.startGoal}
+          />
           {/* <ResultGoal /> */}
         </div>
         <div className={s.statisticsFlex}>
