@@ -149,7 +149,8 @@ const TrainingPage = () => {
         </div>
 
         <div className={s.statisticsFlex}>
-          <Statistics/>
+          {isTrainingGo && <Statistics />}
+
           <LineChart className={s.lineChart} />
 
         </div>

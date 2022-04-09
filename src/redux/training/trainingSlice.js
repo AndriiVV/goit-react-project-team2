@@ -63,7 +63,7 @@ const trainingReducer = createSlice({
         payload
       }) {
         state.isTrainingGo = true;
-        console.log(payload);
+        // console.log(payload);
       }
     },
 });
