@@ -5,6 +5,7 @@ import Library from 'components/Library/Library';
 import GoingToRead from '../../components/GointToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const LibraryPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -18,9 +19,11 @@ const LibraryPage = () => {
         <FormAddBook />
         {/* <LibraryModal /> */}
         <GoingToRead />
-        <button type="button" className={s.libraryBtn}>
-          Далі
-        </button>
+        <NavLink to="/training">
+          <button type="button" className={s.libraryBtn}>
+            Далі
+          </button>
+        </NavLink>
         {/* <Library /> */}
         {isOpenModal && <LibraryModal onClose={switchModal}></LibraryModal>}
         {/* <LibraryModal onClose={switchModal}></LibraryModal> */}
