@@ -1,4 +1,7 @@
 {
+    "headerLogOut" : {
+        "logOut" : "Goout"
+    },
     "signInForm":{
        "emailLabel" : "Email Address",
        "passwordLabel" : "Password",
@@ -23,7 +26,12 @@
         "nameMaxLenght" : "Field should have less than 15 letter",
 
         "confirmPassword" : "Confirm password is required",
-        "matchPassword" : "Passwords must match"
+        "matchPassword" : "Passwords must match",
+
+        "required" : "required",
+        "length" : "* more than 1 letter",
+        "year" : "* max year - current",
+        "pages" : "* max number - 5000"
     },
     "backMsgLogUp":{
         "success" : "Registration was successful !",
@@ -35,6 +43,27 @@
     "quotation": {
         "quote" : "Books are the ships of thought, wandering through the waves of time and carefully carrying their precious cargo from generation to generation. ",
         "author" : "F. Bacon"
+    },
+    "description" : {
+        "firstSubTitle" : "Helps you",
+
+        "goal" : "Formulate your goal faster and start reading",
+        "load" : "Proportionally distribute the load on each day",
+        "success" : "Track personal success",
+
+        "secondSubTitle" : "You can too",
+
+        "form" : "To form a personal opinion independent of others",
+        "skills" : "Improve your professional skills based on new knowledge",
+        "interlocutor" : "Become an interesting interlocutor",
+
+        "signUp" : "Registr" 
+    },
+    "addingBookForm" : {
+        "title" : "Book title",    
+        "author" : "Author of the book",    
+        "year" : "Publish year",    
+        "pages" : "Total pages",    
+        "button" : "Add Book"       
     }
-    
 }

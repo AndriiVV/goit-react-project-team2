@@ -1,49 +1,50 @@
 import s from './AppDescription.module.css';
 import arrowIcon from '../../images/arrow.svg';
+import { useTranslation } from 'react-i18next';
 
 const AppDescription = () => {
-  
+  const { t } = useTranslation();
   return (
     <>
       <div className={s.contentWrap}>
         <h1 className={s.heading}>Books Reading</h1>
-        <h3 className={s.subheading}>Допоможе вам</h3>
+        <h3 className={s.subheading}>{t('description.firstSubTitle')}</h3>
         <ul>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Швидше сформулювати свою ціль і розпочати читати
+            {t('description.goal')}
           </li>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Пропорційно розподілити навантаження на кожний день
+            {t('description.load')}
           </li>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Відстежувати особистий успіх
+            {t('description.success')}
           </li>
         </ul>
-        <h3 className={s.subheading}>Також ви зможете</h3>
+        <h3 className={s.subheading}>{t('description.secondSubTitle')}</h3>
         <ul>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Формувати особисту думку незалежну від інших
+            {t('description.form')}
           </li>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Підвищити свої професійні якості опираючись на нові знання
+            {t('description.skills')}
           </li>
           <li>
             <img src={arrowIcon} alt="Arrow icon" />
-            Стати цікавим співрозмовником
+            {t('description.interlocutor')}
           </li>
         </ul>
 
         <div className={s.btnWrap}>
           <button type="button" className={`${s.singInBtn} ${s.btn}`}>
-            Увійти
+            {t('signInForm.button')}
           </button>
           <button type="button" className={`${s.singUpBtn} ${s.btn}`}>
-            Реєстрація
+            {t('description.signUp')}  
           </button>
         </div>
       </div>
