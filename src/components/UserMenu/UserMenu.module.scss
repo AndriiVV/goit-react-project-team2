@@ -8,18 +8,18 @@
   font-family: "Montserrat";
   font-weight: 300;
   font-size: 14px;
-  &:after {
-    content: "";
-    width: 40px;
-    background-color: #000;
-    height: 1px;
-    display: block;
-  }
-  &:hover:after {
-    background-color: #f25137;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  // &:after {
+  //   content: "";
+  //   width: 51px;
+  //   background-color: #000;
+  //   height: 1px;
+  //   display: block;
+  // }
+  // &:hover:after {
+  //   background-color: #f25137;
+  //   transition-duration: 250ms;
+  //   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  // }
   &:hover {
     color: #f25137;
     transition-duration: 250ms;

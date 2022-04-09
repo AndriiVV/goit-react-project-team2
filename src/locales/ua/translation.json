@@ -1,4 +1,6 @@
-{
+{   "headerLogOut" : {
+    "logOut" : "Вихід"
+    },
     "signInForm":{
        "emailLabel" : "Електронна адреса",
        "passwordLabel" : "Пароль",
