@@ -2,6 +2,8 @@
     margin: 15px auto 34px;
     justify-content: space-evenly;
     align-items: center;
+        flex-direction: column;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -18,18 +20,48 @@
 }
 
 .item_container {
+// margin-right: 0px;
+
     text-align: center;
     color: #898F9F;
 }
 
+// <<<<<<< responsiveLayoutTraining
 // @media screen and (min-width: 768px) {
 //     .item_container {
     
 //     }
 // }
 
+// @media screen and (min-width: 1280px) {
+//    .item_container:last-child {
+//    margin-left: 45px;
+// =======
+
+@media screen and (min-width: 768px) {
+    .container {
+        margin: 30px auto 25px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    }
+}
+
 @media screen and (min-width: 1280px) {
+    .container {
+        margin: 25px auto;
+            flex-direction: row;
+
+    }
+}
+
+.item_container:last-child {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
     .item_container:last-child {
-    margin-left: 45px;
+        margin-top: 0;
+        margin-left: 45px;
     }
 }

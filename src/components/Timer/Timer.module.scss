@@ -18,6 +18,11 @@
     padding-left: 45px;
     padding-right: 45px;
     padding-top: 6px;
+    // =======
+//    padding-bottom: 4px;
+//    padding-top: 3px;}
+// >>>>>>> dev
+
   }
 
     @media screen and (min-width: 768px) {
@@ -59,3 +64,21 @@ margin: 0;
 
 
   }
+
+@media screen and (min-width: 768px) {
+    .label {
+          width: 290px;
+    height: 60px;
+    // color:  #f6ee0a;
+  }
+    
+}
+
+@media screen and (min-width: 1280px) {
+    .label {
+        width: 290px;
+    height: 60px;
+//  color:  #0163ff;
+    }
+}
+  
