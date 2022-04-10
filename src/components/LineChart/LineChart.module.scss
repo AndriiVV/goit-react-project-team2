@@ -1,12 +1,14 @@
 .chartWrap {
-  width: 250px;
-  height: 700px;
-  @media screen and(min-width: 768px) {
+  width: 290px;
+  height: 270px;
+  @media screen and (min-width: 768px) {
     width: 678px;
     height: 340px;
+    margin-bottom: 40px;
   }
-  @media screen and(min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     width: 886px;
     height: 340px;
+    margin-bottom: 0;
   }
 }

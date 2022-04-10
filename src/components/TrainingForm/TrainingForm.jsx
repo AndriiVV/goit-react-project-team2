@@ -1,4 +1,4 @@
-import s from '../../pages/TrainingPage/TrainingPage.module.css';
+import s from './TrainingForm.module.css';
 import { useState, useEffect } from 'react';
 
 const TrainigForm = ({
@@ -28,27 +28,25 @@ const TrainigForm = ({
   };
 
   return (
-    <>
-      <form className={s.trainingChooseBook} onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="book"
-          list="books"
-          placeholder="Обрати книги з бібліотеки"
-          className={s.trainingInput}
-          onChange={handleInputChange}
-          value={inputValue}
-        />
-        <datalist id="books">
-          {books.map(book => (
-            <option value={book.title} key={book._id} />
-          ))}
-        </datalist>
-        <button type="submit" className={s.trainingBtn}>
-          Додати
-        </button>
-      </form>
-    </>
+    <form className={s.trainingForm} onSubmit={onSubmit}>
+      <input
+        type="text"
+        name="book"
+        list="books"
+        placeholder="Обрати книги з бібліотеки"
+        className={s.trainingInput}
+        onChange={handleInputChange}
+        value={inputValue}
+      />
+      <datalist id="books">
+        {books.map(book => (
+          <option value={book.title} key={book._id} />
+        ))}
+      </datalist>
+      <button type="submit" className={s.addBtn}>
+        Додати
+      </button>
+    </form>
   );
 };
 

@@ -20,7 +20,7 @@ export const registerUser = createAsyncThunk(
         theme: 'colored',
         closeOnClick: true,
         pauseOnHover: true,
-        autoClose: 3000,
+        autoClose: 2000,
       });
       // console.log('registerUser completed'); //credentials - учётные данные
       return data;
@@ -29,7 +29,7 @@ export const registerUser = createAsyncThunk(
         theme: 'colored',
         closeOnClick: true,
         pauseOnHover: true,
-        autoClose: 3000,
+        autoClose: 2000,
       });
       return thunkApi.rejectWithValue(error);
     }
@@ -45,11 +45,11 @@ export const loginUser = createAsyncThunk(
         theme: 'colored',
         closeOnClick: true,
         pauseOnHover: true,
-        autoClose: 3000,
+        autoClose: 2000,
       });
-      setTimeout(() => {
-        thunkApi.dispatch(getTraningData());
-      }, 0);
+      // setTimeout(() => {
+      //   thunkApi.dispatch(getTraningData(data.accessToken));
+      // }, 0);
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {

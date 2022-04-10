@@ -8,7 +8,6 @@
   font-family: "Montserrat";
   font-weight: 300;
   font-size: 14px;
-  border-bottom: solid 1px black;
 }
 
 .button:after {
@@ -129,44 +128,79 @@
   }
 }
 
-.training {
-  cursor: pointer;
-  margin-right: 7px;
+.trainingWrap {
+  width: 33px;
+  height: 33px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  margin-right: 2px;
 }
 
-.training:hover, .training:focus {
-  fill: #f5f7fa;
+.trainingWrap:hover,
+.trainingWrap :focus {
+  background-color: #f5f7fa;
   -webkit-transition-duration: 250ms;
           transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.training {
+  cursor: pointer;
+}
+
 .activeTraining {
-  color: #f5f7fa;
+  background-color: #f5f7fa;
+  border-radius: 50%;
+}
+
+.homeWrap {
+  width: 33px;
+  height: 33px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  margin-left: 2px;
+}
+
+.homeWrap:hover,
+.homeWrap :focus {
+  background-color: #f5f7fa;
+  -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .home {
   cursor: pointer;
-  border-right: 1px solid #e0e5eb;
-  margin-right: 13px;
+  margin-right: 1px;
 }
 
-.home:hover, .home:focus {
-  fill: #f5f7fa;
-  -webkit-transition-duration: 250ms;
-          transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media screen and (min-width: 768px) {
-  .home {
-    margin-right: 19px;
-  }
+.lineRight {
+  width: 33px;
+  border: 0.5px solid #e0e5eb;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .activeHome {
-  color: #f5f7fa;
+  background-color: #f5f7fa;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=UserMenu.module.css.map */
