@@ -22,22 +22,33 @@ const initialState = {
   },
   _id: null,
   error: null,
-  isTrainingActive: false,
-};
+  isTrainingGo: false,
+    isTrainingActive: false,
+}
 
 const trainingReducer = createSlice({
-  name: 'training',
-  initialState,
-  extraReducers: {
-    [startTraining.fulfilled](state, { payload }) {
-      state.startDate = payload.startDate;
-      state.endDate = payload.endDate;
-      state.books = payload.books;
-      state.duration = payload.duration;
-      state.pagesPerDay = payload.pagesPerDay;
-      state.stats = payload.stats;
-      state._id = payload._id;
-    },
+    name: 'training',
+    initialState,
+    extraReducers: {
+
+        [startTraining.fulfilled](state, { payload }) {
+            state.startDate = payload.startDate;
+            state.endDate = payload.endDate;
+            state.books = payload.books;
+            state.duration = payload.duration;
+            state.pagesPerDay = payload.pagesPerDay;
+            state.stats = payload.stats;
+            state._id = payload._id
+      },
+      [getTraningData.pending](state) {
+        state.error = null;
+      },
+      [getTraningData.fulfilled](state, {
+        payload
+      }) {
+        state.isTrainingGo = true;
+      },
+
     [getTraningData.pending](state) {
       state.error = null;
       state.isTrainingActive = false;

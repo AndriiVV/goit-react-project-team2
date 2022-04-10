@@ -44,13 +44,14 @@ export const loginUserApi = userData => {
 // };
 
 export const addNewBookApi = book => {
+
   return axios.post('/book', book).then(({ data }) => {
     console.log(data.newBook);
     return {
       title: data.newBook.title,
       author: data.newBook.author,
       publishYear: data.newBook.publishYear,
-      totalPages: data.newBook.totalPages,
+      pagesTotal: data.newBook.pagesTotal,
       pagesFinished: data.newBook.pagesFinished, // or 0 as initial value for a new book in the library
       _id: data.newBook._id,
     };
@@ -130,8 +131,7 @@ export const logOutApi = accessToken => {
 };
 
 export const getUserDataApi = accessToken => {
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
+axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("accessToken")}`;
   return axios.get('/user/books').then(({ data }) => {
     // console.log('/user/books ', data);
     return {

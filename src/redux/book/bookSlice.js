@@ -1,7 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createSlice
+} from '@reduxjs/toolkit';
 import {
   addBook,
-  getUserData,
+  getUserData
+} from './bookOperations';
+import {
   loginUser,
   logoutUser,
   registerUser,
@@ -9,18 +13,17 @@ import {
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
-  return typeof valueFromLS === 'string'
-    ? valueFromLS
-    : JSON.parse(valueFromLS);
+  return typeof valueFromLS === 'string' ?
+    valueFromLS :
+    JSON.parse(valueFromLS);
 };
 
 const initialState = {
-  // name: '',
-  // email: '',
-  // id: null, // user id
-  goingToRead: [],
-  currentlyReading: [],
-  finishedReading: [],
+  books: {
+    goingToRead: [],
+    currentlyReading: [],
+    finishedReading: [],
+  },
   isLoading: false,
   error: null,
 };
@@ -29,48 +32,50 @@ const bookSlice = createSlice({
   name: 'book',
   initialState,
 
-  reducers: {
-    // setAccessToken(state, { payload }) {
-    //   state.accessToken = payload;
-    // },
-  },
-
   extraReducers: builder => {
     builder
-      .addCase(loginUser.fulfilled, (state, { payload }) => {
+      .addCase(loginUser.fulfilled, (state, {
+        payload
+      }) => {
         state.isLoading = false;
-        state.goingToRead = payload.goingToRead;
-        state.currentlyReading = payload.currentlyReading;
-        state.finishedReading = payload.finishedReading;
+        state.books.goingToRead = payload.goingToRead;
+        state.books.currentlyReading = payload.currentlyReading;
+        state.books.finishedReading = payload.finishedReading;
       })
       .addCase(logoutUser.fulfilled, state => {
-        state.goingToRead = [];
-        state.currentlyReading = [];
-        state.finishedReading = [];
+        state.books.goingToRead = [];
+        state.books.currentlyReading = [];
+        state.books.finishedReading = [];
         state.error = null;
       })
 
-      // .addCase(getUserData.pending, (state, { payload }) => {
-      //   state.error = null;
-      // })
-      // .addCase(getUserData.fulfilled, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.user.name = payload.name;
-      //   state.user.email = payload.email;
-      //   state.user.goingToRead = payload.goingToRead;
-      //   state.user.currentlyReading = payload.currentlyReading;
-      //   state.user.finishedReading = payload.finishedReading;
-      // })
-      // .addCase(getUserData.rejected, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.error = payload;
-      // })
+      .addCase(getUserData.pending, (state) => {
+        state.error = null;
+        state.isLoading = true;
+      })
+      .addCase(getUserData.fulfilled, (state, {
+        payload
+      }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.books.goingToRead = payload.goingToRead;
+        state.books.currentlyReading = payload.currentlyReading;
+        state.books.finishedReading = payload.finishedReading;
+      })
+      .addCase(getUserData.rejected, (state, {
+        payload
+      }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       .addCase(addBook.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(addBook.fulfilled, (state, { payload }) => {
-        state.goingToRead = [...state.goingToRead, payload];
+      .addCase(addBook.fulfilled, (state, {
+        payload
+      }) => {
+        state.books.goingToRead = [...state.books.goingToRead, payload];
       });
   },
 });

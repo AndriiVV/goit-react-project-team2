@@ -6,28 +6,40 @@ import GoingToRead from '../../components/GointToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 import { NavLink } from 'react-router-dom';
 // import second from 'first';
-import { useSelector } from 'react-redux';
-import { getBooks } from 'redux/book/bookSelectors';
-import { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsLoading } from 'redux/auth/authSelectors';
+import { useEffect, useState } from 'react';
+
 import GoToReadMobile from 'components/GoToReadMobile/GoToReadMobile';
 import { useTranslation } from 'react-i18next';
+import { getUserBooks } from 'redux/book/bookSelectors';
+import { getUserData } from 'redux/book/bookOperations';
 
 const LibraryPage = () => {
   const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const isLoading = useSelector(state => state.auth.isLoading);
+  const isLoading = useSelector(getIsLoading);
+  const stateRedux = useSelector(getUserBooks)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (stateRedux.goingToRead.length === 0 || stateRedux.currentlyReading.length === 0 ) {
+      dispatch(getUserData())
+    }
+  }, [dispatch])
 
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
   const bookList = books.length === 0;
 
   return (
     <Container>
       <div className={s.libraryPage}>
         <FormAddBook />
-        {/* <GoingToRead /> */}
+        <GoingToRead />
         {/* <GoToReadMobile/> */}
         <NavLink to="/training">
           <button type="button" className={s.libraryBtn}>

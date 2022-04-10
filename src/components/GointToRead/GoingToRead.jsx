@@ -1,13 +1,13 @@
 import s from './GoinToRead.module.css'
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/book/bookSelectors';
+import { getUserBooks } from '../../redux/book/bookSelectors';
 import { useTranslation } from 'react-i18next';
 
 
 const GoingToRead = () => {
   const { t } = useTranslation();
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
 
   return (
     <table className={s.table}>
@@ -21,7 +21,7 @@ const GoingToRead = () => {
         </tr>
       </thead>
       <tbody className={s.wrapPage}>
-        {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+        {books.goingToRead.map(({ _id, title, author, publishYear, pagesTotal }) => (
           <tr key={_id} className={s.bookItem}>
             <td className={s.itemTitle}>
               <Training className={s.marginBook} /> {title}
