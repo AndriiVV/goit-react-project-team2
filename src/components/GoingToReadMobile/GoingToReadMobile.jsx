@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getUserBooks } from '../../redux/book/bookSelectors';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import s from './GoingToReadMobile.module.css'
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ import LibraryBtn from 'components/LibraryBtn/LibraryBtn';
 const GoToReadMobile = () => {
     const { t } = useTranslation();
 
-    const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
 
     return (
         <>
@@ -19,7 +19,7 @@ const GoToReadMobile = () => {
                     <ul className={s.bookList}>
                         <li key={_id} className={s.bookItem}>
                             <div className={s.bookIcon}>
-                                <Training className={s.icon}/> 
+                                <Training className={s.icon}/>
                             </div>
                             <div>
                                 <h3 className={s.bookTitle}>{title}</h3>
@@ -41,10 +41,10 @@ const GoToReadMobile = () => {
                 ))}
             <LibraryBtn />
             <button className={s.plusBtn}> &#43; </button>
-            
+
             </div>
        </>
-        
+
     )
 }
 

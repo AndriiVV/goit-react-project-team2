@@ -4,10 +4,10 @@ import { ReactComponent as BookOrange } from '../../images/book-icon-orange.svg'
 import { ReactComponent as Star } from '../../images/star-icon.svg';
 import GoingToRead from '../GoingToRead/GoingToRead';
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getUserBooks } from '../../redux/book/bookSelectors';
 
 const Library = () => {
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
 
   return (
     <div>

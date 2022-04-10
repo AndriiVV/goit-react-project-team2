@@ -2,7 +2,7 @@ import { useDispatch} from 'react-redux';
 import { useForm } from 'react-hook-form';
 import s from './FormAddBook.module.css'
 import ErrorMsg from 'components/common/ErrorMsg/ErrorMsg';
-import { addBook } from 'redux/auth/authOperations';
+import { addBook } from 'redux/book/bookOperations';
 import { useTranslation } from 'react-i18next';
 
   const FormAddBook = () => {
@@ -49,9 +49,9 @@ import { useTranslation } from 'react-i18next';
     } = useForm();
 
     const {errors} = formState;
-  
+
     const onSubmit = (book) => {
-   
+
       dispatch(addBook(book))
 
       reset();

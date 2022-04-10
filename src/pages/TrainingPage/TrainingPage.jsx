@@ -6,20 +6,22 @@ import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
 import TrainigForm from '../../components/TrainingForm/TrainingForm';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import StartGoal from '../../components/MyGoal/StartGoal';
-// import ResultGoal from '../../components/MyGoal/ResultGoal';
+import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
 import s from './TrainingPage.module.css';
-import { getBooks } from '../../redux/auth/authSelectors';
-import { getIsTraining } from '../../redux/training/trainingSelectors';
+import { getIsTraining, getIsTrainingGo } from '../../redux/training/trainingSelectors';
+import { getUserBooks } from '../../redux/book/bookSelectors';
+
 // import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
+  const isTrainingGo = useSelector(getIsTrainingGo)
 
   const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
@@ -60,18 +62,23 @@ const TrainingPage = () => {
     return Math.floor(
       ((Date.parse(trainingList.endDate) - Date.parse(trainingList.startDate)) /
         (1000 * 60 * 60 * 24)) %
-        30
+      30
     );
   }
   return (
     <Container>
       <div className={s.trainingPage}>
-        {isTraining && <Allimer />}
+        {isTraining && <Allimer expiryTimestamp={daysLeft()*60*60*24} />}
         <div className={s.trainingPageFlex}>
-          <StartGoal
+          {/* <StartGoal
             daysLeft={daysLeft}
             newBooks={newBooks}
             className={s.startGoal}
+          /> */}
+          <ResultGoal
+            daysLeft={daysLeft}
+            newBooks={newBooks}
+            className={s.resultGoal}
           />
           <div className={s.trainingContainer}>
             <div className={s.mobileModalTraining}>
@@ -108,8 +115,8 @@ const TrainingPage = () => {
               Почати тренування
             </button>
           </div>
-          {/* <ResultGoal /> */}
         </div>
+
         <div className={s.statisticsFlex}>
           <LineChart />
           <Statistics />

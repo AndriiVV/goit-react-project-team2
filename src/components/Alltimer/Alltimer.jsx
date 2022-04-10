@@ -5,17 +5,17 @@ import MyTimer from '../../components/Timer/Timer';
 function Alltimer({ expiryTimestamp }) {
   // {/* Code below belong to --TIMER-- Move it Move to statistics page */}
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 700); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + expiryTimestamp); // set timer
 
-  let timeend = new Date();
-  timeend = new Date(timeend.getFullYear() + 1, 0, 1);
-
+  let timeendofyear = new Date();
+  timeendofyear = new Date(timeendofyear.getFullYear() + 1, 0, 1);
+console.log(expiryTimestamp);
   //-------------------------------
   return (
     <div className={s.container}>
       <span className={s.item_container}>
         <span className={s.item_text}>До закінчення року залишилось</span>
-        <MyTimer className={s.item} expiryTimestamp={timeend} />
+        <MyTimer className={s.item} expiryTimestamp={timeendofyear} />
       </span>
       <span className={s.item_container}>
         <span className={s.item_text}>До досягнення мети залишилось</span>

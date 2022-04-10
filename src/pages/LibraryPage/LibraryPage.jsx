@@ -6,23 +6,35 @@ import GoingToRead from '../../components/GoingToRead/GoingToRead';
 import s from './LibraryPage.module.css';
 // import { NavLink } from 'react-router-dom';
 // import second from 'first';
-import { useSelector } from 'react-redux';
-import { getBooks } from 'redux/auth/authSelectors';
-import { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsLoading } from 'redux/auth/authSelectors';
+import { useEffect, useState } from 'react';
+
 import GoToReadMobile from 'components/GoingToReadMobile/GoingToReadMobile';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import { getUserBooks } from 'redux/book/bookSelectors';
+import { getUserData } from 'redux/book/bookOperations';
 import LibraryMobile from 'components/LibraryMobile/LibraryMobile';
 import LibraryBtn from '../../components/LibraryBtn/LibraryBtn';
 
 const LibraryPage = () => {
   // const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const isLoading = useSelector(state => state.auth.isLoading);
+  const isLoading = useSelector(getIsLoading);
+  const stateRedux = useSelector(getUserBooks)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (stateRedux.goingToRead.length === 0 || stateRedux.currentlyReading.length === 0 ) {
+      dispatch(getUserData())
+    }
+  }, [dispatch])
 
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
   const bookList = books.length === 0;
 
   return (
