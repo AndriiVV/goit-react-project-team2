@@ -2,11 +2,11 @@
     width: 270px;
     height: 318px;
     background-color: #ffffff;
-    margin-bottom: 30px;}
-// =======
-//    background: #B1B5C2;
-// =======
-}
+    /* // ======= */
+    /* background: #B1B5C2; */
+    /* // ======= */
+    margin-bottom: 30px;
+  }
 
 .trainingTitle {
     display: block;
@@ -190,7 +190,7 @@
         }
 } 
         
-// =======
+/* // ======= */
 
 .centredBox {
     text-align: center;
@@ -200,7 +200,7 @@
     margin-left: 20px;
 }
 
-// >>>>>>> dev
+/* // >>>>>>> dev */
 
 .textBox {
     font-family: 'Montserrat';
@@ -209,9 +209,9 @@
     font-size: 14px;
 
     line-height: 1.21;
-// =======
-//    line-height: 17px;
-// >>>>>>> dev
+/* // ======= */
+    /* line-height: 17px; */
+/* // >>>>>>> dev */
     text-align: center;
     color: #898F9F;
 }
@@ -230,7 +230,7 @@
         }
 } 
 
-// =======
+/* // ======= */
 .value {
     color: #091E3F;
     font-family: 'Open Sans';
@@ -239,4 +239,4 @@
     font-size: 45px;
     line-height: 0.84;
 }
-// >>>>>>> dev
+/* // >>>>>>> dev */

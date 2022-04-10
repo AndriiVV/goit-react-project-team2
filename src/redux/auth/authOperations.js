@@ -47,9 +47,9 @@ export const loginUser = createAsyncThunk(
         pauseOnHover: true,
         autoClose: 3000,
       });
-      setTimeout(() => {
-        thunkApi.dispatch(getTraningData(data.accessToken));
-      }, 0);
+      // setTimeout(() => {
+      //   thunkApi.dispatch(getTraningData(data.accessToken));
+      // }, 0);
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {
