@@ -20,22 +20,26 @@ import LibraryBtn from '../../components/LibraryBtn/LibraryBtn';
 
 const LibraryPage = () => {
   // const { t } = useTranslation();
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(true);
   const isLoading = useSelector(getIsLoading);
-  const stateRedux = useSelector(getUserBooks)
-  const dispatch = useDispatch()
+  const stateRedux = useSelector(getUserBooks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (stateRedux.goingToRead.length === 0 || stateRedux.currentlyReading.length === 0 ) {
-      dispatch(getUserData())
+    if (
+      stateRedux.goingToRead.length === 0 ||
+      stateRedux.currentlyReading.length === 0
+    ) {
+      dispatch(getUserData());
     }
-  }, [dispatch])
+  }, [dispatch]);
 
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-  const books = useSelector(getUserBooks);
-  const bookList = books.length === 0;
+  const booksList = useSelector(state => state.book.books.goingToRead);
+  console.log(booksList);
+  const allBooksList = booksList.length === 0;
 
   return (
     <Container>
@@ -43,15 +47,15 @@ const LibraryPage = () => {
         <FormAddBook />
 
         {/* TODO:<LibraryBtn/> - отключить в версии для мобилки должна быть только 768px и 1280px */}
-        <LibraryBtn/>
+        <LibraryBtn />
 
         {/* <GoingToRead /> */}
         {/* <GoToReadMobile/> */}
 
         <Library />
-        <LibraryMobile/>
-        
-        {bookList && !isOpenModal && (
+        <LibraryMobile />
+
+        {allBooksList && isOpenModal && (
           <LibraryModal onClose={closeModal}></LibraryModal>
         )}
       </div>
