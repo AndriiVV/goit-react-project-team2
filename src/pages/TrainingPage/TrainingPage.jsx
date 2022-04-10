@@ -15,8 +15,6 @@ import {
   getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
-
-// import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -36,8 +34,6 @@ const TrainingPage = () => {
     endDate: '',
     books: newBooks.map(({ _id }) => _id),
   });
-
-  // const bookTitle = books.goingToRead.map(book => book._id);
 
   const addNewBook = chooseBook => {
     if (inputValue === '') {
@@ -64,12 +60,13 @@ const TrainingPage = () => {
   };
 
   const onSubmit = e => {
-    // if (inputValue !== bookTitle) {
-    //   Notify.warning('Виберіть зі списку');
-    //   return;
-    // }
-    dispatch(startTraining(trainingList));
-    // dispatch(getTraningData());
+    if (trainingList.startDate === '') {
+      Notify.warning('Виберіть дату початку');
+    } else if (trainingList.endDate === '') {
+      Notify.warning('Виберіть дату завершення');
+    } else {
+      dispatch(startTraining(trainingList));
+    }
   };
 
   function daysLeft() {
