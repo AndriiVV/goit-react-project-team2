@@ -40,18 +40,18 @@ const TrainingBookList = ({ newBooks }) => {
           {newBooks.map(
             ({ _id, title, author, publishYear, pagesTotal }, index) => (
               <tr key={_id + index}>
-                <td className={s.flexCenter}>
+                <td className={`${s.flexCenter} ${s.tableBorder}`}>
                   <Training className={s.marginBook} width="22" height="17" />
                   {title}
                 </td>
-                <td>{author}</td>
-                <td>{publishYear}</td>
-                <td>{pagesTotal}</td>
-                <td className={`${s.iconDelete} ${s.book}`}>
+                <td className={s.tableBorder}>{author}</td>
+                <td className={s.tableBorder}>{publishYear}</td>
+                <td className={s.tableBorder}>{pagesTotal}</td>
+                <td className={`${s.iconDelete} ${s.book} ${s.tableBorder}`}>
                   <button
                     type="button"
                     // onClick={() => deleteTrainingBook(name)}
-                    className={s.deleteBtn}
+                    className={`${s.deleteBtn} ${s.tableBorder}`}
                   >
                     <Delete width="14" height="18" />
                   </button>

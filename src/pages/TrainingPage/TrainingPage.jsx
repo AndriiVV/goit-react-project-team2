@@ -10,7 +10,10 @@ import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
 import s from './TrainingPage.module.css';
-import { getIsTraining, getIsTrainingGo } from '../../redux/training/trainingSelectors';
+import {
+  getIsTraining,
+  getIsTrainingGo,
+} from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 
 // import { getTraningData } from 'redux/training/trainingOperatons';
@@ -21,7 +24,7 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
   const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
-  const isTrainingGo = useSelector(getIsTrainingGo)
+  const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
@@ -62,24 +65,28 @@ const TrainingPage = () => {
     return Math.floor(
       ((Date.parse(trainingList.endDate) - Date.parse(trainingList.startDate)) /
         (1000 * 60 * 60 * 24)) %
-      30
+        30
     );
   }
   return (
     <Container>
       <div className={s.trainingPage}>
-        {isTraining && <Allimer expiryTimestamp={daysLeft()*60*60*24} />}
+        {isTraining && <Allimer expiryTimestamp={daysLeft() * 60 * 60 * 24} />}
         <div className={s.trainingPageFlex}>
-          {/* <StartGoal
-            daysLeft={daysLeft}
-            newBooks={newBooks}
-            className={s.startGoal}
-          /> */}
-          <ResultGoal
-            daysLeft={daysLeft}
-            newBooks={newBooks}
-            className={s.resultGoal}
-          />
+          {!isTraining && (
+            <StartGoal
+              daysLeft={daysLeft}
+              newBooks={newBooks}
+              className={s.startGoal}
+            />
+          )}
+          {isTraining && (
+            <ResultGoal
+              daysLeft={daysLeft}
+              newBooks={newBooks}
+              className={s.resultGoal}
+            />
+          )}
           <div className={s.trainingContainer}>
             <div className={s.mobileModalTraining}>
               <div className={s.startTimer}>

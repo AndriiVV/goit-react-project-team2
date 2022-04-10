@@ -231,7 +231,7 @@
 
 @media screen and (min-width: 1280px) {
     .boxResFlex {
-        padding: 75px 17px;
+        padding: 70px 17px;
     }
 }
 
@@ -265,6 +265,7 @@
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
     padding-top: 13px;
     text-align: center;
+    margin-bottom: 14px;
 }
 
 .goalBoxRes:not(:last-child) {
@@ -277,11 +278,13 @@
         height: 60px;
         width: 100px;
         padding-top: 11px;
+        margin-bottom: 4px;
     }
 
     .goalBoxRes:not(:last-child) {
         margin-right: 0px;
         margin-left: 0px;
+        margin-bottom: 6px;
     }
 }
 
@@ -369,3 +372,27 @@
         line-height: 1.06;
         }
 } 
+
+.valueResRemainder {
+    text-align: center;
+    color: #FF6B08;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 1.09;
+}
+
+@media screen and (min-width: 768px) {
+    .valueResRemainder {
+        font-size: 40px;
+        line-height: 0.95;
+        }
+}
+
+@media screen and (min-width: 1280px) {
+    .valueResRemainder {
+        font-size: 36px;
+        line-height: 1.06;
+        }
+}
