@@ -1,7 +1,7 @@
 import s from './GoinToRead.module.css'
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getBooks } from '../../redux/book/bookSelectors';
 import { useTranslation } from 'react-i18next';
 
 const GoingToRead = () => {

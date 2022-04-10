@@ -85,11 +85,4 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
-  try {
-    const addedBook = await addNewBookApi(book);
-    return addedBook;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
-  }
-});
+

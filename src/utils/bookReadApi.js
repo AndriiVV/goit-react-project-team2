@@ -50,7 +50,7 @@ export const addNewBookApi = book => {
       title: data.newBook.title,
       author: data.newBook.author,
       publishYear: data.newBook.publishYear,
-      totalPages: data.newBook.totalPages,
+      pagesTotal: data.newBook.pagesTotal,
       pagesFinished: data.newBook.pagesFinished, // or 0 as initial value for a new book in the library
       _id: data.newBook._id,
     };

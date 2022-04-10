@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  addBook,
   getUserData,
   loginUser,
   logoutUser,
   registerUser,
 } from './authOperations';
+import {
+  addBook
+} from '../book/bookOperations';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
@@ -19,15 +21,16 @@ const initialState = {
     name: '',
     email: '',
     id: null,
-    goingToRead: [],
-    currentlyReading: [],
-    finishedReading: [],
+          goingToRead: [],
+            currentlyReading: [],
+            finishedReading: [],
   },
   accessToken: getFromLS('accessToken'),
   refreshToken: getFromLS('refreshToken'),
   sid: getFromLS('sid'),
   isLoading: false,
   error: null,
+  isLoggedIn: false,
 };
 
 const authSlice = createSlice({
