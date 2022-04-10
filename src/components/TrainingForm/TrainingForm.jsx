@@ -1,5 +1,6 @@
 import s from './TrainingForm.module.css';
 import { useState, useEffect } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const TrainigForm = ({
   books,
@@ -23,6 +24,9 @@ const TrainigForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
+    // if (!inputValue.includes(books.book.name)) {
+    //   Notify.warning('Такої книги не існує');
+    // }
     addNewBook(chooseBook);
     setInputValue('');
   };
