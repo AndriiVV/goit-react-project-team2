@@ -112,14 +112,16 @@ const TrainingPage = () => {
                 )}
               </div>
 
-              <TrainigForm
-                books={books}
-                newBooks={newBooks}
-                setNewBooks={setNewBooks}
-                addNewBook={addNewBook}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
+              {!isTraining && (
+                <TrainigForm
+                  books={books}
+                  newBooks={newBooks}
+                  setNewBooks={setNewBooks}
+                  addNewBook={addNewBook}
+                  inputValue={inputValue}
+                  setInputValue={setInputValue}
+                />
+              )}
             </div>
 
             <TrainingBookList
@@ -127,15 +129,17 @@ const TrainingPage = () => {
               setNewBooks={setNewBooks}
               deleteTrainingBook={deleteTrainingBook}
             />
-            <button
-              type="button"
-              className={s.startTrainingBtn}
-              onClick={() => {
-                onSubmit();
-              }}
-            >
-              Почати тренування
-            </button>
+            {!isTraining && (
+              <button
+                type="button"
+                className={s.startTrainingBtn}
+                onClick={() => {
+                  onSubmit();
+                }}
+              >
+                Почати тренування
+              </button>
+            )}
           </div>
         </div>
 
