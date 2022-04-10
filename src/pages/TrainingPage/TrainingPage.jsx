@@ -66,25 +66,36 @@ const TrainingPage = () => {
   return (
     <Container>
       <div className={s.trainingPage}>
+        {isTraining && <Allimer />}
         <div className={s.trainingPageFlex}>
+          <StartGoal
+            daysLeft={daysLeft}
+            newBooks={newBooks}
+            className={s.startGoal}
+          />
           <div className={s.trainingContainer}>
-            <h2 className={s.trainingTitle}>Моє тренування</h2>
-            {!isTraining && (
-              <ALLdatePicker
-                setTrainingList={setTrainingList}
-                trainingList={trainingList}
-              />
-            )}
-            {isTraining && <Allimer />}
+            <div className={s.mobileModalTraining}>
+              <div className={s.startTimer}>
+                {!isTraining && (
+                  <>
+                    <h2 className={s.trainingTitle}>Моє тренування</h2>
+                    <ALLdatePicker
+                      setTrainingList={setTrainingList}
+                      trainingList={trainingList}
+                    />
+                  </>
+                )}
+              </div>
 
-            <TrainigForm
-              books={books}
-              newBooks={newBooks}
-              setNewBooks={setNewBooks}
-              addNewBook={addNewBook}
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-            />
+              <TrainigForm
+                books={books}
+                newBooks={newBooks}
+                setNewBooks={setNewBooks}
+                addNewBook={addNewBook}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+              />
+            </div>
 
             <TrainingBookList newBooks={newBooks} />
             <button
@@ -97,11 +108,6 @@ const TrainingPage = () => {
               Почати тренування
             </button>
           </div>
-          <StartGoal
-            daysLeft={daysLeft}
-            newBooks={newBooks}
-            className={s.startGoal}
-          />
           {/* <ResultGoal /> */}
         </div>
         <div className={s.statisticsFlex}>

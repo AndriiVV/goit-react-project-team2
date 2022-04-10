@@ -8,15 +8,15 @@ const StartGoal = ({ newBooks, daysLeft }) => {
   
   return (
     <div className={s.trainingGoal}>
-      <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
+      <h2 className={s.goalTitle}>Моя мета прочитати</h2>
       <div className={s.boxFlex}>
-        <div className={s.centredBox}>
+        <div className={s.centredContant}>
           <div className={s.goalBox}>
             <span className={s.value}>{newBooks.length}</span>
           </div>
           <span className={s.textBox}> Кількість книжок</span>
         </div>
-        <div className={s.centredBox}>
+        <div className={s.centredContant}>
           <div className={s.goalBox}>
             <span className={s.value}>
               {isNaN(daysLeft()) ? 0 : daysLeft()}

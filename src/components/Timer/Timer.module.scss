@@ -10,14 +10,33 @@
     font-size: 25px;
     font-weight: 700;
   
+  margin-bottom: 14px;
     margin-top: 10px ;
   }
   .cont{display: flex;
     justify-content: space-between;
     padding-left: 45px;
     padding-right: 45px;
-    padding-bottom: 4px;
-    padding-top: 3px;}
+    padding-top: 6px;
+    // =======
+//    padding-bottom: 4px;
+//    padding-top: 3px;}
+// >>>>>>> dev
+
+  }
+
+    @media screen and (min-width: 768px) {
+      .label {
+    width: 290px;
+    height: 60px;
+      }
+  }
+  
+  // @media screen and (min-width: 1280px) {
+  //     .label {
+  
+  //     }
+  // }
  
   .item{    
     display: flex;
