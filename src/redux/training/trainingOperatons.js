@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getTrainingDataApi, startTrainingApi } from '../../utils/bookReadApi';
+import {
+  getTrainingDataApi,
+  startTrainingApi,
+  setStatisticsPadesApi
+} from '../../utils/bookReadApi';
 
 // export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
 //     try {
@@ -32,7 +36,8 @@ export const startTraining = createAsyncThunk(
   'training/planning',
   async (books, thunkApi) => {
     try {
-      const trainingData = startTrainingApi(books);
+      const trainingData = await startTrainingApi(books);
+      console.log(trainingData);
       return trainingData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -51,3 +56,14 @@ export const getTraningData = createAsyncThunk(
     }
   }
 );
+
+export const setStatisticsPades = createAsyncThunk(
+  'training/setPades',
+  async (pages, thunkApi) => {
+    try {
+      setStatisticsPadesApi(pages)
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message)
+    }
+  }
+)

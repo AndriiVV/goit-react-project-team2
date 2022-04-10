@@ -30,7 +30,6 @@ const trainingReducer = createSlice({
     name: 'training',
     initialState,
     extraReducers: {
-
         [startTraining.fulfilled](state, { payload }) {
             state.startDate = payload.startDate;
             state.endDate = payload.endDate;

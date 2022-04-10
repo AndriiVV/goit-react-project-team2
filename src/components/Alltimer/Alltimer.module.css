@@ -1,0 +1,41 @@
+.container {
+  margin: 15px auto 34px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 30px auto 34px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    margin: -30px 350px 44px 0;
+  }
+}
+
+.item_container {
+  text-align: center;
+  color: #898F9F;
+}
+
+.item_container:last-child {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .item_container:last-child {
+    margin-top: 0;
+    margin-left: 45px;
+  }
+}
+/*# sourceMappingURL=Alltimer.module.css.map */

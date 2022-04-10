@@ -10,9 +10,10 @@ import { useTranslation } from 'react-i18next';
 const Library = () => {
   const { t } = useTranslation();
   const books = useSelector(getUserBooks);
+  console.log(books.currentlyReading);
 
   return (
-    
+
     <div>
       <table className={s.table}>
         <caption className={s.tableCaption}>{t('finishedReading.header')}</caption>

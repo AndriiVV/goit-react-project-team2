@@ -10,6 +10,7 @@ import {
   logoutUser,
   registerUser,
 } from '../auth/authOperations';
+import { startTraining } from 'redux/training/trainingOperatons';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
@@ -21,7 +22,7 @@ const getFromLS = key => {
 const initialState = {
   books: {
     goingToRead: [],
-    currentlyReading: [],
+    currentlyReading: JSON.parse(localStorage.getItem("currentlyReading")) || [],
     finishedReading: [],
   },
   isLoading: false,
@@ -76,7 +77,29 @@ const bookSlice = createSlice({
         payload
       }) => {
         state.books.goingToRead = [...state.books.goingToRead, payload];
-      });
+      })
+      .addCase(addBook.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(startTraining.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(startTraining.fulfilled, (state, { payload }) => {
+        const updateBooks = state.books.goingToRead
+          .filter(({
+            _id
+          }) => _id !== payload.books.map(({_id}) => _id));
+        state.books.goingToRead = updateBooks;
+        state.books.currentlyReading = [...state.books.currentlyReading, ...payload.books];
+        localStorage.setItem("currentlyReading", JSON.stringify([...payload.books]))
+      })
+      .addCase(startTraining.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload
+    })
+
   },
 });
 
