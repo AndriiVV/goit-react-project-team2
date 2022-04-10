@@ -15,9 +15,9 @@ const getFromLS = key => {
 };
 
 const initialState = {
-  name: '',
-  email: '',
-  id: null, // user id
+  // name: '',
+  // email: '',
+  // id: null, // user id
   goingToRead: [],
   currentlyReading: [],
   finishedReading: [],
@@ -37,39 +37,17 @@ const bookSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(registerUser.fulfilled, (state, { payload }) => {
-        state.email = payload.email;
-        state.id = payload.id;
-      })
-      .addCase(loginUser.pending, (state, { payload }) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.name = payload.name;
-        state.email = payload.email;
-        state.id = payload.id;
         state.goingToRead = payload.goingToRead;
         state.currentlyReading = payload.currentlyReading;
         state.finishedReading = payload.finishedReading;
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
       .addCase(logoutUser.fulfilled, state => {
-        state.name = '';
-        state.email = '';
-        state.id = null;
         state.goingToRead = [];
         state.currentlyReading = [];
         state.finishedReading = [];
         state.error = null;
-      })
-      .addCase(logoutUser.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
       })
 
       // .addCase(getUserData.pending, (state, { payload }) => {

@@ -15,14 +15,14 @@ const getFromLS = key => {
 };
 
 const initialState = {
-  // user: {
-  //   name: '',
-  //   email: '',
-  //   id: null,
-  //   goingToRead: [],
-  //   currentlyReading: [],
-  //   finishedReading: [],
-  // },
+  user: {
+    name: '',
+    email: '',
+    id: null,
+    //   goingToRead: [],
+    //   currentlyReading: [],
+    //   finishedReading: [],
+  },
   accessToken: getFromLS('accessToken'),
   refreshToken: getFromLS('refreshToken'),
   sid: getFromLS('sid'),
@@ -49,6 +49,9 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.user.id = payload.id;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -69,6 +72,9 @@ const authSlice = createSlice({
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
         state.sid = payload.sid;
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        state.user.id = payload.id;
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -87,6 +93,9 @@ const authSlice = createSlice({
         state.accessToken = null;
         state.refreshToken = null;
         localStorage.clear();
+        state.user.name = '';
+        state.user.email = '';
+        state.user.id = null;
       })
       .addCase(logoutUser.rejected, (state, { payload }) => {
         state.isLoading = false;

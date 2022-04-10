@@ -6,7 +6,7 @@ import LogOut from 'components/LogOut/LogOut';
 import { useSelector } from 'react-redux';
 
 const UserMenu = () => {
-  const userName = useSelector(state => state.book.name);
+  const userName = useSelector(state => state.auth.user.name);
   const symbol = userName.slice(0, 1).toUpperCase();
   return (
     <>
