@@ -1,20 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Book } from '../../images/book-icon-orange.svg';
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getUserBooks } from '../../redux/book/bookSelectors';
 import s from './CurrentlyReadingMobile.module.css'
 
 
 const CurrentlyReadingMobile = () => {
   const { t } = useTranslation();
 
-  const books = useSelector(getBooks);
+  const books = useSelector(getUserBooks);
 
   return (
       <>
           <div className={s.wraper}>
               <h1 className={s.blockTitle}>{t('currentlyReading.header')}</h1>
-              {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+              {books.currentlyReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
                   <ul className={s.bookList}>
                       <li key={_id} className={s.bookItem}>
                           <div className={s.bookIcon}>

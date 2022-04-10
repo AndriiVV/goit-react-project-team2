@@ -15,7 +15,7 @@ const GoToReadMobile = () => {
         <>
             <div className={s.wraper}>
                 <h1 className={s.blockTitle}>{t('GoToRead.header')}</h1>
-                {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+                {books.goingToRead.map(({ _id, title, author, publishYear, pagesTotal }) => (
                     <ul className={s.bookList}>
                         <li key={_id} className={s.bookItem}>
                             <div className={s.bookIcon}>
