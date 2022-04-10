@@ -9,8 +9,11 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getBooks } from 'redux/book/bookSelectors';
 import { useState } from 'react';
+import GoToReadMobile from 'components/GoToReadMobile/GoToReadMobile';
+import { useTranslation } from 'react-i18next';
 
 const LibraryPage = () => {
+  const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const isLoading = useSelector(state => state.auth.isLoading);
 
@@ -24,10 +27,11 @@ const LibraryPage = () => {
     <Container>
       <div className={s.libraryPage}>
         <FormAddBook />
-        <GoingToRead />
+        {/* <GoingToRead /> */}
+        {/* <GoToReadMobile/> */}
         <NavLink to="/training">
           <button type="button" className={s.libraryBtn}>
-            Далі
+            {t('GoToRead.button')}
           </button>
         </NavLink>
         {/* <Library /> */}

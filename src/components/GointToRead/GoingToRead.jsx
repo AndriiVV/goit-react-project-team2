@@ -2,19 +2,22 @@ import s from './GoinToRead.module.css'
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { useSelector } from 'react-redux';
 import { getBooks } from '../../redux/book/bookSelectors';
+import { useTranslation } from 'react-i18next';
+
 
 const GoingToRead = () => {
+  const { t } = useTranslation();
   const books = useSelector(getBooks);
 
   return (
     <table className={s.table}>
-      <caption className={s.tableCaption}>Маю намір прочитати</caption>
+      <caption className={s.tableCaption}>{t('GoToRead.header')}</caption>
       <thead>
         <tr className={s.tableHeader}>
-          <th className={s.title}>Назва книги</th>
-          <th className={s.author}>Автор</th>
-          <th className={s.year}>Рік</th>
-          <th className={s.page}>Стор.</th>
+          <th className={s.title}>{t('GoToRead.title')}</th>
+          <th className={s.author}>{t('GoToRead.author')}</th>
+          <th className={s.year}>{t('GoToRead.year')}</th>
+          <th className={s.page}>{t('GoToRead.pages')}</th>
         </tr>
       </thead>
       <tbody className={s.wrapPage}>
