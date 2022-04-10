@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 import LibraryBtn from 'components/LibraryBtn/LibraryBtn';
 
 
-const GoToReadMobile = () => {
+const GoingToReadMobile = () => {
     const { t } = useTranslation();
 
   const books = useSelector(getUserBooks);
-
+    
     return (
         <>
             <div className={s.wraper}>
@@ -48,4 +48,4 @@ const GoToReadMobile = () => {
     )
 }
 
-export default GoToReadMobile;
+export default GoingToReadMobile;

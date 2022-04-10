@@ -4,66 +4,54 @@
     color: #898F9F;
     font-weight: 500;
     font-size: 14px;
-    line-height: 2.71;
+    line-height: 2.5;
+    margin-top: 30px;
+    border-spacing: 0;
+    border-collapse: collapse;   
 }
+
 .tableCaption {
 font-style: normal;
 font-weight: 600;
 font-size: 19px;
-line-height: 2;
+line-height: 2.7;
 color: #242A37;
 text-align: left;
 }
+
 .tableHeader {
     text-align: left;
 }
-.titleDone {
-    width: 361px;
-}
-.authorDone {
-    width: 230px;
-}
-.year {
-    width: 96px;
-}
-.page {
-width: 149px;
-}
-.rating {
-    width: 115px;
-}
-.resume {
-    width: 265px;
-}
+
 .title {
     width: 626px;
 }
+
 .author {
     width: 356px;
 }
-.resumeBtn {
-    display: block;
-    margin: 0 auto;
-    width: 130px;
-    height: 40px;
-    background: #6D7A8D;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 2.71;
-    color: #FFFFFF;
-    border: none;
-    outline: none;
+
+.year {
+    width: 96px;
 }
-.bookItem {
-    height: 62px;
+
+.page {
+    width: 149px;  
+}
+
+.wrapPage{
     background: #FFFFFF;
-    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-    margin-bottom: 10px;
-    color: #242A37;
+    margin: 0;
+    padding: 0;
 }
+
+.bookItem {
+    border: none;
+    border-bottom: 15px solid #f6f7fb;
+    height: 62px;
+    color: #242A37;   
+}
+
 .itemTitle {
     display: flex;
     align-items: center;
@@ -76,3 +64,66 @@ width: 149px;
      margin-right: 18px;
 }
 
+
+.resumeBtn {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    height: 40px;
+    background: #6D7A8D;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2.71;
+    color: #FFFFFF;
+    border: transparent;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titleDone {
+    width: 361px;
+}
+.authorDone {
+    width: 150px;
+    
+}
+.yearDone {
+    width: 100px;
+}
+.pageDone {
+    width: 90px;
+}
+.rating {
+    width: 150px;
+}
+.resume {
+    width: 250px;
+}
+
+@media screen and (min-width: 1280px) {
+    .resumeBtn {
+        width: 130px
+    }
+    .titleDone {
+        width: 461px;
+    }
+    .authorDone {
+        width: 200px;
+        
+    }
+    .resume {
+        width: 250px;
+    }
+    .rating {
+        width: 100px;
+    }
+    .page {
+        width: 119px;  
+        
+    }
+    .year {
+        width: 126px;
+    }
+    
+}
