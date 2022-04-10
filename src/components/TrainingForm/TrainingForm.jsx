@@ -10,23 +10,23 @@ const TrainigForm = ({
   addNewBook,
 }) => {
   const [chooseBook, setСhooseBook] = useState({});
-  console.log(books.goingToRead);
+
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
+
     const findBook = books.goingToRead.find(book => book.title === value);
     setСhooseBook(findBook);
     setInputValue(value);
   };
 
+  console.log(books);
+
   const onSubmit = e => {
     e.preventDefault();
-    // if (!inputValue.includes(books.book.name)) {
-    //   Notify.warning('Такої книги не існує');
-    // }
     addNewBook(chooseBook);
     setInputValue('');
   };
