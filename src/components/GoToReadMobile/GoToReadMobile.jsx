@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getBooks } from '../../redux/book/bookSelectors';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import s from './GoToReadMobile.module.css'
 import { useTranslation } from 'react-i18next';
