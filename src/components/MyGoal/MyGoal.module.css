@@ -22,7 +22,7 @@
         /* margin-top: -115px; */
     }
 } 
-
+/* 
 .trainingTitle {
     display: block;
     padding-top: 11px;
@@ -35,7 +35,7 @@
     font-size: 20px;
     font-weight: 600;
     line-height: 1.9;
-}
+} */
 
 .goalBox {
     height: 100px;
@@ -44,7 +44,6 @@
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
     margin-bottom: 14px;
     padding-top: 31px;
-
 }
 
 @media screen and (min-width: 768px) {
@@ -100,7 +99,6 @@
 
 @media screen and (min-width: 768px) {
     .boxFlex {
-        display: flex;
         padding: 20px 0;
         margin-left: 78px;
     }
@@ -108,7 +106,6 @@
 
 @media screen and (min-width: 1280px) {
     .boxFlex {
-        display: flex;
         padding: 55px 27px;
         margin-left: 0;
     }
@@ -192,3 +189,183 @@
     line-height: 0.84;
 }
 /* // >>>>>>> dev */
+
+
+.resGoal {
+    width: 270px;
+    height: 215px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .resGoal {
+        width: 678px;
+        height: 125px;
+        display: flex;
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .resGoal {
+        width: 275px;
+        display:flow-root;
+        height: 318px;
+        /* margin-top: -115px; */
+    }
+} 
+
+.boxResFlex {
+    display: flex;
+    padding: 20px 0;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .boxResFlex {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .boxResFlex {
+        padding: 75px 17px;
+    }
+}
+
+.centredBox {
+    width: 73px;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .centredBox {
+        width: 100px;
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .centredBox {
+        margin-left: 11px;
+        margin-right: 11px;
+    }
+    .centredBox:not(:last-child) {
+        width: 66px;
+    }
+}
+
+.goalBoxRes {
+    height: 63px;
+    width: 63px;
+    background: #F5F7FA;
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+    padding-top: 13px;
+    text-align: center;
+}
+
+.goalBoxRes:not(:last-child) {
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
+@media screen and (min-width: 768px) {
+    .goalBoxRes {
+        height: 60px;
+        width: 100px;
+        padding-top: 11px;
+    }
+
+    .goalBoxRes:not(:last-child) {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .goalBoxRes {
+        height: 66px;
+        width: 70px;
+        padding-top: 14px;
+    }
+    .goalBoxRes:not(:last-child) {
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+} 
+
+.resTitle {
+    padding-top: 11px;
+    height: 60px;
+    color: #ffffff;
+    background: #B1B5C2;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+}
+
+@media screen and (min-width: 768px) {
+    .resTitle {
+        margin-left: 30px;
+        margin-top: 23px;
+        padding: 11px 27px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .resTitle {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+.textRes {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.18;
+    text-align: center;
+    color: #898F9F;
+    text-align: center;
+}
+
+@media screen and (min-width: 1280px) {
+    .textRes {
+        font-size: 12px;
+        line-height: 1.25;
+        }
+
+    .textRes:not(:last-child) {
+        margin-left: 11px;
+    }
+} 
+
+.valueRes {
+    text-align: center;
+    color: #091E3F;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 1.09;
+}
+
+@media screen and (min-width: 768px) {
+    .valueRes {
+        font-size: 40px;
+        line-height: 0.95;
+        }
+}
+
+@media screen and (min-width: 1280px) {
+    .valueRes {
+        font-size: 36px;
+        line-height: 1.06;
+        }
+} 

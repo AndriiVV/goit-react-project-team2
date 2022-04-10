@@ -6,7 +6,7 @@ import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
 import TrainigForm from '../../components/TrainingForm/TrainingForm';
 import TrainingBookList from '../../components/TrainingBookList/TrainingBookList';
 import StartGoal from '../../components/MyGoal/StartGoal';
-// import ResultGoal from '../../components/MyGoal/ResultGoal';
+import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
 import s from './TrainingPage.module.css';
@@ -68,10 +68,15 @@ const TrainingPage = () => {
       <div className={s.trainingPage}>
         {isTraining && <Allimer />}
         <div className={s.trainingPageFlex}>
-          <StartGoal
+          {/* <StartGoal
             daysLeft={daysLeft}
             newBooks={newBooks}
             className={s.startGoal}
+          /> */}
+          <ResultGoal
+            daysLeft={daysLeft}
+            newBooks={newBooks}
+            className={s.resultGoal}
           />
           <div className={s.trainingContainer}>
             <div className={s.mobileModalTraining}>
@@ -108,7 +113,6 @@ const TrainingPage = () => {
               Почати тренування
             </button>
           </div>
-          {/* <ResultGoal /> */}
         </div>
         <div className={s.statisticsFlex}>
           <LineChart />
