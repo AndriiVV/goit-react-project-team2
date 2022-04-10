@@ -68,6 +68,7 @@ const TrainingPage = () => {
         30
     );
   }
+
   return (
     <Container>
       <div className={s.trainingPage}>
@@ -125,7 +126,7 @@ const TrainingPage = () => {
         </div>
 
         <div className={s.statisticsFlex}>
-          <LineChart />
+          <LineChart daysLeft={daysLeft} />
           <Statistics />
         </div>
       </div>
