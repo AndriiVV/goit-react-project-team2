@@ -23,7 +23,7 @@ const ResultGoal = ({ newBooks, daysLeft }) => {
         </div>
         <div className={s.centredBox}>
           <div className={s.goalBoxRes}>
-            <span className={s.valueRes}>
+            <span className={s.valueResRemainder}>
               {isNaN(daysLeft()) ? 0 : daysLeft()}
             </span>
           </div>
