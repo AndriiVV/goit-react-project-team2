@@ -6,9 +6,9 @@ import FinishedReadingMobile from 'components/FinishedReadingMobile/FinishedRead
 const LibraryMobile = () => {
   return (
     <>
+      <GoingToReadMobile/>
       <FinishedReadingMobile/>
       <CurrentlyReadingMobile/>
-      <GoingToReadMobile/>
     </>
   )
 }
