@@ -23,13 +23,16 @@ ChartJS.register(
 );
 
 export const options = {
-  maintainAspectRatio: true,
+  responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: 'right',
+      position: 'top',
+      display: true,
     },
     title: {
       position: 'top',
+      align: 'start',
       display: true,
       text: 'КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ',
     },
@@ -59,7 +62,7 @@ export const data = {
     },
     {
       label: 'ФАКТ',
-      data: [78, 30, 90, 40, 47, 27, 80, 40],
+      data: [78, 50, 90, 70, 47, 40, 50, 70],
       borderColor: '#FF6B08',
       backgroundColor: '#FF6B08',
       tension: 0.4,
@@ -70,7 +73,7 @@ export const data = {
 const LineChart = () => {
   return (
     <div className={s.chartWrap}>
-      <Line options={options} data={data} />
+      <Line options={options} data={data} className={s.chart} />
     </div>
   );
 };
