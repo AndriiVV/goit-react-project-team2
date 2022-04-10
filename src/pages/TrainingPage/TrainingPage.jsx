@@ -37,6 +37,8 @@ const TrainingPage = () => {
     books: newBooks.map(({ _id }) => _id),
   });
 
+  // const bookTitle = books.goingToRead.map(book => book._id);
+
   const addNewBook = chooseBook => {
     if (inputValue === '') {
       Notify.warning('Оберіть книгу');
@@ -55,8 +57,17 @@ const TrainingPage = () => {
       books: [...prevTrainingList.books, chooseBook._id],
     }));
   };
+  console.log(newBooks);
+
+  const deleteTrainingBook = _id => {
+    setNewBooks(prev => prev.filter(newBook => newBook._id !== _id));
+  };
 
   const onSubmit = e => {
+    // if (inputValue !== bookTitle) {
+    //   Notify.warning('Виберіть зі списку');
+    //   return;
+    // }
     dispatch(startTraining(trainingList));
     // dispatch(getTraningData());
   };
@@ -111,7 +122,11 @@ const TrainingPage = () => {
               />
             </div>
 
-            <TrainingBookList newBooks={newBooks} />
+            <TrainingBookList
+              newBooks={newBooks}
+              setNewBooks={setNewBooks}
+              deleteTrainingBook={deleteTrainingBook}
+            />
             <button
               type="button"
               className={s.startTrainingBtn}
