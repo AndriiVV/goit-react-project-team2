@@ -68,7 +68,7 @@ const TrainingPage = () => {
   return (
     <Container>
       <div className={s.trainingPage}>
-        {isTraining && <Allimer />}
+        {isTraining && <Allimer expiryTimestamp={daysLeft()*60*60*24} />}
         <div className={s.trainingPageFlex}>
           <StartGoal
             daysLeft={daysLeft}
