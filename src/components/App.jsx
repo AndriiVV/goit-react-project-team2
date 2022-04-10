@@ -21,12 +21,10 @@ const TrainingPage = lazy(() =>
   )
 );
 const RegisterPage = lazy(() =>
-  import(
-    '../pages/RegisterPage/RegisterPage' /* webpackChunkName: "register-page" */
-  )
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "register-page" */)
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
