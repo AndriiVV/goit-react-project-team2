@@ -4,7 +4,7 @@ import s from '../SignUpForm/SignUpForm.module.css';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { registerUser } from 'redux/auth/authOperations';
+import { loginUser, registerUser } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const SingUpForm = () => {
     name: Yup.string()
         .required(t('validation.requiredName'))
         .min(2, t('validation.nameMinLenght'))
-        .max(15, t('validation.nameMaxLenght')),
+        .max(254, t('validation.nameMaxLenght')),
         
     email: Yup.string().email(t('validation.wrongEmail')).required(t('validation.requiredEmail')),
 
@@ -43,7 +43,8 @@ const SingUpForm = () => {
     const onSubmit = (data) => {
       const newData = {name: data.name, email: data.email, password: data.password};
       
-      dispatch(registerUser( newData));
+      dispatch(registerUser(newData));
+      // dispatch(loginUser({email: data.email, password: data.password}));
       reset();
     }
   
