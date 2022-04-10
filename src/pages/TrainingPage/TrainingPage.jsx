@@ -68,7 +68,13 @@ const TrainingPage = () => {
     //   Notify.warning('Виберіть зі списку');
     //   return;
     // }
-    dispatch(startTraining(trainingList));
+    if (trainingList.startDate === '') {
+      Notify.warning('Виберіть дату початку');
+    } else if (trainingList.endDate === '') {
+      Notify.warning('Виберіть дату завершення');
+    } else {
+      dispatch(startTraining(trainingList));
+    }
     // dispatch(getTraningData());
   };
 
