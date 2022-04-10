@@ -38,7 +38,6 @@ const LibraryPage = () => {
     setIsOpenModal(!isOpenModal);
   };
   const booksList = useSelector(state => state.book.books.goingToRead);
-  console.log(booksList);
   const allBooksList = booksList.length === 0;
 
   return (
