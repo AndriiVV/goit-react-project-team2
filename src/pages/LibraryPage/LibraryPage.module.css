@@ -1,6 +1,6 @@
 .libraryPage {
     background-color: #F6F7FB;
-    padding: 10px 25px 0;
+    padding: 10px 25px 30px;
     box-sizing: border-box;
 }
 @media screen and (min-width: 768px) {
