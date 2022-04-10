@@ -78,5 +78,14 @@
         "year" : "Рік :",
         "pages" : "Стор. :",
         "author" : "Автор :"
+    },
+    "finishedReading" : {
+        "header" : "Прочитано", 
+        "rating" : "Рейтинг :", 
+        "button" : "Резюме"
+    },   
+    "currentlyReading" : {
+        "header" : "Читаю"
+      
     }   
 }

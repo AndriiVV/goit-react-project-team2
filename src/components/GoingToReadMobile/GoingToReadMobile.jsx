@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
-import s from './GoToReadMobile.module.css'
+import s from './GoingToReadMobile.module.css'
 import { useTranslation } from 'react-i18next';
+import LibraryBtn from 'components/LibraryBtn/LibraryBtn';
 
 
 const GoToReadMobile = () => {
@@ -38,6 +39,7 @@ const GoToReadMobile = () => {
                         </li>
                     </ul>
                 ))}
+            <LibraryBtn />
             <button className={s.plusBtn}> &#43; </button>
 
             </div>

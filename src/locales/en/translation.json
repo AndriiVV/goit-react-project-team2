@@ -78,5 +78,14 @@
         "year" : "Year :",
         "pages" : "Pages :",
         "author" : "Author :"
-    }
+    },
+    "finishedReading" : {
+        "header" : "Finished Reading", 
+        "rating" : "Rating :", 
+        "button" : "Resume"
+    },
+    "currentlyReading" : {
+        "header" : "Currently Reading" 
+      
+    } 
 }
