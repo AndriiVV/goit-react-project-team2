@@ -62,8 +62,30 @@
     "addingBookForm" : {
         "title" : "Book title",    
         "author" : "Author of the book",    
-        "year" : "Publish year",    
+        "year" : "Year of publish",    
         "pages" : "Total pages",    
         "button" : "Add Book"       
-    }
+    },
+    "GoToRead":{
+        "header" : "I intend to read",
+        "year" : "Year",
+        "pages" : "Pages",
+        "author" : "Author",
+        "title" : "Book title",
+        "button" : "Forward"
+    },
+    "GoToReadMobile":{
+        "year" : "Year :",
+        "pages" : "Pages :",
+        "author" : "Author :"
+    },
+    "finishedReading" : {
+        "header" : "Finished Reading", 
+        "rating" : "Rating :", 
+        "button" : "Resume"
+    },
+    "currentlyReading" : {
+        "header" : "Currently Reading" 
+      
+    } 
 }

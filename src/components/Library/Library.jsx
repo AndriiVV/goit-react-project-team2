@@ -2,7 +2,7 @@ import s from './Library.module.css';
 import { ReactComponent as Book } from '../../images/book-icon.svg';
 import { ReactComponent as BookOrange } from '../../images/book-icon-orange.svg';
 import { ReactComponent as Star } from '../../images/star-icon.svg';
-import GoingToRead from '../GointToRead/GoingToRead';
+import GoingToRead from '../GoingToRead/GoingToRead';
 import { useSelector } from 'react-redux';
 import { getBooks } from '../../redux/auth/authSelectors';
 

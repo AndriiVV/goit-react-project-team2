@@ -65,5 +65,27 @@
         "year" : "Рік випуску",    
         "pages" : "Кількість сторінок",    
         "button" : "Додати"       
-    }    
+    },
+    "GoToRead":{
+        "header" : "Маю намір прочитати",
+        "year" : "Рік",
+        "pages" : "Стор.",
+        "author" : "Автор",
+        "title" : "Назва книги",
+        "button" : "Далі"
+    },
+    "GoToReadMobile":{
+        "year" : "Рік :",
+        "pages" : "Стор. :",
+        "author" : "Автор :"
+    },
+    "finishedReading" : {
+        "header" : "Прочитано", 
+        "rating" : "Рейтинг :", 
+        "button" : "Резюме"
+    },   
+    "currentlyReading" : {
+        "header" : "Читаю"
+      
+    }   
 }
