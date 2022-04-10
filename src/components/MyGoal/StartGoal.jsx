@@ -1,6 +1,11 @@
 import s from './MyGoal.module.css';
 
+
+
 const StartGoal = ({ newBooks, daysLeft }) => {
+  // console.log(window.matchMedia('(min-width: 320px) and (max-width: 768px)'));
+
+  
   return (
     <div className={s.trainingGoal}>
       <h2 className={s.trainingTitle}>Моя мета прочитати</h2>
