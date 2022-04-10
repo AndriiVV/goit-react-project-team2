@@ -22,16 +22,59 @@ ChartJS.register(
   Legend
 );
 
+let delayed;
+
 export const options = {
-  maintainAspectRatio: true,
+  responsive: true,
+  maintainAspectRatio: false,
+  // cubicInterpolationMode: 'monotone',
+  // showLine: false,
   plugins: {
     legend: {
-      position: 'right',
+      position: 'top',
+      display: true,
+    },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
     },
     title: {
       position: 'top',
+      align: 'start',
       display: true,
       text: 'КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ',
+      color: '#242A37',
+      font: {
+        family: 'Montserrat',
+        weight: 500,
+        size: 12,
+        lineHeight: 3.2,
+      },
+      hover: {
+        mode: 'index',
+        intersec: false,
+      },
+    },
+  },
+  animation: {
+    onComplete: () => {
+      delayed = true;
+    },
+    delay: context => {
+      let delay = 0;
+      if (context.type === 'data' && context.mode === 'default' && !delayed) {
+        delay = context.dataIndex * 200 + context.datasetIndex * 100;
+      }
+      return delay;
+    },
+  },
+  scales: {
+    x: {
+      stacked: true,
+    },
+    y: {
+      stacked: true,
+      display: false,
     },
   },
 };
@@ -59,7 +102,7 @@ export const data = {
     },
     {
       label: 'ФАКТ',
-      data: [78, 30, 90, 40, 47, 27, 80, 40],
+      data: [78, 50, 90, 70, 47, 40, 50, 70],
       borderColor: '#FF6B08',
       backgroundColor: '#FF6B08',
       tension: 0.4,
@@ -70,7 +113,7 @@ export const data = {
 const LineChart = () => {
   return (
     <div className={s.chartWrap}>
-      <Line options={options} data={data} />
+      <Line options={options} data={data} className={s.chart} />
     </div>
   );
 };

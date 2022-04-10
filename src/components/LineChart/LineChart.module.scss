@@ -1,14 +1,27 @@
 .chartWrap {
-  width: 290px;
-  height: 270px;
+  // width: 270px;
+  // height: 270px;
   @media screen and (min-width: 768px) {
     width: 678px;
     height: 340px;
-    margin-bottom: 40px;
   }
   @media screen and (min-width: 1280px) {
     width: 886px;
     height: 340px;
-    margin-bottom: 0;
+  }
+}
+
+.chart {
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 14px;
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-bottom: 5px;
+  @media screen and(min-width: 768px) {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 12px;
   }
 }
