@@ -22,32 +22,15 @@ const initialState = {
   },
   _id: null,
   error: null,
-<<<<<<< HEAD
-    isTrainingGo: false,
+  isTrainingGo: false,
+    isTrainingActive: false,
 }
 
 const trainingReducer = createSlice({
     name: 'training',
     initialState,
     extraReducers: {
-        // [addBookToTraining.fulfilled](state, action) {
-        //     state.name = action.payload;
-        //     state.author = action.payload;
-        //     state.year = action.payload;
-        //     state.page = action.payload;
-        // },
-        // [getTrainingList.fulfilled](state, action) {
-        //     state.name = action.payload.name;
-        //     state.author = action.payload.author;
-        //     state.year = action.payload.year;
-        //     state.page = action.payload.page;
-        // },
-        // [deleteTrainingBook.fulfilled](state, action) {
-        //     state.name = null;
-        //     state.author = null;
-        //     state.year = null;
-        //     state.page = null;
-        // },
+
         [startTraining.fulfilled](state, { payload }) {
             state.startDate = payload.startDate;
             state.endDate = payload.endDate;
@@ -64,26 +47,8 @@ const trainingReducer = createSlice({
         payload
       }) {
         state.isTrainingGo = true;
-        // console.log(payload);
-      }
-=======
-  isTrainingActive: false,
-};
+      },
 
-const trainingReducer = createSlice({
-  name: 'training',
-  initialState,
-  extraReducers: {
-    [startTraining.fulfilled](state, { payload }) {
-      state.startDate = payload.startDate;
-      state.endDate = payload.endDate;
-      state.books = payload.books;
-      state.duration = payload.duration;
-      state.pagesPerDay = payload.pagesPerDay;
-      state.stats = payload.stats;
-      state._id = payload._id;
->>>>>>> 9d52a3f2d98d24cdeb3b3cdb9748b917377cf754
-    },
     [getTraningData.pending](state) {
       state.error = null;
       state.isTrainingActive = false;
