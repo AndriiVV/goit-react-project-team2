@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsLoading } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
-import GoToReadMobile from 'components/GoingToReadMobile/GoingToReadMobile';
+import GoingToReadMobile from 'components/GoingToReadMobile/GoingToReadMobile';
 import { useTranslation } from 'react-i18next';
 import { getUserBooks } from 'redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
@@ -46,10 +46,10 @@ const LibraryPage = () => {
         <LibraryBtn/>
 
         {/* <GoingToRead /> */}
-        {/* <GoToReadMobile/> */}
+        {/* <GoingToReadMobile/> */}
 
+        {/* <LibraryMobile/> */}
         <Library />
-        <LibraryMobile/>
         
         {bookList && !isOpenModal && (
           <LibraryModal onClose={closeModal}></LibraryModal>

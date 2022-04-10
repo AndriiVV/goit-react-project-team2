@@ -5,13 +5,13 @@
 }
 @media screen and (min-width: 768px) {
     .libraryPage {
-        padding: 20px 87px 60px; 
+        padding: 20px 45px 60px; 
     }
 }
 
 @media screen and (min-width: 1280px) {
     .libraryPage {
-        padding: 30px 25px 60px; 
+        padding: 30px 40px 60px; 
     }
 }
 

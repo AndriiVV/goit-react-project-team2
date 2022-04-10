@@ -82,6 +82,7 @@
     "finishedReading" : {
         "header" : "Прочитано", 
         "rating" : "Рейтинг :", 
+        "bookRating" : "Рейтинг", 
         "button" : "Резюме"
     },   
     "currentlyReading" : {
