@@ -35,9 +35,9 @@ export const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    isAuth && dispatch(getUserData(token));
-  }, [dispatch, isAuth, token]);
+  // useEffect(() => {
+  //   isAuth && dispatch(getUserData(token));
+  // }, [dispatch, isAuth, token]);
 
   return (
     <Container>
