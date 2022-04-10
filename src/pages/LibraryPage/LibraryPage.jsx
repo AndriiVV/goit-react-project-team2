@@ -7,7 +7,7 @@ import s from './LibraryPage.module.css';
 import { NavLink } from 'react-router-dom';
 // import second from 'first';
 import { useSelector } from 'react-redux';
-import { getBooks } from 'redux/auth/authSelectors';
+import { getBooks } from 'redux/book/bookSelectors';
 import { useState } from 'react';
 
 const LibraryPage = () => {

@@ -10,7 +10,7 @@ import StartGoal from '../../components/MyGoal/StartGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
 import s from './TrainingPage.module.css';
-import { getBooks } from '../../redux/auth/authSelectors';
+import { getBooks } from '../../redux/book/bookSelectors';
 import { getIsTraining } from '../../redux/training/trainingSelectors';
 // import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
