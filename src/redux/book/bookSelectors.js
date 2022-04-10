@@ -1,3 +1,4 @@
-export const getUserBooks = (state) => state.books;
+export const getIsGoingToReadExist = state => false;
 
-export const getBooks = state => state.books.goingToRead;
+export const getUserBooks = state => state.book.books;
+

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addNewBookApi } from "utils/bookReadApi";
+import { addNewBookApi, getUserDataApi } from "utils/bookReadApi";
 
 export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
   try {
@@ -9,3 +9,16 @@ export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
+
+export const getUserData = createAsyncThunk(
+  'auth/getData',
+  async (accessToken, thunkApi) => {
+    try {
+      const data = await getUserDataApi(accessToken);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

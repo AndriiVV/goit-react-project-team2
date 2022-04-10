@@ -44,6 +44,7 @@ export const loginUserApi = userData => {
 // };
 
 export const addNewBookApi = book => {
+
   return axios.post('/book', book).then(({ data }) => {
     console.log(data.newBook);
     return {
@@ -130,8 +131,7 @@ export const logOutApi = accessToken => {
 };
 
 export const getUserDataApi = accessToken => {
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
+axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("accessToken")}`;
   return axios.get('/user/books').then(({ data }) => {
     // console.log('/user/books ', data);
     return {

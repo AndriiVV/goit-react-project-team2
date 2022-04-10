@@ -73,16 +73,6 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-export const getUserData = createAsyncThunk(
-  'auth/getData',
-  async (accessToken, thunkApi) => {
-    try {
-      const data = await getUserDataApi(accessToken);
-      return data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+
 
 

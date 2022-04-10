@@ -9,14 +9,14 @@ const TrainigForm = ({
   addNewBook,
 }) => {
   const [chooseBook, setСhooseBook] = useState({});
-
+  console.log(books.goingToRead);
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
 
   const handleInputChange = e => {
     const { value } = e.currentTarget;
-    const findBook = books.find(book => book.title === value);
+    const findBook = books.goingToRead.find(book => book.title === value);
     setСhooseBook(findBook);
     setInputValue(value);
   };
@@ -39,7 +39,7 @@ const TrainigForm = ({
         value={inputValue}
       />
       <datalist id="books">
-        {books.map(book => (
+        {books.goingToRead.map(book => (
           <option value={book.title} key={book._id} />
         ))}
       </datalist>
