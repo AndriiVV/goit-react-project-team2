@@ -24,7 +24,7 @@ const Library = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+          {books.finishedReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
                 <Book className={s.marginBook} /> {title}
@@ -57,7 +57,7 @@ const Library = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map(({ _id, title, author, publishYear, pagesTotal }) => (
+          {books.currentlyReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
                 <BookOrange className={s.marginBook} /> {title}
