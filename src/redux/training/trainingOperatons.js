@@ -62,7 +62,8 @@ export const setStatisticsPades = createAsyncThunk(
   'training/setPades',
   async (pages, thunkApi) => {
     try {
-      patchStatisticsPadesApi(pages)
+      const infoTrainingUpdate = await patchStatisticsPadesApi(pages)
+      return infoTrainingUpdate
     } catch (error) {
       return thunkApi.rejectWithValue(error.message)
     }
