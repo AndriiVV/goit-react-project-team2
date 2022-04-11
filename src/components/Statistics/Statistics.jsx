@@ -7,10 +7,10 @@ import StatisticsList from '../StatisticsList/StatisticsList';
 
 const Statistics = () => {
   const dispatch = useDispatch()
-  const stats = useSelector(getStats)
+
   const [pages, setPages] = useState("")
 
-  console.log(stats);
+  // console.log(stats);
 
   const handleCangePages = (e) => {
     const value  = e.target.value;
