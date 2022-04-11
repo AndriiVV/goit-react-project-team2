@@ -15,11 +15,16 @@ const SingInForm = () => {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({      
-    email: Yup.string().email(t('validation.wrongEmail')).required(t('validation.requiredEmail')),
+    email: Yup.string()
+      .email(t('validation.wrongEmail'))
+      .required(t('validation.requiredEmail'))
+      .min(2)
+      .max(254),
 
     password: Yup.string()
         .required(t('validation.requiredPassword'))
-        .min(6, t('validation.passwordLenght')),      
+        .min(8, t('validation.passwordLenght'))
+        .max(100, ('max - 100')),      
 });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
