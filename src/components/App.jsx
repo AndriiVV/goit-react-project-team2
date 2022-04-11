@@ -8,7 +8,7 @@ import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsAuth, getToken } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/auth/authOperations';
+import { getUserData } from '../redux/book/bookOperations';
 
 const LibraryPage = lazy(() =>
   import(

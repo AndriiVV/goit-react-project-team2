@@ -22,11 +22,11 @@
         "requiredEmail" : "Email is required",
         "requiredPassword" : "Password is required",
         "wrongEmail" : "Email is wrong",
-        "passwordLenght" : "Password must be at least 6 characters",
+        "passwordLenght" : "Password must be at least 8 characters",
 
         "requiredName" : "Name is required",
         "nameMinLenght" : "Field should have more than 1 letter",
-        "nameMaxLenght" : "Field should have less than 15 letter",
+        "nameMaxLenght" : "Field should have less than 255 letter",
 
         "confirmPassword" : "Confirm password is required",
         "matchPassword" : "Passwords must match",

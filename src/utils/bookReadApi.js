@@ -20,6 +20,7 @@ export const loginUserApi = userData => {
       goingToRead: data.userData.goingToRead,
       currentlyReading: data.userData.currentlyReading,
       finishedReading: data.userData.finishedReading,
+      trainingData: null,
     };
   });
 };
