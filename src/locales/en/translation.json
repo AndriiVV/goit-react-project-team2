@@ -1,6 +1,9 @@
 {
     "headerLogOut" : {
-        "logOut" : "Goout"
+        "logOut" : "Goout",
+        "cancel" : "Cancel",
+        "text" : "If you go out, data will be lost",
+        "goout": "Go out"
     },
     "signInForm":{
        "emailLabel" : "Email Address",
