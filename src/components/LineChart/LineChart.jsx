@@ -29,13 +29,13 @@ const LineChart = ({ daysLeft }) => {
   const days = daysLeft();
   const averagePages = Math.ceil(pages / days);
 
-  let arrDays = [];
+  // let arrDays = [];
 
-  for (let i = 0; i < duration; i++) {
-    arrDays[i] = i + 1;
-    return arrDays;
-  }
-  console.log(arrDays);
+  // for (let i = 0; i < duration; i++) {
+  //   arrDays[i] = i + 1;
+  //   return arrDays;
+  // }
+  // console.log(arrDays);
 
   // let arrPages = [];
 
@@ -121,13 +121,13 @@ const LineChart = ({ daysLeft }) => {
         backgroundColor: '#091E3F',
         tension: 0.4,
       },
-      // {
-      //   label: 'ФАКТ',
-      //   data: [5],
-      //   borderColor: '#FF6B08',
-      //   backgroundColor: '#FF6B08',
-      //   tension: 0.4,
-      // },
+      {
+        label: 'ФАКТ',
+        data: [5, 6, 7, 1, 2, 3, 4],
+        borderColor: '#FF6B08',
+        backgroundColor: '#FF6B08',
+        tension: 0.4,
+      },
     ],
   };
   return (
