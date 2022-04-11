@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getTraningData, startTraining } from './trainingOperatons';
 
 const initialState = {
+  booksInTraining: [],
   book: {
     _id: '625002e476089806882e3c4b',
     title: 'фыва',
@@ -33,7 +34,7 @@ const trainingReducer = createSlice({
         [startTraining.fulfilled](state, { payload }) {
             state.startDate = payload.startDate;
             state.endDate = payload.endDate;
-            state.books = payload.books;
+            state.booksInTraining = payload.books;
             state.duration = payload.duration;
             state.pagesPerDay = payload.pagesPerDay;
             state.stats = payload.stats;
