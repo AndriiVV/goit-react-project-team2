@@ -23,19 +23,27 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ daysLeft }) => {
+const LineChart = () => {
   const pages = useSelector(state => state.training.pagesPerDay);
-  let delayed;
-  const days = daysLeft();
-  const averagePages = Math.ceil(pages / days);
-  // const labels = ['', `Час: ${isNaN(days) ? 0 : days} (дні)`];
-  const labels = ['january', 'february', 'march', 'april', 'may'];
+  const duration = useSelector(state => state.training.duration);
+
+  let arrDays = [];
+
+  for (let i = 0; i < duration; i++) {
+    arrDays[i] = i + 1;
+  }
+
+  let arrPages = [];
+
+  for (let i = 0; i <= pages; i++) {
+    arrPages[i] = i;
+  }
+
+  const planningPages = arrPages.fill(pages);
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    // cubicInterpolationMode: 'monotone',
-    // showLine: false,
     plugins: {
       legend: {
         position: 'top',
@@ -49,9 +57,7 @@ const LineChart = ({ daysLeft }) => {
         position: 'top',
         align: 'start',
         display: true,
-        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${
-          isNaN(averagePages) ? 0 : averagePages
-        }`,
+        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${pages === null ? 0 : pages}`,
         color: '#242A37',
         font: {
           family: 'Montserrat',
@@ -59,47 +65,60 @@ const LineChart = ({ daysLeft }) => {
           size: 12,
           lineHeight: 3.2,
         },
-        hover: {
-          mode: 'index',
-          intersec: false,
-        },
       },
     },
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: context => {
-        let delay = 0;
-        if (context.type === 'data' && context.mode === 'default' && !delayed) {
-          delay = context.dataIndex * 200 + context.datasetIndex * 100;
-        }
-        return delay;
+    animations: {
+      y: {
+        easing: 'easeInOutElastic',
+        from: ctx => {
+          if (ctx.type === 'data') {
+            if (ctx.mode === 'default' && !ctx.dropped) {
+              ctx.dropped = true;
+              return 0;
+            }
+          }
+        },
       },
     },
     scales: {
       x: {
+        stacked: true,
         display: true,
       },
       y: {
+        stacked: true,
         display: false,
       },
     },
   };
+
+  const labels = [0, ...arrDays];
 
   const data = {
     labels,
     datasets: [
       {
         label: 'ПЛАН',
-        data: [1, 2, 3, 4, 5],
+        animations: {
+          y: {
+            duration: 2000,
+            delay: 700,
+          },
+        },
+        data: [...planningPages],
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         tension: 0.4,
       },
       {
         label: 'ФАКТ',
-        data: [78, 65, 23, 98],
+        animations: {
+          y: {
+            duration: 2000,
+            delay: 700,
+          },
+        },
+        data: [5, 6, 7, 1, 2, 3, 4],
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         tension: 0.4,
@@ -108,7 +127,7 @@ const LineChart = ({ daysLeft }) => {
   };
   return (
     <div className={s.chartWrap}>
-      <Line options={options} data={data} className={s.chart} />
+      <Line data={data} options={options} className={s.chart} />
     </div>
   );
 };

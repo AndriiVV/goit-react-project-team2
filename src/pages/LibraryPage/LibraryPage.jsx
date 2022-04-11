@@ -38,8 +38,17 @@ const LibraryPage = () => {
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-  const booksList = useSelector(state => state.book.books.goingToRead);
-  const allBooksList = booksList.length === 0;
+  const isGoingToReadBooks = useSelector(state => state.book.books.goingToRead);
+  const currentlyReadingBooks = useSelector(
+    state => state.book.books.currentlyReading
+  );
+  const finishedReadingBooks = useSelector(
+    state => state.book.books.finishedReading
+  );
+  const allBooksList =
+    isGoingToReadBooks.length === 0 &&
+    currentlyReadingBooks.length === 0 &&
+    finishedReadingBooks.length === 0;
 
   return (
     <Container>
