@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from 'components/common/Container';
 import Allimer from '../../components/Alltimer/Alltimer';
@@ -16,13 +16,26 @@ import {
   // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
+import { getUserData } from 'redux/book/bookOperations';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const TrainingPage = () => {
-  const dispatch = useDispatch();
   const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (
+      stateRedux.goingToRead.length === 0
+      // stateRedux.goingToRead.length === 0 ||
+      // stateRedux.currentlyReading.length === 0
+    ) {
+      dispatch(getUserData());
+    }
+  }, [dispatch]);
+  const stateRedux = useSelector(getUserBooks);
   // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');

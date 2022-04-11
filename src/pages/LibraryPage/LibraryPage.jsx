@@ -22,7 +22,6 @@ const LibraryPage = () => {
   // const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(true);
   const isLoading = useSelector(getIsLoading);
-  const stateRedux = useSelector(getUserBooks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +33,7 @@ const LibraryPage = () => {
       dispatch(getUserData());
     }
   }, [dispatch]);
+  const stateRedux = useSelector(getUserBooks);
 
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
