@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { getUserBooks } from 'redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
 import LibraryMobile from 'components/LibraryMobile/LibraryMobile';
-import LibraryBtn from '../../components/LibraryBtn/LibraryBtn';
+import LibraryBtnToTraining from '../../components/LibraryBtnToTraining/LibraryBtnToTraining';
 
 const LibraryPage = () => {
   // const { t } = useTranslation();
@@ -43,17 +43,16 @@ const LibraryPage = () => {
         <FormAddBook />
 
         {/* TODO:<LibraryBtn/> - отключить в версии для мобилки должна быть только 768px и 1280px */}
-        <LibraryBtn/>
-
         {/* <GoingToRead /> */}
         {/* <GoingToReadMobile/> */}
 
         {/* <LibraryMobile/> */}
         <Library />
-        
+
         {bookList && !isOpenModal && (
           <LibraryModal onClose={closeModal}></LibraryModal>
         )}
+        <LibraryBtnToTraining />
       </div>
     </Container>
   );

@@ -3,14 +3,14 @@ import { getUserBooks } from '../../redux/book/bookSelectors';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import s from './GoingToReadMobile.module.css'
 import { useTranslation } from 'react-i18next';
-import LibraryBtn from 'components/LibraryBtn/LibraryBtn';
+import LibraryBtn from 'components/LibraryBtnToTraining/LibraryBtnToTraining';
 
 
 const GoingToReadMobile = () => {
     const { t } = useTranslation();
 
   const books = useSelector(getUserBooks);
-    
+
     return (
         <>
             <div className={s.wraper}>

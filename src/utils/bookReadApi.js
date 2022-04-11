@@ -168,8 +168,12 @@ export const getTrainingDataApi = accessToken => {
   });
 };
 
-export const setStatisticsPadesApi = pages => {
+export const patchStatisticsPadesApi = pages => {
   return axios.patch('/planning', pages).then(({ data }) => {
-    return data
+    console.log(data);
+    return {
+      book: data.book,
+      planning: data.planning,
+    }
   })
 }

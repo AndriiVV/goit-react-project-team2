@@ -13,7 +13,8 @@ const Statistics = () => {
   }
 
   const handleSubmit = e => {
-    dispatch(setStatisticsPades({ "pages": pages}))
+    dispatch(setStatisticsPades({ "pages": pages }))
+    setPages(0)
   }
 
   // Today

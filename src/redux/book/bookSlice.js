@@ -24,6 +24,7 @@ const initialState = {
     goingToRead: [],
     currentlyReading: JSON.parse(localStorage.getItem("currentlyReading")) || [],
     finishedReading: [],
+    inTraining: JSON.parse(localStorage.getItem("inTraining")) || [],
   },
   isLoading: false,
   error: null,
@@ -87,13 +88,15 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(startTraining.fulfilled, (state, { payload }) => {
-        const updateBooks = state.books.goingToRead
-          .filter(({
-            _id
-          }) => _id !== payload.books.map(({_id}) => _id));
-        state.books.goingToRead = updateBooks;
+        // const updateBooks = state.books.goingToRead
+        //   .filter(({
+        //     _id
+        //   }) => _id !== payload.books.map(({_id}) => _id));
+        // state.books.goingToRead = updateBooks;
         state.books.currentlyReading = [...state.books.currentlyReading, ...payload.books];
         localStorage.setItem("currentlyReading", JSON.stringify([...payload.books]))
+        state.books.inTraining = [payload.books]
+        localStorage.setItem("inTraining", JSON.stringify([...payload.books]))
       })
       .addCase(startTraining.rejected, (state, { payload }) => {
         state.isLoading = false;
