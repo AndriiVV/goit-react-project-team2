@@ -1,6 +1,6 @@
-import s from './DatepickerLogo.module.scss';
 import { ReactComponent as Triangle } from '../DatepickerLogo/Polygon.svg';
 import { ReactComponent as Calendar } from '../DatepickerLogo/Calendar.svg';
+import s from './DatepickerLogo.module.scss';
 
 const DatepickerLogo = ({ value }) => {
   return (
