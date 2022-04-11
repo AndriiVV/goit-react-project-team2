@@ -52,7 +52,7 @@ export const registerUserApi = userData => {
 
 export const addNewBookApi = book => {
   return axios.post('/book', book).then(({ data }) => {
-    console.log(data.newBook);
+    // console.log(data.newBook);
     return {
       title: data.newBook.title,
       author: data.newBook.author,
@@ -112,7 +112,7 @@ export const startTrainingApi = trainingData => {
   return axios
     .post('/planning', trainingData)
     .then(({ data }) => {
-          console.log(data);
+          console.log("post/planning",data);
       return {
         books: data.books,
         startDate: data.startDate,
@@ -156,7 +156,7 @@ export const getUserDataApi = accessToken => {
 export const getTrainingDataApi = () => {
   // axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   return axios.get('/planning').then(({ data }) => {
-
+console.log('get/planning', data.planning.stats, );
     return {
       books: data.planning.books,
       startDate: data.planning.startDate,
@@ -165,16 +165,18 @@ export const getTrainingDataApi = () => {
       pagesPerDay: data.planning.pagesPerDay,
       stats: data.planning.stats,
       id: data.planning._id,
+      planning: data.payload.planning,
     };
   });
 };
 
 export const patchStatisticsPadesApi = pages => {
   return axios.patch('/planning', pages).then(({ data }) => {
-    console.log(data);
+    console.log("patch",  data);
     return {
       book: data.book,
       planning: data.planning,
+      stats: data.planing.stats
     }
   })
 }

@@ -38,7 +38,7 @@ export const startTraining = createAsyncThunk(
   async (books, thunkApi) => {
     try {
       const trainingData = await startTrainingApi(books);
-      console.log(trainingData);
+      console.log("post",trainingData);
       return trainingData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -51,6 +51,7 @@ export const getTraningData = createAsyncThunk(
   async (accessToken, thunkApi) => {
     try {
       const traningData = getTrainingDataApi(accessToken);
+      console.log("get", traningData);
       return traningData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -63,6 +64,7 @@ export const setStatisticsPades = createAsyncThunk(
   async (pages, thunkApi) => {
     try {
       const infoTrainingUpdate = await patchStatisticsPadesApi(pages)
+      console.log("patch",infoTrainingUpdate);
       return infoTrainingUpdate
     } catch (error) {
       return thunkApi.rejectWithValue(error.message)

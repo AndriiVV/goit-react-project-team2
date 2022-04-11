@@ -8,7 +8,8 @@ const transformDate = (date) => {
         .reverse()
         .join("-")
   );
-  console.log(string);
+  console.log("transformDate", string);
+  return string;
 };
 //     if (ind === 0) {
 //       return el.split("-").map((el, ind) => {
@@ -25,14 +26,21 @@ const transformDate = (date) => {
 
 
 
-const StatisticsList = () => {
-  const stats = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
+const StatisticsList = ({stats}) => {
+  const statss = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
   { time: "2022-4-11 19:24", pagesCount: 60 }]
   transformDate("2022-4-11 19:14")
   return (
     <ul>
-      {stats.map(({ date, pagesCount }) => {
-        console.log(date, pagesCount);
+      {statss.map(({ time, pagesCount }) => {
+        <li
+          key={time}
+
+        >
+          <span>{transformDate(time)[0]}</span>
+          <span>{transformDate(time)[1]}</span>
+          <span>{pagesCount}</span>
+        </li>
       })
       }
     </ul>

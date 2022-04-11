@@ -12,11 +12,11 @@ import { useDispatch } from 'react-redux';
 const Library = () => {
   const { t } = useTranslation();
   const books = useSelector(getUserBooks);
-  console.log(books.currentlyReading);
+  // console.log(books.currentlyReading);
 
   const dispatch = useDispatch();
   const addReview = e => {
-    console.log(e.target);
+    // console.log(e.target);
     //отправляется ребью на бк - заменить на открітие модалки и передачу ID книги
     dispatch(addBookReview())
   }

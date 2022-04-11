@@ -24,13 +24,14 @@ const initialState = {
   duration: null,
   pagesPerDay: null,
   stats: {
-    date: null,
+    time: null,
     pagesCount: null,
   },
   _id: null,
   error: null,
   isTrainingGo: false,
   isTrainingActive: false,
+  planning: [],
 }
 
 const trainingReducer = createSlice({
@@ -44,7 +45,8 @@ const trainingReducer = createSlice({
             state.duration = payload.duration;
             state.pagesPerDay = payload.pagesPerDay;
             state.stats = payload.stats;
-            state._id = payload._id
+        state._id = payload._id;
+        state.planning = payload.planning;
       },
       [getTraningData.fulfilled](state, {
         payload
@@ -66,6 +68,7 @@ const trainingReducer = createSlice({
       state.stats = payload.stats;
       state.books = payload.books;
       state.isTrainingActive = true;
+      state.planning = payload.planning;
     },
     [getTraningData.rejected](state, {
       payload
@@ -81,6 +84,7 @@ const trainingReducer = createSlice({
     }) {
       state.booksInTraining = payload.books;
       state.stats = payload.planning.stats;
+      state.planning = payload.planning;
     }
   },
 });

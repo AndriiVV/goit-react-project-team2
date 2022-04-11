@@ -22,7 +22,7 @@ const TrainigForm = ({
     setInputValue(value);
   };
 
-  console.log(books);
+  // console.log(books);
 
   const onSubmit = e => {
     e.preventDefault();
