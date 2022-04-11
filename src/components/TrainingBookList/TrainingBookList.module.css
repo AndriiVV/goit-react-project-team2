@@ -14,15 +14,46 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .booksList {
+        font-size: 14px;
+        line-height: 2.71;
+    }
+}
+
 @media screen and (min-width: 1280px) {
     .booksList {
         border-bottom: 1px solid #E0E5EB;
     }
 }
 
+.listScroll {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+/* .listScroll::-webkit-scrollbar {
+    width: 7px;
+    color: #000;
+} */
+
+@media screen and (min-width: 768px) {
+    .listScroll {
+        max-height: 280px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .listScroll {
+        max-height:  200px;
+    }
+}
+
 .booksListTable {
     border-bottom: 1px solid #E0E5EB;
     border-top: 1px solid #E0E5EB;
+    height: 50px;
+overflow: scroll;
 }
 
 @media screen and (min-width: 768px) {
@@ -56,9 +87,46 @@
     padding-bottom: 10px;
     }
 
+.tableText {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    color: #242A37;
+}
+
+@media screen and (min-width: 768px) {
+    .tableText {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .tableText {
+    }
+}
+    
+
 .marginBook {
    margin-right: 18px;
+   width: 17px;
+   height: 12px
    }
+
+   @media screen and (min-width: 768px) {
+    .marginBook {
+        width: 22px;
+   height: 17px
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .marginBook {
+        width: 22px;
+   height: 17px
+    }
+}
 
 .bookTitle {
     width: 361px;
