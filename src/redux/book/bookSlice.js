@@ -72,11 +72,12 @@ const bookSlice = createSlice({
         state.error = null;
       })
       .addCase(startTraining.fulfilled, (state, { payload }) => {
-        // const updateBooks = state.books.goingToRead
-        //   .filter(({
-        //     _id
-        //   }) => _id !== payload.books.map(({_id}) => _id));
-        // state.books.goingToRead = updateBooks;
+        const updateBooks = state.books.goingToRead
+          .filter(({
+            _id
+          }) => _id !== payload.books.map(({_id}) => _id));
+        state.books.goingToRead = updateBooks;
+        
         state.books.currentlyReading = [
           ...state.books.currentlyReading,
           ...payload.books,
