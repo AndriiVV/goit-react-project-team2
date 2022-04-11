@@ -111,10 +111,11 @@ export const startTrainingApi = trainingData => {
   return axios
     .post('/planning', trainingData)
     .then(({ data }) => {
+          console.log(data);
       return {
+        books: data.books,
         startDate: data.startDate,
         endDate: data.endDate,
-        books: data.books,
         duration: data.duration,
         pagesPerDay: data.pagesPerDay,
         stats: data.stats,
@@ -154,6 +155,7 @@ export const getUserDataApi = accessToken => {
 export const getTrainingDataApi = accessToken => {
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   return axios.get('/planning').then(({ data }) => {
+
     return {
       books: data.planning.books,
       startDate: data.planning.startDate,
@@ -161,6 +163,17 @@ export const getTrainingDataApi = accessToken => {
       duration: data.planning.duration,
       pagesPerDay: data.planning.pagesPerDay,
       stats: data.planning.stats,
+      id: data.planning._id,
     };
   });
 };
+
+export const patchStatisticsPadesApi = pages => {
+  return axios.patch('/planning', pages).then(({ data }) => {
+    console.log(data);
+    return {
+      book: data.book,
+      planning: data.planning,
+    }
+  })
+}

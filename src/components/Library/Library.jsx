@@ -6,13 +6,23 @@ import GoingToRead from '../GoingToRead/GoingToRead';
 import { useSelector } from 'react-redux';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 import { useTranslation } from 'react-i18next';
+import { addBookReview } from 'redux/book/bookOperations';
+import { useDispatch } from 'react-redux';
 
 const Library = () => {
   const { t } = useTranslation();
   const books = useSelector(getUserBooks);
+  console.log(books.currentlyReading);
+
+  const dispatch = useDispatch();
+  const addReview = e => {
+    console.log(e.target);
+    //отправляется ребью на бк - заменить на открітие модалки и передачу ID книги
+    dispatch(addBookReview())
+  }
 
   return (
-    
+
     <div>
       <table className={s.table}>
         <caption className={s.tableCaption}>{t('finishedReading.header')}</caption>
@@ -43,7 +53,10 @@ const Library = () => {
                 <Star />
               </td>
               <td>
-              <button className={s.resumeBtn}>{t('finishedReading.button')}</button>
+                <button
+                  className={s.resumeBtn}
+                  onClick={() => addReview(_id)}
+                >{t('finishedReading.button')}</button>
               </td>
             </tr>
           ))}
