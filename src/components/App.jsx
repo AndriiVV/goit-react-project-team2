@@ -21,7 +21,7 @@ const TrainingPage = lazy(() =>
   )
 );
 const RegisterPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "register-page" */)
+  import('../pages/RegisterPage/RegisterPage' /* webpackChunkName: "register-page" */)
 );
 const LoginPage = lazy(() =>
   import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
@@ -29,6 +29,7 @@ const LoginPage = lazy(() =>
 
 export const App = () => {
   const isAuth = useSelector(getIsAuth);
+  console.log(isAuth);
   const token = useSelector(getToken);
 
   const dispatch = useDispatch();
@@ -39,11 +40,10 @@ export const App = () => {
 
   return (
     <Container>
-      <Switch>
+      <MainNav />
         <Suspense fallback={<h3>Loading...</h3>}>
-          <Route>
-            <MainNav />
-          </Route>
+          <Switch>
+         
           <PrivateRoute path={'/library'}>
             <LibraryPage />
           </PrivateRoute>
@@ -56,8 +56,8 @@ export const App = () => {
           <PublicRoute path={'/register'}>
             <RegisterPage />
           </PublicRoute>
+          </Switch>
         </Suspense>
-      </Switch>
       <ToastContainer autoClose={2000} />
     </Container>
   );
