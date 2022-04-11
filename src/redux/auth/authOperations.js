@@ -57,6 +57,7 @@ export const loginUser = createAsyncThunk(
       const trainingData = await getTrainingDataApi();
 
       data.currentlyReading = trainingData.books;
+      data.trainingData = trainingData;
 
       data.finishedReading = data.finishedReading.filter(
         book => !data.currentlyReading.map(book => book._id).includes(book._id)
@@ -67,8 +68,8 @@ export const loginUser = createAsyncThunk(
           !data.currentlyReading.map(book => book._id).includes(book._id)
       );
 
-
       return data;
+
     } catch (error) {
       toast.error('Неправильний Email або пароль', {
         theme: 'colored',
