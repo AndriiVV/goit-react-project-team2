@@ -22,7 +22,7 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
   const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
-  const isTrainingGo = useSelector(getIsTrainingGo);
+  // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
