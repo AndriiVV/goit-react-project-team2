@@ -2,8 +2,10 @@ import React from 'react';
 import { useTimer } from 'react-timer-hook';
 import s from './Timer.module.scss';
 import TextTransition, { presets } from 'react-text-transition';
+import { useTranslation } from 'react-i18next';
 
 function MyTimer({ expiryTimestamp }) {
+  const { t } = useTranslation();
   const {
     seconds,
     minutes,
@@ -38,22 +40,22 @@ function MyTimer({ expiryTimestamp }) {
       <div className={s.cont}>
         <span className={s.item}>
           <span className={s.symbol}>{addZero(days)}</span>
-          <span className={s.timeFrame}>ДН</span>
+          <span className={s.timeFrame}>{t('mytimer.days')}</span>
         </span>
         <span className={s.dots}>:</span>
         <span className={s.item}>
           <span className={s.symbol}>{addZero(hours)}</span>
-          <span className={s.timeFrame}>ГОД</span>
+          <span className={s.timeFrame}>{t('mytimer.hours')}</span>
         </span>
         <span className={s.dots}>:</span>
         <span className={s.item}>
           <span className={s.symbol}>{addZero(minutes)}</span>
-          <span className={s.timeFrame}>ХВ</span>
+          <span className={s.timeFrame}>{t('mytimer.min')}</span>
         </span>
         <span className={s.dots}>:</span>
         <span className={s.item}>
           <span className={s.symbol}>{addZero(seconds)}</span>
-          <span className={s.timeFrame}>СЕК</span>
+          <span className={s.timeFrame}>{t('mytimer.sec')}</span>
         </span>
         
         

@@ -4,10 +4,12 @@ import { ReactComponent as LibraryIcon } from '../../images/library-modal-icon.s
 import { ReactComponent as FlagIcon } from '../../images/flag-modal-icon.svg';
 import { ReactComponent as VectorIcon } from '../../images/vector-modal-icon.svg';
 import s from './LibraryModal.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const LibraryModal = ({ onClose }) => {
+  const { t } = useTranslation();
   const onKeyDown = event => {
     if (event.code === 'Escape') {
       onClose();
@@ -33,34 +35,30 @@ const LibraryModal = ({ onClose }) => {
       <div className={s.modal}>
         <ul>
           <li className={s.item}>
-            <h2 className={s.title}>Крок 1.</h2>
+            <h2 className={s.title}>{t('libraryModal.stepOne')}</h2>
             <div className={s.firstWrap}>
               <LibraryIcon />
-              <p className={s.subTitle}>Створіть особисту бібліотеку</p>
+              <p className={s.subTitle}>{t('libraryModal.create')}</p>
             </div>
             <div className={s.secondWrap}>
               <VectorIcon />
-              <p className={s.sent}>
-                Додайте до неї книжки, які маєте намір прочитати.
-              </p>
+              <p className={s.sent}>{t('libraryModal.add')}</p>
             </div>
           </li>
           <li className={s.secItem}>
-            <h2 className={s.title}>Крок 2.</h2>
+            <h2 className={s.title}>{t('libraryModal.stepTwo')}</h2>
             <div className={s.firstWrap}>
               <FlagIcon />
-              <p className={s.secSubTitle}>Сформуйте своє перше тренування</p>
+              <p className={s.secSubTitle}>{t('libraryModal.firstTraining')}</p>
             </div>
             <div className={s.secondWrap}>
               <VectorIcon />
-              <p className={s.sent}>
-                Визначте ціль, оберіть період, розпочинайте тренування.
-              </p>
+              <p className={s.sent}>{t('libraryModal.goal')}</p>
             </div>
           </li>
         </ul>
         <button type="button" className={s.btnModal} onClick={() => onClose()}>
-          Ok
+          {t('libraryModal.ok')}
         </button>
       </div>
     </div>,

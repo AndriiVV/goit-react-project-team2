@@ -1,19 +1,20 @@
 import DatePicker from '../Datepicker/Datepicker';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useTranslation } from 'react-i18next';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './Alldatepicker.module.scss';
 
 const Alldatepicker = ({ setTrainingList, trainingList }) => {
+  const { t } = useTranslation();
   const setStartDate = startDate => {
     setTrainingList(prev => ({ ...prev, startDate }));
   };
   const setEndDate = endDate => {
     setTrainingList(prev => ({ ...prev, endDate }));
   };
-
   const untillDate = () => {
     Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate) > 0 &&
-      Notify.warning('Дата початку більше дати завершення!!!');
+          Notify.warning(t('alldatePicker.note'));
     const newDate = Date.parse(trainingList.startDate) + 1000 * 3600 * 24;
     return newDate;
   };
@@ -29,7 +30,7 @@ const Alldatepicker = ({ setTrainingList, trainingList }) => {
       <div>
         <DatePicker
           minDate={new Date()}
-          placeholder="Початок"
+          placeholder={t("alldatePicker.start")}
           setDate={setStartDate}
           isDate={!!trainingList.startDate}
           className={s.timerInput}
@@ -39,7 +40,7 @@ const Alldatepicker = ({ setTrainingList, trainingList }) => {
         <DatePicker
           disabled={isNaN(Date.parse(trainingList.startDate))}
           minDate={untillDate()}
-          placeholder="Завершення"
+          placeholder={t("alldatePicker.end")}
           setDate={setEndDate}
           isDate={!!trainingList.endDate}
         />
