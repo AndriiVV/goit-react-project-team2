@@ -4,12 +4,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import s from './Datepicker.module.scss';
 import DatepickerLogo from '../DatepickerLogo/DatepickerLogo';
 
-const DatepickerComponent = ({ setDate, placeholder, isDate }) => {
+const DatepickerComponent = ({
+  setDate,
+  placeholder,
+  isDate,
+  minDate,
+  disabled,
+}) => {
   const [startDate, setStartDate] = useState(new Date());
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => {
-    // console.log(onClick);
-
     return (
       <div className={s.container} onClick={onClick} ref={ref}>
         <DatepickerLogo value={isDate ? value : placeholder} />
@@ -30,11 +34,12 @@ const DatepickerComponent = ({ setDate, placeholder, isDate }) => {
   }
   return (
     <DatePicker
+      disabled={disabled}
+      minDate={minDate}
       selected={startDate}
       onChange={date => {
         setStartDate(date);
         setDate(formatDate(date));
-        console.log('date', formatDate(date));
       }}
       customInput={<ExampleCustomInput />}
     />
