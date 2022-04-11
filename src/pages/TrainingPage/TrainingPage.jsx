@@ -118,9 +118,10 @@ const TrainingPage = () => {
             />
           )}
           <div className={s.trainingContainer}>
-            <div className={s.mobileModalTraining}>
-              <div className={s.startTimer}>
-                {!isTraining && (
+            {!isTraining && (
+              // <div className={s.mobileModalTraining}>
+              <>
+                <div className={s.startTimer}>
                   <>
                     <h2 className={s.trainingTitle}>Моє тренування</h2>
                     <ALLdatePicker
@@ -128,20 +129,20 @@ const TrainingPage = () => {
                       trainingList={trainingList}
                     />
                   </>
+                </div>
+                {!checkRenderStart && (
+                  <TrainigForm
+                    books={books}
+                    newBooks={newBooks}
+                    setNewBooks={setNewBooks}
+                    addNewBook={addNewBook}
+                    inputValue={inputValue}
+                    setInputValue={setInputValue}
+                  />
                 )}
-              </div>
-
-              {checkRenderStart && (
-                <TrainigForm
-                  books={books}
-                  newBooks={newBooks}
-                  setNewBooks={setNewBooks}
-                  addNewBook={addNewBook}
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
-              )}
-            </div>
+              </>
+              // </div>
+            )}
 
             <TrainingBookList
               newBooks={newBooks}
