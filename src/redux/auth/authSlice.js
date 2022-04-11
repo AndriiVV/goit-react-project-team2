@@ -97,7 +97,9 @@ const authSlice = createSlice({
         state.sid = null;
         state.accessToken = null;
         state.refreshToken = null;
-        localStorage.clear();
+        localStorage.setItem("accessToken", null)
+        localStorage.setItem("refreshToken", null)
+        localStorage.setItem("sid", null)
         state.user.name = '';
         state.user.email = '';
         state.user.id = null;
