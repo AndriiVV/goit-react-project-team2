@@ -147,7 +147,7 @@ export const getUserDataApi = accessToken => {
       name: data.name,
       email: data.email,
       goingToRead: data.goingToRead,
-      currentlyReading: JSON.parse(localStorage.getItem("currentlyReading")) || [],
+      currentlyReading: data.currentlyReading,
       finishedReading: data.finishedReading,
     };
   });
