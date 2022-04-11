@@ -1,5 +1,9 @@
 {   "headerLogOut" : {
-    "logOut" : "Вихід"
+    "logOut" : "Вихід",
+    "cancel" : "Відміна",
+    "text" : "Якщо Ви вийдете, дані будуть втрачені",
+    "goout": "Вихід"
+    
     },
     "signInForm":{
        "emailLabel" : "Електронна адреса",

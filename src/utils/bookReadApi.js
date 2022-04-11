@@ -7,6 +7,7 @@ axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 export const loginUserApi = userData => {
   return axios.post('/auth/login', userData).then(({ data }) => {
+    // console.log(data.accessToken);
     axios.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`;
 
     return {
@@ -146,14 +147,14 @@ export const getUserDataApi = accessToken => {
       name: data.name,
       email: data.email,
       goingToRead: data.goingToRead,
-      currentlyReading: JSON.parse(localStorage.getItem("currentlyReading")) || [],
+      currentlyReading: data.currentlyReading,
       finishedReading: data.finishedReading,
     };
   });
 };
 
-export const getTrainingDataApi = accessToken => {
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+export const getTrainingDataApi = () => {
+  // axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   return axios.get('/planning').then(({ data }) => {
 
     return {

@@ -29,7 +29,7 @@ const LoginPage = lazy(() =>
 
 export const App = () => {
   const isAuth = useSelector(getIsAuth);
-  console.log(isAuth);
+  // console.log(isAuth);
   const token = useSelector(getToken);
 
   const dispatch = useDispatch();

@@ -22,17 +22,18 @@ const LibraryPage = () => {
   // const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(true);
   const isLoading = useSelector(getIsLoading);
-  const stateRedux = useSelector(getUserBooks);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (
-      stateRedux.goingToRead.length === 0 ||
-      stateRedux.currentlyReading.length === 0
+      stateRedux.goingToRead.length === 0
+      // stateRedux.goingToRead.length === 0 ||
+      // stateRedux.currentlyReading.length === 0
     ) {
       dispatch(getUserData());
     }
   }, [dispatch]);
+  const stateRedux = useSelector(getUserBooks);
 
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
