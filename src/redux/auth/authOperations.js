@@ -3,6 +3,7 @@ import {
   registerUserApi,
   loginUserApi,
   logOutApi,
+  getTrainingDataApi,
   getUserDataApi,
   addNewBookApi,
 } from '../../utils/bookReadApi';
@@ -23,8 +24,11 @@ export const registerUser = createAsyncThunk(
         pauseOnHover: true,
         autoClose: 2000,
       });
-      const data = loginUserApi({email: credentials.email, password: credentials.password});
- 
+      const data = loginUserApi({
+        email: credentials.email,
+        password: credentials.password,
+      });
+
       return data;
     } catch (error) {
       toast.error('Користувач с таким Email уже існує', {
@@ -49,9 +53,11 @@ export const loginUser = createAsyncThunk(
         pauseOnHover: true,
         autoClose: 2000,
       });
-      // setTimeout(() => {
-      //   thunkApi.dispatch(getTraningData(data.accessToken));
-      // }, 0);
+
+      const trainingData = await getTrainingDataApi();
+
+      data.currentlyReading = trainingData.books;
+
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {
