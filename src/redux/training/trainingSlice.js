@@ -66,13 +66,13 @@ const trainingReducer = createSlice({
       // state.isTrainingActive = false;
     },
     [loginUser.fulfilled](state, { payload }) {
-      state.startDate = payload.trainingData.startDate;
-      state.endDate = payload.trainingData.endDate;
-      state.duration = payload.trainingData.duration;
-      state.pagesPerDay = payload.trainingData.pagesPerDay;
-      state.stats = payload.trainingData.stats;
-      state.books = payload.trainingData.books;
-      state._id = payload.trainingData.id;
+      // state.startDate = payload.trainingData.startDate;
+      // state.endDate = payload.trainingData.endDate;
+      // state.duration = payload.trainingData.duration;
+      // state.pagesPerDay = payload.trainingData.pagesPerDay;
+      // state.stats = payload.trainingData.stats;
+      // state.books = payload.trainingData.books;
+      // state._id = payload.trainingData.id;
       // state.isTrainingActive = true;
       // state.isTrainingGo = true;
     },
