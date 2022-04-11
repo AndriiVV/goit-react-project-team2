@@ -30,7 +30,7 @@ const transformDate = (date) => {
 
 
 const StatisticsList = () => {
-  const stats = useSelector(getStats)
+  const stats = useSelector((state) => state.training.stats)
   console.log("getStats", stats);
 
   // const statss = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
@@ -38,16 +38,16 @@ const StatisticsList = () => {
   // transformDate("2022-4-11 19:14")
   return (
     <ul>
-      {/* {stats.map(({ time, pagesCount }) => {
-        <li
+      {stats.map(({ time, pagesCount }) => {
+        `<li
           key={time}
         >
-          <span>{transformDate(time)[0]}</span>
-          <span>{transformDate(time)[1]}</span>
-          <span>{pagesCount}</span>
-        </li>
+          <span>${transformDate(time)[0]}</span>
+          <span>${transformDate(time)[1]}</span>
+          <span>${pagesCount}</span>
+        </li>`.join('')
       })
-      } */}
+      }
     </ul>
   );
 }
