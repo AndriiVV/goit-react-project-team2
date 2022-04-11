@@ -28,7 +28,8 @@ const LineChart = ({ daysLeft }) => {
   let delayed;
   const days = daysLeft();
   const averagePages = Math.ceil(pages / days);
-  const labels = ['', `Час: ${isNaN(days) ? 0 : days} (дні)`];
+  // const labels = ['', `Час: ${isNaN(days) ? 0 : days} (дні)`];
+  const labels = ['january', 'february', 'march', 'april', 'may'];
 
   const options = {
     responsive: true,
@@ -78,10 +79,9 @@ const LineChart = ({ daysLeft }) => {
     },
     scales: {
       x: {
-        stacked: true,
+        display: true,
       },
       y: {
-        stacked: true,
         display: false,
       },
     },
