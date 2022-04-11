@@ -58,6 +58,16 @@ export const loginUser = createAsyncThunk(
 
       data.currentlyReading = trainingData.books;
 
+      data.finishedReading = data.finishedReading.filter(
+        book => !data.currentlyReading.map(book => book._id).includes(book._id)
+      );
+
+      data.goingToRead = data.goingToRead.filter(
+        book =>
+          !data.currentlyReading.map(book => book._id).includes(book._id)
+      );
+
+
       return data;
     } catch (error) {
       toast.error('Неправильний Email або пароль', {

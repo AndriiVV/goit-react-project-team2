@@ -40,9 +40,6 @@ const trainingReducer = createSlice({
             state.stats = payload.stats;
             state._id = payload._id
       },
-      [getTraningData.pending](state) {
-        state.error = null;
-      },
       [getTraningData.fulfilled](state, {
         payload
       }) {
