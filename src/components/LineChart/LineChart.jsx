@@ -23,33 +23,27 @@ ChartJS.register(
   Legend
 );
 
-const LineChart = ({ daysLeft }) => {
+const LineChart = () => {
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
-  const days = daysLeft();
-  const averagePages = Math.ceil(pages / days);
 
-  // let arrDays = [];
+  let arrDays = [];
 
-  // for (let i = 0; i < duration; i++) {
-  //   arrDays[i] = i + 1;
-  //   return arrDays;
-  // }
-  // console.log(arrDays);
+  for (let i = 0; i < duration; i++) {
+    arrDays[i] = i + 1;
+  }
 
-  // let arrPages = [];
+  let arrPages = [];
 
-  // for (let page of arrPages) {
-  //   arrPages[i] = i + 1;
-  //   return arrPages;
-  // }
+  for (let i = 0; i <= pages; i++) {
+    arrPages[i] = i;
+  }
 
-  let delayed;
+  const planningPages = arrPages.fill(pages);
+
   const options = {
-    // responsive: true,
+    responsive: true,
     maintainAspectRatio: false,
-    // cubicInterpolationMode: 'monotone',
-    // showLine: false,
     plugins: {
       legend: {
         position: 'top',
@@ -63,9 +57,7 @@ const LineChart = ({ daysLeft }) => {
         position: 'top',
         align: 'start',
         display: true,
-        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${
-          isNaN(averagePages) ? 0 : averagePages
-        }`,
+        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${pages === null ? 0 : pages}`,
         color: '#242A37',
         font: {
           family: 'Montserrat',
@@ -73,56 +65,59 @@ const LineChart = ({ daysLeft }) => {
           size: 12,
           lineHeight: 3.2,
         },
-        hover: {
-          mode: 'index',
-          intersec: false,
-        },
       },
     },
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: context => {
-        let delay = 0;
-        if (context.type === 'data' && context.mode === 'default' && !delayed) {
-          delay = context.dataIndex * 200 + context.datasetIndex * 100;
-        }
-        return delay;
+    animations: {
+      y: {
+        easing: 'easeInOutElastic',
+        from: ctx => {
+          if (ctx.type === 'data') {
+            if (ctx.mode === 'default' && !ctx.dropped) {
+              ctx.dropped = true;
+              return 0;
+            }
+          }
+        },
       },
     },
     scales: {
       x: {
+        stacked: true,
         display: true,
       },
       y: {
+        stacked: true,
         display: false,
       },
     },
   };
 
-  const labels = [
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
-    'sunday',
-  ];
+  const labels = [0, ...arrDays];
 
   const data = {
     labels,
     datasets: [
       {
         label: 'ПЛАН',
-        data: [8, 8, 8, 8, 8, 8, 8],
+        animations: {
+          y: {
+            duration: 2000,
+            delay: 700,
+          },
+        },
+        data: [...planningPages],
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         tension: 0.4,
       },
       {
         label: 'ФАКТ',
+        animations: {
+          y: {
+            duration: 2000,
+            delay: 700,
+          },
+        },
         data: [5, 6, 7, 1, 2, 3, 4],
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
