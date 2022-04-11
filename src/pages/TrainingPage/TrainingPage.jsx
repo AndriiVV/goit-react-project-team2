@@ -13,6 +13,7 @@ import MotivationContent from '../../components/MotivationContent/MotivationCont
 import s from './TrainingPage.module.css';
 import {
   getIsTraining,
+  checkRender,
   // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
@@ -36,6 +37,7 @@ const TrainingPage = () => {
     }
   }, [dispatch]);
   const stateRedux = useSelector(getUserBooks);
+  const checkRenderStart = useSelector(checkRender);
   // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
@@ -129,7 +131,7 @@ const TrainingPage = () => {
                 )}
               </div>
 
-              {!isTraining && (
+              {checkRenderStart && (
                 <TrainigForm
                   books={books}
                   newBooks={newBooks}
@@ -145,6 +147,7 @@ const TrainingPage = () => {
               newBooks={newBooks}
               setNewBooks={setNewBooks}
               deleteTrainingBook={deleteTrainingBook}
+              isTraining={isTraining}
             />
             {!isTraining && (
               <button

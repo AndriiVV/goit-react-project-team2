@@ -2,7 +2,7 @@ import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
 
-const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
+const TrainingBookList = ({ newBooks, deleteTrainingBook, isTraining }) => {
   return (
     <div>
       <table className={s.booksListTable}>
@@ -48,13 +48,15 @@ const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
                 <td className={s.tableBorder}>{publishYear}</td>
                 <td className={s.tableBorder}>{pagesTotal}</td>
                 <td className={`${s.iconDelete} ${s.book} ${s.tableBorder}`}>
-                  <button
-                    type="button"
-                    onClick={() => deleteTrainingBook(_id)}
-                    className={`${s.deleteBtn} ${s.tableBorder}`}
-                  >
-                    <Delete width="14" height="18" />
-                  </button>
+                  {isTraining && (
+                    <button
+                      type="button"
+                      onClick={() => deleteTrainingBook(_id)}
+                      className={`${s.deleteBtn} ${s.tableBorder}`}
+                    >
+                      <Delete width="14" height="18" />
+                    </button>
+                  )}
                 </td>
               </tr>
             )
