@@ -2,9 +2,9 @@ import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
 
-const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
+const TrainingBookList = ({ newBooks, deleteTrainingBook, isTraining }) => {
   return (
-    <div>
+    <div className={s.listScroll}>
       <table className={s.booksListTable}>
         <thead>
           <tr className={s.booksList}>
@@ -32,30 +32,34 @@ const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
             >
               Стор.
             </th>
-            <th style={{ borderBottom: '1px solid #E0E5EB' }}></th>
+            {!isTraining && (
+              <th style={{ borderBottom: '1px solid #E0E5EB' }}></th>
+            )}
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className={s.tableText}>
           {newBooks.map(
             ({ _id, title, author, publishYear, pagesTotal }, index) => (
               <tr key={_id + index}>
                 <td className={`${s.flexCenter} ${s.tableBorder}`}>
-                  <Training className={s.marginBook} width="22" height="17" />
+                  <Training className={s.marginBook} />
                   {title}
                 </td>
                 <td className={s.tableBorder}>{author}</td>
                 <td className={s.tableBorder}>{publishYear}</td>
                 <td className={s.tableBorder}>{pagesTotal}</td>
-                <td className={`${s.iconDelete} ${s.book} ${s.tableBorder}`}>
-                  <button
-                    type="button"
-                    onClick={() => deleteTrainingBook(_id)}
-                    className={`${s.deleteBtn} ${s.tableBorder}`}
-                  >
-                    <Delete width="14" height="18" />
-                  </button>
-                </td>
+                {!isTraining && (
+                  <td className={`${s.iconDelete} ${s.book} ${s.tableBorder}`}>
+                    <button
+                      type="button"
+                      onClick={() => deleteTrainingBook(_id)}
+                      className={`${s.deleteBtn} ${s.tableBorder}`}
+                    >
+                      <Delete width="14" height="18" />
+                    </button>
+                  </td>
+                )}
               </tr>
             )
           )}
