@@ -12,25 +12,38 @@ import { useTranslation } from 'react-i18next';
     const titleValidation = {
       required: t('validation.required'),
       minLength: {
-        value: 2,
+        value: 1,
         message: t('validation.length'),
       },
+      maxLength: {
+        value: 254,
+        message: "max - 254 letters",
+      },
+
     };
 
     const authorValidation = {
       required: t('validation.required'),
       minLength: {
-        value: 2,
+        value: 1,
         message: t('validation.length'),
+      },
+      maxLength: {
+        value: 254,
+        message: "max - 254 letters",
       },
     };
 
     const yearValidation = {
       required: t('validation.required'),
-      pattern: {
-        value: /^(17[0-9]\d|18\d\d|19\d\d|20[0-2]1|2000|2022)$/,
-        message: t('validation.year'),
+      maxLength: {
+        value: 4,
+        message: "max - 4 nums",
       },
+      // pattern: {
+      //   value: /^$/,
+      //   message: t('validation.year'),
+      // },
     };
 
     const totalPagesValidation = {

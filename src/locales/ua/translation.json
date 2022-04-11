@@ -22,11 +22,11 @@
         "requiredEmail" : "email - обов'язкове поле",
         "requiredPassword" : "пароль - обов'язкове поле",
         "wrongEmail" : "Невірна пошта",
-        "passwordLenght" : "Пароль має містити не менше 6 символів",
+        "passwordLenght" : "Пароль має містити не менше 8 символів",
 
         "requiredName" : "Ім'я - обов'язкове поле",
         "nameMinLenght" : "Поле має містити більше 1 літери",
-        "nameMaxLenght" : "Поле має містити менше 15 літер",
+        "nameMaxLenght" : "Поле має містити менше 255 літер",
         
         "confirmPassword" : "Потрібно підтвердити пароль",
         "matchPassword" : "Паролі повинні збігатися",
