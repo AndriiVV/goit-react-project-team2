@@ -1,14 +1,9 @@
 import axios from 'axios';
 import { registry } from 'chart.js';
+import { useDispatch } from 'react-redux';
+import { loginUser } from 'redux/auth/authOperations';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
-
-export const registerUserApi = userData => {
-  return axios.post('/auth/register', userData).then(({ data }) => ({
-    email: data.email,
-    id: data.id,
-  }));
-};
 
 export const loginUserApi = userData => {
   return axios.post('/auth/login', userData).then(({ data }) => {
@@ -28,6 +23,17 @@ export const loginUserApi = userData => {
   });
 };
 
+export const registerUserApi = userData => {
+  return axios
+    .post('/auth/register', userData)
+    .then(({ data }) => {
+      return {
+        email: data.email,
+        id: data.id,
+      };
+    });
+};
+
 // export const refreshTokenApi = (sid, refreshToken) => {
 //   return axios
 //     .post('/auth/refresh', {
@@ -44,7 +50,6 @@ export const loginUserApi = userData => {
 // };
 
 export const addNewBookApi = book => {
-
   return axios.post('/book', book).then(({ data }) => {
     console.log(data.newBook);
     return {
@@ -106,10 +111,11 @@ export const startTrainingApi = trainingData => {
   return axios
     .post('/planning', trainingData)
     .then(({ data }) => {
+          console.log(data);
       return {
+        books: data.books,
         startDate: data.startDate,
         endDate: data.endDate,
-        books: data.books,
         duration: data.duration,
         pagesPerDay: data.pagesPerDay,
         stats: data.stats,
@@ -131,14 +137,16 @@ export const logOutApi = accessToken => {
 };
 
 export const getUserDataApi = accessToken => {
-axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("accessToken")}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+    'accessToken'
+  )}`;
   return axios.get('/user/books').then(({ data }) => {
     // console.log('/user/books ', data);
     return {
       name: data.name,
       email: data.email,
       goingToRead: data.goingToRead,
-      currentlyReading: data.currentlyReading,
+      currentlyReading: JSON.parse(localStorage.getItem("currentlyReading")) || [],
       finishedReading: data.finishedReading,
     };
   });
@@ -147,6 +155,7 @@ axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("ac
 export const getTrainingDataApi = accessToken => {
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   return axios.get('/planning').then(({ data }) => {
+
     return {
       books: data.planning.books,
       startDate: data.planning.startDate,
@@ -154,6 +163,17 @@ export const getTrainingDataApi = accessToken => {
       duration: data.planning.duration,
       pagesPerDay: data.planning.pagesPerDay,
       stats: data.planning.stats,
+      id: data.planning._id,
     };
   });
 };
+
+export const patchStatisticsPadesApi = pages => {
+  return axios.patch('/planning', pages).then(({ data }) => {
+    console.log(data);
+    return {
+      book: data.book,
+      planning: data.planning,
+    }
+  })
+}

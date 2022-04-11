@@ -11,12 +11,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsLoading } from 'redux/auth/authSelectors';
 import { useEffect, useState } from 'react';
 
-import GoToReadMobile from 'components/GoingToReadMobile/GoingToReadMobile';
+import GoingToReadMobile from 'components/GoingToReadMobile/GoingToReadMobile';
 import { useTranslation } from 'react-i18next';
 import { getUserBooks } from 'redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
 import LibraryMobile from 'components/LibraryMobile/LibraryMobile';
-import LibraryBtn from '../../components/LibraryBtn/LibraryBtn';
+import LibraryBtnToTraining from '../../components/LibraryBtnToTraining/LibraryBtnToTraining';
 
 const LibraryPage = () => {
   // const { t } = useTranslation();
@@ -46,17 +46,20 @@ const LibraryPage = () => {
         <FormAddBook />
 
         {/* TODO:<LibraryBtn/> - отключить в версии для мобилки должна быть только 768px и 1280px */}
+
         <LibraryBtn />
 
         {/* <GoingToRead /> */}
-        {/* <GoToReadMobile/> */}
+        {/* <GoingToReadMobile/> */}
 
+        {/* <LibraryMobile/> */}
         <Library />
         <LibraryMobile />
 
         {allBooksList && isOpenModal && (
           <LibraryModal onClose={closeModal}></LibraryModal>
         )}
+        <LibraryBtnToTraining />
       </div>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addNewBookApi, getUserDataApi } from "utils/bookReadApi";
+import { addBookReviewApi, addNewBookApi, getUserDataApi } from "utils/bookReadApi";
 
 export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
   try {
@@ -22,3 +22,14 @@ export const getUserData = createAsyncThunk(
     }
   }
 );
+
+export const addBookReview = createAsyncThunk(
+  'book/addReview',
+  async (bookId, thunkApi) => {
+    try {
+await addBookReviewApi(bookId)
+    } catch (error) {
+
+    }
+  }
+)

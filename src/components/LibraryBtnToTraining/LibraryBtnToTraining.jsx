@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import s from './LibraryBtn.module.css'
+import s from './LibraryBtnToTraining.module.css'
 
-const LibraryBtn = () => {
+
+const LibraryBtnToTraining = () => {
   const { t } = useTranslation();
 
   return (
     <NavLink to="/training">
-        <button type="button" className={s.libraryBtn}>
+      <button type="button" className={s.LibraryBtnToTraining}
+      >
         {t('GoToRead.button')}
         </button>
     </NavLink>
   )
 }
 
-export default LibraryBtn;
+export default LibraryBtnToTraining;

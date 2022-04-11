@@ -32,7 +32,8 @@ const SingInForm = () => {
     
     const {errors} = formState;
 
-    const onSubmit = (data) => {
+  const onSubmit = (data) => {
+    console.log("onSubmit on SignIn Form: ", data);
       dispatch(loginUser(data));
       reset();
     }

@@ -15,8 +15,6 @@ import {
   getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
-
-// import { getTraningData } from 'redux/training/trainingOperatons';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -24,7 +22,7 @@ const TrainingPage = () => {
   const dispatch = useDispatch();
   const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
-  const isTrainingGo = useSelector(getIsTrainingGo);
+  // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
@@ -55,10 +53,20 @@ const TrainingPage = () => {
       books: [...prevTrainingList.books, chooseBook._id],
     }));
   };
+  console.log(newBooks);
+
+  const deleteTrainingBook = _id => {
+    setNewBooks(prev => prev.filter(newBook => newBook._id !== _id));
+  };
 
   const onSubmit = e => {
-    dispatch(startTraining(trainingList));
-    // dispatch(getTraningData());
+    if (trainingList.startDate === '') {
+      Notify.warning('Виберіть дату початку');
+    } else if (trainingList.endDate === '') {
+      Notify.warning('Виберіть дату завершення');
+    } else {
+      dispatch(startTraining(trainingList));
+    }
   };
 
   function daysLeft() {
@@ -102,26 +110,34 @@ const TrainingPage = () => {
                 )}
               </div>
 
-              <TrainigForm
-                books={books}
-                newBooks={newBooks}
-                setNewBooks={setNewBooks}
-                addNewBook={addNewBook}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
+              {!isTraining && (
+                <TrainigForm
+                  books={books}
+                  newBooks={newBooks}
+                  setNewBooks={setNewBooks}
+                  addNewBook={addNewBook}
+                  inputValue={inputValue}
+                  setInputValue={setInputValue}
+                />
+              )}
             </div>
 
-            <TrainingBookList newBooks={newBooks} />
-            <button
-              type="button"
-              className={s.startTrainingBtn}
-              onClick={() => {
-                onSubmit();
-              }}
-            >
-              Почати тренування
-            </button>
+            <TrainingBookList
+              newBooks={newBooks}
+              setNewBooks={setNewBooks}
+              deleteTrainingBook={deleteTrainingBook}
+            />
+            {!isTraining && (
+              <button
+                type="button"
+                className={s.startTrainingBtn}
+                onClick={() => {
+                  onSubmit();
+                }}
+              >
+                Почати тренування
+              </button>
+            )}
           </div>
         </div>
 

@@ -5,25 +5,38 @@ import { ReactComponent as Star } from '../../images/star-icon.svg';
 import GoingToRead from '../GoingToRead/GoingToRead';
 import { useSelector } from 'react-redux';
 import { getUserBooks } from '../../redux/book/bookSelectors';
+import { useTranslation } from 'react-i18next';
+import { addBookReview } from 'redux/book/bookOperations';
+import { useDispatch } from 'react-redux';
 
 const Library = () => {
+  const { t } = useTranslation();
   const books = useSelector(getUserBooks);
+  console.log(books.currentlyReading);
+
+  const dispatch = useDispatch();
+  const addReview = e => {
+    console.log(e.target);
+    //отправляется ребью на бк - заменить на открітие модалки и передачу ID книги
+    dispatch(addBookReview())
+  }
 
   return (
+
     <div>
       <table className={s.table}>
-        <caption className={s.tableCaption}>Прочитано</caption>
+        <caption className={s.tableCaption}>{t('finishedReading.header')}</caption>
         <thead>
           <tr className={s.tableHeader}>
-            <th className={s.titleDone}>Назва книги</th>
-            <th className={s.authorDone}>Автор</th>
-            <th className={s.year}>Рік</th>
-            <th className={s.page}>Стор.</th>
-            <th className={s.rating}>Рейтинг книги</th>
+            <th className={s.titleDone}>{t('GoToRead.title')}</th>
+            <th className={s.authorDone}>{t('GoToRead.author')}</th>
+            <th className={s.yearDone}>{t('GoToRead.year')}</th>
+            <th className={s.pageDone}>{t('GoToRead.pages')}</th>
+            <th className={s.rating}>{t('finishedReading.bookRating')}</th>
             <th className={s.resume}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={s.wrapPage}>
           {books.finishedReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>
@@ -40,23 +53,26 @@ const Library = () => {
                 <Star />
               </td>
               <td>
-                <button className={s.resumeBtn}>Резюме</button>
+                <button
+                  className={s.resumeBtn}
+                  onClick={() => addReview(_id)}
+                >{t('finishedReading.button')}</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <table className={s.table}>
-        <caption className={s.tableCaption}>Читаю</caption>
+        <caption className={s.tableCaption}>{t('currentlyReading.header')}</caption>
         <thead>
           <tr className={s.tableHeader}>
-            <th className={s.title}>Назва книги</th>
-            <th className={s.author}>Автор</th>
-            <th className={s.year}>Рік</th>
-            <th className={s.page}>Стор.</th>
+            <th className={s.title}>{t('GoToRead.title')}</th>
+            <th className={s.author}>{t('GoToRead.author')}</th>
+            <th className={s.year}>{t('GoToRead.year')}</th>
+            <th className={s.page}>{t('GoToRead.pages')}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={s.wrapPage}>
           {books.currentlyReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
             <tr key={_id} className={s.bookItem}>
               <td className={s.itemTitle}>

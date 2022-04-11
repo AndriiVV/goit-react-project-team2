@@ -1,4 +1,4 @@
-.libraryBtn {
+.LibraryBtnToTraining {
     display: block;
     height: 40px;
     width: 200px;
@@ -8,5 +8,5 @@
     margin: 40px auto 0 ;
 }
 @media screen and (min-width: 768px) {
-   
+
 }

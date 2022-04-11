@@ -67,7 +67,7 @@
         "button" : "Add Book"       
     },
     "GoToRead":{
-        "header" : "I intend to read",
+        "header" : "I Intend to Read",
         "year" : "Year",
         "pages" : "Pages",
         "author" : "Author",
@@ -82,6 +82,7 @@
     "finishedReading" : {
         "header" : "Finished Reading", 
         "rating" : "Rating :", 
+        "bookRating" : "Rating", 
         "button" : "Resume"
     },
     "currentlyReading" : {

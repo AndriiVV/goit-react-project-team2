@@ -9,20 +9,22 @@ import {
 import { getTraningData } from '../training/trainingOperatons';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
       // console.log('registerUser is running. Data is: ', credentials);
-      const data = await registerUserApi(credentials);
+      await registerUserApi(credentials);
       toast.success('Реєстрація виконана успішно!', {
         theme: 'colored',
         closeOnClick: true,
         pauseOnHover: true,
         autoClose: 2000,
       });
-      // console.log('registerUser completed'); //credentials - учётные данные
+      const data = loginUserApi({email: credentials.email, password: credentials.password});
+ 
       return data;
     } catch (error) {
       toast.error('Користувач с таким Email уже існує', {
@@ -72,7 +74,3 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
-
-
-
-

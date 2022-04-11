@@ -1,12 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  loginUser,
-  logoutUser,
-  registerUser,
-} from './authOperations';
-import {
-  addBook, getUserData
-} from '../book/bookOperations';
+import { loginUser, logoutUser, registerUser } from './authOperations';
+import { addBook, getUserData } from '../book/bookOperations';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
@@ -17,7 +11,7 @@ const getFromLS = key => {
 
 const initialState = {
   user: {
-    name: getFromLS('name')|| '',
+    name: getFromLS('name') || '',
     email: getFromLS('email') || '',
     id: getFromLS('id') || null,
   },
@@ -47,6 +41,16 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
+        state.isLoggedIn = true;
+        localStorage.setItem('accessToken', payload.accessToken);
+        localStorage.setItem('refreshToken', payload.refreshToken);
+        localStorage.setItem('sid', payload.sid);
+        localStorage.setItem('name', payload.name);
+        localStorage.setItem('email', payload.email);
+        localStorage.setItem('id', payload.id);
+        state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
+        state.sid = payload.sid;
         state.user.name = payload.name;
         state.user.email = payload.email;
         state.user.id = payload.id;
@@ -102,13 +106,10 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(getUserData.fulfilled, (state, {
-        payload
-      }) => {
+      .addCase(getUserData.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.name = payload.name;
-        })
-      ;
+      });
   },
 });
 //   extraReducers: {
