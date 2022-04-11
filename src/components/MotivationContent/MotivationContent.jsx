@@ -4,8 +4,6 @@ import { ReactComponent as ThumbUpIcon } from '../../images/thumb_up.svg';
 import MotivationContentExellent from 'components/MotivationContentExellent/MotivationContentExellent';
 import { useEffect } from 'react';
 
-const modalRoot = document.querySelector('#modal-root');
-
 const MotivationContent = ({ closeModal }) => {
   const onKeyDown = event => {
     if (event.code === 'Escape') {

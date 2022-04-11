@@ -148,7 +148,7 @@ const TrainingPage = () => {
         </div>
         <div className={s.motivationModal}>
           {isTraining && !isOpenModal && (
-            <MotivationContent onClose={closeModal} />
+            <MotivationContent closeModal={closeModal} />
           )}
           {/* дописати умову коли закінчився таймер */}
         </div>
