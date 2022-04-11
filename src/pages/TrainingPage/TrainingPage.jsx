@@ -19,8 +19,10 @@ import { getUserBooks } from '../../redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
 import { startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useTranslation } from 'react-i18next';
 
 const TrainingPage = () => {
+  const { t } = useTranslation();
   const books = useSelector(getUserBooks);
   const isTraining = useSelector(getIsTraining);
 
@@ -53,13 +55,13 @@ const TrainingPage = () => {
 
   const addNewBook = chooseBook => {
     if (inputValue === '') {
-      Notify.warning('Оберіть книгу');
+      Notify.warning(t('training.select'));
     } else if (!inputValue === '') {
       return;
     }
 
     if (newBooks.includes(chooseBook)) {
-      Notify.warning('Книга вже додана у список');
+      Notify.warning(t('training.done'));
     } else if (inputValue === '') {
       return;
     } else setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
@@ -76,9 +78,9 @@ const TrainingPage = () => {
 
   const onSubmit = e => {
     if (trainingList.startDate === '') {
-      Notify.warning('Виберіть дату початку');
+      Notify.warning(t('training.warningStart'));
     } else if (trainingList.endDate === '') {
-      Notify.warning('Виберіть дату завершення');
+      Notify.warning(t('training.warningEnd'));
     } else {
       dispatch(startTraining(trainingList));
     }
@@ -120,7 +122,7 @@ const TrainingPage = () => {
               <div className={s.startTimer}>
                 {!isTraining && (
                   <>
-                    <h2 className={s.trainingTitle}>Моє тренування</h2>
+                    <h2 className={s.trainingTitle}>{t('alldatePicker.header')}</h2>
                     <ALLdatePicker
                       setTrainingList={setTrainingList}
                       trainingList={trainingList}
@@ -154,7 +156,7 @@ const TrainingPage = () => {
                   onSubmit();
                 }}
               >
-                Почати тренування
+                {t('training.button')}
               </button>
             )}
           </div>

@@ -1,8 +1,10 @@
 import s from './TrainingBookList.module.css';
 import { ReactComponent as Training } from '../../images/training-icon.svg';
 import { ReactComponent as Delete } from '../../images/delete.svg';
+import { useTranslation } from 'react-i18next';
 
 const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
+  const { t } = useTranslation();
   return (
     <div>
       <table className={s.booksListTable}>
@@ -12,25 +14,25 @@ const TrainingBookList = ({ newBooks, deleteTrainingBook }) => {
               style={{ borderBottom: '1px solid #E0E5EB' }}
               className={s.bookTitle}
             >
-              Назва книги
+              {t('addingBookForm.title')}
             </th>
             <th
               style={{ borderBottom: '1px solid #E0E5EB' }}
               className={s.bookAuthor}
             >
-              Автор
+              {t('all.author')}
             </th>
             <th
               style={{ borderBottom: '1px solid #E0E5EB' }}
               className={s.bookYear}
             >
-              Рік
+              {t('all.year')}
             </th>
             <th
               style={{ borderBottom: '1px solid #E0E5EB' }}
               className={s.bookPage}
             >
-              Стор.
+              {t('all.pages')}
             </th>
             <th style={{ borderBottom: '1px solid #E0E5EB' }}></th>
           </tr>

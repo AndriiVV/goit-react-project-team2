@@ -1,8 +1,10 @@
 // import s from './MotivationContentExellent.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const MotivationContentExellent = () => {
+    const { t } = useTranslation();
     return (
-        <h3>Все суперово! Так тримати! Мета досягнута=)</h3>
+        <h3>{t('motivationExellent.exellent')}</h3>
     )
 }
 

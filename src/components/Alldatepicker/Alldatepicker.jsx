@@ -3,8 +3,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from '../Datepicker/Datepicker';
 import s from './Alldatepicker.module.scss';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useTranslation } from 'react-i18next';
 
 const Alldatepicker = ({ setTrainingList, trainingList }) => {
+  const { t } = useTranslation();
   //////////////datepickerfooUSetosendtoapi
   // const [trainingData, setTrainingData] = useState({
   //   startDate: '',
@@ -20,13 +22,13 @@ const Alldatepicker = ({ setTrainingList, trainingList }) => {
   //////////////////endofdatepickerfoo
   // console.log(Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate));
   Date.parse(trainingList.startDate) - Date.parse(trainingList.endDate) > 0 &&
-    Notify.warning('Дата початку більше дати завершення!!!');
+    Notify.warning(t('alldatePicker.note'));
 
   return (
     <div className={s.timerFlex}>
       <div>
         <DatePicker
-          placeholder="Початок"
+          placeholder={t("alldatePicker.start")}
           setDate={setStartDate}
           isDate={!!trainingList.startDate}
           className={s.timerInput}
@@ -34,7 +36,7 @@ const Alldatepicker = ({ setTrainingList, trainingList }) => {
       </div>
       <div className={s.timerInput}>
         <DatePicker
-          placeholder="Завершення"
+          placeholder={t("alldatePicker.end")}
           setDate={setEndDate}
           isDate={!!trainingList.endDate}
         />

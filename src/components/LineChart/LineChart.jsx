@@ -12,6 +12,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
+
 
 ChartJS.register(
   CategoryScale,
@@ -24,6 +26,7 @@ ChartJS.register(
 );
 
 const LineChart = () => {
+  const { t } = useTranslation();
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
 
@@ -57,7 +60,7 @@ const LineChart = () => {
         position: 'top',
         align: 'start',
         display: true,
-        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${pages === null ? 0 : pages}`,
+        text: `${t('chart.title')} ${pages === null ? 0 : pages}`,
         color: '#242A37',
         font: {
           family: 'Montserrat',
@@ -98,7 +101,7 @@ const LineChart = () => {
     labels,
     datasets: [
       {
-        label: 'ПЛАН',
+        label: t('chart.plan'),
         animations: {
           y: {
             duration: 2000,
@@ -111,7 +114,7 @@ const LineChart = () => {
         tension: 0.4,
       },
       {
-        label: 'ФАКТ',
+        label: t('chart.fact'),
         animations: {
           y: {
             duration: 2000,
