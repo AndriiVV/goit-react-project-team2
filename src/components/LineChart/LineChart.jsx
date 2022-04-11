@@ -26,6 +26,7 @@ ChartJS.register(
 const LineChart = () => {
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
+  const pageCount = useSelector(state => state.training.stats.pageCount);
 
   let arrDays = [];
 
