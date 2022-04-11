@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setStatisticsPades } from 'redux/training/trainingOperatons';
 import { getStats } from 'redux/training/trainingSelectors';
 import s from './Statistics.module.css';
+import StatisticsList from '../StatisticsList/StatisticsList';
 
 const Statistics = () => {
   const dispatch = useDispatch()
@@ -17,8 +18,8 @@ const Statistics = () => {
   }
 
   const handleSubmit = e => {
-    dispatch(setStatisticsPades({ "pages": pages }))
-    setPages(0)
+    dispatch(setStatisticsPades({ "pages": Number(pages) }))
+    setPages("")
   }
 
   // Today
@@ -66,6 +67,7 @@ const Statistics = () => {
           </button>
         </div>
         <h2 className={s.statisticsTitle}>Статистика</h2>
+        <StatisticsList/>
       </div>
     </div>
   );
