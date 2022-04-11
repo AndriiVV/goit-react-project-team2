@@ -9,10 +9,11 @@ import StartGoal from '../../components/MyGoal/StartGoal';
 import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
+import MotivationContent from '../../components/MotivationContent/MotivationContent';
 import s from './TrainingPage.module.css';
 import {
   getIsTraining,
-  getIsTrainingGo,
+  // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 import { startTraining } from '../../redux/training/trainingOperatons';
@@ -35,6 +36,8 @@ const TrainingPage = () => {
     books: newBooks.map(({ _id }) => _id),
   });
 
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const addNewBook = chooseBook => {
     if (inputValue === '') {
       Notify.warning('Оберіть книгу');
@@ -53,7 +56,6 @@ const TrainingPage = () => {
       books: [...prevTrainingList.books, chooseBook._id],
     }));
   };
-  console.log(newBooks);
 
   const deleteTrainingBook = _id => {
     setNewBooks(prev => prev.filter(newBook => newBook._id !== _id));
@@ -76,6 +78,11 @@ const TrainingPage = () => {
         30
     );
   }
+
+  const closeModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   return (
     <Container>
       <div className={s.trainingPage}>
@@ -139,9 +146,15 @@ const TrainingPage = () => {
             )}
           </div>
         </div>
+        <div className={s.motivationModal}>
+          {isTraining && !isOpenModal && (
+            <MotivationContent closeModal={closeModal} />
+          )}
+          {/* дописати умову коли закінчився таймер */}
+        </div>
 
         <div className={s.statisticsFlex}>
-          <LineChart />
+          <LineChart daysLeft={daysLeft} />
           <Statistics />
         </div>
       </div>
