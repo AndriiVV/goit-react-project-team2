@@ -10,7 +10,9 @@ import { getTrainingDataApi } from 'utils/bookReadApi';
 export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
   try {
     const addedBook = await addNewBookApi(book);
-    Notify.success(`Книга "${book.title}" додана до списка "Маю намір прочитати"`)
+    Notify.success(
+      `Книга "${book.title}" додана до списка "Маю намір прочитати"`
+    );
     return addedBook;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
@@ -26,6 +28,7 @@ export const getUserData = createAsyncThunk(
       const trainingData = await getTrainingDataApi();
 
       data.currentlyReading = trainingData.books;
+      data.trainingData = trainingData;
 
       data.finishedReading = data.finishedReading.filter(
         book => !data.currentlyReading.map(book => book._id).includes(book._id)

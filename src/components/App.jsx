@@ -8,7 +8,7 @@ import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsAuth, getToken } from 'redux/auth/authSelectors';
-import { getUserData } from 'redux/auth/authOperations';
+import { getUserData } from '../redux/book/bookOperations';
 
 const LibraryPage = lazy(() =>
   import(
@@ -21,10 +21,12 @@ const TrainingPage = lazy(() =>
   )
 );
 const RegisterPage = lazy(() =>
-  import('../pages/RegisterPage/RegisterPage' /* webpackChunkName: "register-page" */)
+  import(
+    '../pages/RegisterPage/RegisterPage' /* webpackChunkName: "register-page" */
+  )
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
@@ -41,9 +43,8 @@ export const App = () => {
   return (
     <Container>
       <MainNav />
-        <Suspense fallback={<h3>Loading...</h3>}>
-          <Switch>
-         
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <Switch>
           <PrivateRoute path={'/library'}>
             <LibraryPage />
           </PrivateRoute>
@@ -56,8 +57,8 @@ export const App = () => {
           <PublicRoute path={'/register'}>
             <RegisterPage />
           </PublicRoute>
-          </Switch>
-        </Suspense>
+        </Switch>
+      </Suspense>
       <ToastContainer autoClose={2000} />
     </Container>
   );

@@ -38,7 +38,7 @@ const LibraryPage = () => {
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-  const isGoingToReadBooks = useSelector(state => state.book.books.goingToRead);
+  const goingToReadBooks = useSelector(state => state.book.books.goingToRead);
   const currentlyReadingBooks = useSelector(
     state => state.book.books.currentlyReading
   );
@@ -46,7 +46,7 @@ const LibraryPage = () => {
     state => state.book.books.finishedReading
   );
   const allBooksList =
-    isGoingToReadBooks.length === 0 &&
+    goingToReadBooks.length === 0 &&
     currentlyReadingBooks.length === 0 &&
     finishedReadingBooks.length === 0;
 
@@ -66,7 +66,7 @@ const LibraryPage = () => {
         <Library />
         <LibraryMobile />
 
-        {allBooksList && isOpenModal && (
+        {allBooksList && isOpenModal && isLoading && (
           <LibraryModal onClose={closeModal}></LibraryModal>
         )}
         <LibraryBtnToTraining />

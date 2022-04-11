@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
-
+import { formatISO, formatRFC7231, intlFormat, lightFormat } from 'date-fns';
 
 ChartJS.register(
   CategoryScale,
@@ -29,6 +29,7 @@ const LineChart = () => {
   const { t } = useTranslation();
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
+  const groupStats = useSelector(state => state.training.stats);
 
   let arrDays = [];
 
@@ -43,6 +44,12 @@ const LineChart = () => {
   }
 
   const planningPages = arrPages.fill(pages);
+
+  let factPages = [];
+
+  for (let i = 0; i < groupStats.length; i++) {
+    factPages[i] = groupStats[i].pagesCount;
+  }
 
   const options = {
     responsive: true,
@@ -96,6 +103,13 @@ const LineChart = () => {
   };
 
   const labels = [0, ...arrDays];
+  // let dateNow = new Date();
+  // const labels = [];
+
+  // for (let i = 0; i <= duration; i++) {
+  //   let time = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
+  //   labels[i] = lightFormat(new Date(time), 'yyyy-dd-MM');
+  // }
 
   const data = {
     labels,
@@ -121,7 +135,7 @@ const LineChart = () => {
             delay: 700,
           },
         },
-        data: [5, 6, 7, 1, 2, 3, 4],
+        data: factPages,
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         tension: 0.4,

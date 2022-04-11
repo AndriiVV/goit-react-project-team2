@@ -13,6 +13,7 @@ import MotivationContent from '../../components/MotivationContent/MotivationCont
 import s from './TrainingPage.module.css';
 import {
   getIsTraining,
+  checkRender,
   // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
@@ -38,6 +39,7 @@ const TrainingPage = () => {
     }
   }, [dispatch]);
   const stateRedux = useSelector(getUserBooks);
+  const checkRenderStart = useSelector(checkRender);
   // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
@@ -118,9 +120,10 @@ const TrainingPage = () => {
             />
           )}
           <div className={s.trainingContainer}>
-            <div className={s.mobileModalTraining}>
-              <div className={s.startTimer}>
-                {!isTraining && (
+            {!isTraining && (
+              // <div className={s.mobileModalTraining}>
+              <>
+                <div className={s.startTimer}>
                   <>
                     <h2 className={s.trainingTitle}>{t('alldatePicker.header')}</h2>
                     <ALLdatePicker
@@ -128,25 +131,26 @@ const TrainingPage = () => {
                       trainingList={trainingList}
                     />
                   </>
+                </div>
+                {!checkRenderStart && (
+                  <TrainigForm
+                    books={books}
+                    newBooks={newBooks}
+                    setNewBooks={setNewBooks}
+                    addNewBook={addNewBook}
+                    inputValue={inputValue}
+                    setInputValue={setInputValue}
+                  />
                 )}
-              </div>
-
-              {!isTraining && (
-                <TrainigForm
-                  books={books}
-                  newBooks={newBooks}
-                  setNewBooks={setNewBooks}
-                  addNewBook={addNewBook}
-                  inputValue={inputValue}
-                  setInputValue={setInputValue}
-                />
-              )}
-            </div>
+              </>
+              // </div>
+            )}
 
             <TrainingBookList
               newBooks={newBooks}
               setNewBooks={setNewBooks}
               deleteTrainingBook={deleteTrainingBook}
+              isTraining={isTraining}
             />
             {!isTraining && (
               <button

@@ -54,19 +54,18 @@ export const loginUser = createAsyncThunk(
         autoClose: 2000,
       });
 
-      const trainingData = await getTrainingDataApi();
+      // const trainingData = await getTraningData();
 
-      data.currentlyReading = trainingData.books;
+      // data.currentlyReading = trainingData.books;
+      // data.trainingData = trainingData;
 
-      data.finishedReading = data.finishedReading.filter(
-        book => !data.currentlyReading.map(book => book._id).includes(book._id)
-      );
+      // data.finishedReading = data.finishedReading.filter(
+      //   book => !data.currentlyReading.map(book => book._id).includes(book._id)
+      // );
 
-      data.goingToRead = data.goingToRead.filter(
-        book =>
-          !data.currentlyReading.map(book => book._id).includes(book._id)
-      );
-
+      // data.goingToRead = data.goingToRead.filter(
+      //   book => !data.currentlyReading.map(book => book._id).includes(book._id)
+      // );
 
       return data;
     } catch (error) {
