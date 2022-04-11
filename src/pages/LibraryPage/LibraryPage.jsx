@@ -47,7 +47,7 @@ const LibraryPage = () => {
 
         {/* TODO:<LibraryBtn/> - отключить в версии для мобилки должна быть только 768px и 1280px */}
 
-        <LibraryBtn />
+        <LibraryBtnToTraining />
 
         {/* <GoingToRead /> */}
         {/* <GoingToReadMobile/> */}

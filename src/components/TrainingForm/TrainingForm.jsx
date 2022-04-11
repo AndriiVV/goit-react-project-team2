@@ -36,6 +36,7 @@ const TrainigForm = ({
         type="text"
         name="book"
         list="books"
+        autoComplete='off'
         placeholder="Обрати книги з бібліотеки"
         className={s.trainingInput}
         onChange={handleInputChange}
