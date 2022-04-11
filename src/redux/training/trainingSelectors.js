@@ -2,3 +2,4 @@
 
 export const getIsTraining = state => state.training._id;
 export const getIsTrainingGo = state => state.isTrainingGo;
+export const getStats = state => state.stats;

@@ -79,7 +79,8 @@ const trainingReducer = createSlice({
     [setStatisticsPades.fulfilled](state, {
       payload
     }) {
-        state.booksInTraining = payload.books;
+      state.booksInTraining = payload.books;
+      state.stats = payload.planning.stats;
     }
   },
 });

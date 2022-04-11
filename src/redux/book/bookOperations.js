@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 import {
   addBookReviewApi,
   addNewBookApi,
@@ -9,6 +10,7 @@ import { getTrainingDataApi } from 'utils/bookReadApi';
 export const addBook = createAsyncThunk('book/add', async (book, thunkApi) => {
   try {
     const addedBook = await addNewBookApi(book);
+    Notify.success(`Книга "${book.title}" додана до списка "Маю намір прочитати"`)
     return addedBook;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
