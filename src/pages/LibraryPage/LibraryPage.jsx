@@ -27,8 +27,9 @@ const LibraryPage = () => {
 
   useEffect(() => {
     if (
-      stateRedux.goingToRead.length === 0 ||
-      stateRedux.currentlyReading.length === 0
+      stateRedux.goingToRead.length === 0
+      // stateRedux.goingToRead.length === 0 ||
+      // stateRedux.currentlyReading.length === 0
     ) {
       dispatch(getUserData());
     }

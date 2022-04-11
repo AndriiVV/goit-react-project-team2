@@ -24,12 +24,12 @@ const RegisterPage = lazy(() =>
   import('../pages/RegisterPage/RegisterPage' /* webpackChunkName: "register-page" */)
 );
 const LoginPage = lazy(() =>
-  import('../pages/LogInPage/LogInPage' /* webpackChunkName: "login-page" */)
+  import('../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */)
 );
 
 export const App = () => {
   const isAuth = useSelector(getIsAuth);
-  console.log(isAuth);
+  // console.log(isAuth);
   const token = useSelector(getToken);
 
   const dispatch = useDispatch();
