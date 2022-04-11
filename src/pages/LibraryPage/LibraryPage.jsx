@@ -57,7 +57,7 @@ const LibraryPage = () => {
         <Library />
         <LibraryMobile />
 
-        {allBooksList && isOpenModal && (
+        {allBooksList && !isOpenModal && (
           <LibraryModal onClose={closeModal}></LibraryModal>
         )}
         <LibraryBtnToTraining />

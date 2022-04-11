@@ -25,14 +25,28 @@ ChartJS.register(
 
 const LineChart = ({ daysLeft }) => {
   const pages = useSelector(state => state.training.pagesPerDay);
-  let delayed;
+  const duration = useSelector(state => state.training.duration);
   const days = daysLeft();
   const averagePages = Math.ceil(pages / days);
-  // const labels = ['', `Час: ${isNaN(days) ? 0 : days} (дні)`];
-  const labels = ['january', 'february', 'march', 'april', 'may'];
 
+  let arrDays = [];
+
+  for (let i = 0; i < duration; i++) {
+    arrDays[i] = i + 1;
+    return arrDays;
+  }
+  console.log(arrDays);
+
+  // let arrPages = [];
+
+  // for (let page of arrPages) {
+  //   arrPages[i] = i + 1;
+  //   return arrPages;
+  // }
+
+  let delayed;
   const options = {
-    responsive: true,
+    // responsive: true,
     maintainAspectRatio: false,
     // cubicInterpolationMode: 'monotone',
     // showLine: false,
@@ -87,28 +101,38 @@ const LineChart = ({ daysLeft }) => {
     },
   };
 
+  const labels = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
+
   const data = {
     labels,
     datasets: [
       {
         label: 'ПЛАН',
-        data: [1, 2, 3, 4, 5],
+        data: [8, 8, 8, 8, 8, 8, 8],
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         tension: 0.4,
       },
-      {
-        label: 'ФАКТ',
-        data: [78, 65, 23, 98],
-        borderColor: '#FF6B08',
-        backgroundColor: '#FF6B08',
-        tension: 0.4,
-      },
+      // {
+      //   label: 'ФАКТ',
+      //   data: [5],
+      //   borderColor: '#FF6B08',
+      //   backgroundColor: '#FF6B08',
+      //   tension: 0.4,
+      // },
     ],
   };
   return (
     <div className={s.chartWrap}>
-      <Line options={options} data={data} className={s.chart} />
+      <Line data={data} options={options} className={s.chart} />
     </div>
   );
 };
