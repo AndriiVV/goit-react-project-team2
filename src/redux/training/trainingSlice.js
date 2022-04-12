@@ -33,6 +33,18 @@ const initialState = {
 const trainingReducer = createSlice({
   name: 'training',
   initialState,
+  reducers: {
+    resetTraining(state) {
+      state.startDate = null;
+      state.endDate = null;
+      state.books = [];
+      state.duration = null;
+      state.pagesPerDay = null;
+      state.stats = [];
+      state._id = null;
+      state.error = null;
+    },
+  },
   extraReducers: {
     [startTraining.fulfilled](state, { payload }) {
       state.startDate = payload.startDate;
@@ -98,7 +110,8 @@ const trainingReducer = createSlice({
       // state.isTrainingGo = true;
     },
     [getUserData.fulfilled](state, { payload }) {
-      if (payload === null) {
+      console.log('payload is ', payload.trainingData);
+      if (payload.trainingData === null) {
         state.startDate = null;
         state.endDate = null;
         state.books = [];
@@ -133,3 +146,4 @@ const trainingReducer = createSlice({
 });
 
 export default trainingReducer.reducer;
+export const { resetTraining } = trainingReducer.actions;

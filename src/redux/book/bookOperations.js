@@ -25,20 +25,22 @@ export const getUserData = createAsyncThunk(
     try {
       const data = await getUserDataApi(accessToken);
 
-      const trainingData = await getTrainingDataApi().catch(error => { 
+      const trainingData = await getTrainingDataApi().catch(error => {
         console.log('Data ', error.request);
         if (error.request?.status === 403) {
-          data.currentlyReading = [];
-          data.trainingData = null;
-          return [];
+          return null;
         } else {
           throw error;
         }
-        
       });
-      
-      data.currentlyReading = trainingData.books;
-      data.trainingData = trainingData;
+      // console.log("TD", trainingData);
+      if (trainingData === null) {
+        data.currentlyReading = [];
+        data.trainingData = null;
+      } else {
+        data.currentlyReading = trainingData.books;
+        data.trainingData = trainingData;
+      }
 
       // data.currentlyReading = trainingData.books;
 

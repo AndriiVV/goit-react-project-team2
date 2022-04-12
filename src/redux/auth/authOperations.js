@@ -54,14 +54,31 @@ export const loginUser = createAsyncThunk(
         autoClose: 2000,
       });
 
-      const trainingData = await getTrainingDataApi();
+      // const trainingData = await getTrainingDataApi();
 
-      console.log('trainingData.request: ', trainingData.request);
-      if (trainingData.request?.status === 403) {
+      const trainingData = await getTrainingDataApi().catch(error => {
+        // console.log('Data ', error.request);
+        if (error.request?.status === 403) {
+          return null;
+        } else {
+          throw error;
+        }
+      });
+      // console.log("TD", trainingData);
+      if (trainingData === null) {
         data.currentlyReading = [];
+        // data.trainingData = null;
       } else {
         data.currentlyReading = trainingData.books;
+        // data.trainingData = trainingData;
       }
+
+      // console.log('trainingData.request: ', trainingData.request);
+      // if (trainingData.request?.status === 403) {
+      //   data.currentlyReading = [];
+      // } else {
+      //   data.currentlyReading = trainingData.books;
+      // }
 
       // data.currentlyReading = trainingData.books;
       // data.trainingData = trainingData;

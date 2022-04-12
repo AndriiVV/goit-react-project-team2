@@ -26,6 +26,7 @@ import {
 } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useTranslation } from 'react-i18next';
+import { resetTraining } from 'redux/training/trainingSlice';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const TrainingPage = () => {
   const [trainingList, setTrainingList] = useState({
     startDate: '',
     endDate: '',
-    books: newBooks.map(({ _id }) => _id),
+    books: [],
   });
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -52,6 +53,15 @@ const TrainingPage = () => {
   useEffect(() => {
     !isTraining && dispatch(getTraningData());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!trainingBooks.length) return;
+    const { pagesTotal, pagesFinished } =
+      trainingBooks[trainingBooks.length - 1];
+
+    pagesTotal === pagesFinished && setIsOpenModal(true);
+    // dispatch(resetTraining());
+  }, [trainingBooks]);
 
   const addNewBook = chooseBook => {
     if (inputValue === '') {
@@ -66,10 +76,10 @@ const TrainingPage = () => {
       return;
     } else setNewBooks(prevNewBooks => [...prevNewBooks, chooseBook]);
 
-    setTrainingList(prevTrainingList => ({
-      ...prevTrainingList,
-      books: [...prevTrainingList.books, chooseBook._id],
-    }));
+    // setTrainingList(prevTrainingList => ({
+    //   ...prevTrainingList,
+    //   books: [...prevTrainingList.books, chooseBook._id],
+    // }));
   };
 
   const deleteTrainingBook = _id => {
@@ -82,7 +92,12 @@ const TrainingPage = () => {
     } else if (trainingList.endDate === '') {
       Notify.warning(t('training.warningEnd'));
     } else {
-      dispatch(startTraining(trainingList));
+      dispatch(
+        startTraining({
+          ...trainingList,
+          books: newBooks.map(({ _id }) => _id),
+        })
+      );
     }
   };
 
@@ -99,7 +114,8 @@ const TrainingPage = () => {
   };
 
   const closeModal = () => {
-    setIsOpenModal(!isOpenModal);
+    setIsOpenModal(false);
+    dispatch(resetTraining());
   };
 
   return (
@@ -167,7 +183,7 @@ const TrainingPage = () => {
           </div>
         </div>
 
-        {isTraining && !isOpenModal && (
+        {isTraining && isOpenModal && (
           <MotivationContent closeModal={closeModal} />
         )}
         {/* дописати умову коли закінчився таймер */}
