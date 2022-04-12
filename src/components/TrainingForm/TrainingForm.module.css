@@ -4,13 +4,26 @@
         }
 }
 
+@media screen and (max-width: 768px) {
+    .trainingForm {
+        width: 270px;
+        margin-left: 20px;
+        }
+}
+
 .trainingInput {
-width: 270px;
+width: 250px;
 height: 42px;
-margin-bottom: 35px;
+margin: 0 auto 35px auto;
+padding-left: 13px;
 border: none;
 box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 }
+
+/* @media screen and (max-width: 768px) {
+    .trainingInput {
+        }
+} */
 
 @media screen and (min-width: 768px) {
     .trainingInput {

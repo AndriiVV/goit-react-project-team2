@@ -2,7 +2,6 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andriivv.github.io/goit-react-project-team2/",
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.8.1",
@@ -17,6 +16,7 @@
     "i18next-browser-languagedetector": "^6.1.4",
     "i18next-http-backend": "^1.4.0",
     "modern-normalize": "^1.1.0",
+    "netlify-cli": "^9.16.6",
     "notiflix": "^3.2.5",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.0.1",
@@ -41,7 +41,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:js": "eslint src/**/*.{js,jsx}"
+    "lint:js": "eslint src/**/*.{js,jsx}",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p",
+    "logout": "netlify logout",
+    "login": "netlify login",
+    "netlify": "netlify"
   },
   "eslintConfig": {
     "extends": [
