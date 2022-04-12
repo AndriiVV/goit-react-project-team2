@@ -1,0 +1,71 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 767px) {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  
+.modal {
+    margin: 0 auto;
+    min-width: 320px;
+    min-height: 425px;
+    padding-left: 15px;
+    padding-top: 31px;
+    padding-right: 15px;
+    padding-bottom: 36px;
+    background-color: #F6F7FB;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(10px 10px 20px rgba(9, 30, 63, 0.2));
+  }
+  
+  .mobileTitle {
+    display: block;
+    padding-top: 11px;
+    margin-top: 0;
+    height: 60px;
+    color: #ffffff;
+    background: #B1B5C2;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .mobileTitle {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mobileInputs {
+        display: block;
+    }
+}
+
+
+.arrowBtn{
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #FF6B08;
+    font-weight: 900;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+@media screen and (min-width: 768px) {
+    .arrowBtn {
+        display: none;
+    }
+}

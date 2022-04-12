@@ -128,6 +128,13 @@ overflow: scroll;
     }
 }
 
+@media screen and (max-width: 768px) {
+    .fontSize {
+        font-size: 8px;
+    }
+}
+
+
 .bookTitle {
     width: 361px;
     text-align: start;
@@ -156,4 +163,11 @@ overflow: scroll;
 .deleteBtn {
     border: none;
     background-color: #F6F7FB;
+}
+
+@media screen and (max-width: 768px) {
+    .deleteBtn {
+        width: 10px;
+        height: 14px;
+}
 }

@@ -33,6 +33,18 @@ const initialState = {
 const trainingReducer = createSlice({
   name: 'training',
   initialState,
+  reducers: {
+    resetTraining(state) {
+      state.startDate = null;
+      state.endDate = null;
+      state.books = [];
+      state.duration = null;
+      state.pagesPerDay = null;
+      state.stats = [];
+      state._id = null;
+      state.error = null;
+    },
+  },
   extraReducers: {
     [startTraining.fulfilled](state, { payload }) {
       state.startDate = payload.startDate;
@@ -98,15 +110,27 @@ const trainingReducer = createSlice({
       // state.isTrainingGo = true;
     },
     [getUserData.fulfilled](state, { payload }) {
-      state.startDate = payload.trainingData.startDate;
-      state.endDate = payload.trainingData.endDate;
-      state.duration = payload.trainingData.duration;
-      state.pagesPerDay = payload.trainingData.pagesPerDay;
-      state.stats = payload.trainingData.stats;
-      state.books = payload.trainingData.books;
-      state._id = payload.trainingData.id;
-      // state.isTrainingActive = true;
-      // state.isTrainingGo = true;
+      console.log('payload is ', payload.trainingData);
+      if (payload.trainingData === null) {
+        state.startDate = null;
+        state.endDate = null;
+        state.books = [];
+        state.duration = null;
+        state.pagesPerDay = null;
+        state.stats = [];
+        state._id = null;
+        state.error = null;
+      } else {
+        state.startDate = payload.trainingData.startDate;
+        state.endDate = payload.trainingData.endDate;
+        state.duration = payload.trainingData.duration;
+        state.pagesPerDay = payload.trainingData.pagesPerDay;
+        state.stats = payload.trainingData.stats;
+        state.books = payload.trainingData.books;
+        state._id = payload.trainingData.id;
+        // state.isTrainingActive = true;
+        // state.isTrainingGo = true;
+      }
     },
     [setStatisticsPades.pending](state) {
       state.error = null;
@@ -122,3 +146,4 @@ const trainingReducer = createSlice({
 });
 
 export default trainingReducer.reducer;
+export const { resetTraining } = trainingReducer.actions;
