@@ -9,6 +9,7 @@ import StartGoal from '../../components/MyGoal/StartGoal';
 import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
+import MobileModalStartTraining from '../../components/MobileModalStartTraining/MobileModalStartTraining';
 import MotivationContent from '../../components/MotivationContent/MotivationContent';
 import s from './TrainingPage.module.css';
 import {
@@ -18,8 +19,11 @@ import {
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
-import { getBooksTraining } from '../../redux/training/trainingSelectors'
-import { getTraningData, startTraining } from '../../redux/training/trainingOperatons';
+import { getBooksTraining } from '../../redux/training/trainingSelectors';
+import {
+  getTraningData,
+  startTraining,
+} from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useTranslation } from 'react-i18next';
 
@@ -32,32 +36,21 @@ const TrainingPage = () => {
   // const stateRedux = useSelector(getUserBooks);
   // const checkRenderStart = useSelector(checkRender);
 
-  
   // const isTrainingGo = useSelector(getIsTrainingGo);
-  
+
   const [inputValue, setInputValue] = useState('');
-  const [newBooks, setNewBooks] = useState(
-    () => JSON.parse(localStorage.getItem('newBooks')) || []
-    );
+  const [newBooks, setNewBooks] = useState([]);
 
   const [trainingList, setTrainingList] = useState({
     startDate: '',
     endDate: '',
     books: newBooks.map(({ _id }) => _id),
   });
-  
+
   const [isOpenModal, setIsOpenModal] = useState(false);
-  
 
   useEffect(() => {
-    // if (
-      // stateRedux.goingToRead.length === 0
-      // stateRedux.goingToRead.length === 0 ||
-      // stateRedux.currentlyReading.length === 0
-    // ) {
-      // dispatch(getUserData());
-    // }
-    dispatch(getTraningData());
+    !isTraining && dispatch(getTraningData());
   }, [dispatch]);
 
   const addNewBook = chooseBook => {
@@ -101,6 +94,10 @@ const TrainingPage = () => {
     );
   }
 
+  const openModal = () => {
+    setIsOpenModal(isOpenModal);
+  };
+
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
@@ -126,30 +123,29 @@ const TrainingPage = () => {
           )}
           <div className={s.trainingContainer}>
             {!isTraining && (
-              // <div className={s.mobileModalTraining}>
-              <>
-                <div className={s.startTimer}>
-                  <>
-                    <h2 className={s.trainingTitle}>{t('alldatePicker.header')}</h2>
-                    <ALLdatePicker
-                      setTrainingList={setTrainingList}
-                      trainingList={trainingList}
-                    />
-                  </>
-                </div>
-                {!isTraining && (
-                  <TrainigForm
-                    books={books}
-                    newBooks={newBooks}
-                    setNewBooks={setNewBooks}
-                    addNewBook={addNewBook}
-                    inputValue={inputValue}
-                    setInputValue={setInputValue}
+              <div className={s.startTimer}>
+                <>
+                  <h2 className={s.trainingTitle}>
+                    {t('alldatePicker.header')}
+                  </h2>
+                  <ALLdatePicker
+                    setTrainingList={setTrainingList}
+                    trainingList={trainingList}
                   />
-                )}
-              </>
-              // </div>
+                </>
+              </div>
             )}
+
+            <div className={s.mobileHide}>
+              <TrainigForm
+                books={books}
+                newBooks={newBooks}
+                setNewBooks={setNewBooks}
+                addNewBook={addNewBook}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+              />
+            </div>
 
             <TrainingBookList
               newBooks={isTraining ? trainingBooks : newBooks}
@@ -170,16 +166,32 @@ const TrainingPage = () => {
             )}
           </div>
         </div>
-        <div className={s.motivationModal}>
-          {isTraining && !isOpenModal && (
-            <MotivationContent closeModal={closeModal} />
-          )}
-          {/* дописати умову коли закінчився таймер */}
-        </div>
+
+        {isTraining && !isOpenModal && (
+          <MotivationContent closeModal={closeModal} />
+        )}
+        {/* дописати умову коли закінчився таймер */}
 
         <div className={s.statisticsFlex}>
           <LineChart daysLeft={daysLeft} />
-          <Statistics />
+          {
+            !isTraining && (
+              <button className={s.plusBtn} onClick={() => openModal()}>
+                {' '}
+                &#43;{' '}
+              </button>
+            )
+            // && (
+            //   <MobileModalStartTraining
+            //     setTrainingList={setTrainingList}
+            //     trainingList={trainingList}
+            //     closeModal={closeModal}
+            //   />
+            // )
+          }
+          <div className={s.mobileHide}>
+            <Statistics />
+          </div>
         </div>
       </div>
     </Container>

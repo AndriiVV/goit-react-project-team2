@@ -98,15 +98,26 @@ const trainingReducer = createSlice({
       // state.isTrainingGo = true;
     },
     [getUserData.fulfilled](state, { payload }) {
-      state.startDate = payload.trainingData.startDate;
-      state.endDate = payload.trainingData.endDate;
-      state.duration = payload.trainingData.duration;
-      state.pagesPerDay = payload.trainingData.pagesPerDay;
-      state.stats = payload.trainingData.stats;
-      state.books = payload.trainingData.books;
-      state._id = payload.trainingData.id;
-      // state.isTrainingActive = true;
-      // state.isTrainingGo = true;
+      if (payload === null) {
+        state.startDate = null;
+        state.endDate = null;
+        state.books = [];
+        state.duration = null;
+        state.pagesPerDay = null;
+        state.stats = [];
+        state._id = null;
+        state.error = null;
+      } else {
+        state.startDate = payload.trainingData.startDate;
+        state.endDate = payload.trainingData.endDate;
+        state.duration = payload.trainingData.duration;
+        state.pagesPerDay = payload.trainingData.pagesPerDay;
+        state.stats = payload.trainingData.stats;
+        state.books = payload.trainingData.books;
+        state._id = payload.trainingData.id;
+        // state.isTrainingActive = true;
+        // state.isTrainingGo = true;
+      }
     },
     [setStatisticsPades.pending](state) {
       state.error = null;

@@ -25,10 +25,22 @@ export const getUserData = createAsyncThunk(
     try {
       const data = await getUserDataApi(accessToken);
 
-      const trainingData = await getTrainingDataApi();
-
+      const trainingData = await getTrainingDataApi().catch(error => { 
+        console.log('Data ', error.request);
+        if (error.request?.status === 403) {
+          data.currentlyReading = [];
+          data.trainingData = null;
+          return [];
+        } else {
+          throw error;
+        }
+        
+      });
+      
       data.currentlyReading = trainingData.books;
       data.trainingData = trainingData;
+
+      // data.currentlyReading = trainingData.books;
 
       data.finishedReading = data.finishedReading.filter(
         book => !data.currentlyReading.map(book => book._id).includes(book._id)

@@ -63,7 +63,7 @@ export const loginUser = createAsyncThunk(
         data.currentlyReading = trainingData.books;
       }
 
-      data.currentlyReading = trainingData.books;
+      // data.currentlyReading = trainingData.books;
       // data.trainingData = trainingData;
 
       data.finishedReading = data.finishedReading.filter(
