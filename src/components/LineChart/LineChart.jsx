@@ -12,6 +12,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
+import { formatISO, formatRFC7231, intlFormat, lightFormat } from 'date-fns';
 
 ChartJS.register(
   CategoryScale,
@@ -24,8 +26,10 @@ ChartJS.register(
 );
 
 const LineChart = () => {
+  const { t } = useTranslation();
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
+  const groupStats = useSelector(state => state.training.stats);
 
   let arrDays = [];
 
@@ -40,6 +44,12 @@ const LineChart = () => {
   }
 
   const planningPages = arrPages.fill(pages);
+
+  let factPages = [];
+
+  for (let i = 0; i < groupStats.length; i++) {
+    factPages[i] = groupStats[i].pagesCount;
+  }
 
   const options = {
     responsive: true,
@@ -57,7 +67,7 @@ const LineChart = () => {
         position: 'top',
         align: 'start',
         display: true,
-        text: `КІЛЬКІСТЬ СТОРІНОК/ДЕНЬ ${pages === null ? 0 : pages}`,
+        text: `${t('chart.title')} ${pages === null ? 0 : pages}`,
         color: '#242A37',
         font: {
           family: 'Montserrat',
@@ -93,12 +103,19 @@ const LineChart = () => {
   };
 
   const labels = [0, ...arrDays];
+  // let dateNow = new Date();
+  // const labels = [];
+
+  // for (let i = 0; i <= duration; i++) {
+  //   let time = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
+  //   labels[i] = lightFormat(new Date(time), 'yyyy-dd-MM');
+  // }
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'ПЛАН',
+        label: t('chart.plan'),
         animations: {
           y: {
             duration: 2000,
@@ -111,14 +128,14 @@ const LineChart = () => {
         tension: 0.4,
       },
       {
-        label: 'ФАКТ',
+        label: t('chart.fact'),
         animations: {
           y: {
             duration: 2000,
             delay: 700,
           },
         },
-        data: [5, 6, 7, 1, 2, 3, 4],
+        data: factPages,
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         tension: 0.4,
