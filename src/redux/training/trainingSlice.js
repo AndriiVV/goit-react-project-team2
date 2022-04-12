@@ -8,15 +8,15 @@ import { getUserData } from 'redux/book/bookOperations';
 import { loginUser } from 'redux/auth/authOperations';
 
 const initialState = {
-  booksInTraining: [],
-  book: {
-    _id: null,
-    title: '',
-    author: '',
-    publishYear: null,
-    pagesTotal: null,
-    pagesFinished: null,
-  },
+  // booksInTraining: [],
+  // book: {
+  //   _id: null,
+  //   title: '',
+  //   author: '',
+  //   publishYear: null,
+  //   pagesTotal: null,
+  //   pagesFinished: null,
+  // },
   startDate: null,
   endDate: null,
   books: [],
@@ -25,8 +25,8 @@ const initialState = {
   stats: [],
   _id: null,
   error: null,
-  isTrainingGo: false,
-  isTrainingActive: false,
+  // isTrainingGo: false,
+  // isTrainingActive: false,
 };
 
 const trainingReducer = createSlice({
@@ -91,8 +91,9 @@ const trainingReducer = createSlice({
       state.error = null;
     },
     [setStatisticsPades.fulfilled](state, { payload }) {
-      state.booksInTraining = payload.books;
+      // state.booksInTraining = payload.books;
       state.stats = payload.planning.stats;
+      state.books = state.books.map(book => book._id === payload.book._id ? payload.book : book)
     },
   },
 });

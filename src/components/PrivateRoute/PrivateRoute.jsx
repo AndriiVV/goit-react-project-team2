@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
+import { Switch } from "react-router-dom";
 import { Redirect, Route } from "react-router-dom";
 import { getIsAuth } from "../../redux/auth/authSelectors";
 
-const PrivateRoute = ({ path, children }) => {
+const PrivateRoute = ({ exact, path, children }) => {
   const isAuth = useSelector(getIsAuth);
-
+  console.log("Private", isAuth)
   return isAuth ? (
-    <Route path={path}>{children}</Route>
+    
+      <Route exact={exact} path={path}>{children}</Route>
+    
   ) : (
     <Redirect to={"/login"} />
   );

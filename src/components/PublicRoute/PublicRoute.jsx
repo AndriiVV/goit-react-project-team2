@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { getIsAuth } from "../../redux/auth/authSelectors";
 
-const PublicRoute = ({ path, children }) => {
+const PublicRoute = ({ exact, path, children }) => {
   const isAuth = useSelector(getIsAuth);
+  console.log("Public", isAuth)
 
   return isAuth ? (
     <Redirect to={"/library"} />
@@ -12,7 +13,9 @@ const PublicRoute = ({ path, children }) => {
     //   <Route path={"/training"} />
     // </Switch>
   ) : (
-    <Route path={path}>{children}</Route>
+        <Route exact={exact} path={path}>{children}</Route>
+        
+
   );
 };
 

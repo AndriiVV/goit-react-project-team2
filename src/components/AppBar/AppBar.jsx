@@ -9,6 +9,7 @@ import s from './AppBar.module.scss';
 
 const AppBar = () => {
   const isLoggedIn = useSelector(getIsAuth);
+  // console.log(isLoggedIn);
 
   return (
     <header className={s.header}>
