@@ -2,7 +2,6 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andriivv.github.io/goit-react-project-team2/",
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.8.1",
