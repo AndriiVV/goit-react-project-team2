@@ -14,7 +14,6 @@ import MotivationContent from '../../components/MotivationContent/MotivationCont
 import s from './TrainingPage.module.css';
 import {
   getIsTraining,
-  checkRender,
   // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
@@ -40,7 +39,6 @@ const TrainingPage = () => {
     }
   }, [dispatch]);
   const stateRedux = useSelector(getUserBooks);
-  const checkRenderStart = useSelector(checkRender);
   // const isTrainingGo = useSelector(getIsTrainingGo);
 
   const [inputValue, setInputValue] = useState('');
@@ -97,6 +95,10 @@ const TrainingPage = () => {
     );
   }
 
+  const openModal = () => {
+    setIsOpenModal(isOpenModal);
+  };
+
   const closeModal = () => {
     setIsOpenModal(!isOpenModal);
   };
@@ -122,39 +124,29 @@ const TrainingPage = () => {
           )}
           <div className={s.trainingContainer}>
             {!isTraining && (
-              // <div className={s.mobileModalTraining}>
-              <>
-                <div className={s.startTimer}>
-                  <>
-                    <h2 className={s.trainingTitle}>
-                      {t('alldatePicker.header')}
-                    </h2>
-                    <ALLdatePicker
-                      setTrainingList={setTrainingList}
-                      trainingList={trainingList}
-                    />
-                  </>
-                </div>
-                {!checkRenderStart && (
-                  <>
-                    {/* <MobileModalStartTraining
-                      setTrainingList={setTrainingList}
-                      trainingList={trainingList}
-                      closeModal={closeModal}
-                    /> */}
-                    <TrainigForm
-                      books={books}
-                      newBooks={newBooks}
-                      setNewBooks={setNewBooks}
-                      addNewBook={addNewBook}
-                      inputValue={inputValue}
-                      setInputValue={setInputValue}
-                    />
-                  </>
-                )}
-              </>
-              // </div>
+              <div className={s.startTimer}>
+                <>
+                  <h2 className={s.trainingTitle}>
+                    {t('alldatePicker.header')}
+                  </h2>
+                  <ALLdatePicker
+                    setTrainingList={setTrainingList}
+                    trainingList={trainingList}
+                  />
+                </>
+              </div>
             )}
+
+            <div className={s.mobileHide}>
+              <TrainigForm
+                books={books}
+                newBooks={newBooks}
+                setNewBooks={setNewBooks}
+                addNewBook={addNewBook}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+              />
+            </div>
 
             <TrainingBookList
               newBooks={newBooks}
@@ -175,17 +167,32 @@ const TrainingPage = () => {
             )}
           </div>
         </div>
-        <div className={s.motivationModal}>
-          {isTraining && !isOpenModal && (
-            <MotivationContent closeModal={closeModal} />
-          )}
-          {/* дописати умову коли закінчився таймер */}
-        </div>
+
+        {isTraining && !isOpenModal && (
+          <MotivationContent closeModal={closeModal} />
+        )}
+        {/* дописати умову коли закінчився таймер */}
 
         <div className={s.statisticsFlex}>
           <LineChart daysLeft={daysLeft} />
-          {!isTraining && <button className={s.plusBtn}> &#43; </button>}
-          <Statistics />
+          {
+            !isTraining && (
+              <button className={s.plusBtn} onClick={() => openModal()}>
+                {' '}
+                &#43;{' '}
+              </button>
+            )
+            // && (
+            //   <MobileModalStartTraining
+            //     setTrainingList={setTrainingList}
+            //     trainingList={trainingList}
+            //     closeModal={closeModal}
+            //   />
+            // )
+          }
+          <div className={s.mobileHide}>
+            <Statistics />
+          </div>
         </div>
       </div>
     </Container>
