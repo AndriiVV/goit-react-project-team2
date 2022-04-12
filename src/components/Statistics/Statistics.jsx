@@ -12,7 +12,7 @@ const Statistics = () => {
   const stats = useSelector(getStats);
   const [pages, setPages] = useState('');
 
-  console.log(stats);
+  console.log("Stats: ", stats);
 
   const handleCangePages = e => {
     const value = e.target.value;
@@ -72,7 +72,7 @@ const Statistics = () => {
           </button>
         </div>
         <h2 className={s.statisticsTitle}>{t('statistics.statistic')}</h2>
-        <StatisticsList />
+        <StatisticsList stats={stats}/>
       </div>
     </div>
   );

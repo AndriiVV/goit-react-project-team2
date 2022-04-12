@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk(
         pauseOnHover: true,
         autoClose: 2000,
       });
-      const data = loginUserApi({
+      const data = await loginUserApi({
         email: credentials.email,
         password: credentials.password,
       });
@@ -54,18 +54,25 @@ export const loginUser = createAsyncThunk(
         autoClose: 2000,
       });
 
-      // const trainingData = await getTraningData();
+      const trainingData = await getTrainingDataApi();
 
-      // data.currentlyReading = trainingData.books;
+      console.log('trainingData.request: ', trainingData.request);
+      if (trainingData.request?.status === 403) {
+        data.currentlyReading = [];
+      } else {
+        data.currentlyReading = trainingData.books;
+      }
+
+      data.currentlyReading = trainingData.books;
       // data.trainingData = trainingData;
 
-      // data.finishedReading = data.finishedReading.filter(
-      //   book => !data.currentlyReading.map(book => book._id).includes(book._id)
-      // );
+      data.finishedReading = data.finishedReading.filter(
+        book => !data.currentlyReading.map(book => book._id).includes(book._id)
+      );
 
-      // data.goingToRead = data.goingToRead.filter(
-      //   book => !data.currentlyReading.map(book => book._id).includes(book._id)
-      // );
+      data.goingToRead = data.goingToRead.filter(
+        book => !data.currentlyReading.map(book => book._id).includes(book._id)
+      );
 
       return data;
     } catch (error) {

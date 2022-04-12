@@ -13,47 +13,52 @@ import MotivationContent from '../../components/MotivationContent/MotivationCont
 import s from './TrainingPage.module.css';
 import {
   getIsTraining,
-  checkRender,
+  // checkRender,
   // getIsTrainingGo,
 } from '../../redux/training/trainingSelectors';
 import { getUserBooks } from '../../redux/book/bookSelectors';
 import { getUserData } from 'redux/book/bookOperations';
-import { startTraining } from '../../redux/training/trainingOperatons';
+import { getBooksTraining } from '../../redux/training/trainingSelectors'
+import { getTraningData, startTraining } from '../../redux/training/trainingOperatons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useTranslation } from 'react-i18next';
 
 const TrainingPage = () => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const books = useSelector(getUserBooks);
+  const trainingBooks = useSelector(getBooksTraining);
   const isTraining = useSelector(getIsTraining);
+  // const stateRedux = useSelector(getUserBooks);
+  // const checkRenderStart = useSelector(checkRender);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (
-      stateRedux.goingToRead.length === 0
-      // stateRedux.goingToRead.length === 0 ||
-      // stateRedux.currentlyReading.length === 0
-    ) {
-      dispatch(getUserData());
-    }
-  }, [dispatch]);
-  const stateRedux = useSelector(getUserBooks);
-  const checkRenderStart = useSelector(checkRender);
+  
   // const isTrainingGo = useSelector(getIsTrainingGo);
-
+  
   const [inputValue, setInputValue] = useState('');
   const [newBooks, setNewBooks] = useState(
     () => JSON.parse(localStorage.getItem('newBooks')) || []
-  );
+    );
 
   const [trainingList, setTrainingList] = useState({
     startDate: '',
     endDate: '',
     books: newBooks.map(({ _id }) => _id),
   });
-
+  
   const [isOpenModal, setIsOpenModal] = useState(false);
+  
+
+  useEffect(() => {
+    // if (
+      // stateRedux.goingToRead.length === 0
+      // stateRedux.goingToRead.length === 0 ||
+      // stateRedux.currentlyReading.length === 0
+    // ) {
+      // dispatch(getUserData());
+    // }
+    dispatch(getTraningData());
+  }, [dispatch]);
 
   const addNewBook = chooseBook => {
     if (inputValue === '') {
@@ -132,7 +137,7 @@ const TrainingPage = () => {
                     />
                   </>
                 </div>
-                {!checkRenderStart && (
+                {!isTraining && (
                   <TrainigForm
                     books={books}
                     newBooks={newBooks}
@@ -147,7 +152,7 @@ const TrainingPage = () => {
             )}
 
             <TrainingBookList
-              newBooks={newBooks}
+              newBooks={isTraining ? trainingBooks : newBooks}
               setNewBooks={setNewBooks}
               deleteTrainingBook={deleteTrainingBook}
               isTraining={isTraining}

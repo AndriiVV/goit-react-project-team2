@@ -1,0 +1,34 @@
+.stats {
+  width: 270px;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .flexGrow {
+  flex-grow: 1;
+} */
+.stat {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.gray {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 38px;
+  color: #898F9F;
+  font-family: 'Montserrat';
+  font-style: normal;
+
+}
+
+.black {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 38px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  color: #242A37
+}

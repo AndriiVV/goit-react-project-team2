@@ -26,14 +26,12 @@ export const loginUserApi = userData => {
 };
 
 export const registerUserApi = userData => {
-  return axios
-    .post('/auth/register', userData)
-    .then(({ data }) => {
-      return {
-        email: data.email,
-        id: data.id,
-      };
-    });
+  return axios.post('/auth/register', userData).then(({ data }) => {
+    return {
+      email: data.email,
+      id: data.id,
+    };
+  });
 };
 
 // export const refreshTokenApi = (sid, refreshToken) => {
@@ -113,7 +111,7 @@ export const startTrainingApi = trainingData => {
   return axios
     .post('/planning', trainingData)
     .then(({ data }) => {
-          console.log(data);
+      console.log(data);
       return {
         books: data.books,
         startDate: data.startDate,
@@ -154,10 +152,11 @@ export const getUserDataApi = accessToken => {
   });
 };
 
-export const getTrainingDataApi = () => {
-  // axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+export const getTrainingDataApi = accessToken => {
+  if (accessToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  }
   return axios.get('/planning').then(({ data }) => {
-
     return {
       books: data.planning.books,
       startDate: data.planning.startDate,
@@ -176,6 +175,6 @@ export const patchStatisticsPadesApi = pages => {
     return {
       book: data.book,
       planning: data.planning,
-    }
-  })
-}
+    };
+  });
+};

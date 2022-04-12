@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import MainNav from '../pages/MainNav';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Container from './common/Container';
 import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -34,7 +34,7 @@ export const App = () => {
   // console.log(isAuth);
   const token = useSelector(getToken);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   isAuth && dispatch(getUserData(token));
@@ -45,18 +45,20 @@ export const App = () => {
       <MainNav />
       <Suspense fallback={<h3>Loading...</h3>}>
         <Switch>
-          <PrivateRoute path={'/library'}>
+          <PrivateRoute exact path={'/library'}>
             <LibraryPage />
           </PrivateRoute>
-          <PrivateRoute path={'/training'}>
+          <PrivateRoute exact path={'/training'}>
             <TrainingPage />
           </PrivateRoute>
-          <PublicRoute path={'/login'}>
+          <PublicRoute exact path={'/login'}>
             <LoginPage />
           </PublicRoute>
-          <PublicRoute path={'/register'}>
+          <PublicRoute exact path={'/register'}>
+            
             <RegisterPage />
           </PublicRoute>
+          {isAuth ? <Redirect to="/library" /> : <Redirect to="/login" />}
         </Switch>
       </Suspense>
       <ToastContainer autoClose={2000} />

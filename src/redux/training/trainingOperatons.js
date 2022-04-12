@@ -3,7 +3,7 @@ import {
   getTrainingDataApi,
   startTrainingApi,
   setStatisticsPadesApi,
-  patchStatisticsPadesApi
+  patchStatisticsPadesApi,
 } from '../../utils/bookReadApi';
 
 // export const addBookToTraining = createAsyncThunk('training/post/:id', async (id, thunkApi) => {
@@ -48,7 +48,8 @@ export const startTraining = createAsyncThunk(
 
 export const getTraningData = createAsyncThunk(
   'training/data',
-  async (accessToken, thunkApi) => {
+  async (_, thunkApi) => {
+    const { accessToken } = thunkApi.getState().auth;
     try {
       const traningData = getTrainingDataApi(accessToken);
       return traningData;
@@ -62,10 +63,10 @@ export const setStatisticsPades = createAsyncThunk(
   'training/setPades',
   async (pages, thunkApi) => {
     try {
-      const infoTrainingUpdate = await patchStatisticsPadesApi(pages)
-      return infoTrainingUpdate
+      const infoTrainingUpdate = await patchStatisticsPadesApi(pages);
+      return infoTrainingUpdate;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message)
+      return thunkApi.rejectWithValue(error.message);
     }
   }
-)
+);
