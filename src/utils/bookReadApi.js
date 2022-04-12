@@ -109,23 +109,7 @@ export const addBookReviewApi = (reviewData, _id) => {
 //     .catch(err => err);
 // };
 
-export const startTrainingApi = trainingData => {
-  return axios
-    .post('/planning', trainingData)
-    .then(({ data }) => {
-          console.log("post/planning",data);
-      return {
-        books: data.books,
-        startDate: data.startDate,
-        endDate: data.endDate,
-        duration: data.duration,
-        pagesPerDay: data.pagesPerDay,
-        stats: data.stats,
-        _id: data._id,
-      };
-    })
-    .catch(err => err);
-};
+
 
 export const logOutApi = accessToken => {
   return axios
@@ -152,6 +136,26 @@ export const getUserDataApi = accessToken => {
       finishedReading: data.finishedReading,
     };
   });
+};
+
+export const startTrainingApi = trainingData => {
+  return axios
+    .post('/planning', trainingData)
+    .then(({
+      data
+    }) => {
+      console.log("post/planning", data);
+      return {
+        books: data.books,
+        startDate: data.startDate,
+        endDate: data.endDate,
+        duration: data.duration,
+        pagesPerDay: data.pagesPerDay,
+        stats: data.stats,
+        _id: data._id,
+      };
+    })
+    .catch(err => err);
 };
 
 export const getTrainingDataApi = () => {

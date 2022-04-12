@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { getStats } from "redux/training/trainingSelectors";
+import s from './StatisticsList.module.css';
 
 const transformDate = (date) => {
   const string = date.split(" ").map((el, i) =>
@@ -30,22 +31,20 @@ const transformDate = (date) => {
 
 
 const StatisticsList = () => {
-  const stats = useSelector((state) => state.training.stats)
-  console.log("getStats", stats);
+  // const stats = useSelector((state) => state.training.stats)
+  // console.log("getStats", stats);
 
-  // const statss = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
-  // { time: "2022-4-11 19:24", pagesCount: 60 }]
-  // transformDate("2022-4-11 19:14")
+  const stats = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
+  { time: "2022-4-11 19:24", pagesCount: 60 }]
+  transformDate("2022-4-11 19:14")
   return (
-    <ul>
+    <ul className={s.stats}>
       {stats.map(({ time, pagesCount }) => {
-        `<li
-          key={time}
-        >
-          <span>${transformDate(time)[0]}</span>
-          <span>${transformDate(time)[1]}</span>
-          <span>${pagesCount}</span>
-        </li>`.join('')
+        return <li key={time}  className={s.stat}>
+          <span className={s.black}>{transformDate(time)[0]}</span>
+          <span className={s.gray}>{transformDate(time)[1]}</span>
+          <p className={s.black}>{pagesCount}<span className={s.gray}> стор.</span></p>
+        </li>
       })
       }
     </ul>

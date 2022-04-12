@@ -10,33 +10,27 @@ const TrainigForm = ({
   addNewBook,
 }) => {
   const [chooseBook, setСhooseBook] = useState({});
-  
+
   useEffect(() => {
     localStorage.setItem('newBooks', JSON.stringify(newBooks));
   }, [newBooks]);
-  
+
   const handleInputChange = e => {
     const { value } = e.currentTarget;
-    
+
     const findBook = books.goingToRead.find(book => book.title === value);
     setСhooseBook(findBook);
     setInputValue(value);
   };
-<<<<<<< HEAD
 
   // console.log(books);
 
-=======
-  
-  console.log(books);
-  
->>>>>>> dev
   const onSubmit = e => {
     e.preventDefault();
     addNewBook(chooseBook);
     setInputValue('');
   };
-  
+
   const { t } = useTranslation();
   return (
     <form className={s.trainingForm} onSubmit={onSubmit}>

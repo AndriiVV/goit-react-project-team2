@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const Statistics = () => {
   const dispatch = useDispatch()
-
+  const { t } = useTranslation();
   const [pages, setPages] = useState("")
 
   // console.log(stats);
