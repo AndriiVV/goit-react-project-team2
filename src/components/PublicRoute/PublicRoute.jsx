@@ -4,7 +4,7 @@ import { getIsAuth } from "../../redux/auth/authSelectors";
 
 const PublicRoute = ({ exact, path, children }) => {
   const isAuth = useSelector(getIsAuth);
-  console.log("Public", isAuth)
+  // console.log("Public", isAuth)
 
   return isAuth ? (
     <Redirect to={"/library"} />
