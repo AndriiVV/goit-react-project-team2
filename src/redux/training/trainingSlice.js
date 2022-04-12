@@ -5,7 +5,8 @@ import {
   startTraining,
 } from './trainingOperatons';
 import { getUserData } from 'redux/book/bookOperations';
-import { loginUser } from 'redux/auth/authOperations';
+import { loginUser, logoutUser } from 'redux/auth/authOperations';
+import { forceLogout } from 'redux/auth/authSlice';
 
 const initialState = {
   // booksInTraining: [],
@@ -44,6 +45,26 @@ const trainingReducer = createSlice({
       state._id = payload._id;
       // state.isTrainingActive = true;
       // state.isTrainingGo = true;
+    },
+    [logoutUser.fulfilled]: state => {
+      state.startDate = null;
+      state.endDate = null;
+      state.books = [];
+      state.duration = null;
+      state.pagesPerDay = null;
+      state.stats = [];
+      state._id = null;
+      state.error = null;
+    },
+    [forceLogout]: state => {
+      state.startDate = null;
+      state.endDate = null;
+      state.books = [];
+      state.duration = null;
+      state.pagesPerDay = null;
+      state.stats = [];
+      state._id = null;
+      state.error = null;
     },
     [getTraningData.pending](state) {
       state.error = null;
@@ -93,7 +114,9 @@ const trainingReducer = createSlice({
     [setStatisticsPades.fulfilled](state, { payload }) {
       // state.booksInTraining = payload.books;
       state.stats = payload.planning.stats;
-      state.books = state.books.map(book => book._id === payload.book._id ? payload.book : book)
+      state.books = state.books.map(book =>
+        book._id === payload.book._id ? payload.book : book
+      );
     },
   },
 });
