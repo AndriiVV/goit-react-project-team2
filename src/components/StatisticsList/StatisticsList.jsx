@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 const transformDate = (date) => {
   const string = date.split(" ").map((el, i) =>
     i !== 0
@@ -26,8 +28,10 @@ const transformDate = (date) => {
 
 
 const StatisticsList = () => {
-  const stats = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
-  { time: "2022-4-11 19:24", pagesCount: 60 }]
+  const stats = useSelector(state => state.training.stats)
+  console.log(stats);
+  // const stats = [{ time: "2022-4-11 19:14", pagesCount: 1000 },
+  // { time: "2022-4-11 19:24", pagesCount: 60 }]
   transformDate("2022-4-11 19:14")
   return (
     <ul>
