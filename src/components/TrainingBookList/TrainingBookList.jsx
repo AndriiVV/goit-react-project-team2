@@ -43,7 +43,7 @@ const TrainingBookList = ({ newBooks, deleteTrainingBook, isTraining }) => {
         <tbody className={s.tableText}>
           {newBooks.map(
             ({ _id, title, author, publishYear, pagesTotal }, index) => (
-              <tr key={_id + index}>
+              <tr key={_id + index} className={s.fontSize}>
                 <td className={`${s.flexCenter} ${s.tableBorder}`}>
                   <Training className={s.marginBook} />
                   {title}

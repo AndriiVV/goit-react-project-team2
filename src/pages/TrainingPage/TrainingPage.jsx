@@ -9,6 +9,7 @@ import StartGoal from '../../components/MyGoal/StartGoal';
 import ResultGoal from '../../components/MyGoal/ResultGoal';
 import LineChart from 'components/LineChart/LineChart';
 import Statistics from '../../components/Statistics/Statistics';
+import MobileModalStartTraining from '../../components/MobileModalStartTraining/MobileModalStartTraining';
 import MotivationContent from '../../components/MotivationContent/MotivationContent';
 import s from './TrainingPage.module.css';
 import {
@@ -125,7 +126,9 @@ const TrainingPage = () => {
               <>
                 <div className={s.startTimer}>
                   <>
-                    <h2 className={s.trainingTitle}>{t('alldatePicker.header')}</h2>
+                    <h2 className={s.trainingTitle}>
+                      {t('alldatePicker.header')}
+                    </h2>
                     <ALLdatePicker
                       setTrainingList={setTrainingList}
                       trainingList={trainingList}
@@ -133,14 +136,21 @@ const TrainingPage = () => {
                   </>
                 </div>
                 {!checkRenderStart && (
-                  <TrainigForm
-                    books={books}
-                    newBooks={newBooks}
-                    setNewBooks={setNewBooks}
-                    addNewBook={addNewBook}
-                    inputValue={inputValue}
-                    setInputValue={setInputValue}
-                  />
+                  <>
+                    <MobileModalStartTraining
+                      setTrainingList={setTrainingList}
+                      trainingList={trainingList}
+                      closeModal={closeModal}
+                    />
+                    <TrainigForm
+                      books={books}
+                      newBooks={newBooks}
+                      setNewBooks={setNewBooks}
+                      addNewBook={addNewBook}
+                      inputValue={inputValue}
+                      setInputValue={setInputValue}
+                    />
+                  </>
                 )}
               </>
               // </div>
