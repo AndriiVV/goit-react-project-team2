@@ -13,7 +13,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
-import { formatISO, formatRFC7231, intlFormat, lightFormat } from 'date-fns';
+import { lightFormat } from 'date-fns';
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +30,10 @@ const LineChart = () => {
   const pages = useSelector(state => state.training.pagesPerDay);
   const duration = useSelector(state => state.training.duration);
   const groupStats = useSelector(state => state.training.stats);
+  const start = useSelector(state => state.training.startDate);
+  const end = useSelector(state => state.training.endDate);
+  const time = useSelector(state => state.training.stats);
+  const rightTime = time.map(el => el.time.slice(0, 9));
 
   let arrDays = [];
 
@@ -102,14 +106,14 @@ const LineChart = () => {
     },
   };
 
-  const labels = [0, ...arrDays];
-  // let dateNow = new Date();
-  // const labels = [];
+  // const labels = [0, ...arrDays];
+  let dateNow = new Date();
+  const labels = [];
 
-  // for (let i = 0; i <= duration; i++) {
-  //   let time = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
-  //   labels[i] = lightFormat(new Date(time), 'yyyy-dd-MM');
-  // }
+  for (let i = 0; i <= duration; i++) {
+    let time = new Date(Date.now(dateNow) + i * (3600 * 1000 * 24));
+    labels[i] = lightFormat(new Date(time), 'yyyy-MM-dd');
+  }
 
   const data = {
     labels,
