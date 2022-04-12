@@ -110,12 +110,12 @@ const TrainingPage = () => {
   }
 
   const openModal = () => {
-    setIsOpenModal(isOpenModal);
+    setIsOpenModal(true);
   };
 
   const closeModal = () => {
     setIsOpenModal(false);
-    dispatch(resetTraining());
+    isTraining && dispatch(resetTraining());
   };
 
   return (
@@ -151,17 +151,18 @@ const TrainingPage = () => {
                 </>
               </div>
             )}
-
-            <div className={s.mobileHide}>
-              <TrainigForm
-                books={books}
-                newBooks={newBooks}
-                setNewBooks={setNewBooks}
-                addNewBook={addNewBook}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-              />
-            </div>
+            {!isTraining && (
+              <div className={s.mobileHide}>
+                <TrainigForm
+                  books={books}
+                  newBooks={newBooks}
+                  setNewBooks={setNewBooks}
+                  addNewBook={addNewBook}
+                  inputValue={inputValue}
+                  setInputValue={setInputValue}
+                />
+              </div>
+            )}
 
             <TrainingBookList
               newBooks={isTraining ? trainingBooks : newBooks}
@@ -183,31 +184,28 @@ const TrainingPage = () => {
           </div>
         </div>
 
-        {isTraining && isOpenModal && (
-          <MotivationContent closeModal={closeModal} />
-        )}
-        {/* дописати умову коли закінчився таймер */}
+        {/* {!isTraining && <MotivationContent closeModal={closeModal} />} */}
 
         <div className={s.statisticsFlex}>
           <LineChart daysLeft={daysLeft} />
-          {
-            !isTraining && (
+          {!isTraining &&
+            (!isOpenModal ? (
               <button className={s.plusBtn} onClick={() => openModal()}>
-                {' '}
-                &#43;{' '}
+                &#43;
               </button>
-            )
-            // && (
-            //   <MobileModalStartTraining
-            //     setTrainingList={setTrainingList}
-            //     trainingList={trainingList}
-            //     closeModal={closeModal}
-            //   />
-            // )
-          }
-          <div className={s.mobileHide}>
-            <Statistics />
-          </div>
+            ) : (
+              <MobileModalStartTraining
+                setTrainingList={setTrainingList}
+                trainingList={trainingList}
+                closeModal={closeModal}
+                books={books}
+                newBooks={newBooks}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+                addNewBook={addNewBook}
+              />
+            ))}
+          {isTraining && <Statistics />}
         </div>
       </div>
     </Container>

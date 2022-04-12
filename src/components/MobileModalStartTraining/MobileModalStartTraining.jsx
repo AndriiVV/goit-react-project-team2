@@ -1,5 +1,6 @@
 import s from './MobileModalStartTraining.module.css';
 import ALLdatePicker from '../../components/Alldatepicker/Alldatepicker';
+import TrainigForm from 'components/TrainingForm/TrainingForm';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 
@@ -7,6 +8,11 @@ const MobileModalStartTraining = ({
   setTrainingList,
   trainingList,
   closeModal,
+  addNewBook,
+  books,
+  newBooks,
+  inputValue,
+  setInputValue,
 }) => {
   const { t } = useTranslation();
 
@@ -46,6 +52,13 @@ const MobileModalStartTraining = ({
           setTrainingList={setTrainingList}
           trainingList={trainingList}
           className={s.mobileInputs}
+        />
+        <TrainigForm
+          books={books}
+          newBooks={newBooks}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          addNewBook={addNewBook}
         />
       </div>
     </div>
