@@ -5,7 +5,7 @@ import { getIsAuth } from "../../redux/auth/authSelectors";
 
 const PrivateRoute = ({ exact, path, children }) => {
   const isAuth = useSelector(getIsAuth);
-  console.log("Private", isAuth)
+  // console.log("Private", isAuth)
   return isAuth ? (
     
       <Route exact={exact} path={path}>{children}</Route>
