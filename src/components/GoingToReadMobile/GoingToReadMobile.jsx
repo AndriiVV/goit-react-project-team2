@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import LibraryBtn from 'components/LibraryBtnToTraining/LibraryBtnToTraining';
 
 const GoingToReadMobile = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const books = useSelector(getUserBooks);
 

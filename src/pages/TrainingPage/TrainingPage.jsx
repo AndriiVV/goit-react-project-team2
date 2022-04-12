@@ -137,11 +137,11 @@ const TrainingPage = () => {
                 </div>
                 {!checkRenderStart && (
                   <>
-                    <MobileModalStartTraining
+                    {/* <MobileModalStartTraining
                       setTrainingList={setTrainingList}
                       trainingList={trainingList}
                       closeModal={closeModal}
-                    />
+                    /> */}
                     <TrainigForm
                       books={books}
                       newBooks={newBooks}
@@ -184,6 +184,7 @@ const TrainingPage = () => {
 
         <div className={s.statisticsFlex}>
           <LineChart daysLeft={daysLeft} />
+          {!isTraining && <button className={s.plusBtn}> &#43; </button>}
           <Statistics />
         </div>
       </div>
