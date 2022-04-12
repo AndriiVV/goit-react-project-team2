@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addBook, getUserData } from './bookOperations';
 import { loginUser, logoutUser, registerUser } from '../auth/authOperations';
 import { startTraining } from 'redux/training/trainingOperatons';
+import { forceLogout } from 'redux/auth/authSlice';
 
 const getFromLS = key => {
   const valueFromLS = localStorage.getItem(key);
@@ -40,59 +41,66 @@ const bookSlice = createSlice({
         state.books.finishedReading = [];
         state.error = null;
       })
+      .addCase(forceLogout, state => {
+        state.books.goingToRead = [];
+        state.books.currentlyReading = [];
+        state.books.finishedReading = [];
+        state.error = null;
+      })
+        .addCase(getUserData.pending, state => {
+          state.error = null;
+          state.isLoading = true;
+        })
+        .addCase(getUserData.fulfilled, (state, { payload }) => {
+          state.isLoading = false;
+          state.error = null;
+          state.books.goingToRead = payload.goingToRead;
+          state.books.currentlyReading = payload.currentlyReading;
+          state.books.finishedReading = payload.finishedReading;
+        })
+        .addCase(getUserData.rejected, (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        })
+        .addCase(addBook.pending, state => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(addBook.fulfilled, (state, { payload }) => {
+          state.books.goingToRead = [...state.books.goingToRead, payload];
+        })
+        .addCase(addBook.rejected, (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        })
+        .addCase(startTraining.pending, state => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(startTraining.fulfilled, (state, { payload }) => {
+          const updateBooks = state.books.goingToRead.filter(
+            ({ _id }) => _id !== payload.books.map(({ _id }) => _id)
+          );
+          state.books.goingToRead = updateBooks;
 
-      .addCase(getUserData.pending, state => {
-        state.error = null;
-        state.isLoading = true;
-      })
-      .addCase(getUserData.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.books.goingToRead = payload.goingToRead;
-        state.books.currentlyReading = payload.currentlyReading;
-        state.books.finishedReading = payload.finishedReading;
-      })
-      .addCase(getUserData.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
-      .addCase(addBook.pending, state => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(addBook.fulfilled, (state, { payload }) => {
-        state.books.goingToRead = [...state.books.goingToRead, payload];
-      })
-      .addCase(addBook.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
-      .addCase(startTraining.pending, state => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(startTraining.fulfilled, (state, { payload }) => {
-        const updateBooks = state.books.goingToRead
-          .filter(({
-            _id
-          }) => _id !== payload.books.map(({_id}) => _id));
-        state.books.goingToRead = updateBooks;
-        
-        state.books.currentlyReading = [
-          ...state.books.currentlyReading,
-          ...payload.books,
-        ];
-        localStorage.setItem(
-          'currentlyReading',
-          JSON.stringify([...payload.books])
-        );
-        state.books.inTraining = [payload.books];
-        localStorage.setItem('inTraining', JSON.stringify([...payload.books]));
-      })
-      .addCase(startTraining.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      });
+          state.books.currentlyReading = [
+            ...state.books.currentlyReading,
+            ...payload.books,
+          ];
+          localStorage.setItem(
+            'currentlyReading',
+            JSON.stringify([...payload.books])
+          );
+          state.books.inTraining = [payload.books];
+          localStorage.setItem(
+            'inTraining',
+            JSON.stringify([...payload.books])
+          );
+        })
+        .addCase(startTraining.rejected, (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        });
   },
 });
 

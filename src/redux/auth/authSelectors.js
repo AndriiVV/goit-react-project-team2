@@ -4,5 +4,7 @@ export const getIsAuth = state => Boolean(state.auth.accessToken);
 
 export const getToken = state => state.auth.accessToken;
 
-export const getIsLoading = state => state.auth.isLoading
+export const getIsLoading = state => state.auth.isLoading;
+
+export const getAuthError = state => state.auth.error;
 
